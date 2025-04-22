@@ -5,4 +5,5 @@ export enum COLORS {
   TEXT_COLOR = "#737373",
   BLACK = "#000000",
   WHITE = "#ffffff",
+  SIDEBAR_GRADIENT = "linear-gradient(#FFA893,#ffffff)",
 }
