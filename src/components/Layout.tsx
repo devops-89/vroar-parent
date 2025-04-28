@@ -5,17 +5,19 @@ import { useRouter } from "next/router";
 
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
-    if (router.pathname === "/") {
+    if (router.pathname === "/" || router.pathname === "/verify-otp") {
       setShow(false);
+    } else {
+      setShow(true);
     }
   }, [router.pathname]);
 
   return (
     <div>
-      {show && <Sidebar />}
+      {/* {show && <Sidebar />} */}
       {children}
     </div>
   );

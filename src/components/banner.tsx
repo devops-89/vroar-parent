@@ -1,7 +1,9 @@
+import { AuthenticationController } from "@/assets/api/AuthenticationController";
 import { data } from "@/assets/data";
 import bannerImage from "@/banner/banner-image.png";
 import parentBanner from "@/banner/parent-web.png";
-import { COLORS } from "@/utils/enum";
+import { showToast } from "@/redux/reducers/Toast";
+import { COLORS, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
 import { signUpValidationSchema } from "@/utils/validationSchema";
@@ -9,6 +11,7 @@ import {
   Box,
   Button,
   Card,
+  CircularProgress,
   Container,
   Divider,
   Grid,
@@ -19,21 +22,42 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState } from "react";
+
+import { useDispatch } from "react-redux";
 const Banner = () => {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       email: "",
     },
     validationSchema: signUpValidationSchema,
     onSubmit: (values) => {
-      console.log("values", values);
+      setLoading(true);
+      handleSubmit(values);
     },
   });
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = (body: { email: string }) => {
+    AuthenticationController.emailExists(body)
+      .then((res) => {
+        router.push(`/create-profile?email=${body.email}`);
+        setLoading(false);
+      })
+      .catch((err) => {
+        let errMessage =
+          (err.response && err.response.data.message) || err.message;
+        dispatch(showToast({ message: errMessage, variant: TOAST_STATUS.ERROR }));
+        setLoading(false);
+      });
+  };
   return (
     <Box
       sx={{
         backgroundImage: `url(${bannerImage.src})`,
-        height: "100vh",
+        height: { lg: "100vh", xs: "100%" },
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -47,7 +71,7 @@ const Banner = () => {
           <Grid size={8} margin={"auto"}>
             <Card sx={{ p: 2 }}>
               <Grid container>
-                <Grid size={6}>
+                <Grid size={{ xs: 12, lg: 6 }}>
                   <Image
                     src={parentBanner}
                     alt=""
@@ -56,7 +80,11 @@ const Banner = () => {
                   />
                 </Grid>
 
-                <Grid size={6} alignItems={"center"} justifyContent={"center"}>
+                <Grid
+                  size={{ lg: 6, xs: 12 }}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                >
                   <form onSubmit={formik.handleSubmit}>
                     <Box sx={{ p: 4 }}>
                       <Typography
@@ -114,8 +142,16 @@ const Banner = () => {
                         }}
                         fullWidth
                         type="submit"
+                        disabled={loading}
                       >
-                        Sign Up
+                        {loading ? (
+                          <CircularProgress
+                            size={20}
+                            sx={{ color: COLORS.BLACK }}
+                          />
+                        ) : (
+                          "Sign Up"
+                        )}
                       </Button>
                       <Divider sx={{ mt: 2 }}>
                         <Typography
