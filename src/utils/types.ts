@@ -35,7 +35,7 @@ export interface VERIFY_DATA {
 
 export interface StepperSlice_State {
   activeStep: number;
-  path: string;
+  path?: string;
 }
 
 export interface List {
@@ -48,4 +48,5 @@ export interface Plan_Details {
   price: number | string;
   benefits: List[];
   durationType: string;
+  onClick: () => void;
 }

@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 const initialState: StepperSlice_State = {
   activeStep: 0,
-  path:"/createProfile"
 };
 
 export const StepperSlice = createSlice({
@@ -13,8 +12,6 @@ export const StepperSlice = createSlice({
   reducers: {
     addActiveStep: (state) => {
       state.activeStep += 1;
-      const router = useRouter();
-      router.push(state.path)
     },
     removeActiveStep: (state) => {
       state.activeStep = initialState.activeStep;

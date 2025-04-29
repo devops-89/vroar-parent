@@ -20,6 +20,7 @@ const PlanCard = ({
   price,
   duration,
   durationType,
+  onClick
 }: Plan_Details) => {
   return (
     <div>
@@ -111,6 +112,7 @@ const PlanCard = ({
               />
             </Box>
           }
+          onClick={onClick}
         >
           Subscribe Now
         </Button>

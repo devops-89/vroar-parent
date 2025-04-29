@@ -3,13 +3,21 @@ import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import subscriptionBanner from "@/banner/subscription-banner.png";
 import Sidebar from "@/components/Profile/Sidebar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nunito } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import PlanCard from "@/components/PlanCard";
 import { plans_data } from "@/assets/plans";
+import { addActiveStep } from "@/redux/reducers/Stepper";
+import { useRouter } from "next/router";
 const Plans = () => {
   const activeStep = useSelector((state: any) => state.StepSlice.activeStep);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const handleSubscribePlan = () => {
+    dispatch(addActiveStep());
+    router.push("/invite");
+  };
   return (
     <Wrapper>
       <Box sx={{ display: "flex" }}>
@@ -76,6 +84,7 @@ const Plans = () => {
                         price={val.price}
                         benefits={val.benefits}
                         durationType={val.durationType}
+                        onClick={handleSubscribePlan}
                       />
                     </Grid>
                   ))}
