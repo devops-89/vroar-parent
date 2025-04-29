@@ -1,4 +1,4 @@
-import { USER_REGISTER, VERIFY_DATA } from "@/utils/types";
+import { RESEND_OTP, USER_REGISTER, VERIFY_DATA } from "@/utils/types";
 import { publicApi, securedApi } from "./config";
 
 export const AuthenticationController = {
@@ -26,4 +26,15 @@ export const AuthenticationController = {
       throw error;
     }
   },
+  resendOtp: async (data: RESEND_OTP) => {
+    try {
+      let result = await publicApi.post("/user/resendOtp", {
+        referenceId: data.referenceId,
+      });
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+ 
 };

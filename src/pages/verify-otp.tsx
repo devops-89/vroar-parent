@@ -61,10 +61,41 @@ const VerifyOtp = () => {
       });
   };
 
+  const [resendLoading, setResendLoading] = useState(false);
+
+  const resendOtp = () => {
+    setResendLoading(true);
+    const body = {
+      referenceId: localStorage.getItem("referenceId"),
+    };
+    AuthenticationController.resendOtp(body)
+      .then((res) => {
+        // console.log("res", res);
+        const response = res.data.data;
+        localStorage.setItem("referenceId", response.referenceId);
+        dispatch(
+          showToast({
+            message: res.data.message,
+            variant: TOAST_STATUS.SUCCESS,
+          })
+        );
+        setResendLoading(false);
+      })
+      .catch((err) => {
+        // console.log("Err", err);
+        let errMessage =
+          (err.response && err.response.data.message) || err.message;
+        dispatch(
+          showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
+        );
+        setResendLoading(true);
+      });
+  };
+
   const [timer, setTimer] = useState(60);
   const [disabled, setDisabled] = useState(true);
 
-  useEffect(() => {
+  const timerData = () => {
     if (timer > 0 && disabled) {
       const interval = setInterval(() => {
         setTimer((prev) => prev - 1);
@@ -74,6 +105,10 @@ const VerifyOtp = () => {
     } else if (timer === 0) {
       setDisabled(false);
     }
+  };
+
+  useEffect(() => {
+    timerData();
   }, [timer, disabled]);
 
   return (
@@ -177,8 +212,15 @@ const VerifyOtp = () => {
               }}
               fullWidth
               disabled={disabled}
+              onClick={resendOtp}
             >
-              {timer > 0 ? `Resend OTP in ${timer} seconds` : "Resend OTP"}
+              {timer > 0 ? (
+                `Resend OTP in ${timer} seconds`
+              ) : resendLoading ? (
+                <CircularProgress sx={{ color: COLORS.PRIMARY }} size={20} />
+              ) : (
+                "Resend OTP"
+              )}
             </Button>
           </Box>
         </Box>

@@ -50,3 +50,6 @@ export interface Plan_Details {
   durationType: string;
   onClick?: () => void;
 }
+export interface RESEND_OTP {
+  referenceId: string | null;
+}
