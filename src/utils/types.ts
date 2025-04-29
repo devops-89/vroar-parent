@@ -48,5 +48,5 @@ export interface Plan_Details {
   price: number | string;
   benefits: List[];
   durationType: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
