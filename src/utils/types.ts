@@ -53,3 +53,13 @@ export interface Plan_Details {
 export interface RESEND_OTP {
   referenceId: string | null;
 }
+
+export interface USER_INVITE {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNo: string;
+  countryCode: string;
+  grade: string;
+  relationshipToStudent: string;
+}

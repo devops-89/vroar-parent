@@ -47,8 +47,8 @@ const VerifyOtp = () => {
         );
         localStorage.setItem("accessToken", res.data.data.accessToken);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
-        dispatch(addActiveStep());
-        router.push("/plans");
+        dispatch(addActiveStep({ path: "/plans" }));
+        // router.push("/plans");
         setLoading(false);
       })
       .catch((err) => {

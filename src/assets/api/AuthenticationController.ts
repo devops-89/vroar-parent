@@ -1,4 +1,9 @@
-import { RESEND_OTP, USER_REGISTER, VERIFY_DATA } from "@/utils/types";
+import {
+  RESEND_OTP,
+  USER_INVITE,
+  USER_REGISTER,
+  VERIFY_DATA,
+} from "@/utils/types";
 import { publicApi, securedApi } from "./config";
 
 export const AuthenticationController = {
@@ -36,5 +41,13 @@ export const AuthenticationController = {
       throw error;
     }
   },
- 
+
+  inviteUser: async (data: USER_INVITE) => {
+    try {
+      let result = await securedApi.post("/userInvite/sendInvite", data);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

@@ -1,13 +1,7 @@
 import { createProfileSidebar } from "@/assets/createProfileSidebar";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import {
-  Box,
-  Step,
-  StepLabel,
-  Stepper,
-  Typography
-} from "@mui/material";
+import { Box, Step, StepLabel, Stepper, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Sidebar = () => {
@@ -16,16 +10,18 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        position: "fixed",
-        left: 0,
-        height: "100vh",
+        // position: "fixed",
+        // left: 0,
+        // height: "100vh",
         background: COLORS.SIDEBAR_GRADIENT,
-        width: 300,
-        top: 0,
+        // width: 300,
+        // top: 0,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        borderRadius: 4,
+        height: "100%",
       }}
     >
       <Stepper

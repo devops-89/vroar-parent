@@ -21,3 +21,14 @@ export const registerValidationSchema = Yup.object({
   phoneNumber: Yup.string().required("Please Enter Phone Number"),
   avatar: Yup.mixed().required("Please Select Avatar"),
 });
+
+export const inviteValidationSchema = Yup.object({
+  firstName: Yup.string().required("Please Enter First Name"),
+  lastName: Yup.string().required("Please Enter Last Name"),
+  email: Yup.string()
+    .required("Please Enter Email")
+    .email("Please Enter Valid Email"),
+  phoneNo: Yup.string().required("Please Enter Phone Number"),
+  grade: Yup.string().required("Please Select Grade"),
+  relationshipToStudent:Yup.string().required("Please Select Relation to student")
+});

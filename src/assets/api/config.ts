@@ -18,7 +18,7 @@ const userPublicApi = Axios.create({
 
 userSecuredApi.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("accessToken");
     if (token) {
       config.headers.accessToken = token;
     }
@@ -27,7 +27,7 @@ userSecuredApi.interceptors.request.use(
 );
 
 securedApi.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("accessToken");
   if (token) {
     config.headers.accessToken = token;
   }
