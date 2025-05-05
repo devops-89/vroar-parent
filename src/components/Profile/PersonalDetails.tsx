@@ -1,10 +1,20 @@
+import UpdatePersonalDetails from "@/assets/ModalCalling/userDetails/UpdatePersonalDetails";
+import { showModal } from "@/redux/reducers/Modal";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { Button, Grid, Stack, Typography } from "@mui/material";
+import moment from "moment";
 import React from "react";
 import { FaRegEdit } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 
 const PersonalDetails = () => {
+  const user = useSelector((state: any) => state.user);
+  // console.log("user", user);
+  const dispatch = useDispatch();
+  const handleEditPersonalDetails = () => {
+    dispatch(showModal(<UpdatePersonalDetails />));
+  };
   return (
     <div>
       <Stack
@@ -27,6 +37,7 @@ const PersonalDetails = () => {
             textTransform: "initial",
             fontWeight: 600,
           }}
+          onClick={handleEditPersonalDetails}
         >
           Edit
         </Button>
@@ -50,9 +61,10 @@ const PersonalDetails = () => {
               color: COLORS.BLACK,
               fontWeight: 600,
               mt: 1,
+              textTransform: "capitalize",
             }}
           >
-            Kunal Sharma
+            {user?.firstName} {user?.lastName}
           </Typography>
         </Grid>
         <Grid size={4}>
@@ -75,7 +87,7 @@ const PersonalDetails = () => {
               mt: 1,
             }}
           >
-            12/11/2001
+            {moment.unix(user?.birthDate).format("DD-MM-YYYY") || "--"}
           </Typography>
         </Grid>
         <Grid size={4}>
@@ -98,7 +110,7 @@ const PersonalDetails = () => {
               mt: 1,
             }}
           >
-            Male
+            {user?.gender || "Not Disclosed"}
           </Typography>
         </Grid>
       </Grid>

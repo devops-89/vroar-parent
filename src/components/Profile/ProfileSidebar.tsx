@@ -13,7 +13,13 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
 const ProfileSidebar = () => {
+  const router = useRouter();
+
+  const handleRouter = (path: string) => {
+    router.push(path);
+  };
   return (
     <Box
       sx={{
@@ -53,14 +59,41 @@ const ProfileSidebar = () => {
           {sidebarData.map((val, i) => (
             <ListItemButton
               key={i}
-              sx={{ justifyContent: "center", color: "#737373" }}
+              sx={{
+                justifyContent: "center",
+                color: router.pathname === val.url ? COLORS.PRIMARY : "#737373",
+                backgroundColor:
+                  router.pathname === val.url
+                    ? COLORS.WHITE
+                    : COLORS.TRANSPARENT,
+                borderRadius: 10,
+                boxShadow:
+                  router.pathname === val.url
+                    ? "0px 0px 4px 4px rgba(0,0,0,0.10)"
+                    : "none",
+                ":hover": {
+                  color:
+                    router.pathname === val.url ? COLORS.PRIMARY : "#737373",
+                  backgroundColor:
+                    router.pathname === val.url
+                      ? COLORS.WHITE
+                      : COLORS.TRANSPARENT,
+                },
+              }}
+              onClick={() => handleRouter(val.url)}
             >
               <ListItemAvatar sx={{ minWidth: 40 }}>
                 <val.icon />
               </ListItemAvatar>
               <ListItemText
                 primary={
-                  <Typography sx={{ fontFamily: nunito.style, fontSize: 16 }}>
+                  <Typography
+                    sx={{
+                      fontFamily: nunito.style,
+                      fontSize: 16,
+                      fontWeight: 550,
+                    }}
+                  >
                     {val.label}
                   </Typography>
                 }

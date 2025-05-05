@@ -3,6 +3,7 @@ import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import {
   Avatar,
+  Box,
   Button,
   Divider,
   Grid,
@@ -16,6 +17,7 @@ import { FaRegEdit } from "react-icons/fa";
 import PersonalDetails from "./PersonalDetails";
 import AccountDetails from "./AccountDetails";
 import ContactDetails from "./ContactDetails";
+import { useSelector } from "react-redux";
 const ProfileData = () => {
   const ref = useRef<HTMLInputElement>(null);
   const [showAvatar, setShowAvatar] = useState<string | null>(null);
@@ -34,6 +36,7 @@ const ProfileData = () => {
       setShowAvatar(url);
     }
   };
+  const user = useSelector((state: any) => state.user);
 
   return (
     <div>
@@ -41,33 +44,37 @@ const ProfileData = () => {
         <Grid size={3}>
           <Avatar
             sx={{
-              width: 150,
-              height: 150,
+              width: 200,
+              height: 200,
               bgcolor: "transparent",
               border: `1px solid ${COLORS.PRIMARY}`,
               overflow: "hidden",
+              margin: "auto",
             }}
           >
             <Image
-              src={showAvatar || profile}
+              src={showAvatar || user?.avatar}
               alt="Profile"
-              width={150}
-              height={150}
+              width={200}
+              height={200}
               style={{ objectFit: "cover" }}
             />
           </Avatar>
-          <Button
-            sx={{
-              fontSize: 14,
-              fontFamily: nunito.style,
-              color: COLORS.BLACK,
-              textTransform: "initial",
-              mt: 1,
-            }}
-            onClick={handleClick}
-          >
-            Upload new photo
-          </Button>
+          <Box sx={{ textAlign: "center" }}>
+            <Button
+              sx={{
+                fontSize: 14,
+                fontFamily: nunito.style,
+                color: COLORS.BLACK,
+                textTransform: "initial",
+                mt: 1,
+                textAlign: "center",
+              }}
+              onClick={handleClick}
+            >
+              Upload new photo
+            </Button>
+          </Box>
           <input
             type="file"
             accept="image/*"

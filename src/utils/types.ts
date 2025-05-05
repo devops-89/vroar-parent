@@ -63,3 +63,8 @@ export interface USER_INVITE {
   grade: string;
   relationshipToStudent: string;
 }
+
+export interface SUBSCRIPTION_PLAN {
+  heading: string;
+  plan: List[];
+}

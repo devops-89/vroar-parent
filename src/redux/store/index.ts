@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import toastReducer from "../reducers/Toast";
 import StepperReducer from "../reducers/Stepper";
 import userReducer from "../reducers/User";
+import ModalReducer from "../reducers/Modal";
 import createIndexedDBStorage from "redux-persist-indexeddb-storage";
 // const storage = createIndexedDB
 import {
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   toast: toastReducer,
   StepSlice: StepperReducer,
   user: userReducer,
+  modal: ModalReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

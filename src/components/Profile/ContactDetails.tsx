@@ -3,8 +3,11 @@ import { nunito } from "@/utils/fonts";
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import { FaRegEdit } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const ContactDetails = () => {
+  const user = useSelector((state: any) => state.user);
+
   return (
     <Box>
       <Stack
@@ -52,7 +55,7 @@ const ContactDetails = () => {
               mt: 1,
             }}
           >
-            +1 (555) 867-5309
+            +{user.countryCode} {user?.phoneNo}
           </Typography>
         </Grid>
       </Grid>

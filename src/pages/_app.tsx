@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import Modal from "@/components/Modal";
 import ToastBar from "@/components/ToastBar";
 import { persistor, store } from "@/redux/store";
 import "@/styles/globals.css";
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <PersistGate loading={null} persistor={persistor}>
         <Layout>
           <ToastBar />
+          <Modal />
           <Component {...pageProps} />
         </Layout>
       </PersistGate>

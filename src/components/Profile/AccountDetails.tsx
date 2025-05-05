@@ -1,12 +1,22 @@
+import UpdateAccountDetails from "@/assets/ModalCalling/userDetails/UpdateAccountDetails";
+import { showModal } from "@/redux/reducers/Modal";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import { FaRegEdit } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 
 const AccountDetails = () => {
-  const password = "Pass@1234";
+  const user = useSelector((state: any) => state.user);
+  const password = user?.password || "";
   const maskedPassword = "•".repeat(password.length);
+
+  const dispatch = useDispatch();
+  const handleEditPersonalDetails = () => {
+    dispatch(showModal(<UpdateAccountDetails />));
+  };
+
   return (
     <Box>
       <Stack
@@ -29,6 +39,7 @@ const AccountDetails = () => {
             textTransform: "initial",
             fontWeight: 600,
           }}
+          onClick={handleEditPersonalDetails}
         >
           Edit
         </Button>
@@ -54,7 +65,7 @@ const AccountDetails = () => {
               mt: 1,
             }}
           >
-            kunal@gmail.com
+            {user?.email}
           </Typography>
         </Grid>
         <Grid size={6}>

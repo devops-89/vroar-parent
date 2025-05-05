@@ -16,13 +16,16 @@ export const sidebarData = [
   {
     icon: Person,
     label: "My Profile",
+    url: "/parent/profile",
   },
   {
     icon: Star,
     label: "Subscriptions",
+    url: "/parent/subscriptions",
   },
   {
     icon: Settings,
     label: "Settings",
+    url: "/parent/settings",
   },
 ];
