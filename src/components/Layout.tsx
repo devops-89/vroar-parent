@@ -14,7 +14,8 @@ const Layout = ({ children }: LayoutProps) => {
   useEffect(() => {
     if (
       router.pathname === "/parent/profile" ||
-      router.pathname === "/parent/subscriptions"
+      router.pathname === "/parent/subscriptions" ||
+      router.pathname === "/parent/settings"
     ) {
       setShow(true);
     } else {
@@ -27,7 +28,13 @@ const Layout = ({ children }: LayoutProps) => {
       .then((res) => {
         // console.log("Res", res);
         const response = res.data.data;
-        dispatch(setUserDetails({ ...response, isLoading: false }));
+        dispatch(
+          setUserDetails({
+            ...response,
+            isLoading: false,
+            isAuthenticated: true,
+          })
+        );
       })
       .catch((err) => {
         console.log("Err", err);

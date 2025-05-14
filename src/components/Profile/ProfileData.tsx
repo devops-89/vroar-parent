@@ -53,7 +53,7 @@ const ProfileData = () => {
             }}
           >
             <Image
-              src={showAvatar || user?.avatar}
+              src={user?.avatar}
               alt="Profile"
               width={200}
               height={200}

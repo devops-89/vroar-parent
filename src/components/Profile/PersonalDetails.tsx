@@ -78,17 +78,21 @@ const PersonalDetails = () => {
           >
             Date of Birth
           </Typography>
-          <Typography
-            sx={{
-              fontSize: 20,
-              fontFamily: nunito.style,
-              color: COLORS.BLACK,
-              fontWeight: 600,
-              mt: 1,
-            }}
-          >
-            {moment.unix(user?.birthDate).format("DD-MM-YYYY") || "--"}
-          </Typography>
+          {user?.birthDate ? (
+            <Typography
+              sx={{
+                fontSize: 20,
+                fontFamily: nunito.style,
+                color: COLORS.BLACK,
+                fontWeight: 600,
+                mt: 1,
+              }}
+            >
+              {moment.unix(user?.birthDate).format("DD-MM-YYYY") || "--"}
+            </Typography>
+          ) : (
+            <Typography>--</Typography>
+          )}
         </Grid>
         <Grid size={4}>
           <Typography

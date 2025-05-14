@@ -30,4 +30,12 @@ export const UserController = {
       throw error;
     }
   },
+  getProductList: async () => {
+    try {
+      let result = await userSecuredApi.get("/payment/products");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

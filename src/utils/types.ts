@@ -68,3 +68,8 @@ export interface SUBSCRIPTION_PLAN {
   heading: string;
   plan: List[];
 }
+
+export interface LOGIN_SCHEMA {
+  email: string;
+  password: string;
+}

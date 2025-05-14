@@ -1,4 +1,5 @@
 import {
+  LOGIN_SCHEMA,
   RESEND_OTP,
   USER_INVITE,
   USER_REGISTER,
@@ -45,6 +46,30 @@ export const AuthenticationController = {
   inviteUser: async (data: USER_INVITE) => {
     try {
       let result = await securedApi.post("/userInvite/sendInvite", data);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  login: async (data: LOGIN_SCHEMA) => {
+    try {
+      let result = await publicApi.post("/user/login", data);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  logout: async () => {
+    try {
+      let result = await securedApi.get("/logout/currentSession");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getInviteesDetail: async () => {
+    try {
+      let result = await securedApi.get("/userInvite/getInvites");
       return result;
     } catch (error) {
       throw error;

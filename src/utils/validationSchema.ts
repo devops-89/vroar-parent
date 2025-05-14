@@ -30,5 +30,14 @@ export const inviteValidationSchema = Yup.object({
     .email("Please Enter Valid Email"),
   phoneNo: Yup.string().required("Please Enter Phone Number"),
   grade: Yup.string().required("Please Select Grade"),
-  relationshipToStudent:Yup.string().required("Please Select Relation to student")
+  relationshipToStudent: Yup.string().required(
+    "Please Select Relation to student"
+  ),
+});
+
+export const loginValidationSchema = Yup.object({
+  email: Yup.string()
+    .required("Please Enter Email")
+    .email("Please Enter Valid Email"),
+  password: Yup.string().required("Please Enter Password"),
 });

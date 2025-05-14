@@ -1,7 +1,15 @@
+import { AuthenticationController } from "@/assets/api/AuthenticationController";
+import { data } from "@/assets/data";
+import background from "@/banner/subscription-banner.png";
 import Sidebar from "@/components/Profile/Sidebar";
-import Wrapper from "@/components/Wrapper";
+import { goBackStep } from "@/redux/reducers/Stepper";
+import { showToast } from "@/redux/reducers/Toast";
+import { COLORS, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
+import { USER_INVITE } from "@/utils/types";
+import { inviteValidationSchema } from "@/utils/validationSchema";
+import { ArrowBack } from "@mui/icons-material";
 import {
   Autocomplete,
   Box,
@@ -14,21 +22,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
-import React, { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import background from "@/banner/subscription-banner.png";
-import { data } from "@/assets/data";
 import { useFormik } from "formik";
-import { inviteValidationSchema } from "@/utils/validationSchema";
-import { ArrowBack } from "@mui/icons-material";
-import { COLORS, TOAST_STATUS } from "@/utils/enum";
-import { goBackStep, setActiveStep } from "@/redux/reducers/Stepper";
+import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import { useRouter } from "next/router";
-import { AuthenticationController } from "@/assets/api/AuthenticationController";
-import { USER_INVITE } from "@/utils/types";
-import { showToast } from "@/redux/reducers/Toast";
-import Loading from "react-loading";
+import { SyntheticEvent, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Invite = () => {
   const activeStep = useSelector((state: any) => state.StepSlice.activeStep);
@@ -67,6 +65,7 @@ const Invite = () => {
           dispatch(
             showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
           );
+          setLoading(false);
         });
     },
   });
@@ -110,12 +109,6 @@ const Invite = () => {
       formik.setFieldValue(id, newValue?.label || "");
     }
   };
-
-  //   useEffect(() => {
-  //     if (router.pathname === "/invite") {
-  //       dispatch(setActiveStep(2));
-  //     }
-  //   }, [router.pathname]);
 
   return (
     <Box

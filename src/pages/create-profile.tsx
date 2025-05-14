@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 const CreateProfile = () => {
   const activeStep = useSelector((state: any) => state.StepSlice.activeStep);
   const user = useSelector((state: any) => state.user);
-  console.log("aas", activeStep, user);
+  // console.log("aas", activeStep, user);
 
   const router = useRouter();
   const dispatch = useDispatch();

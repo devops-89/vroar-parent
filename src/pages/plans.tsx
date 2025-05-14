@@ -1,3 +1,4 @@
+import { UserController } from "@/assets/api/UserController";
 import { plans_data } from "@/assets/plans";
 import subscriptionBanner from "@/banner/subscription-banner.png";
 import PlanCard from "@/components/PlanCard";
@@ -17,12 +18,25 @@ const Plans = () => {
     dispatch(addActiveStep({ path: "/invite" }));
     router.push("/invite");
   };
+  const getSubscriptionList = () => {
+    UserController.getProductList()
+      .then((res) => {
+        console.log("res", res);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
 
   useEffect(() => {
     if (router.pathname === "/plans") {
       dispatch(setActiveStep(1));
     }
   }, [router.pathname]);
+
+  useEffect(() => {
+    getSubscriptionList();
+  }, []);
   return (
     <Box
       sx={{

@@ -2,6 +2,7 @@ import { AuthenticationController } from "@/assets/api/AuthenticationController"
 import { data } from "@/assets/data";
 import bannerImage from "@/banner/banner-image.png";
 import parentBanner from "@/banner/parent-web.png";
+import { removeActiveStep } from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
 import { COLORS, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
@@ -44,15 +45,20 @@ const Banner = () => {
     AuthenticationController.emailExists(body)
       .then((res) => {
         router.push(`/create-profile?email=${body.email}`);
+        dispatch(removeActiveStep());
+
         setLoading(false);
       })
       .catch((err) => {
         let errMessage =
           (err.response && err.response.data.message) || err.message;
-        dispatch(showToast({ message: errMessage, variant: TOAST_STATUS.ERROR }));
+        dispatch(
+          showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
+        );
         setLoading(false);
       });
   };
+
   return (
     <Box
       sx={{
@@ -197,6 +203,7 @@ const Banner = () => {
                             textDecoration: "underline",
                             cursor: "pointer",
                           }}
+                          onClick={() => router.push("/login")}
                         >
                           Sign In
                         </Typography>

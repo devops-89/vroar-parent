@@ -7,7 +7,9 @@ export const getUserDetails = ({ dispatch }: any) => {
     .then((res) => {
       const response = res.data.data;
 
-      dispatch(setUserDetails({ ...response, isLoading: false }));
+      dispatch(
+        setUserDetails({ ...response, isLoading: false, isAuthenticated: true })
+      );
     })
     .catch((err) => {
       console.log("err in get user details", err);

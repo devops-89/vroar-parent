@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   transpilePackages: ["mui-tel-input", "mui-one-time-password-input"],
   images: {
-    domains: ["vroar-prod.s3.us-west-1.amazonaws.com"],
+    domains: ["vroar-prod.s3.us-west-1.amazonaws.com","vroar-bucket.s3.us-west-1.amazonaws.com"],
   },
 };
 
