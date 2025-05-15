@@ -1,64 +1,59 @@
-import { Plan_Details } from "@/utils/types";
+import {
+  Plan_Details,
+  STATIC_SUBSCRIPTION_PLANS,
+  SUBSCRIPTION_PLANS,
+} from "@/utils/types";
+import explorer from "@/icons/Explorer.png";
+import confidence from "@/icons/Confidence.png";
 
-export const plans_data: Plan_Details[] = [
+export const plans_data: STATIC_SUBSCRIPTION_PLANS[] = [
   {
-    plan_type: "Basic Plan",
-    duration: "1 Month",
-    price: 99,
     benefits: [
       {
-        label: "All analytics features",
+        label: "1-Hour Coaching Session",
       },
       {
-        label: "Up to 250,000 tracked visits",
+        label: "High School Counselor Session",
       },
       {
-        label: "Normal support",
+        label: "Limited App Learning Access",
       },
       {
-        label: "Up to 3 team members",
+        label: "Limited Monthly Webinars",
       },
     ],
-    durationType: "month",
+    img: explorer,
+    id: "prod_SGB6trKkjfLT6B",
   },
   {
-    plan_type: "Premium Plan",
-    duration: "3 Months",
-    price: 249,
     benefits: [
       {
-        label: "All analytics features",
+        label: "4 Coaching Sessions",
       },
       {
-        label: "Up to 250,000 tracked visits",
+        label: "College & Career Counseling",
       },
       {
-        label: "Normal support",
+        label: "3-Week MyTrekShip Internship",
       },
       {
-        label: "Up to 3 team members",
+        label: "Full App Learning Access",
+      },
+      {
+        label: "Monthly Expert Webinars & Educator",
+      },
+      {
+        label: "Personal Branding",
+      },
+      {
+        label: "Exclusive Mentorship",
+      },
+      {
+        label: "Cancel Anytime",
       },
     ],
-    durationType: "quatar",
-  },
-  {
-    plan_type: "Ultimate Plan",
-    duration: "12 Months",
-    price: 899,
-    benefits: [
-      {
-        label: "All analytics features",
-      },
-      {
-        label: "Up to 250,000 tracked visits",
-      },
-      {
-        label: "Normal support",
-      },
-      {
-        label: "Up to 3 team members",
-      },
-    ],
-    durationType: "year",
+    img: confidence,
+
+    id: "prod_SGB7wzqCc9Cci5",
   },
 ];

@@ -9,3 +9,4 @@ export const nunito = Nunito({
   weight: "variable",
   subsets: ["latin"],
 });
+

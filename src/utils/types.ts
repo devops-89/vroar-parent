@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 import { MEDIA_LIBRARY_TYPE, TOAST_STATUS, USER_TYPE } from "./enum";
+import { StaticImageData } from "next/image";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export interface LayoutProps {
   children: ReactNode;
@@ -72,4 +74,39 @@ export interface SUBSCRIPTION_PLAN {
 export interface LOGIN_SCHEMA {
   email: string;
   password: string;
+}
+
+export interface SUBSCRIPTION_PLANS_PRICE {
+  id: string;
+  amount: number;
+  currency: string;
+  interval: string | null;
+  isRecurring: boolean;
+}
+
+export interface SUBSCRIPTION_PLANS {
+  description: string | null;
+  id: string;
+  name: string;
+  prices: SUBSCRIPTION_PLANS_PRICE[];
+  benefits?: List[];
+  img?: StaticImport | string;
+}
+
+export interface STATIC_SUBSCRIPTION_PLANS {
+  benefits: List[];
+  img: StaticImport | string;
+  id: string;
+}
+
+export interface PLAN_BADGES {
+  bgColor: string;
+  border: string;
+  label: string;
+  color: string;
+}
+
+export interface PAYMENT_LINK_PROPS {
+  productId: string;
+  priceId: string;
 }
