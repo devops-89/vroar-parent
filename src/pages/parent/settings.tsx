@@ -47,7 +47,7 @@ const Settings = () => {
             border: `1px solid ${COLORS.PRIMARY}`,
             borderRadius: 8,
             p: 1,
-            width:200
+            width: 200,
           }}
         >
           Deactivate Account

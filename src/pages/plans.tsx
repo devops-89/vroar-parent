@@ -7,7 +7,14 @@ import { addActiveStep, setActiveStep } from "@/redux/reducers/Stepper";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { STATIC_SUBSCRIPTION_PLANS, SUBSCRIPTION_PLANS } from "@/utils/types";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import {
+  Backdrop,
+  Box,
+  CircularProgress,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,28 +28,12 @@ const Plans = () => {
   };
   const [subscriptionPlans, setSubscriptonPlans] =
     useState<SUBSCRIPTION_PLANS[]>();
-  // const getSubscriptionList = () => {
-  //   UserController.getProductList()
-  //     .then((res) => {
-  //       // console.log("res", res);
-  //       const response = res.data.data;
-
-  //       setSubscriptonPlans(response as SUBSCRIPTION_PLANS[]);
-  //       const newResponseArray = response.map(
-  //         (val: any) => val.id === plans_data.map((val: any) => val.id)
-  //       );
-  //       console.log("new Array", newResponseArray);
-  //     })
-  //     .catch((err) => {
-  //       console.log("err", err);
-  //     });
-  // };
-
+  const [loading, setLoading] = useState(true);
   const getSubscriptionList = () => {
     UserController.getProductList()
       .then((res) => {
         const response = res.data.data;
-
+        // console.log("resonse", response);
         const mergedArray = plans_data.map((staticPlan: any) => {
           const matchedPlan = response.find(
             (apiPlan: any) => apiPlan.id === staticPlan.id
@@ -54,25 +45,27 @@ const Plans = () => {
           };
         });
 
-        console.log("Merged Array", mergedArray);
+        // console.log("Merged Array", mergedArray);
         setSubscriptonPlans(mergedArray as SUBSCRIPTION_PLANS[]);
+        setLoading(false);
       })
       .catch((err) => {
         console.log("err", err);
+        setLoading(true);
       });
   };
 
-  useEffect(() => {
-    if (router.pathname === "/plans") {
-      dispatch(setActiveStep(1));
-    }
-  }, [router.pathname]);
+  // useEffect(() => {
+  //   if (router.pathname === "/plans") {
+  //     dispatch(setActiveStep(1));
+  //   }
+  // }, [router.pathname]);
 
   useEffect(() => {
     getSubscriptionList();
   }, []);
 
-  console.log("sdsds", subscriptionPlans);
+  // console.log("sdsds", subscriptionPlans);
   return (
     <Box
       sx={{
@@ -144,24 +137,30 @@ const Plans = () => {
                       learning—tailored for your child’s growth and future.
                       Empower them to take the first step toward their dreams
                     </Typography>
-                    <Grid container>
-                      <Grid size={10} margin={"auto"}>
-                        <Grid container sx={{ mt: 3 }} spacing={4}>
-                          {subscriptionPlans?.map((val, i) => (
-                            <Grid size={6} key={i}>
-                              <PlanCard
-                                description={val.description}
-                                id={val.id}
-                                name={val.name}
-                                prices={val.prices}
-                                img={val.img}
-                                benefits={val.benefits}
-                              />
-                            </Grid>
-                          ))}
+                    {loading ? (
+                      <Backdrop open={loading}>
+                        <CircularProgress sx={{ color: COLORS.PRIMARY }} />
+                      </Backdrop>
+                    ) : (
+                      <Grid container>
+                        <Grid size={10} margin={"auto"}>
+                          <Grid container sx={{ mt: 3 }} spacing={4}>
+                            {subscriptionPlans?.map((val, i) => (
+                              <Grid size={6} key={i}>
+                                <PlanCard
+                                  description={val.description}
+                                  id={val.id}
+                                  name={val.name}
+                                  prices={val.prices}
+                                  img={val.img}
+                                  benefits={val.benefits}
+                                />
+                              </Grid>
+                            ))}
+                          </Grid>
                         </Grid>
                       </Grid>
-                    </Grid>
+                    )}
                   </Box>
                 </Box>
               </Box>

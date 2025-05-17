@@ -8,9 +8,10 @@ import { SUBSCRIPTION_PLAN } from "@/utils/types";
 interface DataProps {
   data: SUBSCRIPTION_PLAN;
   chip?: boolean;
+  status?: string;
 }
 
-const SubscriptionCard = ({ data, chip }: DataProps) => {
+const SubscriptionCard = ({ data, chip, status }: DataProps) => {
   return (
     <Card
       sx={{
@@ -26,7 +27,7 @@ const SubscriptionCard = ({ data, chip }: DataProps) => {
         >
           {data.heading}
         </Typography>
-        {chip && <CustomChip label={USER_STATUS.ACTIVE} isDotted={true} />}
+        {chip && <CustomChip label={status ? status : ""} isDotted={true} />}
       </Stack>
       <Grid container mt={4} spacing={2}>
         {data.plan.map((item, index) => (

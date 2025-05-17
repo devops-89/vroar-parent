@@ -3,6 +3,7 @@ import { hideModal } from "@/redux/reducers/Modal";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
+import { changePasswordValidationSchema } from "@/utils/validationSchema";
 import { Close } from "@mui/icons-material";
 import {
   Box,
@@ -26,19 +27,14 @@ const UpdateAccountDetails = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: user?.email || "",
-      password: "",
+      oldPassword: "",
+      newPassword: "",
     },
+    validationSchema: changePasswordValidationSchema,
     onSubmit: (values) => {
       console.log("values", values);
     },
   });
-
-//   const handleSubmit=(data:any)=>{
-//     UserController.updateProfile(data).then((res)=>{
-
-//     })
-//   }
 
   return (
     <Box sx={{ width: 500 }}>
@@ -50,7 +46,7 @@ const UpdateAccountDetails = () => {
         <Typography
           sx={{ fontSize: 20, fontFamily: nunito.style, fontWeight: 600 }}
         >
-          Update Account Details
+          Change Password
         </Typography>
         <IconButton onClick={closeModal}>
           <Close sx={{ color: COLORS.PRIMARY }} />
@@ -62,21 +58,33 @@ const UpdateAccountDetails = () => {
           <Grid size={12}>
             <TextField
               sx={{ ...loginTextField }}
-              label="Email"
-              id="email"
+              label="Old Password"
+              id="oldPassword"
               onChange={formik.handleChange}
-              value={formik.values.email}
+              value={formik.values.oldPassword}
               fullWidth
+              error={
+                formik.touched.oldPassword && Boolean(formik.errors.oldPassword)
+              }
+              helperText={
+                formik.touched.oldPassword && formik.errors.oldPassword
+              }
             />
           </Grid>
           <Grid size={12}>
             <TextField
               sx={{ ...loginTextField }}
-              label="Password"
-              id="password"
+              label="New Password"
+              id="newPassword"
               onChange={formik.handleChange}
-              value={formik.values.password}
+              value={formik.values.newPassword}
               fullWidth
+              error={
+                formik.touched.newPassword && Boolean(formik.errors.newPassword)
+              }
+              helperText={
+                formik.touched.newPassword && formik.errors.newPassword
+              }
             />
           </Grid>
           <Grid size={12}>
@@ -89,7 +97,7 @@ const UpdateAccountDetails = () => {
               fullWidth
               type="submit"
             >
-              Submit
+              Update Password
             </Button>
           </Grid>
         </Grid>

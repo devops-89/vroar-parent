@@ -1,5 +1,6 @@
 import {
   LOGIN_SCHEMA,
+  PASSWORD_PROPS,
   RESEND_OTP,
   USER_INVITE,
   USER_REGISTER,
@@ -70,6 +71,14 @@ export const AuthenticationController = {
   getInviteesDetail: async () => {
     try {
       let result = await securedApi.get("/userInvite/getInvites");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  changePassword: async (data: PASSWORD_PROPS) => {
+    try {
+      let result = await securedApi.post("/user/changePassword", data);
       return result;
     } catch (error) {
       throw error;

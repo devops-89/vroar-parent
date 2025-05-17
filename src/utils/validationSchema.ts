@@ -41,3 +41,18 @@ export const loginValidationSchema = Yup.object({
     .email("Please Enter Valid Email"),
   password: Yup.string().required("Please Enter Password"),
 });
+
+export const changePasswordValidationSchema = Yup.object().shape({
+  oldPassword: Yup.string()
+    .required("Please Enter Password")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, and one number"
+    ),
+  newPassword: Yup.string()
+    .required("Please Enter Password")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, and one number"
+    ),
+});

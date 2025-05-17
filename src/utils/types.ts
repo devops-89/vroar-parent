@@ -110,3 +110,27 @@ export interface PAYMENT_LINK_PROPS {
   productId: string;
   priceId: string;
 }
+
+export interface PAYMENT_ITEMS {
+  items: PAYMENT_LINK_PROPS[];
+}
+
+export interface PASSWORD_PROPS {
+  oldPassword: string;
+  newPassword: string;
+}
+
+export interface SUBSCRIPTION_PLANS_DETAILS {
+  id: string;
+  customerEmail: string;
+  endDate: EpochTimeStamp;
+  redeemCode: string;
+  startDate: EpochTimeStamp;
+  status: string;
+  stripeSubscriptionId: string;
+  createdBy: {
+    email: string;
+    firstName: string;
+    lastName: string;
+  };
+}

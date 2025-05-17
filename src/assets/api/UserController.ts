@@ -1,4 +1,4 @@
-import { MEDIA_UPLOAD, PAYMENT_LINK_PROPS } from "@/utils/types";
+import { MEDIA_UPLOAD, PAYMENT_ITEMS, PAYMENT_LINK_PROPS } from "@/utils/types";
 import { publicApi, securedApi, userPublicApi, userSecuredApi } from "./config";
 
 export const UserController = {
@@ -38,9 +38,17 @@ export const UserController = {
       throw error;
     }
   },
-  createPaymentLink: async (data: PAYMENT_LINK_PROPS) => {
+  createPaymentLink: async (data: PAYMENT_ITEMS) => {
     try {
-      let result = await userSecuredApi.post("/payment/create-payment");
+      let result = await userSecuredApi.post("/payment/create-payment", data);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getSubscriptionForUser: async () => {
+    try {
+      let result = await userSecuredApi.get("/subscription/get");
       return result;
     } catch (error) {
       throw error;

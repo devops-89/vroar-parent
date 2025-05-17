@@ -1,11 +1,16 @@
-import { COLORS } from "@/utils/enum";
+import { COLORS, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import { SUBSCRIPTION_PLANS } from "@/utils/types";
+import {
+  PAYMENT_ITEMS,
+  PAYMENT_LINK_PROPS,
+  SUBSCRIPTION_PLANS,
+} from "@/utils/types";
 import { ArrowForward } from "@mui/icons-material";
 import {
   Box,
   Button,
   Card,
+  CircularProgress,
   List,
   ListItem,
   ListItemAvatar,
@@ -19,6 +24,10 @@ import { SyntheticEvent, useState } from "react";
 import extension from "@/icons/Explorer.png";
 import PlanBadges from "./PlanBadges";
 import tick from "@/icons/listAvatar.png";
+import { UserController } from "@/assets/api/UserController";
+import { useDispatch } from "react-redux";
+import { showToast } from "@/redux/reducers/Toast";
+import { useRouter } from "next/router";
 const PlanCard = ({
   description,
   id,
@@ -29,90 +38,49 @@ const PlanCard = ({
 }: SUBSCRIPTION_PLANS) => {
   const [priceIndex, setPriceIndex] = useState(0);
   const [switchStatus, setSwitchStatus] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const switchHandler = (e: SyntheticEvent) => {
-    // setSwitchStatus(true)
-    // console.log(e);
-
-    console.log("sad", id);
+    // console.log("sad", id);
     const { checked } = e.target as HTMLInputElement;
     setSwitchStatus(checked);
     setPriceIndex(checked ? 1 : 0);
   };
+  console.log("test", prices);
+
+  const dispatch = useDispatch();
+
+  const router = useRouter();
+  const createPaymentLink = (price_id: string) => {
+    let paymentProduct = {
+      productId: id,
+      priceId: price_id,
+    };
+    setLoading(true);
+
+    let body = [];
+    body.push(paymentProduct);
+
+    // console.log("first", type);
+    UserController.createPaymentLink({ items: body } as PAYMENT_ITEMS)
+      .then((res) => {
+        // console.log("res", res);
+        const response = res.data.data;
+        setLoading(false);
+        window.location.href = response.url;
+        // router.push("/payment-success")
+      })
+      .catch((err) => {
+        // console.log("err", err);
+        let errMessage =
+          (err.response && err.resoponse.data.message) || err.message;
+        dispatch(
+          showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
+        );
+      });
+  };
 
   return (
     <div>
-      {/* <Card sx={{ p: 2, borderRadius: "17.2px" }}>
-        <Typography
-          sx={{ fontSize: 22, fontFamily: nunito.style, fontWeight: 700 }}
-        >
-          {name}
-        </Typography>
-        <Typography
-          sx={{ fontSize: 18, fontFamily: nunito.style, fontWeight: 600 }}
-        >
-          Duration -{" "}
-          {prices[priceIndex].interval === "month"
-            ? "Quarterly"
-            : prices[priceIndex].interval === "year"
-            ? "Yearly"
-            : ""}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: 38,
-            fontFamily: nunito.style,
-            color: COLORS.PRIMARY,
-            fontWeight: 700,
-          }}
-        >
-          ${prices[priceIndex].amount}
-        </Typography>
-        <Typography
-          sx={{ fontSize: 14, fontWeight: 600, fontFamily: nunito.style }}
-        >
-          What’s included
-        </Typography>
-
-        <Button
-          sx={{
-            background: COLORS.LINEAR_GRADIENT,
-            fontFamily: nunito.style,
-            color: COLORS.WHITE,
-            borderRadius: 6,
-            fontSize: 15,
-            ":hover": {
-              "& .icon": {
-                transform: "rotate(0deg)",
-              },
-            },
-          }}
-          fullWidth
-          endIcon={
-            <Box
-              sx={{
-                backgroundColor: COLORS.WHITE,
-                borderRadius: "50%",
-                width: 30,
-                height: 30,
-              }}
-            >
-              <ArrowForward
-                sx={{
-                  fontSize: 20,
-                  color: COLORS.PRIMARY,
-                  transform: "rotate(-45deg)",
-                  transition: "0.5s ease all",
-                }}
-                className="icon"
-              />
-            </Box>
-          }
-          // onClick={onClick}
-        >
-          Subscribe Now
-        </Button>
-      </Card> */}
       <Card
         sx={{
           p: 2,
@@ -242,6 +210,7 @@ const PlanCard = ({
             />
           )}
         </Stack>
+
         <Box sx={{ position: "relative", mt: 3 }}>
           <Button
             sx={{
@@ -292,11 +261,16 @@ const PlanCard = ({
                 />
               </Box>
             }
-            // onClick={onClick}
+            onClick={() => createPaymentLink(prices[priceIndex].id)}
+            disabled={loading}
           >
-            {prices[priceIndex].isRecurring
-              ? "Unlock Confidence"
-              : "Explore Now"}
+            {loading ? (
+              <CircularProgress sx={{ color: COLORS.WHITE }} size={20} />
+            ) : prices[priceIndex].isRecurring ? (
+              "Unlock Confidence"
+            ) : (
+              "Explore Now"
+            )}
           </Button>
           <Box sx={{ mt: 5 }}>
             <Typography

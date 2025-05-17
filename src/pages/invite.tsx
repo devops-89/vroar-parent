@@ -359,6 +359,7 @@ const Invite = () => {
                           color: COLORS.PRIMARY,
                           textTransform: "initial",
                         }}
+                        onClick={() => router.push("/parent/profile")}
                       >
                         Do this Later
                       </Button>
