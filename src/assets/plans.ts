@@ -23,8 +23,8 @@ export const plans_data: STATIC_SUBSCRIPTION_PLANS[] = [
       },
     ],
     img: explorer,
-    id: "prod_RA099VmPc21N2R",
-    
+    // id: "prod_RA099VmPc21N2R",
+    id: "prod_SGB6trKkjfLT6B",
   },
   {
     benefits: [
@@ -55,6 +55,7 @@ export const plans_data: STATIC_SUBSCRIPTION_PLANS[] = [
     ],
     img: confidence,
 
-    id: "prod_RBDLWJDlj523g1",
+    // id: "prod_RBDLWJDlj523g1",
+    id: "prod_SGB7wzqCc9Cci5",
   },
 ];

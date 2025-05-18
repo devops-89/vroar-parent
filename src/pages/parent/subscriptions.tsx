@@ -150,7 +150,11 @@ const Subscriptions = () => {
                       <Done sx={{ fontSize: 14, color: COLORS.PRIMARY }} />
                     </IconButton>
                   ) : (
-                    <IconButton onClick={() => copyText("ZP110USE")}>
+                    <IconButton
+                      onClick={() =>
+                        copyText(subscriptionDetails?.redeemCode ?? "")
+                      }
+                    >
                       <ContentCopy
                         sx={{ fontSize: 14, color: COLORS.PRIMARY }}
                       />
