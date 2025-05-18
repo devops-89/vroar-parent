@@ -1,14 +1,21 @@
 import google from "@/icons/google.png";
 import apple from "@/icons/apple.png";
-import { GENDER_DATA, GRADE, RELATIONSHIP_DATA } from "@/utils/enum";
+import {
+  GENDER_DATA,
+  GRADE,
+  RELATIONSHIP_DATA,
+  SOCIAL_LOGIN,
+} from "@/utils/enum";
 import { Person, Settings, Star } from "@mui/icons-material";
 export const data = {
   socialIcons: [
     {
       img: google,
+      label: SOCIAL_LOGIN.GOOGLE,
     },
     {
       img: apple,
+      label: SOCIAL_LOGIN.APPLE,
     },
   ],
   grade: [
@@ -130,6 +137,4 @@ export const data = {
     { label: GENDER_DATA.OTHER },
     { label: GENDER_DATA.PREFER_NOT_TO_SAY },
   ],
-
-  
 };

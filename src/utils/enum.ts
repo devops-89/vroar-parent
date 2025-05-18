@@ -143,3 +143,8 @@ export enum USER_STATUS {
   ACTIVE = "Active",
   INACTIVE = "Inactive",
 }
+
+export enum SOCIAL_LOGIN {
+  GOOGLE = "GOOGLE",
+  APPLE = "APPLE",
+}

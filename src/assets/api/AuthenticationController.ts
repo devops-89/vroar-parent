@@ -84,4 +84,12 @@ export const AuthenticationController = {
       throw error;
     }
   },
+  googleLogin: async () => {
+    try {
+      let result = await securedApi.get("/socialLogin/google");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

@@ -45,7 +45,7 @@ const PlanCard = ({
     setSwitchStatus(checked);
     setPriceIndex(checked ? 1 : 0);
   };
-  console.log("test", prices);
+  // console.log("test", prices);
 
   const dispatch = useDispatch();
 
@@ -72,11 +72,13 @@ const PlanCard = ({
       .catch((err) => {
         // console.log("err", err);
         let errMessage =
-          (err.response && err.resoponse.data.message) || err.message;
+          (err.response && err.response.data.message) || err.message;
         dispatch(
           showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
         );
       });
+
+      setLoading(false)
   };
 
   return (
