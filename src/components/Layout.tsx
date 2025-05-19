@@ -49,6 +49,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div>
+      <link rel="icon" href="/favicon.png" />
       {/* {show && <Sidebar />} */}
       {show && <ProfileSidebar />}
       {children}
