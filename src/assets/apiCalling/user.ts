@@ -20,8 +20,6 @@ export const getUserDetails = ({ dispatch }: any) => {
     });
 };
 
-
-
 // utils/loadGoogleScript.js
 export const loadGoogleScript = (): Promise<void> => {
   return new Promise<void>((resolve) => {
@@ -39,3 +37,21 @@ export const loadGoogleScript = (): Promise<void> => {
     document.body.appendChild(script);
   });
 };
+
+// utils/googleOAuth.ts
+export function loadGoogleOAuthScript(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const scriptId = "google-oauth-script";
+    if (document.getElementById(scriptId)) return resolve();
+
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject("Google script failed to load");
+    script.id = scriptId;
+
+    document.head.appendChild(script);
+  });
+}

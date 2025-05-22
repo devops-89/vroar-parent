@@ -1,5 +1,8 @@
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
-import { loadGoogleScript } from "@/assets/apiCalling/user";
+import {
+  loadGoogleOAuthScript,
+  loadGoogleScript,
+} from "@/assets/apiCalling/user";
 import { data } from "@/assets/data";
 import bannerImage from "@/banner/banner-image.png";
 import parentBanner from "@/banner/parent-web.png";
@@ -32,12 +35,16 @@ import { useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
 
+const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+
 declare global {
   interface Window {
     google: any;
   }
 }
 const Banner = () => {
+  console.log("client id", clientId);
+
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -80,19 +87,19 @@ const Banner = () => {
 
   const [googleReady, setGoogleReady] = useState(false);
 
-  useEffect(() => {
-    loadGoogleScript().then(() => {
-      setGoogleReady(true);
+  // useEffect(() => {
+  //   loadGoogleScript().then(() => {
+  //     setGoogleReady(true);
 
-      if (window.google) {
-        window.google.accounts.id.initialize({
-          client_id:
-            "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
-          callback: handleCredentialResponse,
-        });
-      }
-    });
-  }, []);
+  //     if (window.google) {
+  //       window.google.accounts.id.initialize({
+  //         client_id:
+  //           "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
+  //         callback: handleCredentialResponse,
+  //       });
+  //     }
+  //   });
+  // }, []);
 
   const handleCredentialResponse = (response: GoogleCredentialResponse) => {
     const user = jwtDecode(response.credential);
@@ -112,24 +119,47 @@ const Banner = () => {
   const handleLoginClick = () => {
     if (window.google && window.google.accounts) {
       // window.google.accounts.id.prompt(); // triggers the sign-in prompt
-      window.google.accounts.id.prompt((notification: any) => {
-        if (notification.isNotDisplayed()) {
-          console.log(
-            "Sign-in prompt not displayed:",
-            notification.getNotDisplayedReason()
-          );
-        }
-        if (notification.isSkippedMoment()) {
-          console.log(
-            "Sign-in prompt skipped:",
-            notification.getSkippedReason()
-          );
-        }
+      // window.google.accounts.id.prompt((notification: any) => {
+      //   if (notification.isNotDisplayed()) {
+      //     console.log(
+      //       "Sign-in prompt not displayed:",
+      //       notification.getNotDisplayedReason()
+      //     );
+      //   }
+      //   if (notification.isSkippedMoment()) {
+      //     console.log(
+      //       "Sign-in prompt skipped:",
+      //       notification.getSkippedReason()
+      //     );
+      //   }
+      // });
+      // window.google.accounts.id.prompt();
+      // window.google.accounts.id.renderButton(
+      //   document.getElementById("googleDiv"),
+      //   {
+      //     theme: "outline",
+      //     size: "large",
+      //   }
+      // );
+      const params = new URLSearchParams({
+        client_id:
+          clientId ||
+          "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
+        redirect_uri: "https://vroar-188a2.firebaseapp.com/__/auth/handler",
+        response_type: "token",
+        scope: "openid email profile",
       });
+
+      window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
     } else {
       console.error("Google Identity Services SDK not loaded yet");
     }
   };
+
+  useEffect(() => {
+    loadGoogleOAuthScript();
+  }, []);
+
   return (
     <Box
       sx={{
