@@ -3,6 +3,7 @@ import UpdateChildDetails from "@/assets/ModalCalling/userDetails/UpdateChildDet
 import { showModal } from "@/redux/reducers/Modal";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
+import { Add } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -73,11 +74,31 @@ const InviteDetails = () => {
   console.log("assdsa", inviteeDetails);
   return (
     <Box>
-      <Typography
-        sx={{ fontSize: 30, fontFamily: nunito.style, fontWeight: 700 }}
+      <Stack
+        direction={"row"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
       >
-        Kid Details
-      </Typography>
+        <Typography
+          sx={{ fontSize: 30, fontFamily: nunito.style, fontWeight: 700 }}
+        >
+          Kid Details
+        </Typography>
+        <Button
+          startIcon={<Add />}
+          sx={{
+            background: COLORS.LINEAR_GRADIENT,
+            color: COLORS.WHITE,
+            borderRadius: 20,
+            width: 150,
+            p: 1,
+            boxShadow: `0px 0px 2px 2px ${COLORS.PRIMARY}`,
+            fontWeight: 600,
+          }}
+        >
+          Invite Child
+        </Button>
+      </Stack>
       {inviteeDetails.length ? (
         <>
           <Card sx={{ p: 2, mt: 2 }}>

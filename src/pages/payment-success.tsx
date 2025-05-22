@@ -3,7 +3,14 @@ import { addActiveStep } from "@/redux/reducers/Stepper";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { ContentCopy, Done } from "@mui/icons-material";
-import { Box, Grid, IconButton, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -11,12 +18,17 @@ import { useDispatch } from "react-redux";
 const PaymentSuccess = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(addActiveStep({ path: "/invite" }));
-      router.push("/invite");
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     dispatch(addActiveStep({ path: "/invite" }));
+  //     router.push("/invite");
+  //   }, 2000);
+  // }, []);
+
+  const routeToInviteChild = () => {
+    router.push("/invite");
+    dispatch(addActiveStep({ path: "/invite" }));
+  };
   return (
     <Box
       sx={{
@@ -124,7 +136,7 @@ const PaymentSuccess = () => {
                   Get ready to explore, grow, and unlock new possibilities
                   together.
                 </Typography>
-
+                {/* 
                 <Box
                   sx={{
                     margin: "auto",
@@ -156,7 +168,7 @@ const PaymentSuccess = () => {
                       <ContentCopy />
                     </IconButton>
                   </Stack>
-                </Box>
+                </Box> */}
                 <Box sx={{ width: 700, textAlign: "center", mt: 3 }}>
                   <Typography
                     sx={{
@@ -165,8 +177,18 @@ const PaymentSuccess = () => {
                       fontFamily: nunito.style,
                     }}
                   >
-                    Enter the code in the app to unlock exclusive resources. And{" "}
-                    <Typography
+                    Check your Email for updates
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      fontFamily: nunito.style,
+                    }}
+                  >
+                    We'll send your redemption code once the process is
+                    complete.
+                    {/* <Typography
                       sx={{
                         fontSize: 20,
                         fontWeight: 700,
@@ -176,11 +198,11 @@ const PaymentSuccess = () => {
                       component={"span"}
                     >
                       Parent version is launching soon
-                    </Typography>{" "}
-                    . So you'll be able to support their journey firsthand!{" "}
+                    </Typography>{" "} */}
+                    {/* . So you'll be able to support their journey firsthand!{" "} */}
                   </Typography>
                 </Box>
-                <Typography
+                {/* <Typography
                   sx={{
                     fontSize: 20,
                     fontFamily: nunito.style,
@@ -190,7 +212,26 @@ const PaymentSuccess = () => {
                   }}
                 >
                   *Check your inbox, we’ve emailed instructions to use the code!
-                </Typography>
+                </Typography> */}
+
+                <Button
+                  sx={{
+                    border: `1px solid ${COLORS.PRIMARY}`,
+                    backgroundColor: COLORS.PRIMARY,
+                    width: 250,
+                    mt: 3,
+                    color: COLORS.WHITE,
+                    fontFamily: nunito.style,
+                    borderRadius: 20,
+                    boxShadow: "0px 0px 2px 2px #FD9065",
+                    p: 2,
+                    fontSize: 16,
+                    fontWeight: 600,
+                  }}
+                  onClick={routeToInviteChild}
+                >
+                  Invite your child
+                </Button>
               </Box>
             </Box>
           </Box>

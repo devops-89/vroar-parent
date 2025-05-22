@@ -84,9 +84,11 @@ export const AuthenticationController = {
       throw error;
     }
   },
-  googleLogin: async () => {
+  googleLogin: async (token: string) => {
     try {
-      let result = await securedApi.get("/socialLogin/google");
+      let result = await publicApi.post("/socialLogin/google/mobile", {
+        id_token: token,
+      });
       return result;
     } catch (error) {
       throw error;

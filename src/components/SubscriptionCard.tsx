@@ -25,7 +25,7 @@ const SubscriptionCard = ({ data, chip, status }: DataProps) => {
         <Typography
           sx={{ fontSize: 20, fontFamily: nunito.style, fontWeight: 550 }}
         >
-          {data.heading}
+          {data.heading || ""}
         </Typography>
         {chip && <CustomChip label={status ? status : ""} isDotted={true} />}
       </Stack>

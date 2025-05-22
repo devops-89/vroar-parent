@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import ProfileSidebar from "./Profile/ProfileSidebar";
 import { UserController } from "@/assets/api/UserController";
+import Head from "next/head";
 
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
@@ -51,6 +52,14 @@ const Layout = ({ children }: LayoutProps) => {
     <div>
       <link rel="icon" href="/favicon.png" />
       {/* {show && <Sidebar />} */}
+      <Head>
+        <link rel="icon" href="/favicon_mytreks.png" />
+        <script
+          src="https://accounts.google.com/gsi/client"
+          async
+          defer
+        ></script>
+      </Head>
       {show && <ProfileSidebar />}
       {children}
     </div>

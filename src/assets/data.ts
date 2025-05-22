@@ -13,10 +13,10 @@ export const data = {
       img: google,
       label: SOCIAL_LOGIN.GOOGLE,
     },
-    {
-      img: apple,
-      label: SOCIAL_LOGIN.APPLE,
-    },
+    // {
+    //   img: apple,
+    //   label: SOCIAL_LOGIN.APPLE,
+    // },
   ],
   grade: [
     {

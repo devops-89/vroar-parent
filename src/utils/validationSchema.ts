@@ -19,7 +19,13 @@ export const registerValidationSchema = Yup.object({
     .required("Please Enter Email")
     .email("Please Enter Valid Email"),
   phoneNumber: Yup.string().required("Please Enter Phone Number"),
-  avatar: Yup.mixed().required("Please Select Avatar"),
+  avatar: Yup.mixed()
+    .required("Please Select Avatar")
+    .test("fileSize", "File size must be less than 1MB", (value) => {
+      if (!value) return false; 
+      const file = value as File; 
+      return file.size <= 1024 * 1024; 
+    }),
 });
 
 export const inviteValidationSchema = Yup.object({

@@ -20,19 +20,38 @@ export const getUserDetails = ({ dispatch }: any) => {
     });
 };
 
-export const loginWithGoogle = ({ dispatch, setSocialLoading }: any) => {
-  AuthenticationController.googleLogin()
-    .then((res) => {
-      const response = res.data.data;
-      window.location.href = response?.url;
-      setSocialLoading(false);
-      // console.log("google", res);
-    })
-    .catch((err) => {
-      console.log("err", err);
-      let errMessage =
-        (err.response && err.response.data.message) || err.message;
-      dispatch(showToast({ message: errMessage, variant: TOAST_STATUS.ERROR }));
-      setSocialLoading(false);
-    });
+// utils/loadGoogleScript.js
+export const loadGoogleScript = (): Promise<void> => {
+  return new Promise<void>((resolve) => {
+    if (document.getElementById("google-client-script")) {
+      resolve();
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.id = "google-client-script";
+    script.onload = () => resolve();
+    document.body.appendChild(script);
+  });
 };
+
+// utils/googleOAuth.ts
+export function loadGoogleOAuthScript(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const scriptId = "google-oauth-script";
+    if (document.getElementById(scriptId)) return resolve();
+
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject("Google script failed to load");
+    script.id = scriptId;
+
+    document.head.appendChild(script);
+  });
+}
