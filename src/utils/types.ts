@@ -133,4 +133,20 @@ export interface SUBSCRIPTION_PLANS_DETAILS {
     firstName: string;
     lastName: string;
   };
+  subscriptionName?: string | undefined;
+}
+
+export interface GoogleNotification {
+  isNotDisplayed(): boolean;
+  getNotDisplayedReason(): string;
+  isSkippedMoment(): boolean;
+  getSkippedReason(): string;
+}
+
+export interface Window {
+  google: any;
+}
+
+export interface GoogleCredentialResponse {
+  credential: string;
 }

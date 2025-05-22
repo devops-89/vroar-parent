@@ -63,7 +63,7 @@ const Subscriptions = () => {
   // console.log("first", subscriptionDetails);
 
   const subscriptionPlanDetails = {
-    heading: "Professional Plan",
+    heading: subscriptionDetails?.subscriptionName || "",
     plan: [
       {
         label: "Start Date",

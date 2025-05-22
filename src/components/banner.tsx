@@ -1,5 +1,5 @@
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
-import { loginWithGoogle } from "@/assets/apiCalling/user";
+import { loadGoogleScript } from "@/assets/apiCalling/user";
 import { data } from "@/assets/data";
 import bannerImage from "@/banner/banner-image.png";
 import parentBanner from "@/banner/parent-web.png";
@@ -8,6 +8,7 @@ import { showToast } from "@/redux/reducers/Toast";
 import { COLORS, SOCIAL_LOGIN, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
+import { GoogleCredentialResponse, GoogleNotification } from "@/utils/types";
 import { signUpValidationSchema } from "@/utils/validationSchema";
 import {
   Backdrop,
@@ -24,11 +25,18 @@ import {
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
+import { jwtDecode } from "jwt-decode";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
+
+declare global {
+  interface Window {
+    google: any;
+  }
+}
 const Banner = () => {
   const router = useRouter();
   const formik = useFormik({
@@ -66,10 +74,62 @@ const Banner = () => {
   const socialLoginHandler = (type: string) => {
     setSocialLoading(true);
     if (type === SOCIAL_LOGIN.GOOGLE) {
-      loginWithGoogle({ dispatch, setSocialLoading });
+      handleLoginClick();
     }
   };
 
+  const [googleReady, setGoogleReady] = useState(false);
+
+  useEffect(() => {
+    loadGoogleScript().then(() => {
+      setGoogleReady(true);
+
+      if (window.google) {
+        window.google.accounts.id.initialize({
+          client_id:
+            "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
+          callback: handleCredentialResponse,
+        });
+      }
+    });
+  }, []);
+
+  const handleCredentialResponse = (response: GoogleCredentialResponse) => {
+    const user = jwtDecode(response.credential);
+    // console.log("sadf", response.credential);
+    // console.log("User Info:", user);
+    setLoading(false);
+    // Send token/user info to backend if needed
+    AuthenticationController.googleLogin(response?.credential)
+      .then((res) => {
+        console.log("respone", res);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
+  const handleLoginClick = () => {
+    if (window.google && window.google.accounts) {
+      // window.google.accounts.id.prompt(); // triggers the sign-in prompt
+      window.google.accounts.id.prompt((notification: any) => {
+        if (notification.isNotDisplayed()) {
+          console.log(
+            "Sign-in prompt not displayed:",
+            notification.getNotDisplayedReason()
+          );
+        }
+        if (notification.isSkippedMoment()) {
+          console.log(
+            "Sign-in prompt skipped:",
+            notification.getSkippedReason()
+          );
+        }
+      });
+    } else {
+      console.error("Google Identity Services SDK not loaded yet");
+    }
+  };
   return (
     <Box
       sx={{
