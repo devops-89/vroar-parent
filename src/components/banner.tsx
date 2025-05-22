@@ -43,7 +43,7 @@ declare global {
   }
 }
 const Banner = () => {
-  console.log("client id", clientId);
+  // console.log("client id", clientId);
 
   const router = useRouter();
   const formik = useFormik({
@@ -87,19 +87,19 @@ const Banner = () => {
 
   const [googleReady, setGoogleReady] = useState(false);
 
-  // useEffect(() => {
-  //   loadGoogleScript().then(() => {
-  //     setGoogleReady(true);
+  useEffect(() => {
+    loadGoogleScript().then(() => {
+      setGoogleReady(true);
 
-  //     if (window.google) {
-  //       window.google.accounts.id.initialize({
-  //         client_id:
-  //           "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
-  //         callback: handleCredentialResponse,
-  //       });
-  //     }
-  //   });
-  // }, []);
+      if (window.google) {
+        window.google.accounts.id.initialize({
+          client_id:
+            "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
+          callback: handleCredentialResponse,
+        });
+      }
+    });
+  }, []);
 
   const handleCredentialResponse = (response: GoogleCredentialResponse) => {
     const user = jwtDecode(response.credential);
@@ -133,32 +133,32 @@ const Banner = () => {
       //     );
       //   }
       // });
-      // window.google.accounts.id.prompt();
-      // window.google.accounts.id.renderButton(
-      //   document.getElementById("googleDiv"),
-      //   {
-      //     theme: "outline",
-      //     size: "large",
-      //   }
-      // );
-      const params = new URLSearchParams({
-        client_id:
-          clientId ||
-          "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
-        redirect_uri: "https://vroar-188a2.firebaseapp.com/__/auth/handler",
-        response_type: "token",
-        scope: "openid email profile",
-      });
+      window.google.accounts.id.prompt();
+      window.google.accounts.id.renderButton(
+        document.getElementById("googleDiv"),
+        {
+          theme: "outline",
+          size: "large",
+        }
+      );
+      // const params = new URLSearchParams({
+      //   client_id:
+      //     clientId ||
+      //     "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
+      //   redirect_uri: "https://vroar-188a2.firebaseapp.com/__/auth/handler",
+      //   response_type: "token",
+      //   scope: "openid email profile",
+      // });
 
-      window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
+      // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
     } else {
       console.error("Google Identity Services SDK not loaded yet");
     }
   };
 
-  useEffect(() => {
-    loadGoogleOAuthScript();
-  }, []);
+  // useEffect(() => {
+  //   loadGoogleOAuthScript();
+  // }, []);
 
   return (
     <Box
