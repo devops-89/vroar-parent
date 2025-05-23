@@ -17,6 +17,7 @@ import {
   Stack,
   TextField,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
@@ -44,6 +45,8 @@ const Step1Form = () => {
     }
   };
   const dispatch = useDispatch();
+
+  const mobileQuery = useMediaQuery("(max-width:600px)");
 
   const formik = useFormik({
     initialValues: {
@@ -165,7 +168,7 @@ const Step1Form = () => {
           Name
         </Typography>
         <Grid container alignItems={"center"} spacing={6}>
-          <Grid size={8}>
+          <Grid size={{ lg: 8, xs: 12 }}>
             <Stack spacing={3}>
               <TextField
                 sx={{ ...loginTextField }}

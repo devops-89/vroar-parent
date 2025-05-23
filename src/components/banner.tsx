@@ -156,15 +156,15 @@ const Banner = () => {
     }
   };
 
-  // useEffect(() => {
-  //   loadGoogleOAuthScript();
-  // }, []);
+  useEffect(() => {
+    loadGoogleOAuthScript();
+  }, []);
 
   return (
     <Box
       sx={{
         backgroundImage: `url(${bannerImage.src})`,
-        height: { lg: "100vh", xs: "100%" },
+        height: { lg: "100vh", xs: "120vh" },
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -180,7 +180,7 @@ const Banner = () => {
       ) : (
         <Container>
           <Grid container>
-            <Grid size={8} margin={"auto"}>
+            <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
               <Card sx={{ p: 2 }}>
                 <Grid container>
                   <Grid size={{ xs: 12, lg: 6 }}>

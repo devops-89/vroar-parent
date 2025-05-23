@@ -36,10 +36,12 @@ const CreateProfile = () => {
     >
       <Card sx={{ p: 2, width: 1000 }}>
         <Grid container>
-          <Grid size={4}>
+          <Grid size={{ lg: 4, xs: 12 }}>
             <Sidebar />
           </Grid>
-          <Grid size={8}>{activeStep === 0 && <Step1Form />}</Grid>
+          <Grid size={{ lg: 8, xs: 12 }}>
+            {activeStep === 0 && <Step1Form />}
+          </Grid>
         </Grid>
       </Card>
     </Box>
