@@ -45,9 +45,9 @@ const PlanCard = ({
     setSwitchStatus(checked);
     setPriceIndex(checked ? 1 : 0);
   };
-  console.log("test", prices);
+  // console.log("test", prices);
 
-  console.log("id", id);
+  // console.log("id", id);
 
   const dispatch = useDispatch();
 
@@ -91,7 +91,8 @@ const PlanCard = ({
             ? "#111828"
             : "#FFF6F3",
           borderRadius: "20px",
-          height: 800,
+        height: 850,
+          // pb: 4,
         }}
       >
         <Stack
@@ -248,7 +249,7 @@ const PlanCard = ({
                   height: 40,
                   boxShadow: "0px 0px 2px 2px rgba(255,255,255,0.2)",
                   position: "absolute",
-                  left: "90%",
+                  left: { lg: "90%", xs: "80%" },
                   top: 5,
                   display: "flex",
                   alignItems: "center",

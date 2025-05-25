@@ -76,10 +76,10 @@ const Plans = () => {
       }}
     >
       <Grid container>
-        <Grid size={3}>
+        <Grid size={{ lg: 3, xs: 12 }}>
           <Sidebar />
         </Grid>
-        <Grid size={9}>
+        <Grid size={{ lg: 9, xs: 12 }}>
           {activeStep === 1 && (
             <Box
               sx={{
@@ -111,6 +111,7 @@ const Plans = () => {
                     // alignItems: "center",
                     // justifyContent: "center",
                     width: "100%",
+                    mt: { lg: 0, xs: 7 },
                   }}
                 >
                   <Box>
@@ -130,7 +131,7 @@ const Plans = () => {
                         fontFamily: nunito.style,
                         fontWeight: 600,
                         color: COLORS.WHITE,
-                        width: 560,
+                        width: { lg: 560, xs: 350 },
                       }}
                     >
                       Personalized roadmaps, expert mentorship, and gamified
@@ -143,10 +144,10 @@ const Plans = () => {
                       </Backdrop>
                     ) : (
                       <Grid container>
-                        <Grid size={10} margin={"auto"}>
+                        <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
                           <Grid container sx={{ mt: 3 }} spacing={4}>
                             {subscriptionPlans?.map((val, i) => (
-                              <Grid size={6} key={i}>
+                              <Grid size={{ lg: 6, xs: 12 }} key={i}>
                                 <PlanCard
                                   description={val.description}
                                   id={val.id}

@@ -6,7 +6,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
 
-const PaymentFail = () => {
+const PaymentCancel = () => {
   const router = useRouter();
 
   const handleChange = () => {
@@ -93,7 +93,7 @@ const PaymentFail = () => {
                   mt: 2,
                 }}
               >
-                Payment Failed!
+                Payment Cancel!
               </Typography>
               <Typography
                 sx={{
@@ -121,7 +121,7 @@ const PaymentFail = () => {
                     width: 200,
                     p: 1,
                   }}
-                  onClick={handleChange}
+                    onClick={handleChange}
                 >
                   Retry Payment
                 </Button>
@@ -134,4 +134,4 @@ const PaymentFail = () => {
   );
 };
 
-export default PaymentFail;
+export default PaymentCancel;

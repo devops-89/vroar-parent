@@ -49,7 +49,6 @@ const Invite = () => {
       setLoading(true);
       AuthenticationController.inviteUser(values as USER_INVITE)
         .then((res) => {
-          //   console.log("res", res);
           dispatch(
             showToast({
               message: res.data.message,
@@ -126,10 +125,10 @@ const Invite = () => {
       <Card sx={{ p: 2, width: 900 }}>
         <form onSubmit={formik.handleSubmit}>
           <Grid container>
-            <Grid size={4}>
+            <Grid size={{ lg: 4, xs: 12 }}>
               <Sidebar />
             </Grid>
-            <Grid size={8}>
+            <Grid size={{ lg: 8, xs: 12 }}>
               {activeStep === 2 && (
                 <Box sx={{ p: 4, width: "100%" }}>
                   <Typography
@@ -142,7 +141,7 @@ const Invite = () => {
                     Kid's Name
                   </Typography>
                   <Grid container mt={3} spacing={3}>
-                    <Grid size={6}>
+                    <Grid size={{ lg: 6, xs: 12 }}>
                       <TextField
                         label="First Name"
                         sx={{ ...loginTextField }}
@@ -158,7 +157,7 @@ const Invite = () => {
                         }
                       />
                     </Grid>
-                    <Grid size={6}>
+                    <Grid size={{ lg: 6, xs: 12 }}>
                       <TextField
                         label="Last Name"
                         sx={{ ...loginTextField }}
@@ -174,7 +173,7 @@ const Invite = () => {
                         }
                       />
                     </Grid>
-                    <Grid size={6}>
+                    <Grid size={{ lg: 6, xs: 12 }}>
                       <InputLabel>
                         <Typography
                           sx={{
@@ -199,7 +198,7 @@ const Invite = () => {
                         helperText={formik.touched.email && formik.errors.email}
                       />
                     </Grid>
-                    <Grid size={6}>
+                    <Grid size={{ lg: 6, xs: 12 }}>
                       <InputLabel>
                         <Typography
                           sx={{
@@ -228,7 +227,7 @@ const Invite = () => {
                         }
                       />
                     </Grid>
-                    <Grid size={6}>
+                    <Grid size={{ lg: 6, xs: 12 }}>
                       <InputLabel>
                         <Typography
                           sx={{
@@ -278,7 +277,7 @@ const Invite = () => {
                         }
                       />
                     </Grid>
-                    <Grid size={6}>
+                    <Grid size={{ lg: 6, xs: 12 }}>
                       <InputLabel>
                         <Typography
                           sx={{
@@ -338,6 +337,7 @@ const Invite = () => {
                       textTransform: "initial",
                       fontFamily: nunito.style,
                     }}
+                    flexWrap={"wrap"}
                   >
                     <Button
                       startIcon={<ArrowBack />}
@@ -371,7 +371,7 @@ const Invite = () => {
                           textTransform: "initial",
                           background: COLORS.LINEAR_GRADIENT,
                           borderRadius: 5,
-                          width: 130,
+                          width: { lg: 130, xs: 150 },
                         }}
                         type="submit"
                       >

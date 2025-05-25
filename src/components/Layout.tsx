@@ -7,6 +7,9 @@ import { useDispatch } from "react-redux";
 import ProfileSidebar from "./Profile/ProfileSidebar";
 import { UserController } from "@/assets/api/UserController";
 import Head from "next/head";
+import { IconButton, useMediaQuery } from "@mui/material";
+import { MoreVert } from "@mui/icons-material";
+import MobileSidebar from "./Profile/MobileSidebar";
 
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
@@ -48,6 +51,8 @@ const Layout = ({ children }: LayoutProps) => {
     }
   }, []);
 
+  const phone = useMediaQuery("(max-width:600px)");
+
   return (
     <div>
       {/* {show && <Sidebar />} */}
@@ -59,7 +64,8 @@ const Layout = ({ children }: LayoutProps) => {
           defer
         ></script>
       </Head>
-      {show && <ProfileSidebar />}
+
+      {phone ? <MobileSidebar /> : show && <ProfileSidebar />}
       {children}
     </div>
   );

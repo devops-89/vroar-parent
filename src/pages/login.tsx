@@ -1,13 +1,17 @@
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
-import { getUserDetails } from "@/assets/apiCalling/user";
+import {
+  getUserDetails,
+  loadGoogleOAuthScript,
+  loadGoogleScript,
+} from "@/assets/apiCalling/user";
 import { data } from "@/assets/data";
 import CustomBanner from "@/components/CustomBanner";
 import { removeActiveStep } from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
-import { COLORS, TOAST_STATUS } from "@/utils/enum";
+import { COLORS, SOCIAL_LOGIN, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
-import { LOGIN_SCHEMA } from "@/utils/types";
+import { GoogleCredentialResponse, LOGIN_SCHEMA } from "@/utils/types";
 import { loginValidationSchema } from "@/utils/validationSchema";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
@@ -22,9 +26,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
+import { jwtDecode } from "jwt-decode";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -76,6 +81,88 @@ const Login = () => {
   const showPasswordHandler = () => {
     setShowPassword(!showPassword);
   };
+
+  const [socialLoading, setSocialLoading] = useState(false);
+  const socialLoginHandler = (type: string) => {
+    setSocialLoading(true);
+    if (type === SOCIAL_LOGIN.GOOGLE) {
+      handleLoginClick();
+    }
+  };
+
+  const [googleReady, setGoogleReady] = useState(false);
+
+  useEffect(() => {
+    loadGoogleScript().then(() => {
+      setGoogleReady(true);
+
+      if (window.google) {
+        window.google.accounts.id.initialize({
+          client_id:
+            "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
+          callback: handleCredentialResponse,
+        });
+      }
+    });
+  }, []);
+
+  const handleCredentialResponse = (response: GoogleCredentialResponse) => {
+    const user = jwtDecode(response.credential);
+
+    setLoading(false);
+    // Send token/user info to backend if needed
+    AuthenticationController.googleLogin(response?.credential)
+      .then((res) => {
+        console.log("respone", res);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
+  const handleLoginClick = () => {
+    if (window.google && window.google.accounts) {
+      window.google.accounts.id.prompt(); // triggers the sign-in prompt
+      window.google.accounts.id.prompt((notification: any) => {
+        if (notification.isNotDisplayed()) {
+          console.log(
+            "Sign-in prompt not displayed:",
+            notification.getNotDisplayedReason()
+          );
+        }
+        if (notification.isSkippedMoment()) {
+          console.log(
+            "Sign-in prompt skipped:",
+            notification.getSkippedReason()
+          );
+        }
+      });
+      window.google.accounts.id.prompt();
+      window.google.accounts.id.renderButton(
+        document.getElementById("googleDiv"),
+        {
+          theme: "outline",
+          size: "large",
+        }
+      );
+      // const params = new URLSearchParams({
+      //   client_id:
+      //     clientId ||
+      //     "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
+      //   redirect_uri: "https://vroar-188a2.firebaseapp.com/__/auth/handler",
+      //   response_type: "token",
+      //   scope: "openid email profile",
+      // });
+
+      // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
+    } else {
+      console.error("Google Identity Services SDK not loaded yet");
+    }
+  };
+
+  useEffect(() => {
+    loadGoogleOAuthScript();
+  }, []);
 
   return (
     <div>
@@ -187,6 +274,7 @@ const Login = () => {
               <IconButton
                 sx={{ backgroundColor: "#EEEFF3", borderRadius: 2 }}
                 key={i}
+                onClick={handleLoginClick}
               >
                 <Image src={val.img} alt="" width={15} />
               </IconButton>

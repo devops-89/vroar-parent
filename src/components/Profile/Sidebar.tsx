@@ -18,18 +18,14 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        // position: "fixed",
-        // left: 0,
-        // height: "100vh",
         background: COLORS.SIDEBAR_GRADIENT,
-        // width: 300,
-        // top: 0,
         display: "flex",
         flexDirection: { lg: "column", xs: "row" },
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 4,
         height: "100%",
+        pt: { lg: 0, xs: 15 },
       }}
     >
       <Stepper
