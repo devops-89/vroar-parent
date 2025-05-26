@@ -1,16 +1,15 @@
-import CustomBanner from "@/components/CustomBanner";
-import { COLORS, TOAST_STATUS } from "@/utils/enum";
-import { nunito, roboto } from "@/utils/fonts";
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { MuiOtpInput } from "mui-one-time-password-input";
-import { loginTextField } from "@/utils/styles";
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
-import { useDispatch } from "react-redux";
-import { showToast } from "@/redux/reducers/Toast";
-import Loading from "react-loading";
+import CustomBanner from "@/components/CustomBanner";
 import { addActiveStep } from "@/redux/reducers/Stepper";
+import { showToast } from "@/redux/reducers/Toast";
+import { COLORS, TOAST_STATUS } from "@/utils/enum";
+import { nunito } from "@/utils/fonts";
+import { loginTextField } from "@/utils/styles";
+import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import { MuiOtpInput } from "mui-one-time-password-input";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const VerifyOtp = () => {
   const router = useRouter();
