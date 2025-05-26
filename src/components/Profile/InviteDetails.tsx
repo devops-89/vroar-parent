@@ -73,10 +73,9 @@ const InviteDetails = () => {
   ];
 
   const inviteChild = () => {
-    dispatch(showModal(<ChildInvite />));
+    dispatch(showModal(<ChildInvite getInviteeDetails={getDetails} />));
   };
 
-  // console.log("assdsa", inviteeDetails);
   return (
     <Box>
       <Stack

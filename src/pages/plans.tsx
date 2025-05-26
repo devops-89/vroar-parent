@@ -107,9 +107,7 @@ const Plans = () => {
                     p: 2,
                     background: "linear-gradient(#21164D,#ffffff30)",
                     height: "100%",
-                    // display: "flex",
-                    // alignItems: "center",
-                    // justifyContent: "center",
+
                     width: "100%",
                     mt: { lg: 0, xs: 7 },
                   }}

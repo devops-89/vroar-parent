@@ -6,6 +6,7 @@ import {
   Autocomplete,
   Box,
   Button,
+  CircularProgress,
   Divider,
   Grid,
   IconButton,
@@ -17,14 +18,17 @@ import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import React, { SyntheticEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { data } from "../data";
-import { useFormik } from "formik";
+import { getIn, useFormik } from "formik";
 import { COLORS, TOAST_STATUS } from "@/utils/enum";
 import { inviteValidationSchema } from "@/utils/validationSchema";
 import { USER_INVITE } from "@/utils/types";
 import { AuthenticationController } from "../api/AuthenticationController";
 import { showToast } from "@/redux/reducers/Toast";
 
-const ChildInvite = () => {
+interface ChildInviteProps {
+  getInviteeDetails: () => void;
+}
+const ChildInvite = ({ getInviteeDetails }: ChildInviteProps) => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -38,7 +42,6 @@ const ChildInvite = () => {
     },
     validationSchema: inviteValidationSchema,
     onSubmit: (values) => {
-      //   console.log("test", values);
       handleSubmit(values as USER_INVITE);
     },
   });
@@ -55,6 +58,8 @@ const ChildInvite = () => {
   ) => {
     setPhone(newPhone);
     const validPhone = matchIsValidTel(newPhone);
+
+    console.log("first", validPhone);
     if (validPhone) {
       formik.setFieldValue("phoneNo", countryData?.nationalNumber);
       formik.setFieldValue("countryCode", countryData?.countryCallingCode);
@@ -86,8 +91,10 @@ const ChildInvite = () => {
       );
     }
   };
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (data: USER_INVITE) => {
+    setLoading(true);
     AuthenticationController.inviteUser(data)
       .then((res) => {
         dispatch(
@@ -97,6 +104,8 @@ const ChildInvite = () => {
           })
         );
         closeModal();
+        getInviteeDetails();
+        setLoading(false);
       })
       .catch((err) => {
         // console.log("err", err);
@@ -105,6 +114,7 @@ const ChildInvite = () => {
         dispatch(
           showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
         );
+        setLoading(false);
       });
   };
 
@@ -257,7 +267,13 @@ const ChildInvite = () => {
                 fullWidth
                 type="submit"
               >
-                Invite Child
+                {loading ? (
+                  <CircularProgress
+                    sx={{ fontSize: 16, color: COLORS.WHITE }}
+                  />
+                ) : (
+                  "Invite Child"
+                )}
               </Button>
             </Grid>
           </Grid>

@@ -20,10 +20,10 @@ const PaymentFail = () => {
       }}
     >
       <Grid container>
-        <Grid size={3}>
+        {/* <Grid size={3}>
           <Sidebar />
-        </Grid>
-        <Grid size={9}>
+        </Grid> */}
+        <Grid size={12}>
           <Box
             sx={{
               height: "100vh",

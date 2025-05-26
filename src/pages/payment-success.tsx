@@ -18,8 +18,8 @@ const PaymentSuccess = () => {
   // }, []);
 
   const routeToInviteChild = () => {
-    router.push("/invite");
-    dispatch(addActiveStep({ path: "/invite" }));
+    router.push("/parent/profile");
+    // dispatch(addActiveStep({ path: "/invite" }));
   };
   return (
     <Box
@@ -31,10 +31,10 @@ const PaymentSuccess = () => {
       }}
     >
       <Grid container>
-        <Grid size={{ lg: 3, xs: 12 }}>
+        {/* <Grid size={{ lg: 3, xs: 12 }}>
           <Sidebar />
-        </Grid>
-        <Grid size={{ lg: 9, xs: 12 }}>
+        </Grid> */}
+        <Grid size={{ lg: 12, xs: 12 }}>
           <Box sx={{ p: 4 }}>
             <Typography
               sx={{ fontSize: 30, fontFamily: nunito.style, fontWeight: 600 }}
@@ -229,7 +229,7 @@ const PaymentSuccess = () => {
                   }}
                   onClick={routeToInviteChild}
                 >
-                  Invite your child
+                  Go to Dashboard
                 </Button>
               </Box>
             </Box>

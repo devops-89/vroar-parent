@@ -140,6 +140,9 @@ const Step1Form = () => {
   ) => {
     setPhone(value);
     const validPhone = matchIsValidTel(value);
+
+    // console.log("valid", validPhone);
+
     if (validPhone) {
       formik.setFieldValue("phoneNumber", countryData?.nationalNumber);
       formik.setFieldValue("countryCode", countryData?.countryCallingCode);
@@ -215,7 +218,7 @@ const Step1Form = () => {
               </IconButton>
               {formik.touched.avatar && Boolean(formik.errors.avatar) && (
                 <FormHelperText
-                  sx={{ textAlign: "start", color: COLORS.DANGER }}
+                  sx={{ textAlign: "center", color: COLORS.DANGER }}
                 >
                   {formik.errors.avatar}
                 </FormHelperText>
