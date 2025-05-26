@@ -36,7 +36,7 @@ const Settings = () => {
             />
           </Stack>
         </Card>
-        <Button
+        {/* <Button
           sx={{
             mt: 2,
             textTransform: "initial",
@@ -51,7 +51,7 @@ const Settings = () => {
           }}
         >
           Deactivate Account
-        </Button>
+        </Button> */}
       </Box>
     </Wrapper>
   );

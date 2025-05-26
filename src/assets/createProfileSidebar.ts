@@ -7,9 +7,9 @@ export const createProfileSidebar = [
   {
     label: "Pick Your Plan",
   },
-  {
-    label: "Invite Your Child",
-  },
+  // {
+  //   label: "Invite Your Child",
+  // },
 ];
 
 export const sidebarData = [

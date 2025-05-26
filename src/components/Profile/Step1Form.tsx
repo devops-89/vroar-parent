@@ -17,6 +17,7 @@ import {
   Stack,
   TextField,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
@@ -44,6 +45,8 @@ const Step1Form = () => {
     }
   };
   const dispatch = useDispatch();
+
+  const mobileQuery = useMediaQuery("(max-width:600px)");
 
   const formik = useFormik({
     initialValues: {
@@ -137,6 +140,9 @@ const Step1Form = () => {
   ) => {
     setPhone(value);
     const validPhone = matchIsValidTel(value);
+
+    // console.log("valid", validPhone);
+
     if (validPhone) {
       formik.setFieldValue("phoneNumber", countryData?.nationalNumber);
       formik.setFieldValue("countryCode", countryData?.countryCallingCode);
@@ -154,18 +160,86 @@ const Step1Form = () => {
   return (
     <Box sx={{ p: 5 }}>
       <form onSubmit={formik.handleSubmit}>
+        <Grid container sx={{ textAlign: "center" }}>
+          {mobileQuery && (
+            <Grid size={6} sx={{ margin: "auto" }}>
+              <IconButton
+                sx={{
+                  backgroundColor: "#9E9E9E",
+                  width: 180,
+                  height: 180,
+                  ":hover": {
+                    backgroundColor: "#9E9E9E",
+                  },
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                onClick={handleClick}
+              >
+                {showAvatar ? (
+                  <Box sx={{ position: "relative", width: 180, height: 180 }}>
+                    <Image
+                      src={showAvatar}
+                      alt=""
+                      width={180}
+                      height={180}
+                      style={{ borderRadius: 100 }}
+                    />
+                    <input
+                      type="file"
+                      ref={ref}
+                      hidden
+                      accept="image/*"
+                      onChange={handleChange}
+                    />
+                  </Box>
+                ) : (
+                  <Box>
+                    <Image src={camera} alt="" width={40} />
+                    <Typography
+                      sx={{
+                        fontSize: 16,
+                        fontFamily: nunito.style,
+                        color: COLORS.WHITE,
+                      }}
+                    >
+                      Upload photo
+                    </Typography>
+                    <input
+                      type="file"
+                      ref={ref}
+                      hidden
+                      accept="image/*"
+                      onChange={handleChange}
+                    />
+                  </Box>
+                )}
+              </IconButton>
+              {formik.touched.avatar && Boolean(formik.errors.avatar) && (
+                <FormHelperText
+                  sx={{ textAlign: "center", color: COLORS.DANGER }}
+                >
+                  {formik.errors.avatar}
+                </FormHelperText>
+              )}
+            </Grid>
+          )}
+        </Grid>
+
         <Typography
           sx={{
             fontSize: 18,
             color: COLORS.BLACK,
             fontFamily: nunito.style,
             fontWeight: 600,
+            mb: 2,
           }}
         >
           Name
         </Typography>
         <Grid container alignItems={"center"} spacing={6}>
-          <Grid size={8}>
+          <Grid size={{ lg: 8, xs: 12 }}>
             <Stack spacing={3}>
               <TextField
                 sx={{ ...loginTextField }}
@@ -191,66 +265,70 @@ const Step1Form = () => {
               />
             </Stack>
           </Grid>
-          <Grid size={4}>
-            <IconButton
-              sx={{
-                backgroundColor: "#9E9E9E",
-                width: 180,
-                height: 180,
-                ":hover": {
+          {!mobileQuery && (
+            <Grid size={4}>
+              <IconButton
+                sx={{
                   backgroundColor: "#9E9E9E",
-                },
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              onClick={handleClick}
-            >
-              {showAvatar ? (
-                <Box sx={{ position: "relative", width: 180, height: 180 }}>
-                  <Image
-                    src={showAvatar}
-                    alt=""
-                    width={180}
-                    height={180}
-                    style={{ borderRadius: 100 }}
-                  />
-                  <input
-                    type="file"
-                    ref={ref}
-                    hidden
-                    accept="image/*"
-                    onChange={handleChange}
-                  />
-                </Box>
-              ) : (
-                <Box>
-                  <Image src={camera} alt="" width={40} />
-                  <Typography
-                    sx={{
-                      fontSize: 16,
-                      fontFamily: nunito.style,
-                      color: COLORS.WHITE,
-                    }}
-                  >
-                    Upload photo
-                  </Typography>
-                  <input
-                    type="file"
-                    ref={ref}
-                    hidden
-                    accept="image/*"
-                    onChange={handleChange}
-                  />
-                </Box>
+                  width: 180,
+                  height: 180,
+                  ":hover": {
+                    backgroundColor: "#9E9E9E",
+                  },
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                onClick={handleClick}
+              >
+                {showAvatar ? (
+                  <Box sx={{ position: "relative", width: 180, height: 180 }}>
+                    <Image
+                      src={showAvatar}
+                      alt=""
+                      width={180}
+                      height={180}
+                      style={{ borderRadius: 100 }}
+                    />
+                    <input
+                      type="file"
+                      ref={ref}
+                      hidden
+                      accept="image/*"
+                      onChange={handleChange}
+                    />
+                  </Box>
+                ) : (
+                  <Box>
+                    <Image src={camera} alt="" width={40} />
+                    <Typography
+                      sx={{
+                        fontSize: 16,
+                        fontFamily: nunito.style,
+                        color: COLORS.WHITE,
+                      }}
+                    >
+                      Upload photo
+                    </Typography>
+                    <input
+                      type="file"
+                      ref={ref}
+                      hidden
+                      accept="image/*"
+                      onChange={handleChange}
+                    />
+                  </Box>
+                )}
+              </IconButton>
+              {formik.touched.avatar && Boolean(formik.errors.avatar) && (
+                <FormHelperText
+                  sx={{ textAlign: "start", color: COLORS.DANGER }}
+                >
+                  {formik.errors.avatar}
+                </FormHelperText>
               )}
-            </IconButton>
-            {formik.touched.avatar && Boolean(formik.errors.avatar) && (
-              <FormHelperText sx={{ textAlign: "start", color: COLORS.DANGER }}>
-                {formik.errors.avatar}
-              </FormHelperText>
-            )}
-          </Grid>
+            </Grid>
+          )}
         </Grid>
 
         <Typography
@@ -288,7 +366,7 @@ const Step1Form = () => {
           />
         </Stack>
         <Grid container sx={{ mt: 4 }} alignItems={"center"} spacing={6}>
-          <Grid size={6}>
+          <Grid size={{ lg: 6, xs: 12 }}>
             <Typography
               sx={{
                 fontSize: 18,
@@ -317,7 +395,7 @@ const Step1Form = () => {
               focused={Boolean(formik.values.email)}
             />
           </Grid>
-          <Grid size={6}>
+          <Grid size={{ lg: 6, xs: 12 }}>
             <Typography
               sx={{
                 fontSize: 18,

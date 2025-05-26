@@ -2,17 +2,9 @@ import Sidebar from "@/components/Profile/Sidebar";
 import { addActiveStep } from "@/redux/reducers/Stepper";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import { ContentCopy, Done } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Done } from "@mui/icons-material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 const PaymentSuccess = () => {
@@ -26,8 +18,8 @@ const PaymentSuccess = () => {
   // }, []);
 
   const routeToInviteChild = () => {
-    router.push("/invite");
-    dispatch(addActiveStep({ path: "/invite" }));
+    router.push("/parent/profile");
+    // dispatch(addActiveStep({ path: "/invite" }));
   };
   return (
     <Box
@@ -39,10 +31,10 @@ const PaymentSuccess = () => {
       }}
     >
       <Grid container>
-        <Grid size={3}>
+        {/* <Grid size={{ lg: 3, xs: 12 }}>
           <Sidebar />
-        </Grid>
-        <Grid size={9}>
+        </Grid> */}
+        <Grid size={{ lg: 12, xs: 12 }}>
           <Box sx={{ p: 4 }}>
             <Typography
               sx={{ fontSize: 30, fontFamily: nunito.style, fontWeight: 600 }}
@@ -127,7 +119,7 @@ const PaymentSuccess = () => {
                     fontSize: 20,
                     fontFamily: nunito.style,
                     fontWeight: 500,
-                    width: 700,
+                    width: { lg: 700, xs: 350 },
                     textAlign: "center",
                     margin: "auto",
                   }}
@@ -169,7 +161,14 @@ const PaymentSuccess = () => {
                     </IconButton>
                   </Stack>
                 </Box> */}
-                <Box sx={{ width: 700, textAlign: "center", mt: 3 }}>
+                <Box
+                  sx={{
+                    width: { lg: 700, xs: 350 },
+                    textAlign: "center",
+                    mt: 3,
+                    margin: "auto",
+                  }}
+                >
                   <Typography
                     sx={{
                       fontSize: 20,
@@ -230,7 +229,7 @@ const PaymentSuccess = () => {
                   }}
                   onClick={routeToInviteChild}
                 >
-                  Invite your child
+                  Go to Dashboard
                 </Button>
               </Box>
             </Box>

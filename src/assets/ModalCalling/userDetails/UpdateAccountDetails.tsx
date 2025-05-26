@@ -1,13 +1,17 @@
+import { AuthenticationController } from "@/assets/api/AuthenticationController";
 import { UserController } from "@/assets/api/UserController";
 import { hideModal } from "@/redux/reducers/Modal";
-import { COLORS } from "@/utils/enum";
+import { showToast } from "@/redux/reducers/Toast";
+import { COLORS, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
+import { PASSWORD_PROPS } from "@/utils/types";
 import { changePasswordValidationSchema } from "@/utils/validationSchema";
 import { Close } from "@mui/icons-material";
 import {
   Box,
   Button,
+  CircularProgress,
   Divider,
   Grid,
   IconButton,
@@ -16,6 +20,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const UpdateAccountDetails = () => {
@@ -32,12 +37,42 @@ const UpdateAccountDetails = () => {
     },
     validationSchema: changePasswordValidationSchema,
     onSubmit: (values) => {
-      console.log("values", values);
+      // console.log("values", values);
+      handleSubmit(values as PASSWORD_PROPS);
     },
   });
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (body: PASSWORD_PROPS) => {
+    setLoading(true);
+    AuthenticationController.changePassword(body)
+      .then((res) => {
+        // console.log("first", res);
+        const response = res.data.data;
+        localStorage.setItem("accessToken", response?.accessToken);
+        localStorage.setItem("refreshToken", response?.refreshToken);
+        dispatch(
+          showToast({
+            message: res.data.message,
+            variant: TOAST_STATUS.SUCCESS,
+          })
+        );
+        setLoading(false);
+        closeModal();
+      })
+      .catch((err) => {
+        // console.log("error", err);
+        let errMessage =
+          (err.response && err.response.data.message) || err.message;
+        dispatch(
+          showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
+        );
+        setLoading(false);
+      });
+  };
 
   return (
-    <Box sx={{ width: 500 }}>
+    <Box sx={{ width: 400 }}>
       <Stack
         direction={"row"}
         alignItems={"center"}
@@ -97,7 +132,11 @@ const UpdateAccountDetails = () => {
               fullWidth
               type="submit"
             >
-              Update Password
+              {loading ? (
+                <CircularProgress sx={{ fontSize: 16, color: COLORS.WHITE }} />
+              ) : (
+                "Update Password"
+              )}
             </Button>
           </Grid>
         </Grid>

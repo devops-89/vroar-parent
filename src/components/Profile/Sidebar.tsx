@@ -1,35 +1,40 @@
 import { createProfileSidebar } from "@/assets/createProfileSidebar";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import { Box, Step, StepLabel, Stepper, Typography } from "@mui/material";
+import {
+  Box,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const activeStep = useSelector((state: any) => state.StepSlice.activeStep);
+  const phone = useMediaQuery("(max-width:600px)");
 
   return (
     <Box
       sx={{
-        // position: "fixed",
-        // left: 0,
-        // height: "100vh",
         background: COLORS.SIDEBAR_GRADIENT,
-        // width: 300,
-        // top: 0,
         display: "flex",
-        flexDirection: "column",
+        flexDirection: { lg: "column", xs: "row" },
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 4,
         height: "100%",
+        pt: { lg: 0, xs: 15 },
       }}
     >
       <Stepper
-        orientation="vertical"
+        orientation={phone ? "horizontal" : "vertical"}
         activeStep={activeStep}
         sx={{
           p: 2,
         }}
+        alternativeLabel={phone ? true : false}
       >
         {createProfileSidebar.map((val, i) => (
           <Step

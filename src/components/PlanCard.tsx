@@ -47,6 +47,8 @@ const PlanCard = ({
   };
   // console.log("test", prices);
 
+  // console.log("id", id);
+
   const dispatch = useDispatch();
 
   const router = useRouter();
@@ -60,17 +62,16 @@ const PlanCard = ({
     let body = [];
     body.push(paymentProduct);
 
+    // console.log("asdsa", body);
+
     // console.log("first", type);
     UserController.createPaymentLink({ items: body } as PAYMENT_ITEMS)
       .then((res) => {
-        // console.log("res", res);
         const response = res.data.data;
         setLoading(false);
         window.location.href = response.url;
-        // router.push("/payment-success")
       })
       .catch((err) => {
-        // console.log("err", err);
         let errMessage =
           (err.response && err.response.data.message) || err.message;
         dispatch(
@@ -78,7 +79,7 @@ const PlanCard = ({
         );
       });
 
-      setLoading(false)
+    setLoading(false);
   };
 
   return (
@@ -90,7 +91,8 @@ const PlanCard = ({
             ? "#111828"
             : "#FFF6F3",
           borderRadius: "20px",
-          height: 800,
+        height: 850,
+          // pb: 4,
         }}
       >
         <Stack
@@ -180,7 +182,9 @@ const PlanCard = ({
           >
             $
             {prices[priceIndex].isRecurring
-              ? prices[priceIndex].amount
+              ? switchStatus
+                ? Math.round(prices[0].amount / 12)
+                : prices[1].amount / 3
               : prices[0].amount}
           </Typography>
           {prices[priceIndex].isRecurring ? (
@@ -245,7 +249,7 @@ const PlanCard = ({
                   height: 40,
                   boxShadow: "0px 0px 2px 2px rgba(255,255,255,0.2)",
                   position: "absolute",
-                  left: "90%",
+                  left: { lg: "90%", xs: "80%" },
                   top: 5,
                   display: "flex",
                   alignItems: "center",
@@ -263,7 +267,15 @@ const PlanCard = ({
                 />
               </Box>
             }
-            onClick={() => createPaymentLink(prices[priceIndex].id)}
+            onClick={() =>
+              createPaymentLink(
+                prices[priceIndex].isRecurring
+                  ? switchStatus
+                    ? prices[0].id
+                    : prices[1].id
+                  : prices[priceIndex].id
+              )
+            }
             disabled={loading}
           >
             {loading ? (

@@ -150,3 +150,20 @@ export interface Window {
 export interface GoogleCredentialResponse {
   credential: string;
 }
+
+export interface INVITEE_DETAILS {
+  countryCode: string;
+  createdAt: EpochTimeStamp;
+  email: string;
+  expiresAt: EpochTimeStamp;
+  firstName: string;
+  grade: string;
+  id: string;
+  invitationType: string;
+  inviter: string;
+  lastName: string;
+  phoneNo: string;
+  relationshipToStudent: string;
+  sttus: string;
+  updatedAt: EpochTimeStamp;
+}

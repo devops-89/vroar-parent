@@ -103,8 +103,7 @@ const Banner = () => {
 
   const handleCredentialResponse = (response: GoogleCredentialResponse) => {
     const user = jwtDecode(response.credential);
-    // console.log("sadf", response.credential);
-    // console.log("User Info:", user);
+
     setLoading(false);
     // Send token/user info to backend if needed
     AuthenticationController.googleLogin(response?.credential)
@@ -118,53 +117,53 @@ const Banner = () => {
 
   const handleLoginClick = () => {
     if (window.google && window.google.accounts) {
-      // window.google.accounts.id.prompt(); // triggers the sign-in prompt
-      // window.google.accounts.id.prompt((notification: any) => {
-      //   if (notification.isNotDisplayed()) {
-      //     console.log(
-      //       "Sign-in prompt not displayed:",
-      //       notification.getNotDisplayedReason()
-      //     );
-      //   }
-      //   if (notification.isSkippedMoment()) {
-      //     console.log(
-      //       "Sign-in prompt skipped:",
-      //       notification.getSkippedReason()
-      //     );
-      //   }
-      // });
-      // window.google.accounts.id.prompt();
-      // window.google.accounts.id.renderButton(
-      //   document.getElementById("googleDiv"),
-      //   {
-      //     theme: "outline",
-      //     size: "large",
-      //   }
-      // );
-      const params = new URLSearchParams({
-        client_id:
-          clientId ||
-          "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
-        redirect_uri: "https://vroar-188a2.firebaseapp.com/__/auth/handler",
-        response_type: "token",
-        scope: "openid email profile",
+      window.google.accounts.id.prompt(); // triggers the sign-in prompt
+      window.google.accounts.id.prompt((notification: any) => {
+        if (notification.isNotDisplayed()) {
+          console.log(
+            "Sign-in prompt not displayed:",
+            notification.getNotDisplayedReason()
+          );
+        }
+        if (notification.isSkippedMoment()) {
+          console.log(
+            "Sign-in prompt skipped:",
+            notification.getSkippedReason()
+          );
+        }
       });
+      window.google.accounts.id.prompt();
+      window.google.accounts.id.renderButton(
+        document.getElementById("googleDiv"),
+        {
+          theme: "outline",
+          size: "large",
+        }
+      );
+      // const params = new URLSearchParams({
+      //   client_id:
+      //     clientId ||
+      //     "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
+      //   redirect_uri: "https://vroar-188a2.firebaseapp.com/__/auth/handler",
+      //   response_type: "token",
+      //   scope: "openid email profile",
+      // });
 
-      window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
+      // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
     } else {
       console.error("Google Identity Services SDK not loaded yet");
     }
   };
 
-  // useEffect(() => {
-  //   loadGoogleOAuthScript();
-  // }, []);
+  useEffect(() => {
+    loadGoogleOAuthScript();
+  }, []);
 
   return (
     <Box
       sx={{
         backgroundImage: `url(${bannerImage.src})`,
-        height: { lg: "100vh", xs: "100%" },
+        height: { lg: "100vh", xs: "120vh" },
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -180,7 +179,7 @@ const Banner = () => {
       ) : (
         <Container>
           <Grid container>
-            <Grid size={8} margin={"auto"}>
+            <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
               <Card sx={{ p: 2 }}>
                 <Grid container>
                   <Grid size={{ xs: 12, lg: 6 }}>

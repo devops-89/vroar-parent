@@ -21,7 +21,7 @@ const ContactDetails = () => {
         >
           Contact Details
         </Typography>
-        <Button
+        {/* <Button
           startIcon={<FaRegEdit />}
           sx={{
             fontSize: 16,
@@ -32,7 +32,7 @@ const ContactDetails = () => {
           }}
         >
           Edit
-        </Button>
+        </Button> */}
       </Stack>
       <Grid container sx={{ mt: 2 }}>
         <Grid size={6}>

@@ -1,4 +1,5 @@
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
+import ChildInvite from "@/assets/ModalCalling/ChildInvite";
 import UpdateChildDetails from "@/assets/ModalCalling/userDetails/UpdateChildDetails";
 import { showModal } from "@/redux/reducers/Modal";
 import { COLORS } from "@/utils/enum";
@@ -71,7 +72,10 @@ const InviteDetails = () => {
     },
   ];
 
-  console.log("assdsa", inviteeDetails);
+  const inviteChild = () => {
+    dispatch(showModal(<ChildInvite getInviteeDetails={getDetails} />));
+  };
+
   return (
     <Box>
       <Stack
@@ -95,6 +99,7 @@ const InviteDetails = () => {
             boxShadow: `0px 0px 2px 2px ${COLORS.PRIMARY}`,
             fontWeight: 600,
           }}
+          onClick={inviteChild}
         >
           Invite Child
         </Button>
