@@ -30,7 +30,6 @@ const Layout = ({ children }: LayoutProps) => {
   const getUserDetails = () => {
     UserController.getUser()
       .then((res) => {
-        // console.log("Res", res);
         const response = res.data.data;
         dispatch(
           setUserDetails({

@@ -8,6 +8,7 @@ import { data } from "@/assets/data";
 import CustomBanner from "@/components/CustomBanner";
 import { removeActiveStep } from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
+import { setUserDetails } from "@/redux/reducers/User";
 import { COLORS, SOCIAL_LOGIN, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
@@ -32,6 +33,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
+const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const formik = useFormik({
@@ -98,8 +100,7 @@ const Login = () => {
 
       if (window.google) {
         window.google.accounts.id.initialize({
-          client_id:
-            "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
+          client_id: clientId,
           callback: handleCredentialResponse,
         });
       }
@@ -110,10 +111,15 @@ const Login = () => {
     const user = jwtDecode(response.credential);
 
     setLoading(false);
-    // Send token/user info to backend if needed
+
     AuthenticationController.googleLogin(response?.credential)
       .then((res) => {
-        console.log("respone", res);
+        // console.log("respone", res);
+        const response = res.data.data;
+        localStorage.setItem("accessToken", response.accessToken);
+        localStorage.setItem("refreshToken", response.refreshToken);
+        router.push("/parent/profile");
+        getUserDetails({ dispatch });
       })
       .catch((err) => {
         console.log("err", err);

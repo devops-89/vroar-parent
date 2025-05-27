@@ -31,7 +31,7 @@ import {
 } from "@mui/material";
 import moment from "moment";
 import { use, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import subscriptionBanner from "@/banner/subscription-banner.png";
 
 const Subscriptions = () => {
@@ -43,6 +43,10 @@ const Subscriptions = () => {
   const inviteUser = () => {
     dispatch(showModal(<ChildInvite getInviteeDetails={getInviteeDetails} />));
   };
+
+  const user = useSelector((state: any) => state.user);
+
+  console.log("test", user);
 
   const [copied, setCopied] = useState(false);
 
@@ -121,7 +125,7 @@ const Subscriptions = () => {
     getSubscriptionDetails();
   }, []);
 
-  console.log("first", inviteeData);
+  // console.log("first", inviteeData);
 
   const subscriptionPlanDetails = {
     heading: subscriptionDetails?.subscriptionName || "",
@@ -144,19 +148,27 @@ const Subscriptions = () => {
   const newData = [
     {
       heading: "Full Name",
-      value: `${inviteeData[0]?.firstName} ${inviteeData[0]?.lastName}`,
+      value: user?.kids.length
+        ? `${user.kids[0].firstName} ${user.kids[0].lastName}`
+        : `${inviteeData[0]?.firstName} ${inviteeData[0]?.lastName}`,
     },
     {
       heading: "Grade",
-      value: `${inviteeData[0]?.grade} `,
+      value: user.kids.length
+        ? user?.kids[0].grade
+        : `${inviteeData[0]?.grade} `,
     },
     {
       heading: "Email Address",
-      value: `${inviteeData[0]?.email} `,
+      value: user.kids?.length
+        ? user?.kids[0].email
+        : `${inviteeData[0]?.email} `,
     },
     {
       heading: "Phone Number",
-      value: `+${inviteeData[0]?.countryCode} ${inviteeData[0]?.phoneNo} `,
+      value: user.kids.length
+        ? `${user.kids[0]?.countryCode} ${user.kids[0]?.phoneNo} `
+        : `+${inviteeData[0]?.countryCode} ${inviteeData[0]?.phoneNo} `,
     },
   ];
 

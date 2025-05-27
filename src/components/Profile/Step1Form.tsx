@@ -25,12 +25,15 @@ import camera from "@/icons/Layer_1.png";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useFormik } from "formik";
-import { registerValidationSchema } from "@/utils/validationSchema";
+import {
+  getRegisterValidationSchema,
+  // registerValidationSchema,
+} from "@/utils/validationSchema";
 import { useRouter } from "next/router";
 import { MEDIA_UPLOAD, USER_REGISTER } from "@/utils/types";
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
 import { UserController } from "@/assets/api/UserController";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showToast } from "@/redux/reducers/Toast";
 const Step1Form = () => {
   const ref = useRef<HTMLInputElement>(null);
@@ -47,7 +50,8 @@ const Step1Form = () => {
   const dispatch = useDispatch();
 
   const mobileQuery = useMediaQuery("(max-width:600px)");
-
+  const user = useSelector((state: any) => state.user);
+  // console.log("first", user);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -59,14 +63,30 @@ const Step1Form = () => {
       avatar: null,
       role: USER_TYPE.PARENT,
     },
-    validationSchema: registerValidationSchema,
+    validationSchema: getRegisterValidationSchema(showAvatar), // ✅ Pass dynamic schema
+    validateOnChange: true,
+    validateOnBlur: true,
     onSubmit: (values) => {
       setLoading(true);
       const body = {
         mediaFile: values?.avatar,
         mediaLibraryType: MEDIA_LIBRARY_TYPE.PROFILE,
       };
-      uploadMedia(body as MEDIA_UPLOAD);
+      if (showAvatar) {
+        const registerBody: USER_REGISTER = {
+          firstName: formik.values.firstName,
+          lastName: formik.values.lastName,
+          email: (email || formik.values.email) as string,
+          role: USER_TYPE.PARENT,
+          password: formik.values.password,
+          phoneNo: formik.values.phoneNumber,
+          avatar: showAvatar,
+          countryCode: formik.values.countryCode,
+        };
+        registerUser(registerBody);
+      } else {
+        uploadMedia(body as MEDIA_UPLOAD);
+      }
     },
   });
 
@@ -157,6 +177,15 @@ const Step1Form = () => {
       formik.setFieldValue("email", email);
     }
   }, [router.query]);
+
+  useEffect(() => {
+    if (user) {
+      formik.setFieldValue("firstName", user?.firstName);
+      formik.setFieldValue("avatar", user?.avatar);
+      setShowAvatar(user?.avatar);
+      formik.setFieldValue("lastName", user?.lastName);
+    }
+  }, [user]);
   return (
     <Box sx={{ p: 5 }}>
       <form onSubmit={formik.handleSubmit}>
@@ -322,7 +351,7 @@ const Step1Form = () => {
               </IconButton>
               {formik.touched.avatar && Boolean(formik.errors.avatar) && (
                 <FormHelperText
-                  sx={{ textAlign: "start", color: COLORS.DANGER }}
+                  sx={{ textAlign: "center", color: COLORS.DANGER }}
                 >
                   {formik.errors.avatar}
                 </FormHelperText>
