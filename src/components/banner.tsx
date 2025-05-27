@@ -105,7 +105,9 @@ const Banner = () => {
 
       if (window.google) {
         window.google.accounts.id.initialize({
-          client_id: clientId,
+          client_id:
+            clientId ??
+            "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
           callback: handleCredentialResponse,
         });
       }
@@ -114,7 +116,7 @@ const Banner = () => {
 
   const handleCredentialResponse = (response: GoogleCredentialResponse) => {
     const user = jwtDecode<CustomJwtPayload>(response.credential);
-    console.log("first", user);
+    // console.log("first", user);
     setLoading(false);
     AuthenticationController.googleLogin(response?.credential)
       .then((res) => {
