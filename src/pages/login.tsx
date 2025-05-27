@@ -117,6 +117,7 @@ const Login = () => {
       })
       .catch((err) => {
         console.log("err", err);
+        setLoading(false);
       });
   };
 

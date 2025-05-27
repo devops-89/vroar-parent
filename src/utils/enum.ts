@@ -149,4 +149,8 @@ export enum SOCIAL_LOGIN {
   APPLE = "APPLE",
 }
 
-
+export enum DEVICE_TYPE {
+  WEB = "WEB",
+  ANDROID = "ANDROID",
+  IOS = "IOS",
+}
