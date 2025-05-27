@@ -7,6 +7,7 @@ import {
   VERIFY_DATA,
 } from "@/utils/types";
 import { publicApi, securedApi } from "./config";
+import { DEVICE_TYPE } from "@/utils/enum";
 
 export const AuthenticationController = {
   emailExists: async (data: { email: string }) => {
@@ -86,9 +87,12 @@ export const AuthenticationController = {
   },
   googleLogin: async (token: string) => {
     try {
-      let result = await publicApi.post("/socialLogin/google/mobile", {
-        id_token: token,
-      });
+      let result = await publicApi.post(
+        `/socialLogin/google/mobile?devicetype=${DEVICE_TYPE.WEB}`,
+        {
+          id_token: token,
+        }
+      );
       return result;
     } catch (error) {
       throw error;
