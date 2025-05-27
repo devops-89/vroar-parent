@@ -88,9 +88,14 @@ export const AuthenticationController = {
   googleLogin: async (token: string) => {
     try {
       let result = await publicApi.post(
-        `/socialLogin/google/mobile?devicetype=${DEVICE_TYPE.WEB}`,
+        `/socialLogin/google/mobile`,
         {
           id_token: token,
+        },
+        {
+          headers: {
+            devicetype: DEVICE_TYPE.WEB,
+          },
         }
       );
       return result;

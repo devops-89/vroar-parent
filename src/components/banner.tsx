@@ -43,8 +43,6 @@ declare global {
   }
 }
 const Banner = () => {
-  // console.log("client id", clientId);
-
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -93,8 +91,7 @@ const Banner = () => {
 
       if (window.google) {
         window.google.accounts.id.initialize({
-          client_id:
-            "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
+          client_id: clientId,
           callback: handleCredentialResponse,
         });
       }
@@ -105,10 +102,13 @@ const Banner = () => {
     const user = jwtDecode(response.credential);
 
     setLoading(false);
-    // Send token/user info to backend if needed
     AuthenticationController.googleLogin(response?.credential)
       .then((res) => {
         console.log("respone", res);
+        const response = res.data.data;
+        localStorage.setItem("accessToken", response.accessToken);
+        localStorage.setItem("refreshToken", response.refreshToken);
+        router.push("/create-profile");
       })
       .catch((err) => {
         console.log("err", err);

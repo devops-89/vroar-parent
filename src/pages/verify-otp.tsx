@@ -36,7 +36,6 @@ const VerifyOtp = () => {
       otp: otp,
     };
     setLoading(true);
-    router.push("/plans");
     AuthenticationController.verifyOtp(body)
       .then((res) => {
         dispatch(
@@ -48,7 +47,7 @@ const VerifyOtp = () => {
         localStorage.setItem("accessToken", res.data.data.accessToken);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
         dispatch(addActiveStep({ path: "/plans" }));
-        // router.push("/plans");
+        router.push("/plans");
         setLoading(false);
       })
       .catch((err) => {
