@@ -119,9 +119,7 @@ const Login = () => {
         localStorage.setItem("accessToken", response.accessToken);
         localStorage.setItem("refreshToken", response.refreshToken);
         router.push("/parent/profile");
-        dispatch(
-          setUserDetails({ ...user, isLoading: false, isAuthenticated: false })
-        );
+        getUserDetails({ dispatch });
       })
       .catch((err) => {
         console.log("err", err);

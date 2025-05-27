@@ -36,11 +36,11 @@ const PaymentSuccess = () => {
         </Grid> */}
         <Grid size={{ lg: 12, xs: 12 }}>
           <Box sx={{ p: 4 }}>
-            <Typography
+            {/* <Typography
               sx={{ fontSize: 30, fontFamily: nunito.style, fontWeight: 600 }}
             >
               Subscriptions
-            </Typography>
+            </Typography> */}
 
             <Box
               sx={{

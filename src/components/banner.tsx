@@ -1,18 +1,27 @@
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
 import {
+  getUserDetails,
   loadGoogleOAuthScript,
   loadGoogleScript,
 } from "@/assets/apiCalling/user";
 import { data } from "@/assets/data";
 import bannerImage from "@/banner/banner-image.png";
 import parentBanner from "@/banner/parent-web.png";
-import { removeActiveStep } from "@/redux/reducers/Stepper";
+import {
+  addActiveStep,
+  removeActiveStep,
+  setActiveStep,
+} from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
 import { setUserDetails } from "@/redux/reducers/User";
 import { COLORS, SOCIAL_LOGIN, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
-import { GoogleCredentialResponse, GoogleNotification } from "@/utils/types";
+import {
+  GoogleCredentialResponse,
+  GoogleNotification,
+  JwtPayload,
+} from "@/utils/types";
 import { signUpValidationSchema } from "@/utils/validationSchema";
 import {
   Backdrop,
@@ -34,7 +43,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
@@ -42,6 +51,10 @@ declare global {
   interface Window {
     google: any;
   }
+}
+
+interface CustomJwtPayload extends JwtPayload {
+  email: string;
 }
 const Banner = () => {
   const router = useRouter();
@@ -100,8 +113,8 @@ const Banner = () => {
   }, []);
 
   const handleCredentialResponse = (response: GoogleCredentialResponse) => {
-    const user = jwtDecode(response.credential);
-
+    const user = jwtDecode<CustomJwtPayload>(response.credential);
+    console.log("first", user);
     setLoading(false);
     AuthenticationController.googleLogin(response?.credential)
       .then((res) => {
@@ -109,15 +122,17 @@ const Banner = () => {
         const response = res.data.data;
         localStorage.setItem("accessToken", response.accessToken);
         localStorage.setItem("refreshToken", response.refreshToken);
-        router.push("/plans");
-        dispatch(
-          setUserDetails({ ...user, isLoading: false, isAuthenticated: true })
-        );
+        router.push(`/create-profile?email=${user?.email}`);
+        // dispatch(addActiveStep({}));
+        dispatch(setActiveStep(0));
+        getUserDetails({ dispatch });
       })
       .catch((err) => {
         console.log("err", err);
       });
   };
+
+  const user = useSelector((state: any) => state.user);
 
   const handleLoginClick = () => {
     if (window.google && window.google.accounts) {
