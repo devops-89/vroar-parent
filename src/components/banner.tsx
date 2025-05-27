@@ -8,6 +8,7 @@ import bannerImage from "@/banner/banner-image.png";
 import parentBanner from "@/banner/parent-web.png";
 import { removeActiveStep } from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
+import { setUserDetails } from "@/redux/reducers/User";
 import { COLORS, SOCIAL_LOGIN, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
@@ -104,11 +105,14 @@ const Banner = () => {
     setLoading(false);
     AuthenticationController.googleLogin(response?.credential)
       .then((res) => {
-        console.log("respone", res);
+        // console.log("respone", res);
         const response = res.data.data;
         localStorage.setItem("accessToken", response.accessToken);
         localStorage.setItem("refreshToken", response.refreshToken);
-        router.push("/create-profile");
+        router.push("/plans");
+        dispatch(
+          setUserDetails({ ...user, isLoading: false, isAuthenticated: true })
+        );
       })
       .catch((err) => {
         console.log("err", err);

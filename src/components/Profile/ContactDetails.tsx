@@ -55,7 +55,9 @@ const ContactDetails = () => {
               mt: 1,
             }}
           >
-            +{user.countryCode} {user?.phoneNo}
+            {user.phoneNo && user.countryCode
+              ? `+${user.countryCode} ${user?.phoneNo}`
+              : "--"}
           </Typography>
         </Grid>
       </Grid>

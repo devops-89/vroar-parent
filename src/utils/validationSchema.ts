@@ -29,11 +29,12 @@ export const registerValidationSchema = Yup.object({
     .email("Please Enter Valid Email"),
   phoneNumber: Yup.string().required("Please Enter Valid Phone Number"),
   avatar: Yup.mixed()
-    .required("Please Select Avatar")
+    .required("Please select an avatar")
     .test("fileType", "Only JPG or PNG files are allowed", (value) => {
       if (!value) return false;
       const file = value as File;
-      return file.type === "image/jpeg" || file.type === "image/png";
+      const allowedTypes = ["image/jpeg", "image/png"];
+      return allowedTypes.includes(file.type);
     })
     .test("fileSize", "File size must be less than 1MB", (value) => {
       if (!value) return false;
