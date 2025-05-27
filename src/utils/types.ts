@@ -167,3 +167,12 @@ export interface INVITEE_DETAILS {
   sttus: string;
   updatedAt: EpochTimeStamp;
 }
+
+export interface JwtPayload {
+  iss: string;
+  aud: string[];
+  exp: number;
+  iat: number;
+  sub: string;
+  [key: string]: any;
+}
