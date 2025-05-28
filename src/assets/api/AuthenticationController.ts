@@ -103,4 +103,13 @@ export const AuthenticationController = {
       throw error;
     }
   },
+
+  googleSocialLogin: async () => {
+    try {
+      let result = await publicApi.get("/socialLogin/google");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
