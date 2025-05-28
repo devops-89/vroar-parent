@@ -186,6 +186,8 @@ const Step1Form = () => {
       formik.setFieldValue("lastName", user?.lastName);
     }
   }, [user]);
+
+  // console.log("first",formik.errors.avatar)
   return (
     <Box sx={{ p: 5 }}>
       <form onSubmit={formik.handleSubmit}>
@@ -349,13 +351,13 @@ const Step1Form = () => {
                   </Box>
                 )}
               </IconButton>
-              {formik.touched.avatar && Boolean(formik.errors.avatar) && (
+              {/* {Boolean(formik.errors.avatar) && ( */}
                 <FormHelperText
                   sx={{ textAlign: "center", color: COLORS.DANGER }}
                 >
                   {formik.errors.avatar}
                 </FormHelperText>
-              )}
+              {/* )} */}
             </Grid>
           )}
         </Grid>

@@ -2,8 +2,20 @@ import Head from "next/head";
 
 import Banner from "@/components/banner";
 import { Box } from "@mui/material";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { removeUserDetails } from "@/redux/reducers/User";
 
 export default function Home() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      dispatch(removeUserDetails());
+    }
+  }, []);
   return (
     <>
       <Head>

@@ -209,12 +209,10 @@ const VerifyOtp = () => {
                 border: `1px solid ${COLORS.PRIMARY}`,
               }}
               fullWidth
-              disabled={disabled}
+              disabled={resendLoading}
               onClick={resendOtp}
             >
-              {timer > 0 ? (
-                `Resend OTP in ${timer} seconds`
-              ) : resendLoading ? (
+              {resendLoading ? (
                 <CircularProgress sx={{ color: COLORS.PRIMARY }} size={20} />
               ) : (
                 "Resend OTP"

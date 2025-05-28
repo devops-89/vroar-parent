@@ -90,95 +90,59 @@ const Banner = () => {
 
   // social Logins
   const [socialLoading, setSocialLoading] = useState(false);
+  // const socialLoginHandler = (type: string) => {
+  //   setSocialLoading(true);
+  //   if (type === SOCIAL_LOGIN.GOOGLE) {
+  //   }
+  // };
+
   const socialLoginHandler = (type: string) => {
-    setSocialLoading(true);
-    if (type === SOCIAL_LOGIN.GOOGLE) {
-      handleLoginClick();
+    if (type === SOCIAL_LOGIN.GOOGLE && clientId) {
+      setSocialLoading(true);
+
+      window.google.accounts.id.initialize({
+        client_id: clientId,
+        scope: "openid email profile",
+        prompt: "select_account",
+        ux_mode: "popup",
+        callback: async (response: any) => {
+          try {
+            const idToken = response.credential;
+
+            const backendResponse = await AuthenticationController.googleLogin(
+              idToken
+            );
+
+            // console.log("Backend response:", backendResponse);
+            const result = backendResponse.data.data;
+            localStorage.setItem("accessToken", result.accessToken);
+            localStorage.setItem("refreshToken", result.refreshToken);
+
+            const decoded = jwtDecode<CustomJwtPayload>(idToken);
+            const email = decoded.email;
+
+            router.push(`/create-profile?email=${email}`);
+            getUserDetails({ dispatch });
+            dispatch(removeActiveStep());
+          } catch (err: any) {
+            const message =
+              (err.response && err.response.data.message) || err.message;
+            dispatch(showToast({ message, variant: TOAST_STATUS.ERROR }));
+          } finally {
+            setSocialLoading(false);
+          }
+        },
+      });
+
+      window.google.accounts.id.prompt(); 
     }
   };
 
   const [googleReady, setGoogleReady] = useState(false);
 
-  useEffect(() => {
-    loadGoogleScript().then(() => {
-      setGoogleReady(true);
-
-      if (window.google) {
-        window.google.accounts.id.initialize({
-          client_id:
-            clientId ??
-            "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
-          callback: handleCredentialResponse,
-        });
-      }
-    });
-  }, []);
-
-  const handleCredentialResponse = (response: GoogleCredentialResponse) => {
-    const user = jwtDecode<CustomJwtPayload>(response.credential);
-    // console.log("first", user);
-    setLoading(false);
-    AuthenticationController.googleLogin(response?.credential)
-      .then((res) => {
-        // console.log("respone", res);
-        const response = res.data.data;
-        localStorage.setItem("accessToken", response.accessToken);
-        localStorage.setItem("refreshToken", response.refreshToken);
-        router.push(`/create-profile?email=${user?.email}`);
-        // dispatch(addActiveStep({}));
-        dispatch(setActiveStep(0));
-        getUserDetails({ dispatch });
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  };
-
   const user = useSelector((state: any) => state.user);
 
-  const handleLoginClick = () => {
-    if (window.google && window.google.accounts) {
-      window.google.accounts.id.prompt(); // triggers the sign-in prompt
-      window.google.accounts.id.prompt((notification: any) => {
-        if (notification.isNotDisplayed()) {
-          console.log(
-            "Sign-in prompt not displayed:",
-            notification.getNotDisplayedReason()
-          );
-        }
-        if (notification.isSkippedMoment()) {
-          console.log(
-            "Sign-in prompt skipped:",
-            notification.getSkippedReason()
-          );
-        }
-      });
-      window.google.accounts.id.prompt();
-      window.google.accounts.id.renderButton(
-        document.getElementById("googleDiv"),
-        {
-          theme: "outline",
-          size: "large",
-        }
-      );
-      // const params = new URLSearchParams({
-      //   client_id:
-      //     clientId ||
-      //     "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
-      //   redirect_uri: "https://vroar-188a2.firebaseapp.com/__/auth/handler",
-      //   response_type: "token",
-      //   scope: "openid email profile",
-      // });
-
-      // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
-    } else {
-      console.error("Google Identity Services SDK not loaded yet");
-    }
-  };
-
-  useEffect(() => {
-    loadGoogleOAuthScript();
-  }, []);
+  
 
   return (
     <Box

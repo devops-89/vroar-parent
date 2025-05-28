@@ -36,6 +36,9 @@ const PlanCard = ({
   img,
   benefits,
 }: SUBSCRIPTION_PLANS) => {
+  if (!prices || prices.length === 0) {
+    return <Typography>No pricing available for this plan.</Typography>;
+  }
   const [priceIndex, setPriceIndex] = useState(0);
   const [switchStatus, setSwitchStatus] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -45,7 +48,7 @@ const PlanCard = ({
     setSwitchStatus(checked);
     setPriceIndex(checked ? 1 : 0);
   };
-  // console.log("test", prices);
+  console.log("test", prices);
 
   // console.log("id", id);
 
@@ -91,7 +94,7 @@ const PlanCard = ({
             ? "#111828"
             : "#FFF6F3",
           borderRadius: "20px",
-        height: 850,
+          height: 850,
           // pb: 4,
         }}
       >
@@ -181,11 +184,11 @@ const PlanCard = ({
             }}
           >
             $
-            {prices[priceIndex].isRecurring
+            {prices.length ?? prices[priceIndex].isRecurring
               ? switchStatus
                 ? Math.round(prices[0].amount / 12)
-                : prices[1].amount / 3
-              : prices[0].amount}
+                : prices[1]?.amount / 3
+              : prices[0]?.amount}
           </Typography>
           {prices[priceIndex].isRecurring ? (
             <Stack

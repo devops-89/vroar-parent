@@ -54,6 +54,9 @@ const Plans = () => {
       });
   };
 
+
+  console.log("merged array",subscriptionPlans)
+
   // useEffect(() => {
   //   if (router.pathname === "/plans") {
   //     dispatch(setActiveStep(1));

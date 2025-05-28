@@ -11,7 +11,13 @@ import { Provider, useDispatch } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
 export default function App({ Component, pageProps }: AppProps) {
-  
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
