@@ -184,7 +184,7 @@ const PlanCard = ({
             }}
           >
             $
-            {prices.length ?? prices[priceIndex].isRecurring
+            {prices[priceIndex].isRecurring
               ? switchStatus
                 ? Math.round(prices[0].amount / 12)
                 : prices[1]?.amount / 3

@@ -55,7 +55,7 @@ const Plans = () => {
   };
 
 
-  console.log("merged array",subscriptionPlans)
+  // console.log("merged array",subscriptionPlans)
 
   // useEffect(() => {
   //   if (router.pathname === "/plans") {
