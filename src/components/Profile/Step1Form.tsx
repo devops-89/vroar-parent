@@ -63,7 +63,7 @@ const Step1Form = () => {
       avatar: null,
       role: USER_TYPE.PARENT,
     },
-    validationSchema: getRegisterValidationSchema(showAvatar), // ✅ Pass dynamic schema
+    validationSchema: getRegisterValidationSchema(showAvatar),
     validateOnChange: true,
     validateOnBlur: true,
     onSubmit: (values) => {
@@ -73,19 +73,24 @@ const Step1Form = () => {
         mediaLibraryType: MEDIA_LIBRARY_TYPE.PROFILE,
       };
       if (showAvatar) {
-        const registerBody: USER_REGISTER = {
-          firstName: formik.values.firstName,
-          lastName: formik.values.lastName,
-          email: (email || formik.values.email) as string,
-          role: USER_TYPE.PARENT,
-          password: formik.values.password,
-          phoneNo: formik.values.phoneNumber,
-          avatar: showAvatar,
-          countryCode: formik.values.countryCode,
-        };
-        registerUser(registerBody);
+        if (body) {
+          uploadMedia(body as MEDIA_UPLOAD);
+          // console.log("sww", body);
+        } else {
+          const registerBody: USER_REGISTER = {
+            firstName: formik.values.firstName,
+            lastName: formik.values.lastName,
+            email: (email || formik.values.email) as string,
+            role: USER_TYPE.PARENT,
+            password: formik.values.password,
+            phoneNo: formik.values.phoneNumber,
+            avatar: showAvatar,
+            countryCode: formik.values.countryCode,
+          };
+          registerUser(registerBody);
+          // console.log("register", registerBody);
+        }
       } else {
-        uploadMedia(body as MEDIA_UPLOAD);
       }
     },
   });
@@ -352,11 +357,11 @@ const Step1Form = () => {
                 )}
               </IconButton>
               {/* {Boolean(formik.errors.avatar) && ( */}
-                <FormHelperText
-                  sx={{ textAlign: "center", color: COLORS.DANGER }}
-                >
-                  {formik.errors.avatar}
-                </FormHelperText>
+              <FormHelperText
+                sx={{ textAlign: "center", color: COLORS.DANGER }}
+              >
+                {formik.errors.avatar}
+              </FormHelperText>
               {/* )} */}
             </Grid>
           )}
