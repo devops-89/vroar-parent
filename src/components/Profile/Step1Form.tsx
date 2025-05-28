@@ -35,6 +35,7 @@ import { AuthenticationController } from "@/assets/api/AuthenticationController"
 import { UserController } from "@/assets/api/UserController";
 import { useDispatch, useSelector } from "react-redux";
 import { showToast } from "@/redux/reducers/Toast";
+import { isValidURL } from "@/utils/regex";
 const Step1Form = () => {
   const ref = useRef<HTMLInputElement>(null);
   const [showAvatar, setShowAvatar] = useState<string | null>(null);
@@ -67,13 +68,13 @@ const Step1Form = () => {
     validateOnChange: true,
     validateOnBlur: true,
     onSubmit: (values) => {
-      setLoading(true);
+      // setLoading(true);
       const body = {
         mediaFile: values?.avatar,
         mediaLibraryType: MEDIA_LIBRARY_TYPE.PROFILE,
       };
-      if (showAvatar) {
-        if (body) {
+      if (showAvatar && body.mediaFile !== null) {
+        if (!isValidURL (body.mediaFile)) {
           uploadMedia(body as MEDIA_UPLOAD);
           // console.log("sww", body);
         } else {
