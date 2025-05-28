@@ -68,7 +68,7 @@ const Step1Form = () => {
     validateOnChange: true,
     validateOnBlur: true,
     onSubmit: (values) => {
-      // setLoading(true);
+      setLoading(true);
       const body = {
         mediaFile: values?.avatar,
         mediaLibraryType: MEDIA_LIBRARY_TYPE.PROFILE,

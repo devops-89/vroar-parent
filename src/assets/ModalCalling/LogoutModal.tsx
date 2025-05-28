@@ -51,7 +51,6 @@ const LogoutModal = () => {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
         router.push("/");
-        dispatch(removeUserDetails());
         setLoading(false);
         closeModal();
       });
