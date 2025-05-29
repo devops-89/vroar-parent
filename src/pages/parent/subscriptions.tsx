@@ -46,8 +46,6 @@ const Subscriptions = () => {
 
   const user = useSelector((state: any) => state.user);
 
-  console.log("test", user);
-
   const [copied, setCopied] = useState(false);
 
   const copyText = async (text: string) => {
@@ -187,6 +185,7 @@ const Subscriptions = () => {
               fontWeight: 600,
               mb: 6,
               p: subscriptionDetails ? 0 : 3,
+              textAlign: { xs: "center", lg: "start" },
             }}
           >
             Subscriptions
@@ -225,7 +224,7 @@ const Subscriptions = () => {
                   {inviteeData?.length ? (
                     <Grid container sx={{ mt: 2 }} spacing={3}>
                       {newData.map((val, i) => (
-                        <Grid size={6} key={i}>
+                        <Grid size={{ lg: 6, xs: 12 }} key={i}>
                           <Typography
                             sx={{
                               fontSize: 16,
@@ -363,9 +362,9 @@ const Subscriptions = () => {
                       p: 2,
                       background: "linear-gradient(#21164D,#ffffff30)",
                       height: "100%",
-
+                      borderRadius: 2,
                       width: "100%",
-                      mt: { lg: 0, xs: 7 },
+                      mt: { lg: 0, xs: 0 },
                     }}
                   >
                     <Box>

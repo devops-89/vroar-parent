@@ -54,7 +54,6 @@ const Plans = () => {
       });
   };
 
-
   // console.log("merged array",subscriptionPlans)
 
   // useEffect(() => {
@@ -112,6 +111,7 @@ const Plans = () => {
 
                     width: "100%",
                     mt: { lg: 0, xs: 7 },
+                    borderRadius: 2,
                   }}
                 >
                   <Box>

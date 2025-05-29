@@ -5,6 +5,7 @@ import { AuthenticationController } from "../api/AuthenticationController";
 import { validateDate } from "@mui/x-date-pickers";
 import { showToast } from "@/redux/reducers/Toast";
 import { TOAST_STATUS } from "@/utils/enum";
+import { addActiveStep } from "@/redux/reducers/Stepper";
 
 export const getUserDetails = ({ dispatch }: any) => {
   UserController.getUser()
@@ -55,3 +56,28 @@ export function loadGoogleOAuthScript(): Promise<void> {
     document.head.appendChild(script);
   });
 }
+
+export const googleCallbackUrl = ({
+  code,
+  router,
+  setLoading,
+  dispatch,
+}: any) => {
+  // console.log("test", code);
+
+  AuthenticationController.googleCallback(code)
+
+    .then((res) => {
+      // console.log("res", res);
+      const response = res.data.data;
+      localStorage.setItem("accessToken", response.accessToken);
+      localStorage.setItem("refreshToken", response.refreshToken);
+      router.push("/create-profile");
+      setLoading(false);
+      getUserDetails({ dispatch });
+      dispatch(addActiveStep({ path: "/create-profile" }));
+    })
+    .catch((err) => {
+      console.log("err", err);
+    });
+};

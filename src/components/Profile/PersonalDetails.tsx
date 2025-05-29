@@ -42,8 +42,8 @@ const PersonalDetails = () => {
           Edit
         </Button>
       </Stack>
-      <Grid container>
-        <Grid size={4}>
+      <Grid container spacing={3}>
+        <Grid size={{ lg: 4, xs: 12 }}>
           <Typography
             sx={{
               fontFamily: nunito.style,
@@ -67,7 +67,7 @@ const PersonalDetails = () => {
             {user?.firstName} {user?.lastName}
           </Typography>
         </Grid>
-        <Grid size={4}>
+        <Grid size={{ lg: 4, xs: 12 }}>
           <Typography
             sx={{
               fontFamily: nunito.style,
@@ -94,7 +94,7 @@ const PersonalDetails = () => {
             <Typography>--</Typography>
           )}
         </Grid>
-        <Grid size={4}>
+        <Grid size={{ lg: 4, xs: 12 }}>
           <Typography
             sx={{
               fontFamily: nunito.style,

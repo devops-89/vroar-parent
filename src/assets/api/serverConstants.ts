@@ -4,6 +4,7 @@
 // const baseUrl = "https://api.dev.mytreks.ai/";
 const baseUrl = "https://uatapi.mytreks.ai";
 const stripeURL = "https://api.stripe.com/v1";
+// const baseUrl = "http://localhost:8085";
 export const serverApiUrl = {
   admin: `${baseUrl}/admin/api`,
   authentication: `${baseUrl}/api`,

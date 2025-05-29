@@ -21,6 +21,8 @@ const CreateProfile = () => {
 
   // console.log("eeee", router);
 
+  // console.log("ususu", router);
+
   return (
     <Box
       sx={{

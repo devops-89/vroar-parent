@@ -25,10 +25,7 @@ import camera from "@/icons/Layer_1.png";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useFormik } from "formik";
-import {
-  getRegisterValidationSchema,
-  // registerValidationSchema,
-} from "@/utils/validationSchema";
+
 import { useRouter } from "next/router";
 import { MEDIA_UPLOAD, USER_REGISTER } from "@/utils/types";
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
@@ -36,6 +33,7 @@ import { UserController } from "@/assets/api/UserController";
 import { useDispatch, useSelector } from "react-redux";
 import { showToast } from "@/redux/reducers/Toast";
 import { isValidURL } from "@/utils/regex";
+import { registerValidationSchema } from "@/utils/validationSchema";
 const Step1Form = () => {
   const ref = useRef<HTMLInputElement>(null);
   const [showAvatar, setShowAvatar] = useState<string | null>(null);
@@ -64,9 +62,9 @@ const Step1Form = () => {
       avatar: null,
       role: USER_TYPE.PARENT,
     },
-    validationSchema: getRegisterValidationSchema(showAvatar),
-    validateOnChange: true,
-    validateOnBlur: true,
+    // validationSchema: getRegisterValidationSchema(showAvatar),
+    validationSchema: registerValidationSchema,
+
     onSubmit: (values) => {
       setLoading(true);
       const body = {
@@ -74,7 +72,7 @@ const Step1Form = () => {
         mediaLibraryType: MEDIA_LIBRARY_TYPE.PROFILE,
       };
       if (showAvatar && body.mediaFile !== null) {
-        if (!isValidURL (body.mediaFile)) {
+        if (!isValidURL(body.mediaFile)) {
           uploadMedia(body as MEDIA_UPLOAD);
           // console.log("sww", body);
         } else {
@@ -92,6 +90,17 @@ const Step1Form = () => {
           // console.log("register", registerBody);
         }
       } else {
+        const registerBody: USER_REGISTER = {
+          firstName: formik.values.firstName,
+          lastName: formik.values.lastName,
+          email: (email || formik.values.email) as string,
+          role: USER_TYPE.PARENT,
+          password: formik.values.password,
+          phoneNo: formik.values.phoneNumber,
+          avatar: showAvatar,
+          countryCode: formik.values.countryCode,
+        };
+        registerUser(registerBody);
       }
     },
   });
@@ -253,13 +262,13 @@ const Step1Form = () => {
                   </Box>
                 )}
               </IconButton>
-              {formik.touched.avatar && Boolean(formik.errors.avatar) && (
+              {/* {formik.touched.avatar && Boolean(formik.errors.avatar) && (
                 <FormHelperText
                   sx={{ textAlign: "center", color: COLORS.DANGER }}
                 >
                   {formik.errors.avatar}
                 </FormHelperText>
-              )}
+              )} */}
             </Grid>
           )}
         </Grid>
