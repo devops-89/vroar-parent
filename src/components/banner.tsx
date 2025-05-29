@@ -194,18 +194,16 @@ const Banner = () => {
   const [googleReady, setGoogleReady] = useState(false);
   const [rawQueryString, setRawQueryString] = useState("");
   const user = useSelector((state: any) => state.user);
-  console.log("rrr", router);
   useEffect(() => {
     const { code, prompt, scope } = router.query;
     if (code && prompt && scope) {
-      // let googleParams=`${code}&scope={scope}&authuser`
       const queryWithoutQuestionMark = window.location.search.substring(1);
       setRawQueryString(queryWithoutQuestionMark);
       googleCallbackUrl(queryWithoutQuestionMark);
     }
   }, [router.query]);
   
-  console.log("first",rawQueryString)
+  // console.log("first",rawQueryString)
 
   return (
     <Box

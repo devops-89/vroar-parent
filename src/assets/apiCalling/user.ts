@@ -56,10 +56,14 @@ export function loadGoogleOAuthScript(): Promise<void> {
   });
 }
 
-export const googleCallbackUrl = (code: string) => {
+export const googleCallbackUrl = ({ code, router }: any) => {
   AuthenticationController.googleCallback(code)
     .then((res) => {
-      console.log("res", res);
+      // console.log("res", res);
+      const response = res.data.data;
+      localStorage.setItem("accessToken", response.accessToken);
+      localStorage.setItem("refreshToken", response.refreshToken);
+      router.push("/create-profile");
     })
     .catch((err) => {
       console.log("err", err);
