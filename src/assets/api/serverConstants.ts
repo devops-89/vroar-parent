@@ -1,9 +1,10 @@
 // const baseUrl = "https://api.mytreks.ai";
 // const baseUrl = "https://dev.api.vroar.ai";
-const baseUrl = "https://devapi.mytreks.ai";
+// const baseUrl = "https://devapi.mytreks.ai";
 // const baseUrl = "https://api.dev.mytreks.ai/";
 // const baseUrl = "https://uatapi.mytreks.ai";
 const stripeURL = "https://api.stripe.com/v1";
+const baseUrl = "http://localhost:8085";
 export const serverApiUrl = {
   admin: `${baseUrl}/admin/api`,
   authentication: `${baseUrl}/api`,

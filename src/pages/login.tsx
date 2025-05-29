@@ -1,6 +1,7 @@
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
 import {
   getUserDetails,
+  googleCallbackUrl,
   loadGoogleOAuthScript,
   loadGoogleScript,
 } from "@/assets/apiCalling/user";
@@ -16,6 +17,7 @@ import { GoogleCredentialResponse, LOGIN_SCHEMA } from "@/utils/types";
 import { loginValidationSchema } from "@/utils/validationSchema";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
+  Backdrop,
   Box,
   Button,
   CircularProgress,
@@ -152,27 +154,39 @@ const Login = () => {
           size: "large",
         }
       );
-      // const params = new URLSearchParams({
-      //   client_id:
-      //     clientId ||
-      //     "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
-      //   redirect_uri: "https://vroar-188a2.firebaseapp.com/__/auth/handler",
-      //   response_type: "token",
-      //   scope: "openid email profile",
-      // });
-
-      // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
     } else {
       console.error("Google Identity Services SDK not loaded yet");
     }
   };
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     loadGoogleOAuthScript();
   }, []);
+  const [googleLoginLoading, setGoogleLoading] = useState(true);
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    const { code, scope, authuser, prompt } = router.query;
+
+    if (code && scope && authuser && prompt) {
+      const queryParams = `code=${code}&scope=${scope}&authuser=${authuser}&prompt=${prompt}`;
+      googleCallbackUrl({
+        code: queryParams,
+        router,
+        setLoading: setGoogleLoading,
+        dispatch: dispatch,
+      });
+    }
+  }, [router.isReady, router.query]);
+
+  // console.log("test", router);
 
   return (
     <div>
+      <Backdrop open={googleLoginLoading} sx={{ zIndex: 10000 }}>
+        <CircularProgress sx={{ color: COLORS.PRIMARY }} />
+      </Backdrop>
       <CustomBanner>
         <Box sx={{ p: 3 }}>
           <Typography

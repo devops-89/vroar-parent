@@ -179,7 +179,7 @@ const Banner = () => {
       .then((res) => {
         // console.log("res", res);
         const response = res.data.data.url;
-        window.open(response);
+        window.location.href = response;
       })
       .catch((err) => {
         console.log("err", err);
@@ -203,7 +203,6 @@ const Banner = () => {
     }
   }, [router.query]);
   
-  // console.log("first",rawQueryString)
 
   return (
     <Box

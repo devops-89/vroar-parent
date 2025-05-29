@@ -113,10 +113,9 @@ export const AuthenticationController = {
     }
   },
   googleCallback: async (code: string) => {
+    console.log("code in api controller", code);
     try {
-      let result = await publicApi.get(
-        `socialLogin/google/callback?${code}`
-      );
+      let result = await publicApi.get(`socialLogin/google/callback?${code}`);
       return result;
     } catch (error) {
       throw error;
