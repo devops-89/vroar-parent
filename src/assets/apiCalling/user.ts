@@ -55,3 +55,13 @@ export function loadGoogleOAuthScript(): Promise<void> {
     document.head.appendChild(script);
   });
 }
+
+export const googleCallbackUrl = (code: string) => {
+  AuthenticationController.googleCallback(code)
+    .then((res) => {
+      console.log("res", res);
+    })
+    .catch((err) => {
+      console.log("err", err);
+    });
+};
