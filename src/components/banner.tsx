@@ -140,50 +140,50 @@ const Banner = () => {
   //   }
   // };
 
-  const handleGoogleLogin = async () => {
-    try {
-      // setSocialLoading(true);
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     // setSocialLoading(true);
+  //     const provider = new GoogleAuthProvider();
+  //     const result = await signInWithPopup(auth, provider);
 
-      const idToken = await result.user.getIdToken();
-      const backendResponse = await AuthenticationController.googleLogin(
-        idToken
-      );
+  //     const idToken = await result.user.getIdToken();
+  //     const backendResponse = await AuthenticationController.googleLogin(
+  //       idToken
+  //     );
 
-      // const backendResponse =
-      //   await AuthenticationController.googleSocialLogin();
+  //     // const backendResponse =
+  //     //   await AuthenticationController.googleSocialLogin();
 
-      // const backendData = backendResponse.data.url;
-      // window.location.href = backendData;
-      // localStorage.setItem("accessToken", backendResponse.accessToken);
-      // localStorage.setItem("refreshToken", backendResponse.refreshToken);
-      console.log("first", backendResponse);
+  //     // const backendData = backendResponse.data.url;
+  //     // window.location.href = backendData;
+  //     // localStorage.setItem("accessToken", backendResponse.accessToken);
+  //     // localStorage.setItem("refreshToken", backendResponse.refreshToken);
+  //     console.log("first", backendResponse);
 
-      const email = result.user.email;
-      router.push(`/create-profile?email=${email}`);
-      getUserDetails({ dispatch });
-      dispatch(removeActiveStep());
-    } catch (err: any) {
-      const message =
-        (err.response && err.response.data.message) || err.message;
-      dispatch(showToast({ message, variant: TOAST_STATUS.ERROR }));
-    } finally {
-      setSocialLoading(false);
-    }
-  };
-
-  // const handleGoogleLogin = () => {
-  //   AuthenticationController.googleSocialLogin()
-  //     .then((res) => {
-  //       // console.log("res", res);
-  //       const response = res.data.data.url;
-  //       window.open(response);
-  //     })
-  //     .catch((err) => {
-  //       console.log("err", err);
-  //     });
+  //     const email = result.user.email;
+  //     router.push(`/create-profile?email=${email}`);
+  //     getUserDetails({ dispatch });
+  //     dispatch(removeActiveStep());
+  //   } catch (err: any) {
+  //     const message =
+  //       (err.response && err.response.data.message) || err.message;
+  //     dispatch(showToast({ message, variant: TOAST_STATUS.ERROR }));
+  //   } finally {
+  //     setSocialLoading(false);
+  //   }
   // };
+
+  const handleGoogleLogin = () => {
+    AuthenticationController.googleSocialLogin()
+      .then((res) => {
+        // console.log("res", res);
+        const response = res.data.data.url;
+        window.open(response);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
 
   const socialLoginHandler = async (type: string) => {
     if (type === SOCIAL_LOGIN.GOOGLE) {
