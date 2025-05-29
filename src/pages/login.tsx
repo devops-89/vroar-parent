@@ -163,7 +163,7 @@ const Login = () => {
   useEffect(() => {
     loadGoogleOAuthScript();
   }, []);
-  const [googleLoginLoading, setGoogleLoading] = useState(true);
+  const [googleLoginLoading, setGoogleLoading] = useState(false);
   useEffect(() => {
     if (!router.isReady) return;
 
@@ -171,6 +171,7 @@ const Login = () => {
 
     if (code && scope && authuser && prompt) {
       const queryParams = `code=${code}&scope=${scope}&authuser=${authuser}&prompt=${prompt}`;
+      setGoogleLoading(true);
       googleCallbackUrl({
         code: queryParams,
         router,
