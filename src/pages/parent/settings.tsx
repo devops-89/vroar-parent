@@ -9,7 +9,12 @@ const Settings = () => {
     <Wrapper>
       <Box sx={{ p: 4 }}>
         <Typography
-          sx={{ fontSize: 32, fontWeight: 700, fontFamily: nunito.style }}
+          sx={{
+            fontSize: 32,
+            fontWeight: 700,
+            fontFamily: nunito.style,
+            textAlign: { xs: "center" },
+          }}
         >
           Settings
         </Typography>

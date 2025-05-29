@@ -66,7 +66,7 @@ const Layout = ({ children }: LayoutProps) => {
         ></script>
       </Head>
 
-      {phone ? show ? <MobileSidebar /> : <></> : <Sidebar />}
+      {phone && show ? <MobileSidebar /> : show ? <ProfileSidebar /> : ""}
       {children}
     </div>
   );

@@ -100,7 +100,7 @@ const UpdatePersonalDetails = () => {
   };
 
   return (
-    <Box sx={{ width: 500 }}>
+    <Box sx={{ width: { lg: 500, xs: 350 } }}>
       <Stack
         direction={"row"}
         alignItems={"center"}

@@ -176,3 +176,20 @@ export interface JwtPayload {
   sub: string;
   [key: string]: any;
 }
+
+export interface USER_INVITE_DETAILS {
+  countryCode: string;
+  createdAt: EpochTimeStamp | string;
+  email: string;
+  expiresAt: EpochTimeStamp | string;
+  firstName: string;
+  grade: string;
+  id: string;
+  invitationType: string;
+  inviter: string;
+  lastName: string;
+  phoneNo: string;
+  relationshipToStudent: string;
+  status: string;
+  updatedAt: string;
+}
