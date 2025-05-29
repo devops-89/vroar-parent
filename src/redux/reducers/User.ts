@@ -5,6 +5,7 @@ const initialState = {
   lastName: "",
   isLoading: true,
   isAuthenticated: false,
+  kids: [],
 };
 export const UserSlice = createSlice({
   name: "User",

@@ -1,4 +1,4 @@
-import { SUBSCRIPTION_PLAN } from "@/utils/types";
+import { SUBSCRIPTION_PLAN, USER_INVITE_DETAILS } from "@/utils/types";
 
 export const PLAN_DETAILS: SUBSCRIPTION_PLAN = {
   heading: "Professional Plan",
@@ -35,3 +35,38 @@ export const KIDS_DETAILS: SUBSCRIPTION_PLAN = {
     },
   ],
 };
+
+export const inviteeDetailsNew: USER_INVITE_DETAILS[] = [
+  {
+    countryCode: "91",
+    createdAt: "1748498761",
+    email: "newchild@yopmail.com",
+    expiresAt: "1748585161917",
+    firstName: "New",
+    grade: "8th",
+    id: "14",
+    invitationType: "PARENT_TO_STUDENT",
+    inviter: "81",
+    lastName: "Child",
+    phoneNo: "9823485353",
+    relationshipToStudent: "Parent",
+    status: "PENDING",
+    updatedAt: "1748498761",
+  },
+  {
+    countryCode: "91",
+    createdAt: "1748498761",
+    email: "newchild@yopmail.com",
+    expiresAt: "1748585161917",
+    firstName: "New",
+    grade: "8th",
+    id: "14",
+    invitationType: "PARENT_TO_STUDENT",
+    inviter: "81",
+    lastName: "Child",
+    phoneNo: "9823485353",
+    relationshipToStudent: "Parent",
+    status: "PENDING",
+    updatedAt: "1748498761",
+  },
+];
