@@ -9,6 +9,7 @@ import {
   CircularProgress,
   Divider,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -17,6 +18,7 @@ const Profile = () => {
   const user = useSelector((state: any) => state.user);
 
   // console.log("user", user);
+  const phone = useMediaQuery("(max-width:650px)");
 
   return (
     <Wrapper>
@@ -32,6 +34,7 @@ const Profile = () => {
               fontFamily: nunito.style,
               fontWeight: 700,
               mb: 3,
+              textAlign: phone ? "center" : "",
             }}
           >
             My Profile

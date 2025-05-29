@@ -10,6 +10,7 @@ import Head from "next/head";
 import { IconButton, useMediaQuery } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
 import MobileSidebar from "./Profile/MobileSidebar";
+import Sidebar from "./Profile/Sidebar";
 
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
@@ -65,7 +66,7 @@ const Layout = ({ children }: LayoutProps) => {
         ></script>
       </Head>
 
-      {phone ? <MobileSidebar /> : show && <ProfileSidebar />}
+      {phone ? show ? <MobileSidebar /> : <></> : <Sidebar />}
       {children}
     </div>
   );
