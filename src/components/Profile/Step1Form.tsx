@@ -176,14 +176,16 @@ const Step1Form = () => {
     setPhone(value);
     const validPhone = matchIsValidTel(value);
 
-    // console.log("valid", validPhone);
-
-    if (validPhone) {
-      formik.setFieldValue("phoneNumber", countryData?.nationalNumber);
-      formik.setFieldValue("countryCode", countryData?.countryCallingCode);
-      formik.setFieldError("phoneNumber", "");
+    formik.setFieldTouched("phoneNumber", true, false);
+    
+    if (validPhone && countryData?.nationalNumber) {
+      formik.setFieldValue("phoneNumber", countryData.nationalNumber);
+      formik.setFieldValue("countryCode", countryData.countryCallingCode);
+      formik.setFieldError("phoneNumber", undefined);
     } else {
-      formik.setFieldError("phoneNumber", "Please Enter Valid Phone Number");
+      formik.setFieldValue("phoneNumber", "");
+      formik.setFieldValue("countryCode", "");
+      formik.setFieldError("phoneNumber", "Please enter a valid phone number");
     }
   };
 
