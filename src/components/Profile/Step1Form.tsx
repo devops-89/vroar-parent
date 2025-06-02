@@ -54,7 +54,7 @@ const Step1Form = () => {
 
   const mobileQuery = useMediaQuery("(max-width:600px)");
   const user = useSelector((state: any) => state.user);
-  // console.log("first", user);
+  console.log("first", user);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -85,8 +85,8 @@ const Step1Form = () => {
         countryCode: formik.values.countryCode,
       };
 
-      // Check if user object has required values
-      const isUserValid = user && user.id && user.firstName && user.lastName;
+      // Check if user is authenticated and has at least one key with value
+      const isUserValid = user?.isAuthenticated === true && Object.keys(user).length > 0 && Object.values(user).some(value => value !== null && value !== undefined);
 
       if (showAvatar && body.mediaFile !== null) {
         if (!isValidURL(body.mediaFile)) {
