@@ -90,79 +90,21 @@ const Login = () => {
   const socialLoginHandler = (type: string) => {
     setSocialLoading(true);
     if (type === SOCIAL_LOGIN.GOOGLE) {
-      handleLoginClick();
+      handleGoogleLogin();
     }
   };
 
-  const [googleReady, setGoogleReady] = useState(false);
-
-  useEffect(() => {
-    loadGoogleScript().then(() => {
-      setGoogleReady(true);
-
-      if (window.google) {
-        window.google.accounts.id.initialize({
-          client_id: clientId,
-          callback: handleCredentialResponse,
-        });
-      }
-    });
-  }, []);
-
-  const handleCredentialResponse = (response: GoogleCredentialResponse) => {
-    const user = jwtDecode(response.credential);
-
-    setLoading(false);
-
-    AuthenticationController.googleLogin(response?.credential)
+  const handleGoogleLogin = () => {
+    AuthenticationController.googleSocialLogin()
       .then((res) => {
-        // console.log("respone", res);
-        const response = res.data.data;
-        localStorage.setItem("accessToken", response.accessToken);
-        localStorage.setItem("refreshToken", response.refreshToken);
-        router.push("/parent/profile");
-        getUserDetails({ dispatch });
+        const response = res.data.data.url;
+        window.location.href = response;
       })
       .catch((err) => {
         console.log("err", err);
-        setLoading(false);
       });
   };
 
-  const handleLoginClick = () => {
-    if (window.google && window.google.accounts) {
-      window.google.accounts.id.prompt(); // triggers the sign-in prompt
-      window.google.accounts.id.prompt((notification: any) => {
-        if (notification.isNotDisplayed()) {
-          console.log(
-            "Sign-in prompt not displayed:",
-            notification.getNotDisplayedReason()
-          );
-        }
-        if (notification.isSkippedMoment()) {
-          console.log(
-            "Sign-in prompt skipped:",
-            notification.getSkippedReason()
-          );
-        }
-      });
-      window.google.accounts.id.prompt();
-      window.google.accounts.id.renderButton(
-        document.getElementById("googleDiv"),
-        {
-          theme: "outline",
-          size: "large",
-        }
-      );
-    } else {
-      console.error("Google Identity Services SDK not loaded yet");
-    }
-  };
-  // const dispatch = useDispatch();
-
-  useEffect(() => {
-    loadGoogleOAuthScript();
-  }, []);
   const [googleLoginLoading, setGoogleLoading] = useState(false);
   useEffect(() => {
     if (!router.isReady) return;
@@ -180,8 +122,6 @@ const Login = () => {
       });
     }
   }, [router.isReady, router.query]);
-
-  // console.log("test", router);
 
   return (
     <div>
@@ -296,7 +236,7 @@ const Login = () => {
               <IconButton
                 sx={{ backgroundColor: "#EEEFF3", borderRadius: 2 }}
                 key={i}
-                onClick={handleLoginClick}
+                onClick={handleGoogleLogin}
               >
                 <Image src={val.img} alt="" width={15} />
               </IconButton>
@@ -310,7 +250,7 @@ const Login = () => {
               mt: 2,
             }}
           >
-            Already have an account?{" "}
+            Doesn't have an account?{" "}
             <Typography
               component={"span"}
               sx={{

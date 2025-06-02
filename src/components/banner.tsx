@@ -93,91 +93,11 @@ const Banner = () => {
 
   // social Logins
   const [socialLoading, setSocialLoading] = useState(false);
-  // const socialLoginHandler = (type: string) => {
-  //   setSocialLoading(true);
-  //   if (type === SOCIAL_LOGIN.GOOGLE) {
-  //   }
-  // };
-
-  // const socialLoginHandler = (type: string) => {
-  //   if (type === SOCIAL_LOGIN.GOOGLE && clientId) {
-  //     setSocialLoading(true);
-
-  //     window.google.accounts.id.initialize({
-  //       client_id: clientId,
-  //       scope: "openid email profile",
-  //       prompt: "select_account",
-  //       ux_mode: "popup",
-  //       callback: async (response: any) => {
-  //         try {
-  //           const idToken = response.credential;
-
-  //           const backendResponse = await AuthenticationController.googleLogin(
-  //             idToken
-  //           );
-
-  //           // console.log("Backend response:", backendResponse);
-  //           const result = backendResponse.data.data;
-  //           localStorage.setItem("accessToken", result.accessToken);
-  //           localStorage.setItem("refreshToken", result.refreshToken);
-
-  //           const decoded = jwtDecode<CustomJwtPayload>(idToken);
-  //           const email = decoded.email;
-
-  //           router.push(`/create-profile?email=${email}`);
-  //           getUserDetails({ dispatch });
-  //           dispatch(removeActiveStep());
-  //         } catch (err: any) {
-  //           const message =
-  //             (err.response && err.response.data.message) || err.message;
-  //           dispatch(showToast({ message, variant: TOAST_STATUS.ERROR }));
-  //         } finally {
-  //           setSocialLoading(false);
-  //         }
-  //       },
-  //     });
-
-  //     window.google.accounts.id.prompt();
-  //   }
-  // };
-
-  // const handleGoogleLogin = async () => {
-  //   try {
-  //     // setSocialLoading(true);
-  //     const provider = new GoogleAuthProvider();
-  //     const result = await signInWithPopup(auth, provider);
-
-  //     const idToken = await result.user.getIdToken();
-  //     const backendResponse = await AuthenticationController.googleLogin(
-  //       idToken
-  //     );
-
-  //     // const backendResponse =
-  //     //   await AuthenticationController.googleSocialLogin();
-
-  //     // const backendData = backendResponse.data.url;
-  //     // window.location.href = backendData;
-  //     // localStorage.setItem("accessToken", backendResponse.accessToken);
-  //     // localStorage.setItem("refreshToken", backendResponse.refreshToken);
-  //     console.log("first", backendResponse);
-
-  //     const email = result.user.email;
-  //     router.push(`/create-profile?email=${email}`);
-  //     getUserDetails({ dispatch });
-  //     dispatch(removeActiveStep());
-  //   } catch (err: any) {
-  //     const message =
-  //       (err.response && err.response.data.message) || err.message;
-  //     dispatch(showToast({ message, variant: TOAST_STATUS.ERROR }));
-  //   } finally {
-  //     setSocialLoading(false);
-  //   }
-  // };
+ 
 
   const handleGoogleLogin = () => {
     AuthenticationController.googleSocialLogin()
       .then((res) => {
-        // console.log("res", res);
         const response = res.data.data.url;
         window.location.href = response;
       })
@@ -194,14 +114,14 @@ const Banner = () => {
   const [googleReady, setGoogleReady] = useState(false);
   const [rawQueryString, setRawQueryString] = useState("");
   const user = useSelector((state: any) => state.user);
-  useEffect(() => {
-    const { code, prompt, scope } = router.query;
-    if (code && prompt && scope) {
-      const queryWithoutQuestionMark = window.location.search.substring(1);
-      setRawQueryString(queryWithoutQuestionMark);
-      googleCallbackUrl(queryWithoutQuestionMark);
-    }
-  }, [router.query]);
+  // useEffect(() => {
+  //   const { code, prompt, scope } = router.query;
+  //   if (code && prompt && scope) {
+  //     const queryWithoutQuestionMark = window.location.search.substring(1);
+  //     setRawQueryString(queryWithoutQuestionMark);
+  //     googleCallbackUrl(queryWithoutQuestionMark);
+  //   }
+  // }, [router.query]);
   
 
   return (

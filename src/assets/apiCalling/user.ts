@@ -4,8 +4,8 @@ import { setUserDetails } from "@/redux/reducers/User";
 import { AuthenticationController } from "../api/AuthenticationController";
 import { validateDate } from "@mui/x-date-pickers";
 import { showToast } from "@/redux/reducers/Toast";
-import { TOAST_STATUS } from "@/utils/enum";
-import { addActiveStep } from "@/redux/reducers/Stepper";
+import { TOAST_STATUS, USER_TYPE } from "@/utils/enum";
+import { addActiveStep, removeActiveStep } from "@/redux/reducers/Stepper";
 
 export const getUserDetails = ({ dispatch }: any) => {
   UserController.getUser()
@@ -63,8 +63,6 @@ export const googleCallbackUrl = ({
   setLoading,
   dispatch,
 }: any) => {
-  // console.log("test", code);
-
   AuthenticationController.googleCallback(code)
 
     .then((res) => {
@@ -72,10 +70,14 @@ export const googleCallbackUrl = ({
       const response = res.data.data;
       localStorage.setItem("accessToken", response.accessToken);
       localStorage.setItem("refreshToken", response.refreshToken);
-      router.push("/create-profile");
+      // console.log("response", response);
+      response.group === USER_TYPE.PARENT
+        ? router.push("/parent/profile")
+        : router.push("/create-profile?email=${response.userEmail}");
       setLoading(false);
       getUserDetails({ dispatch });
-      dispatch(addActiveStep({ path: "/create-profile" }));
+
+      dispatch(removeActiveStep());
     })
     .catch((err) => {
       console.log("err", err);

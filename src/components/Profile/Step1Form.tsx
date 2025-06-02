@@ -33,7 +33,11 @@ import { UserController } from "@/assets/api/UserController";
 import { useDispatch, useSelector } from "react-redux";
 import { showToast } from "@/redux/reducers/Toast";
 import { isValidURL } from "@/utils/regex";
-import { registerValidationSchema } from "@/utils/validationSchema";
+import {
+  registerValidationSchema,
+  getRegisterValidationSchema,
+} from "@/utils/validationSchema";
+import { addActiveStep, setActiveStep } from "@/redux/reducers/Stepper";
 const Step1Form = () => {
   const ref = useRef<HTMLInputElement>(null);
   const [showAvatar, setShowAvatar] = useState<string | null>(null);
@@ -62,9 +66,7 @@ const Step1Form = () => {
       avatar: null,
       role: USER_TYPE.PARENT,
     },
-    // validationSchema: getRegisterValidationSchema(showAvatar),
-    validationSchema: registerValidationSchema,
-
+    validationSchema: getRegisterValidationSchema(showAvatar),
     onSubmit: (values) => {
       setLoading(true);
       const body = {
@@ -74,20 +76,18 @@ const Step1Form = () => {
       if (showAvatar && body.mediaFile !== null) {
         if (!isValidURL(body.mediaFile)) {
           uploadMedia(body as MEDIA_UPLOAD);
-          // console.log("sww", body);
         } else {
           const registerBody: USER_REGISTER = {
             firstName: formik.values.firstName,
             lastName: formik.values.lastName,
-            email: (email || formik.values.email) as string,
             role: USER_TYPE.PARENT,
             password: formik.values.password,
             phoneNo: formik.values.phoneNumber,
             avatar: showAvatar,
             countryCode: formik.values.countryCode,
           };
-          registerUser(registerBody);
-          // console.log("register", registerBody);
+
+          updateProfile(registerBody);
         }
       } else {
         const registerBody: USER_REGISTER = {
@@ -100,10 +100,42 @@ const Step1Form = () => {
           avatar: showAvatar,
           countryCode: formik.values.countryCode,
         };
-        registerUser(registerBody);
+
+        if (user !== null) {
+          const { email, ...updateBody } = registerBody;
+          if (!showAvatar) {
+            const { avatar, ...bodyWithoutAvatar } = updateBody;
+            updateProfile(bodyWithoutAvatar);
+          } else {
+            updateProfile(updateBody);
+          }
+        } else {
+          registerUser(registerBody);
+        }
       }
     },
   });
+
+  const updateProfile = (body: any) => {
+    UserController.updateProfile(body)
+      .then((res) => {
+        // console.log("res", res);
+        setLoading(false);
+        // localStorage.setItem("accessToken", res.data.data.accessToken);
+        // localStorage.setItem("refreshToken", res.data.data.refreshToken);
+        // localStorage.setItem("group", res.data.data.group);
+        router.push("/plans");
+        dispatch(addActiveStep({ path: "/plans" }));
+      })
+      .catch((err) => {
+        let errMessage =
+          (err.response && err.response.data.message) || err.message;
+        dispatch(
+          showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
+        );
+        setLoading(false);
+      });
+  };
 
   const uploadMedia = (body: MEDIA_UPLOAD) => {
     UserController.mediaUpload(body)
@@ -177,7 +209,7 @@ const Step1Form = () => {
     const validPhone = matchIsValidTel(value);
 
     formik.setFieldTouched("phoneNumber", true, false);
-    
+
     if (validPhone && countryData?.nationalNumber) {
       formik.setFieldValue("phoneNumber", countryData.nationalNumber);
       formik.setFieldValue("countryCode", countryData.countryCallingCode);
@@ -206,7 +238,7 @@ const Step1Form = () => {
 
   // console.log("first",formik.errors.avatar)
   return (
-    <Box sx={{ p: 5 }}>
+    <Box sx={{ p: 5, borderRadius: 4 }}>
       <form onSubmit={formik.handleSubmit}>
         <Grid container sx={{ textAlign: "center" }}>
           {mobileQuery && (

@@ -38,17 +38,18 @@ const PlanCard = ({
   }
 
   const isRecurring = prices.some((p) => p.isRecurring);
-  const hasYearly = prices.length > 1;
+  const hasYearly = prices.some((p) => p.interval === "year");
   const [switchStatus, setSwitchStatus] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const priceIndex = isRecurring
-    ? switchStatus && hasYearly
-      ? 1 // Yearly
-      : 0 // Quarterly
-    : 0; // One-time
+  const priceIndex =
+    isRecurring && hasYearly
+      ? switchStatus
+        ? prices.findIndex((p) => p.interval === "year") // Yearly
+        : prices.findIndex((p) => p.interval === "month") // Monthly
+      : 0; // One-time or no yearly option
 
   const selectedPrice = prices[priceIndex];
 
@@ -85,7 +86,7 @@ const PlanCard = ({
     >
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Image src={img || extension} alt="Plan icon" width={64} />
-        {isRecurring && (
+        {isRecurring && hasYearly && (
           <Stack direction="row" spacing={1} alignItems="center">
             <Typography
               sx={{
@@ -95,7 +96,7 @@ const PlanCard = ({
                 fontWeight: 700,
               }}
             >
-              Quarterly
+              Monthly
             </Typography>
             <Switch
               onChange={switchHandler}
@@ -160,10 +161,10 @@ const PlanCard = ({
           }}
         >
           $
-          {isRecurring
+          {isRecurring && hasYearly
             ? switchStatus
-              ? Math.round(prices[0].amount / 12)
-              : prices[1]?.amount / 3
+              ? Math.round((prices.find((p) => p.interval === "year")?.amount || 0) / 12) 
+              : Math.round((prices.find((p) => p.interval === "month")?.amount || 0) / 3) 
             : prices[0]?.amount}
         </Typography>
 
@@ -177,7 +178,7 @@ const PlanCard = ({
             />
             <PlanBadges
               bgColor="#4D0058"
-              label={switchStatus ? "Billed Annually" : "Billed Quarterly"}
+              label={switchStatus ? "Billed Annually" : "Billed Monthly"}
               border="1px solid #ffffff"
               color={COLORS.WHITE}
             />
@@ -198,10 +199,12 @@ const PlanCard = ({
           disabled={loading}
           onClick={() =>
             createPaymentLink(
-              isRecurring
+              isRecurring && hasYearly
                 ? switchStatus
-                  ? prices[0].id
-                  : prices[1].id
+                  ? prices.find((p) => p.interval === "year")?.id ||
+                    prices[0].id
+                  : prices.find((p) => p.interval === "month")?.id ||
+                    prices[0].id
                 : prices[0].id
             )
           }
@@ -270,7 +273,7 @@ const PlanCard = ({
               color: selectedPrice.isRecurring ? COLORS.WHITE : COLORS.BLACK,
             }}
           >
-            What’s included
+            What's included
           </Typography>
           <List>
             {benefits?.map((val, i) => (
