@@ -73,7 +73,7 @@ export const googleCallbackUrl = ({
       // console.log("response", response);
       response.group === USER_TYPE.PARENT
         ? router.push("/parent/profile")
-        : router.push("/create-profile?email=${response.userEmail}");
+        : router.push(`/create-profile?email=${response.userEmail}`);
       setLoading(false);
       getUserDetails({ dispatch });
 
