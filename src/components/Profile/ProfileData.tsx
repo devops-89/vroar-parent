@@ -45,6 +45,7 @@ const ProfileData = () => {
       const data = {
         mediaFile: file,
         mediaLibraryType: MEDIA_LIBRARY_TYPE.PROFILE,
+        userId: user?.id
       };
       setLoading(true);
       UserController.mediaUpload(data as MEDIA_UPLOAD)
