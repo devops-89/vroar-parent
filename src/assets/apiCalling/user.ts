@@ -71,6 +71,7 @@ export const googleCallbackUrl = ({
       localStorage.setItem("accessToken", response.accessToken);
       localStorage.setItem("refreshToken", response.refreshToken);
       // console.log("response", response);
+      localStorage.setItem("group", response.group);
       response.group === USER_TYPE.PARENT
         ? router.push("/parent/profile")
         : router.push(`/create-profile?email=${response.userEmail}`);

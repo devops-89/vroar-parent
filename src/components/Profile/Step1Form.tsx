@@ -121,9 +121,9 @@ const Step1Form = () => {
       .then((res) => {
         // console.log("res", res);
         setLoading(false);
-        // localStorage.setItem("accessToken", res.data.data.accessToken);
-        // localStorage.setItem("refreshToken", res.data.data.refreshToken);
-        // localStorage.setItem("group", res.data.data.group);
+        localStorage.setItem("accessToken", res.data.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.data.refreshToken);
+        localStorage.setItem("group", res.data.data.group);
         router.push("/plans");
         dispatch(addActiveStep({ path: "/plans" }));
       })
