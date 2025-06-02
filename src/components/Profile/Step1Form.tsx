@@ -73,35 +73,41 @@ const Step1Form = () => {
         mediaFile: values?.avatar,
         mediaLibraryType: MEDIA_LIBRARY_TYPE.PROFILE,
       };
+
+      const registerBody: USER_REGISTER = {
+        firstName: formik.values.firstName,
+        lastName: formik.values.lastName,
+        email: (email || formik.values.email) as string,
+        role: USER_TYPE.PARENT,
+        password: formik.values.password,
+        phoneNo: formik.values.phoneNumber,
+        avatar: showAvatar,
+        countryCode: formik.values.countryCode,
+      };
+
+      // Check if user object has required values
+      const isUserValid = user && user.id && user.firstName && user.lastName;
+
       if (showAvatar && body.mediaFile !== null) {
         if (!isValidURL(body.mediaFile)) {
           uploadMedia(body as MEDIA_UPLOAD);
         } else {
-          const registerBody: USER_REGISTER = {
-            firstName: formik.values.firstName,
-            lastName: formik.values.lastName,
-            role: USER_TYPE.PARENT,
-            password: formik.values.password,
-            phoneNo: formik.values.phoneNumber,
-            avatar: showAvatar,
-            countryCode: formik.values.countryCode,
-          };
-
-          updateProfile(registerBody);
+          if (!isUserValid) {
+            registerUser(registerBody);
+          } else {
+            const { email, ...updateBody } = registerBody;
+            if (!showAvatar) {
+              const { avatar, ...bodyWithoutAvatar } = updateBody;
+              updateProfile(bodyWithoutAvatar);
+            } else {
+              updateProfile(updateBody);
+            }
+          }
         }
       } else {
-        const registerBody: USER_REGISTER = {
-          firstName: formik.values.firstName,
-          lastName: formik.values.lastName,
-          email: (email || formik.values.email) as string,
-          role: USER_TYPE.PARENT,
-          password: formik.values.password,
-          phoneNo: formik.values.phoneNumber,
-          avatar: showAvatar,
-          countryCode: formik.values.countryCode,
-        };
-
-        if (user !== null) {
+        if (!isUserValid) {
+          registerUser(registerBody);
+        } else {
           const { email, ...updateBody } = registerBody;
           if (!showAvatar) {
             const { avatar, ...bodyWithoutAvatar } = updateBody;
@@ -109,8 +115,6 @@ const Step1Form = () => {
           } else {
             updateProfile(updateBody);
           }
-        } else {
-          registerUser(registerBody);
         }
       }
     },
@@ -119,7 +123,7 @@ const Step1Form = () => {
   const updateProfile = (body: any) => {
     UserController.updateProfile(body)
       .then((res) => {
-        // console.log("res", res);
+        console.log("res", res.data.data);
         setLoading(false);
         localStorage.setItem("accessToken", res.data.data.accessToken);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
