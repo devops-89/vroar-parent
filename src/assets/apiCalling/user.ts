@@ -81,7 +81,7 @@ export const googleCallbackUrl = ({
         dispatch(
           showToast({
             message: "You are not authorized to access this application",
-            status: TOAST_STATUS.ERROR,
+            severity: TOAST_STATUS.ERROR,
           })
         );
       }
