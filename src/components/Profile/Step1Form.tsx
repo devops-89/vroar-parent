@@ -54,7 +54,6 @@ const Step1Form = () => {
 
   const mobileQuery = useMediaQuery("(max-width:600px)");
   const user = useSelector((state: any) => state.user);
-  console.log("first", user);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -96,12 +95,7 @@ const Step1Form = () => {
             registerUser(registerBody);
           } else {
             const { email, ...updateBody } = registerBody;
-            if (!showAvatar) {
-              const { avatar, ...bodyWithoutAvatar } = updateBody;
-              updateProfile(bodyWithoutAvatar);
-            } else {
-              updateProfile(updateBody);
-            }
+            updateProfile(updateBody);
           }
         }
       } else {
@@ -109,12 +103,7 @@ const Step1Form = () => {
           registerUser(registerBody);
         } else {
           const { email, ...updateBody } = registerBody;
-          if (!showAvatar) {
-            const { avatar, ...bodyWithoutAvatar } = updateBody;
-            updateProfile(bodyWithoutAvatar);
-          } else {
-            updateProfile(updateBody);
-          }
+          updateProfile(updateBody);
         }
       }
     },
@@ -156,7 +145,16 @@ const Step1Form = () => {
             avatar: response?.filePath,
             countryCode: formik.values.countryCode,
           };
-          registerUser(registerBody);
+
+          // Check if user is authenticated
+          const isUserValid = user?.isAuthenticated === true && Object.keys(user).length > 0 && Object.values(user).some(value => value !== null && value !== undefined);
+
+          if (!isUserValid) {
+            registerUser(registerBody);
+          } else {
+            const { email, ...updateBody } = registerBody;
+            updateProfile(updateBody);
+          }
         }
       })
       .catch((err) => {
