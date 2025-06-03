@@ -74,7 +74,17 @@ export const googleCallbackUrl = ({
       localStorage.setItem("group", response.group);
       response.group === USER_TYPE.PARENT
         ? router.push("/parent/profile")
+        : response.group === USER_TYPE.STUDENT
+        ? router.push("/")
         : router.push(`/create-profile?email=${response.userEmail}`);
+      if (response.group === USER_TYPE.STUDENT) {
+        dispatch(
+          showToast({
+            message: "You are not authorized to access this application",
+            status: TOAST_STATUS.ERROR,
+          })
+        );
+      }
       setLoading(false);
       getUserDetails({ dispatch });
 
