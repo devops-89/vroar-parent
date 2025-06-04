@@ -1,12 +1,14 @@
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
 import {
   getUserDetails,
+  googleCallbackUrl,
   loadGoogleOAuthScript,
   loadGoogleScript,
 } from "@/assets/apiCalling/user";
 import { data } from "@/assets/data";
 import bannerImage from "@/banner/banner-image.png";
 import parentBanner from "@/banner/parent-web.png";
+import { auth } from "@/lib/firebase";
 import {
   addActiveStep,
   removeActiveStep,
@@ -37,6 +39,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useFormik } from "formik";
 import { jwtDecode } from "jwt-decode";
 import Image from "next/image";
@@ -90,58 +93,35 @@ const Banner = () => {
 
   // social Logins
   const [socialLoading, setSocialLoading] = useState(false);
-  // const socialLoginHandler = (type: string) => {
-  //   setSocialLoading(true);
-  //   if (type === SOCIAL_LOGIN.GOOGLE) {
-  //   }
-  // };
+ 
 
-  const socialLoginHandler = (type: string) => {
-    if (type === SOCIAL_LOGIN.GOOGLE && clientId) {
-      setSocialLoading(true);
-
-      window.google.accounts.id.initialize({
-        client_id: clientId,
-        scope: "openid email profile",
-        prompt: "select_account",
-        ux_mode: "popup",
-        callback: async (response: any) => {
-          try {
-            const idToken = response.credential;
-
-            const backendResponse = await AuthenticationController.googleLogin(
-              idToken
-            );
-
-            // console.log("Backend response:", backendResponse);
-            const result = backendResponse.data.data;
-            localStorage.setItem("accessToken", result.accessToken);
-            localStorage.setItem("refreshToken", result.refreshToken);
-
-            const decoded = jwtDecode<CustomJwtPayload>(idToken);
-            const email = decoded.email;
-
-            router.push(`/create-profile?email=${email}`);
-            getUserDetails({ dispatch });
-            dispatch(removeActiveStep());
-          } catch (err: any) {
-            const message =
-              (err.response && err.response.data.message) || err.message;
-            dispatch(showToast({ message, variant: TOAST_STATUS.ERROR }));
-          } finally {
-            setSocialLoading(false);
-          }
-        },
+  const handleGoogleLogin = () => {
+    AuthenticationController.googleSocialLogin()
+      .then((res) => {
+        const response = res.data.data.url;
+        window.location.href = response;
+      })
+      .catch((err) => {
+        console.log("err", err);
       });
-
-      window.google.accounts.id.prompt(); 
-    }
   };
 
+  const socialLoginHandler = async (type: string) => {
+    if (type === SOCIAL_LOGIN.GOOGLE) {
+      await handleGoogleLogin();
+    }
+  };
   const [googleReady, setGoogleReady] = useState(false);
-
+  const [rawQueryString, setRawQueryString] = useState("");
   const user = useSelector((state: any) => state.user);
-
+  // useEffect(() => {
+  //   const { code, prompt, scope } = router.query;
+  //   if (code && prompt && scope) {
+  //     const queryWithoutQuestionMark = window.location.search.substring(1);
+  //     setRawQueryString(queryWithoutQuestionMark);
+  //     googleCallbackUrl(queryWithoutQuestionMark);
+  //   }
+  // }, [router.query]);
   
 
   return (

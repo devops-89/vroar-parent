@@ -25,7 +25,7 @@ const Sidebar = () => {
         justifyContent: "center",
         borderRadius: 4,
         height: "100%",
-        pt: { lg: 0, xs: 15 },
+        pt: { lg: 0, xs: 20 },
       }}
     >
       <Stepper

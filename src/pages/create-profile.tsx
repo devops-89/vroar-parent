@@ -21,6 +21,8 @@ const CreateProfile = () => {
 
   // console.log("eeee", router);
 
+  // console.log("ususu", router);
+
   return (
     <Box
       sx={{
@@ -34,12 +36,12 @@ const CreateProfile = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <Card sx={{ p: 2, width: 1000 }}>
+      <Card sx={{ p: 2, width: 1000, borderRadius: 4 }}>
         <Grid container>
-          <Grid size={{ lg: 4, xs: 12 }}>
+          {/* <Grid size={{ lg: 4, xs: 12 }}>
             <Sidebar />
-          </Grid>
-          <Grid size={{ lg: 8, xs: 12 }}>
+          </Grid> */}
+          <Grid size={{ lg: 12, xs: 12 }}>
             {activeStep === 0 && <Step1Form />}
           </Grid>
         </Grid>

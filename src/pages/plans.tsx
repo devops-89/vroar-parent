@@ -32,19 +32,23 @@ const Plans = () => {
     UserController.getProductList()
       .then((res) => {
         const response = res.data.data;
-        // console.log("resonse", response);
-        const mergedArray = plans_data.map((staticPlan: any) => {
-          const matchedPlan = response.find(
-            (apiPlan: any) => apiPlan.id === staticPlan.id
+        console.log("Backend plans:", response);
+        console.log("Static plans:", plans_data);
+        
+        // First, merge static data with matching backend plans
+        const mergedArray = response.map((apiPlan: any) => {
+          const staticPlan = plans_data.find(
+            (staticPlan: any) => staticPlan.id === apiPlan.id
           );
+          console.log("Matching static plan for", apiPlan.id, ":", staticPlan);
 
           return {
-            ...staticPlan,
-            ...(matchedPlan || {}),
+            ...apiPlan,
+            ...(staticPlan || {}),
           };
         });
 
-        // console.log("Merged Array", mergedArray);
+        console.log("Final merged plans:", mergedArray);
         setSubscriptonPlans(mergedArray as SUBSCRIPTION_PLANS[]);
         setLoading(false);
       })
@@ -54,20 +58,10 @@ const Plans = () => {
       });
   };
 
-
-  // console.log("merged array",subscriptionPlans)
-
-  // useEffect(() => {
-  //   if (router.pathname === "/plans") {
-  //     dispatch(setActiveStep(1));
-  //   }
-  // }, [router.pathname]);
-
   useEffect(() => {
     getSubscriptionList();
   }, []);
 
-  // console.log("sdsds", subscriptionPlans);
   return (
     <Box
       sx={{
@@ -78,10 +72,10 @@ const Plans = () => {
       }}
     >
       <Grid container>
-        <Grid size={{ lg: 3, xs: 12 }}>
+        {/* <Grid size={{ lg: 3, xs: 12 }}>
           <Sidebar />
-        </Grid>
-        <Grid size={{ lg: 9, xs: 12 }}>
+        </Grid> */}
+        <Grid size={{ lg: 12, xs: 12 }}>
           {activeStep === 1 && (
             <Box
               sx={{
@@ -112,6 +106,7 @@ const Plans = () => {
 
                     width: "100%",
                     mt: { lg: 0, xs: 7 },
+                    borderRadius: 2,
                   }}
                 >
                   <Box>
@@ -135,7 +130,7 @@ const Plans = () => {
                       }}
                     >
                       Personalized roadmaps, expert mentorship, and gamified
-                      learning—tailored for your child’s growth and future.
+                      learning—tailored for your child's growth and future.
                       Empower them to take the first step toward their dreams
                     </Typography>
                     {loading ? (

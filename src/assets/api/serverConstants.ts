@@ -4,11 +4,16 @@ const baseUrl = "https://api.mytreks.ai";
 // const baseUrl = "https://api.dev.mytreks.ai/";
 // const baseUrl = "https://uatapi.mytreks.ai";
 const stripeURL = "https://api.stripe.com/v1";
+const authenticationUrl = "http://localhost:8085";
+const contentUrl = "http://localhost:8084";
+const userUrl = "http://localhost:8086";
 export const serverApiUrl = {
-  admin: `${baseUrl}/admin/api`,
   authentication: `${baseUrl}/api`,
   user: `${baseUrl}/user/api`,
   internship: `${baseUrl}/internship/api`,
-  stripeCustomer: `${stripeURL}/api`,
   content: `${baseUrl}/content/api`,
+  stripeCustomer: `${stripeURL}/api`,
+  // content: `${contentUrl}/content/api`,
+  // user: `${userUrl}/api`,
+  // authentication: `${authenticationUrl}/api`,
 };

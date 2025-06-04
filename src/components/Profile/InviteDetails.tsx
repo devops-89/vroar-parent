@@ -4,6 +4,7 @@ import UpdateChildDetails from "@/assets/ModalCalling/userDetails/UpdateChildDet
 import { showModal } from "@/redux/reducers/Modal";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
+import { USER_INVITE_DETAILS } from "@/utils/types";
 import { Add } from "@mui/icons-material";
 import {
   Box,
@@ -25,7 +26,9 @@ import { useDispatch, useSelector } from "react-redux";
 const InviteDetails = () => {
   const user = useSelector((state: any) => state.user);
   const dispatch = useDispatch();
-  const [inviteeDetails, setInviteeDetails] = useState([]);
+  const [inviteeDetails, setInviteeDetails] = useState<USER_INVITE_DETAILS[]>(
+    []
+  );
   const editPersonalDetailModal = () => {
     dispatch(showModal(<UpdateChildDetails />));
   };
@@ -48,20 +51,44 @@ const InviteDetails = () => {
     }
   }, []);
 
-  const personalTableHeader = [
-    {
-      label: "Full Name",
-    },
-    {
-      label: "Grade",
-    },
-    {
-      label: "Gender",
-    },
-    {
-      label: "Relation",
-    },
-  ];
+  // const personalTableHeader = [
+  //   {
+  //     label: "Full Name",
+  //   },
+  //   {
+  //     label: "Grade",
+  //   },
+  //   {
+  //     label: "Gender",
+  //   },
+  //   {
+  //     label: "Relation",
+  //   },
+  // ];
+
+  // const [index, setIndex] = useState(inviteeDetails?.length);
+
+  // const personalTableHeader = [
+  //   {
+  //     label: "Full Name",
+  //     value: inviteeDetails[index]
+  //       ? `${inviteeDetails[index].firstName} ${inviteeDetails[index].lastName}`
+  //       : "--",
+  //   },
+  //   {
+  //     label: "Grade",
+  //     value: inviteeDetails[index] ? inviteeDetails[index]?.grade : "-",
+  //   },
+  //   // {
+  //   //   label: "Gender",
+  //   // },
+  //   {
+  //     label: "Relation",
+  //     value: inviteeDetails[index]
+  //       ? inviteeDetails[index]?.relationshipToStudent
+  //       : "--",
+  //   },
+  // ];
 
   const contactDetailsHeader = [
     {
@@ -79,225 +106,202 @@ const InviteDetails = () => {
   return (
     <Box>
       <Stack
-        direction={"row"}
-        alignItems={"center"}
-        justifyContent={"space-between"}
+        direction={{ lg: "row", xs: "column" }}
+        alignItems={{ lg: "center", xs: "flex-start" }}
+        justifyContent={{ lg: "space-between", xs: "flex-start" }}
+        spacing={2}
       >
         <Typography
           sx={{ fontSize: 30, fontFamily: nunito.style, fontWeight: 700 }}
         >
           Kid Details
         </Typography>
-        <Button
-          startIcon={<Add />}
-          sx={{
-            background: COLORS.LINEAR_GRADIENT,
-            color: COLORS.WHITE,
-            borderRadius: 20,
-            width: 150,
-            p: 1,
-            boxShadow: `0px 0px 2px 2px ${COLORS.PRIMARY}`,
-            fontWeight: 600,
-          }}
-          onClick={inviteChild}
-        >
-          Invite Child
-        </Button>
+        {!inviteeDetails?.length && (
+          <Button
+            startIcon={<Add />}
+            sx={{
+              background: COLORS.LINEAR_GRADIENT,
+              color: COLORS.WHITE,
+              borderRadius: 20,
+              width: 150,
+              p: 1,
+              boxShadow: `0px 0px 2px 2px ${COLORS.PRIMARY}`,
+              fontWeight: 600,
+            }}
+            onClick={inviteChild}
+          >
+            Invite Child
+          </Button>
+        )}
       </Stack>
-      {inviteeDetails.length ? (
-        <>
-          <Card sx={{ p: 2, mt: 2 }}>
-            <Stack
-              direction={"row"}
-              alignItems={"center"}
-              justifyContent={"space-between"}
-            >
-              <Typography
-                sx={{ fontSize: 20, fontWeight: 700, fontFamily: nunito.style }}
-              >
-                Personal Details
-              </Typography>
-              <Button
-                startIcon={<FaRegEdit />}
-                sx={{
-                  color: COLORS.BLACK,
-                  textTransform: "initial",
-                  fontSize: 16,
-                  boxShadow: "0px 0px 2px 2px #eeeeee",
-                  px: 2,
-                }}
-                onClick={editPersonalDetailModal}
-              >
-                Edit
-              </Button>
-            </Stack>
 
-            <Table
-              sx={{
-                "& .MuiTableCell-root": {
-                  border: "none",
-                },
-              }}
-            >
-              <TableHead>
-                <TableRow>
-                  {personalTableHeader.map((val, i) => (
-                    <TableCell>
-                      <Typography
-                        sx={{
-                          fontSize: 16,
-                          fontWeight: 600,
-                          fontFamily: nunito.style,
-                          color: COLORS.TEXT_COLOR,
-                        }}
-                      >
-                        {val.label}
-                      </Typography>
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {inviteeDetails.map((val: any, i: number) => (
-                  <TableRow>
-                    <TableCell>
-                      <Typography
-                        sx={{
-                          fontSize: 20,
-                          fontWeight: 600,
-                          fontFamily: nunito.style,
-                          color: "#262626",
-                        }}
-                      >
-                        {val.firstName} {val.lastName}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        sx={{
-                          fontSize: 20,
-                          fontWeight: 600,
-                          fontFamily: nunito.style,
-                          color: "#262626",
-                        }}
-                      >
-                        {val.grade}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        sx={{
-                          fontSize: 20,
-                          fontWeight: 600,
-                          fontFamily: nunito.style,
-                          color: "#262626",
-                        }}
-                      >
-                        {val.gender || "--"}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        sx={{
-                          fontSize: 20,
-                          fontWeight: 600,
-                          fontFamily: nunito.style,
-                          color: "#262626",
-                        }}
-                      >
-                        {val.relationshipToStudent || "--"}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Card>
-          <Card sx={{ p: 2, mt: 2 }}>
-            <Stack
-              direction={"row"}
-              alignItems={"center"}
-              justifyContent={"space-between"}
-            >
-              <Typography
-                sx={{ fontSize: 20, fontWeight: 700, fontFamily: nunito.style }}
+      {inviteeDetails.length ? (
+        inviteeDetails.map((invitee, index) => (
+          <React.Fragment key={index}>
+            <Card sx={{ p: 2, mt: 2 }}>
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
               >
-                Contact Details
-              </Typography>
-              <Button
-                startIcon={<FaRegEdit />}
-                sx={{
-                  color: COLORS.BLACK,
-                  textTransform: "initial",
-                  fontSize: 16,
-                  boxShadow: "0px 0px 2px 2px #eeeeee",
-                  px: 2,
-                }}
+                <Typography
+                  sx={{
+                    fontSize: 20,
+                    fontWeight: 700,
+                    fontFamily: nunito.style,
+                  }}
+                >
+                  Personal Details - {invitee.firstName} {invitee.lastName}
+                </Typography>
+              </Stack>
+
+              <Grid container sx={{ mt: 2 }} spacing={2}>
+                <Grid size={{ lg: 3, xs: 12, md: 6 }}>
+                  <Typography
+                    sx={{
+                      fontSize: 16,
+                      fontWeight: 600,
+                      fontFamily: nunito.style,
+                      color: COLORS.TEXT_COLOR,
+                    }}
+                  >
+                    Full Name
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: 20,
+                      fontWeight: 600,
+                      fontFamily: nunito.style,
+                      color: "#262626",
+                    }}
+                  >
+                    {invitee.firstName} {invitee.lastName}
+                  </Typography>
+                </Grid>
+
+                <Grid size={{ lg: 3, xs: 12, md: 6 }}>
+                  <Typography
+                    sx={{
+                      fontSize: 16,
+                      fontWeight: 600,
+                      fontFamily: nunito.style,
+                      color: COLORS.TEXT_COLOR,
+                    }}
+                  >
+                    Grade
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: 20,
+                      fontWeight: 600,
+                      fontFamily: nunito.style,
+                      color: "#262626",
+                    }}
+                  >
+                    {invitee.grade || "--"}
+                  </Typography>
+                </Grid>
+
+                <Grid size={{ lg: 3, xs: 12, md: 6 }}>
+                  <Typography
+                    sx={{
+                      fontSize: 16,
+                      fontWeight: 600,
+                      fontFamily: nunito.style,
+                      color: COLORS.TEXT_COLOR,
+                    }}
+                  >
+                    Relation
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: 20,
+                      fontWeight: 600,
+                      fontFamily: nunito.style,
+                      color: "#262626",
+                    }}
+                  >
+                    {invitee.relationshipToStudent || "--"}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Card>
+
+            <Card sx={{ p: 2, mt: 2 }}>
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                justifyContent={"space-between"}
               >
-                Edit
-              </Button>
-            </Stack>
-            <Table
-              sx={{
-                "& .MuiTableCell-root": {
-                  border: "none",
-                },
-              }}
-            >
-              <TableHead>
-                <TableRow>
-                  {contactDetailsHeader.map((val, i) => (
-                    <TableCell key={i}>
-                      <Typography
-                        sx={{
-                          fontSize: 16,
-                          fontWeight: 600,
-                          fontFamily: nunito.style,
-                          color: COLORS.TEXT_COLOR,
-                        }}
-                      >
-                        {val.label}
-                      </Typography>
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {inviteeDetails.map((val: any, i: number) => (
-                  <TableRow key={i}>
-                    <TableCell>
-                      <Typography
-                        sx={{
-                          fontSize: 20,
-                          fontWeight: 600,
-                          fontFamily: nunito.style,
-                          color: "#262626",
-                        }}
-                      >
-                        {val.email}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        sx={{
-                          fontSize: 20,
-                          fontWeight: 600,
-                          fontFamily: nunito.style,
-                          color: "#262626",
-                        }}
-                      >
-                        +{val.countryCode} {val.phoneNo}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Card>
-        </>
+                <Typography
+                  sx={{
+                    fontSize: 20,
+                    fontWeight: 700,
+                    fontFamily: nunito.style,
+                  }}
+                >
+                  Contact Details
+                </Typography>
+              </Stack>
+
+              <Grid container sx={{ mt: 2 }} spacing={2}>
+                <Grid size={{ lg: 3, xs: 12, md: 6 }}>
+                  <Typography
+                    sx={{
+                      fontSize: 16,
+                      fontWeight: 600,
+                      fontFamily: nunito.style,
+                      color: COLORS.TEXT_COLOR,
+                    }}
+                  >
+                    Email Address
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: 20,
+                      fontWeight: 600,
+                      fontFamily: nunito.style,
+                      color: "#262626",
+                    }}
+                  >
+                    {invitee.email}
+                  </Typography>
+                </Grid>
+
+                <Grid size={{ lg: 3, xs: 12, md: 6 }}>
+                  <Typography
+                    sx={{
+                      fontSize: 16,
+                      fontWeight: 600,
+                      fontFamily: nunito.style,
+                      color: COLORS.TEXT_COLOR,
+                    }}
+                  >
+                    Phone Number
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: 20,
+                      fontWeight: 600,
+                      fontFamily: nunito.style,
+                      color: "#262626",
+                    }}
+                  >
+                    +{invitee.countryCode} {invitee.phoneNo}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Card>
+          </React.Fragment>
+        ))
       ) : (
         <Typography
-          sx={{ fontSize: 20, fontFamily: nunito.style, fontWeight: 600 }}
+          sx={{
+            fontSize: 20,
+            fontFamily: nunito.style,
+            fontWeight: 600,
+            mt: 2,
+          }}
         >
           No Data Found
         </Typography>

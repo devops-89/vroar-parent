@@ -135,7 +135,7 @@ export const GENDER_DATA = {
   AUTIGENDER: "Autigender",
   CASSGENDER: "Cassgender",
   CLOUDGENDER: "Cloudgender",
-  OTHER: "Other (free-text field)",
+  OTHER: "Other",
   PREFER_NOT_TO_SAY: "Prefer Not to Say",
 };
 

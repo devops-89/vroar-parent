@@ -7,7 +7,7 @@ import { showToast } from "@/redux/reducers/Toast";
 import { removeUserDetails } from "@/redux/reducers/User";
 import { COLORS, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import { Logout } from "@mui/icons-material";
+import { Close, Logout } from "@mui/icons-material";
 import {
   Avatar,
   Backdrop,
@@ -15,21 +15,32 @@ import {
   Button,
   CircularProgress,
   Divider,
+  IconButton,
   List,
   ListItemAvatar,
   ListItemButton,
   ListItemText,
+  Stack,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-const ProfileSidebar = () => {
+import parentAvatar from "@/banner/parent.jpg";
+interface DRAWERPROPS {
+  drawerOpen?: boolean;
+  setDrawerOpen?: (state: SetStateAction<boolean>) => void;
+}
+
+const ProfileSidebar = ({ drawerOpen, setDrawerOpen }: DRAWERPROPS) => {
   const router = useRouter();
 
   const handleRouter = (path: string) => {
     router.push(path);
+    if (drawerOpen && setDrawerOpen) {
+      setDrawerOpen(false);
+    }
   };
   const dispatch = useDispatch();
 
@@ -77,19 +88,53 @@ const ProfileSidebar = () => {
       sx={{
         backgroundColor: "rgba(255, 168, 147, 1)",
         height: "100vh",
-        width: 300,
+        width: { lg: 300, xs: "100%" },
         position: "fixed",
         left: 0,
         top: 0,
       }}
     >
-      <Box sx={{ textAlign: "center" }}>
-        <Image src={logo} alt="" />
-      </Box>
-      <Box sx={{ textAlign: "center", mt: 6 }}>
-        <Avatar sx={{ width: 100, height: 100, margin: "auto" }}>
-          <Image src={user?.avatar} alt="" width={100} height={100} />
-        </Avatar>
+      {drawerOpen ? (
+        <Box sx={{ textAlign: "end", p: 1 }}>
+          <IconButton sx={{ border: `1px solid ${COLORS.PRIMARY}` }}>
+            <Close />
+          </IconButton>
+        </Box>
+      ) : (
+        <Box sx={{ textAlign: "center" }}>
+          <Image src={logo} alt="" />
+        </Box>
+      )}
+      <Box sx={{ textAlign: "center", mt: drawerOpen ? 4 : 6 }}>
+        {drawerOpen ? (
+          <Stack
+            direction={"row"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+            sx={{ px: 2 }}
+          >
+            <Image src={logo} alt="" />
+            <Avatar sx={{ width: 100, height: 100 }}>
+              <Image
+                src={user?.avatar ?? parentAvatar}
+                alt=""
+                width={100}
+                height={100}
+              />
+            </Avatar>
+          </Stack>
+        ) : (
+          <Box>
+            <Avatar sx={{ width: 100, height: 100, margin: "auto" }}>
+              <Image
+                src={user?.avatar ?? parentAvatar}
+                alt=""
+                width={100}
+                height={100}
+              />
+            </Avatar>
+          </Box>
+        )}
         <Typography
           sx={{
             mt: 1,

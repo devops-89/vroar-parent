@@ -24,6 +24,7 @@ import { UserController } from "@/assets/api/UserController";
 import { MEDIA_UPLOAD } from "@/utils/types";
 import { getUserDetails } from "@/assets/apiCalling/user";
 import { showToast } from "@/redux/reducers/Toast";
+import parentAvatar from "@/banner/parent.jpg";
 const ProfileData = () => {
   const ref = useRef<HTMLInputElement>(null);
   const [showAvatar, setShowAvatar] = useState<string | null>(null);
@@ -44,6 +45,7 @@ const ProfileData = () => {
       const data = {
         mediaFile: file,
         mediaLibraryType: MEDIA_LIBRARY_TYPE.PROFILE,
+        userId: user?.id
       };
       setLoading(true);
       UserController.mediaUpload(data as MEDIA_UPLOAD)
@@ -84,7 +86,7 @@ const ProfileData = () => {
               }}
             >
               <Image
-                src={user?.avatar}
+                src={user?.avatar ?? parentAvatar}
                 alt="Profile"
                 width={200}
                 height={200}

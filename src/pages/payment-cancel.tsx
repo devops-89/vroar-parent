@@ -10,7 +10,8 @@ const PaymentCancel = () => {
   const router = useRouter();
 
   const handleChange = () => {
-    router.push("/plans");
+    // router.push("/plans");
+    router.back();
   };
 
   return (
@@ -121,7 +122,7 @@ const PaymentCancel = () => {
                     width: 200,
                     p: 1,
                   }}
-                    onClick={handleChange}
+                  onClick={handleChange}
                 >
                   Retry Payment
                 </Button>

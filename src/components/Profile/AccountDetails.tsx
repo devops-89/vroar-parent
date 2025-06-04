@@ -44,8 +44,8 @@ const AccountDetails = () => {
           Edit
         </Button>
       </Stack>
-      <Grid container sx={{ mt: 2 }}>
-        <Grid size={6}>
+      <Grid container sx={{ mt: 2 }} spacing={3}>
+        <Grid size={{ lg: 6, xs: 12 }}>
           <Typography
             sx={{
               fontSize: 16,
@@ -68,7 +68,7 @@ const AccountDetails = () => {
             {user?.email}
           </Typography>
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ lg: 6, xs: 12 }}>
           <Typography
             sx={{
               fontSize: 16,

@@ -59,7 +59,6 @@ const ChildInvite = ({ getInviteeDetails }: ChildInviteProps) => {
     setPhone(newPhone);
     const validPhone = matchIsValidTel(newPhone);
 
-    console.log("first", validPhone);
     if (validPhone) {
       formik.setFieldValue("phoneNo", countryData?.nationalNumber);
       formik.setFieldValue("countryCode", countryData?.countryCallingCode);
@@ -119,7 +118,7 @@ const ChildInvite = ({ getInviteeDetails }: ChildInviteProps) => {
   };
 
   return (
-    <Box sx={{ width: 600 }}>
+    <Box sx={{ width: { lg: 600, xs: 300 } }}>
       <Stack
         direction={"row"}
         alignItems={"center"}
@@ -138,7 +137,7 @@ const ChildInvite = ({ getInviteeDetails }: ChildInviteProps) => {
       <form onSubmit={formik.handleSubmit}>
         <Box sx={{ mt: 2 }}>
           <Grid container spacing={2} rowSpacing={4}>
-            <Grid size={6}>
+            <Grid size={{ lg: 6, xs: 12 }}>
               <TextField
                 sx={{ ...loginTextField }}
                 label="First Name"
@@ -151,7 +150,7 @@ const ChildInvite = ({ getInviteeDetails }: ChildInviteProps) => {
                 helperText={formik.touched.firstName && formik.errors.firstName}
               />
             </Grid>
-            <Grid size={6}>
+            <Grid size={{ lg: 6, xs: 12 }}>
               <TextField
                 sx={{ ...loginTextField }}
                 label="Last Name"
@@ -164,7 +163,7 @@ const ChildInvite = ({ getInviteeDetails }: ChildInviteProps) => {
                 helperText={formik.touched.lastName && formik.errors.lastName}
               />
             </Grid>
-            <Grid size={6}>
+            <Grid size={{ lg: 6, xs: 12 }}>
               <TextField
                 sx={{ ...loginTextField }}
                 label="Email"
@@ -175,7 +174,7 @@ const ChildInvite = ({ getInviteeDetails }: ChildInviteProps) => {
                 helperText={formik.touched.email && formik.errors.email}
               />
             </Grid>
-            <Grid size={6}>
+            <Grid size={{ lg: 6, xs: 12 }}>
               <MuiTelInput
                 label="Phone Number"
                 fullWidth
@@ -188,7 +187,7 @@ const ChildInvite = ({ getInviteeDetails }: ChildInviteProps) => {
                 helperText={formik.touched.phoneNo && formik.errors.phoneNo}
               />
             </Grid>
-            <Grid size={6}>
+            <Grid size={{ lg: 6, xs: 12 }}>
               <Autocomplete
                 renderInput={(params) => (
                   <TextField
@@ -210,7 +209,7 @@ const ChildInvite = ({ getInviteeDetails }: ChildInviteProps) => {
                 value={grade}
               />
             </Grid>
-            <Grid size={6}>
+            <Grid size={{ lg: 6, xs: 12 }}>
               <Autocomplete
                 renderInput={(params) => (
                   <TextField

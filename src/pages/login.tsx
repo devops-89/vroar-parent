@@ -1,6 +1,7 @@
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
 import {
   getUserDetails,
+  googleCallbackUrl,
   loadGoogleOAuthScript,
   loadGoogleScript,
 } from "@/assets/apiCalling/user";
@@ -16,6 +17,7 @@ import { GoogleCredentialResponse, LOGIN_SCHEMA } from "@/utils/types";
 import { loginValidationSchema } from "@/utils/validationSchema";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
+  Backdrop,
   Box,
   Button,
   CircularProgress,
@@ -88,91 +90,44 @@ const Login = () => {
   const socialLoginHandler = (type: string) => {
     setSocialLoading(true);
     if (type === SOCIAL_LOGIN.GOOGLE) {
-      handleLoginClick();
+      handleGoogleLogin();
     }
   };
 
-  const [googleReady, setGoogleReady] = useState(false);
-
-  useEffect(() => {
-    loadGoogleScript().then(() => {
-      setGoogleReady(true);
-
-      if (window.google) {
-        window.google.accounts.id.initialize({
-          client_id: clientId,
-          callback: handleCredentialResponse,
-        });
-      }
-    });
-  }, []);
-
-  const handleCredentialResponse = (response: GoogleCredentialResponse) => {
-    const user = jwtDecode(response.credential);
-
-    setLoading(false);
-
-    AuthenticationController.googleLogin(response?.credential)
+  const handleGoogleLogin = () => {
+    AuthenticationController.googleSocialLogin()
       .then((res) => {
-        // console.log("respone", res);
-        const response = res.data.data;
-        localStorage.setItem("accessToken", response.accessToken);
-        localStorage.setItem("refreshToken", response.refreshToken);
-        router.push("/parent/profile");
-        getUserDetails({ dispatch });
+        const response = res.data.data.url;
+        window.location.href = response;
       })
       .catch((err) => {
         console.log("err", err);
-        setLoading(false);
       });
   };
 
-  const handleLoginClick = () => {
-    if (window.google && window.google.accounts) {
-      window.google.accounts.id.prompt(); // triggers the sign-in prompt
-      window.google.accounts.id.prompt((notification: any) => {
-        if (notification.isNotDisplayed()) {
-          console.log(
-            "Sign-in prompt not displayed:",
-            notification.getNotDisplayedReason()
-          );
-        }
-        if (notification.isSkippedMoment()) {
-          console.log(
-            "Sign-in prompt skipped:",
-            notification.getSkippedReason()
-          );
-        }
-      });
-      window.google.accounts.id.prompt();
-      window.google.accounts.id.renderButton(
-        document.getElementById("googleDiv"),
-        {
-          theme: "outline",
-          size: "large",
-        }
-      );
-      // const params = new URLSearchParams({
-      //   client_id:
-      //     clientId ||
-      //     "814443057039-h55fl7pjfabl3b8rgo1fhg7s4jlofale.apps.googleusercontent.com",
-      //   redirect_uri: "https://vroar-188a2.firebaseapp.com/__/auth/handler",
-      //   response_type: "token",
-      //   scope: "openid email profile",
-      // });
-
-      // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
-    } else {
-      console.error("Google Identity Services SDK not loaded yet");
-    }
-  };
-
+  const [googleLoginLoading, setGoogleLoading] = useState(false);
   useEffect(() => {
-    loadGoogleOAuthScript();
-  }, []);
+    if (!router.isReady) return;
+
+    const { code, scope, authuser, prompt } = router.query;
+
+    if (code && scope && authuser && prompt) {
+      const queryParams = `code=${code}&scope=${scope}&authuser=${authuser}&prompt=${prompt}`;
+      setGoogleLoading(true);
+      googleCallbackUrl({
+        code: queryParams,
+        router,
+        setLoading: setGoogleLoading,
+        dispatch: dispatch,
+      });
+    }
+  }, [router.isReady, router.query]);
 
   return (
     <div>
+      <Backdrop open={googleLoginLoading} sx={{ zIndex: 10000 }}>
+        <CircularProgress sx={{ color: COLORS.PRIMARY }} />
+      </Backdrop>
       <CustomBanner>
         <Box sx={{ p: 3 }}>
           <Typography
@@ -281,7 +236,7 @@ const Login = () => {
               <IconButton
                 sx={{ backgroundColor: "#EEEFF3", borderRadius: 2 }}
                 key={i}
-                onClick={handleLoginClick}
+                onClick={handleGoogleLogin}
               >
                 <Image src={val.img} alt="" width={15} />
               </IconButton>
@@ -295,7 +250,7 @@ const Login = () => {
               mt: 2,
             }}
           >
-            Already have an account?{" "}
+            Doesn't have an account?{" "}
             <Typography
               component={"span"}
               sx={{

@@ -4,7 +4,8 @@ import { setUserDetails } from "@/redux/reducers/User";
 import { AuthenticationController } from "../api/AuthenticationController";
 import { validateDate } from "@mui/x-date-pickers";
 import { showToast } from "@/redux/reducers/Toast";
-import { TOAST_STATUS } from "@/utils/enum";
+import { TOAST_STATUS, USER_TYPE } from "@/utils/enum";
+import { addActiveStep, removeActiveStep } from "@/redux/reducers/Stepper";
 
 export const getUserDetails = ({ dispatch }: any) => {
   UserController.getUser()
@@ -55,3 +56,41 @@ export function loadGoogleOAuthScript(): Promise<void> {
     document.head.appendChild(script);
   });
 }
+
+export const googleCallbackUrl = ({
+  code,
+  router,
+  setLoading,
+  dispatch,
+}: any) => {
+  AuthenticationController.googleCallback(code)
+
+    .then((res) => {
+      // console.log("res", res);
+      const response = res.data.data;
+      localStorage.setItem("accessToken", response.accessToken);
+      localStorage.setItem("refreshToken", response.refreshToken);
+      // console.log("response", response);
+      localStorage.setItem("group", response.group);
+      response.group === USER_TYPE.PARENT
+        ? router.push("/parent/profile")
+        : response.group === USER_TYPE.STUDENT
+        ? router.push("/")
+        : router.push(`/create-profile?email=${response.userEmail}`);
+      if (response.group === USER_TYPE.STUDENT) {
+        dispatch(
+          showToast({
+            message: "You are not authorized to access this application",
+            severity: TOAST_STATUS.ERROR,
+          })
+        );
+      }
+      setLoading(false);
+      getUserDetails({ dispatch });
+
+      dispatch(removeActiveStep());
+    })
+    .catch((err) => {
+      console.log("err", err);
+    });
+};

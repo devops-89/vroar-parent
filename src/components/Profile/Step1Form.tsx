@@ -25,10 +25,7 @@ import camera from "@/icons/Layer_1.png";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useFormik } from "formik";
-import {
-  getRegisterValidationSchema,
-  // registerValidationSchema,
-} from "@/utils/validationSchema";
+
 import { useRouter } from "next/router";
 import { MEDIA_UPLOAD, USER_REGISTER } from "@/utils/types";
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
@@ -36,6 +33,11 @@ import { UserController } from "@/assets/api/UserController";
 import { useDispatch, useSelector } from "react-redux";
 import { showToast } from "@/redux/reducers/Toast";
 import { isValidURL } from "@/utils/regex";
+import {
+  registerValidationSchema,
+  getRegisterValidationSchema,
+} from "@/utils/validationSchema";
+import { addActiveStep, setActiveStep } from "@/redux/reducers/Stepper";
 const Step1Form = () => {
   const ref = useRef<HTMLInputElement>(null);
   const [showAvatar, setShowAvatar] = useState<string | null>(null);
@@ -52,7 +54,6 @@ const Step1Form = () => {
 
   const mobileQuery = useMediaQuery("(max-width:600px)");
   const user = useSelector((state: any) => state.user);
-  // console.log("first", user);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -65,36 +66,69 @@ const Step1Form = () => {
       role: USER_TYPE.PARENT,
     },
     validationSchema: getRegisterValidationSchema(showAvatar),
-    validateOnChange: true,
-    validateOnBlur: true,
     onSubmit: (values) => {
       setLoading(true);
       const body = {
         mediaFile: values?.avatar,
         mediaLibraryType: MEDIA_LIBRARY_TYPE.PROFILE,
       };
+
+      const registerBody: USER_REGISTER = {
+        firstName: formik.values.firstName,
+        lastName: formik.values.lastName,
+        email: (email || formik.values.email) as string,
+        role: USER_TYPE.PARENT,
+        password: formik.values.password,
+        phoneNo: formik.values.phoneNumber,
+        avatar: showAvatar,
+        countryCode: formik.values.countryCode,
+      };
+
+      // Check if user is authenticated and has at least one key with value
+      const isUserValid = user?.isAuthenticated === true && Object.keys(user).length > 0 && Object.values(user).some(value => value !== null && value !== undefined);
+
       if (showAvatar && body.mediaFile !== null) {
-        if (!isValidURL (body.mediaFile)) {
+        if (!isValidURL(body.mediaFile)) {
           uploadMedia(body as MEDIA_UPLOAD);
-          // console.log("sww", body);
         } else {
-          const registerBody: USER_REGISTER = {
-            firstName: formik.values.firstName,
-            lastName: formik.values.lastName,
-            email: (email || formik.values.email) as string,
-            role: USER_TYPE.PARENT,
-            password: formik.values.password,
-            phoneNo: formik.values.phoneNumber,
-            avatar: showAvatar,
-            countryCode: formik.values.countryCode,
-          };
-          registerUser(registerBody);
-          // console.log("register", registerBody);
+          if (!isUserValid) {
+            registerUser(registerBody);
+          } else {
+            const { email, ...updateBody } = registerBody;
+            updateProfile(updateBody);
+          }
         }
       } else {
+        if (!isUserValid) {
+          registerUser(registerBody);
+        } else {
+          const { email, ...updateBody } = registerBody;
+          updateProfile(updateBody);
+        }
       }
     },
   });
+
+  const updateProfile = (body: any) => {
+    UserController.updateProfile(body)
+      .then((res) => {
+        console.log("res", res.data.data);
+        setLoading(false);
+        localStorage.setItem("accessToken", res.data.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.data.refreshToken);
+        localStorage.setItem("group", res.data.data.group);
+        router.push("/plans");
+        dispatch(addActiveStep({ path: "/plans" }));
+      })
+      .catch((err) => {
+        let errMessage =
+          (err.response && err.response.data.message) || err.message;
+        dispatch(
+          showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
+        );
+        setLoading(false);
+      });
+  };
 
   const uploadMedia = (body: MEDIA_UPLOAD) => {
     UserController.mediaUpload(body)
@@ -111,7 +145,16 @@ const Step1Form = () => {
             avatar: response?.filePath,
             countryCode: formik.values.countryCode,
           };
-          registerUser(registerBody);
+
+          // Check if user is authenticated
+          const isUserValid = user?.isAuthenticated === true && Object.keys(user).length > 0 && Object.values(user).some(value => value !== null && value !== undefined);
+
+          if (!isUserValid) {
+            registerUser(registerBody);
+          } else {
+            const { email, ...updateBody } = registerBody;
+            updateProfile(updateBody);
+          }
         }
       })
       .catch((err) => {
@@ -159,6 +202,15 @@ const Step1Form = () => {
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  // Add function to split full name
+  const splitFullName = (fullName: string) => {
+    const nameParts = fullName.trim().split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+    return { firstName, lastName };
+  };
+
   const [phone, setPhone] = useState<string>("");
   const handleChangePhoneNumber = (
     value: string,
@@ -167,14 +219,16 @@ const Step1Form = () => {
     setPhone(value);
     const validPhone = matchIsValidTel(value);
 
-    // console.log("valid", validPhone);
+    formik.setFieldTouched("phoneNumber", true, false);
 
-    if (validPhone) {
-      formik.setFieldValue("phoneNumber", countryData?.nationalNumber);
-      formik.setFieldValue("countryCode", countryData?.countryCallingCode);
-      formik.setFieldError("phoneNumber", "");
+    if (validPhone && countryData?.nationalNumber) {
+      formik.setFieldValue("phoneNumber", countryData.nationalNumber);
+      formik.setFieldValue("countryCode", countryData.countryCallingCode);
+      formik.setFieldError("phoneNumber", undefined);
     } else {
-      formik.setFieldError("phoneNumber", "Please Enter Valid Phone Number");
+      formik.setFieldValue("phoneNumber", "");
+      formik.setFieldValue("countryCode", "");
+      formik.setFieldError("phoneNumber", "Please enter a valid phone number");
     }
   };
 
@@ -186,16 +240,24 @@ const Step1Form = () => {
 
   useEffect(() => {
     if (user) {
-      formik.setFieldValue("firstName", user?.firstName);
+      if (user?.fullName) {
+        // If fullName exists, split it into firstName and lastName
+        const { firstName, lastName } = splitFullName(user.fullName);
+        formik.setFieldValue("firstName", firstName);
+        formik.setFieldValue("lastName", lastName);
+      } else {
+        // If separate firstName and lastName exist, use them directly
+        formik.setFieldValue("firstName", user?.firstName || "");
+        formik.setFieldValue("lastName", user?.lastName || "");
+      }
       formik.setFieldValue("avatar", user?.avatar);
       setShowAvatar(user?.avatar);
-      formik.setFieldValue("lastName", user?.lastName);
     }
   }, [user]);
 
   // console.log("first",formik.errors.avatar)
   return (
-    <Box sx={{ p: 5 }}>
+    <Box sx={{ p: 5, borderRadius: 4 }}>
       <form onSubmit={formik.handleSubmit}>
         <Grid container sx={{ textAlign: "center" }}>
           {mobileQuery && (
@@ -253,13 +315,13 @@ const Step1Form = () => {
                   </Box>
                 )}
               </IconButton>
-              {formik.touched.avatar && Boolean(formik.errors.avatar) && (
+              {/* {formik.touched.avatar && Boolean(formik.errors.avatar) && (
                 <FormHelperText
                   sx={{ textAlign: "center", color: COLORS.DANGER }}
                 >
                   {formik.errors.avatar}
                 </FormHelperText>
-              )}
+              )} */}
             </Grid>
           )}
         </Grid>
