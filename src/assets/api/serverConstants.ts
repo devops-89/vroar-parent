@@ -4,9 +4,9 @@ const baseUrl = "https://devapi.mytreks.ai";
 
 // const baseUrl = "https://uatapi.mytreks.ai";
 const stripeURL = "https://api.stripe.com/v1";
-const authenticationUrl = "http://localhost:8085";
-const contentUrl = "http://localhost:8084";
-const userUrl = "http://localhost:8086";
+// const authenticationUrl = "http://localhost:8085";
+// const contentUrl = "http://localhost:8084";
+// const userUrl = "http://localhost:8086";
 export const serverApiUrl = {
   authentication: `${baseUrl}/api`,
   user: `${baseUrl}/user/api`,
