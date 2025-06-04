@@ -28,14 +28,14 @@ const MobileSidebar = () => {
             top: 0,
             left: 0,
             boxSizing: 'border-box',
-            WebkitOverflowScrolling: 'touch', // Enable smooth scrolling on iOS
+            WebkitOverflowScrolling: 'touch', 
           }
         }}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile
+          keepMounted: true, 
         }}
         SlideProps={{
-          timeout: 300, // Adjust animation speed
+          timeout: 300, 
         }}
       >
         <ProfileSidebar drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
