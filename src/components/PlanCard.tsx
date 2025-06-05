@@ -96,7 +96,7 @@ const PlanCard = ({
                 fontWeight: 700,
               }}
             >
-              Monthly
+              Quarterly
             </Typography>
             <Switch
               onChange={switchHandler}
