@@ -247,7 +247,7 @@ const Subscriptions = () => {
                       ))}
                     </Grid>
                   ) : (
-                    <Box sx={{ textAlign: "center" }}>
+                    <Box sx={{ textAlign: "start", mt: 2 }}>
                       <Button
                         sx={{
                           background: COLORS.LINEAR_GRADIENT,
@@ -276,7 +276,7 @@ const Subscriptions = () => {
                 }}
               >
                 <Grid container spacing={2}>
-                  <Grid size={6}>
+                  <Grid size={{ lg: 6, xs: 12 }}>
                     <Typography
                       sx={{
                         fontSize: 20,
@@ -287,7 +287,7 @@ const Subscriptions = () => {
                       Subscription ID
                     </Typography>
                   </Grid>
-                  <Grid size={6}>
+                  <Grid size={{ lg: 6, xs: 12 }}>
                     <Stack direction={"row"} alignItems={"center"} spacing={1}>
                       <Typography
                         sx={{

@@ -1,3 +1,4 @@
+import camera from "@/icons/Layer_1.png";
 import {
   COLORS,
   MEDIA_LIBRARY_TYPE,
@@ -6,6 +7,7 @@ import {
 } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -19,25 +21,22 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import { useFormik } from "formik";
+import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import camera from "@/icons/Layer_1.png";
-import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useFormik } from "formik";
 
-import { useRouter } from "next/router";
-import { MEDIA_UPLOAD, USER_REGISTER } from "@/utils/types";
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
 import { UserController } from "@/assets/api/UserController";
-import { useDispatch, useSelector } from "react-redux";
+import { addActiveStep } from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
 import { isValidURL } from "@/utils/regex";
+import { MEDIA_UPLOAD, USER_REGISTER } from "@/utils/types";
 import {
-  registerValidationSchema,
-  getRegisterValidationSchema,
+  getRegisterValidationSchema
 } from "@/utils/validationSchema";
-import { addActiveStep, setActiveStep } from "@/redux/reducers/Stepper";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
 const Step1Form = () => {
   const ref = useRef<HTMLInputElement>(null);
   const [showAvatar, setShowAvatar] = useState<string | null>(null);
@@ -112,7 +111,7 @@ const Step1Form = () => {
   const updateProfile = (body: any) => {
     UserController.updateProfile(body)
       .then((res) => {
-        console.log("res", res.data.data);
+        // console.log("res", res.data.data);
         setLoading(false);
         localStorage.setItem("accessToken", res.data.data.accessToken);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
@@ -202,6 +201,16 @@ const Step1Form = () => {
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  // Add function to split full name
+  const splitFullName = (fullName: string) => {
+    if (!fullName) return { firstName: '', lastName: '' };
+    const nameParts = fullName.trim().split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+    return { firstName, lastName };
+  };
+
   const [phone, setPhone] = useState<string>("");
   const handleChangePhoneNumber = (
     value: string,
@@ -231,10 +240,12 @@ const Step1Form = () => {
 
   useEffect(() => {
     if (user) {
-      formik.setFieldValue("firstName", user?.firstName);
+      // Split the full name that comes in firstName field
+      const { firstName, lastName } = splitFullName(user?.firstName);
+      formik.setFieldValue("firstName", firstName);
+      formik.setFieldValue("lastName", lastName);
       formik.setFieldValue("avatar", user?.avatar);
       setShowAvatar(user?.avatar);
-      formik.setFieldValue("lastName", user?.lastName);
     }
   }, [user]);
 

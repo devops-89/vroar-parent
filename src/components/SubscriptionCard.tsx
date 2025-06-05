@@ -31,7 +31,7 @@ const SubscriptionCard = ({ data, chip, status }: DataProps) => {
       </Stack>
       <Grid container mt={4} spacing={2}>
         {data.plan.map((item, index) => (
-          <Grid size={6} key={index}>
+          <Grid size={{ lg: 6, xs: 12 }} key={index}>
             <Typography
               sx={{
                 fontSize: 16,
