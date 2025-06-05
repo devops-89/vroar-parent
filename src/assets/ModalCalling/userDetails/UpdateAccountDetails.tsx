@@ -72,7 +72,7 @@ const UpdateAccountDetails = () => {
   };
 
   return (
-    <Box sx={{ width: { lg: 400, xs: 350 } }}>
+    <Box sx={{ width: { lg: 400, xs: 300 } }}>
       <Stack
         direction={"row"}
         alignItems={"center"}
