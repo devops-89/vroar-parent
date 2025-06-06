@@ -32,9 +32,7 @@ import { addActiveStep } from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
 import { isValidURL } from "@/utils/regex";
 import { MEDIA_UPLOAD, USER_REGISTER } from "@/utils/types";
-import {
-  getRegisterValidationSchema
-} from "@/utils/validationSchema";
+import { getRegisterValidationSchema } from "@/utils/validationSchema";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 const Step1Form = () => {
@@ -83,8 +81,12 @@ const Step1Form = () => {
         countryCode: formik.values.countryCode,
       };
 
-      // Check if user is authenticated and has at least one key with value
-      const isUserValid = user?.isAuthenticated === true && Object.keys(user).length > 0 && Object.values(user).some(value => value !== null && value !== undefined);
+      const isUserValid =
+        user?.isAuthenticated === true &&
+        Object.keys(user).length > 0 &&
+        Object.values(user).some(
+          (value) => value !== null && value !== undefined
+        );
 
       if (showAvatar && body.mediaFile !== null) {
         if (!isValidURL(body.mediaFile)) {
@@ -93,22 +95,31 @@ const Step1Form = () => {
           if (!isUserValid) {
             registerUser(registerBody);
           } else {
-            const { email, ...updateBody } = registerBody;
-            updateProfile(updateBody);
+            const { email, avatar, ...updateBody } = registerBody;
+            if (avatar) {
+              updateProfile({ ...updateBody, avatar });
+            } else {
+              updateProfile(updateBody);
+            }
           }
         }
       } else {
         if (!isUserValid) {
           registerUser(registerBody);
         } else {
-          const { email, ...updateBody } = registerBody;
-          updateProfile(updateBody);
+          const { email, avatar, ...updateBody } = registerBody;
+          if (avatar) {
+            updateProfile({ ...updateBody, avatar });
+          } else {
+            updateProfile(updateBody);
+          }
         }
       }
     },
   });
 
   const updateProfile = (body: any) => {
+    // console.log("first", body);
     UserController.updateProfile(body)
       .then((res) => {
         // console.log("res", res.data.data);
@@ -146,13 +157,22 @@ const Step1Form = () => {
           };
 
           // Check if user is authenticated
-          const isUserValid = user?.isAuthenticated === true && Object.keys(user).length > 0 && Object.values(user).some(value => value !== null && value !== undefined);
+          const isUserValid =
+            user?.isAuthenticated === true &&
+            Object.keys(user).length > 0 &&
+            Object.values(user).some(
+              (value) => value !== null && value !== undefined
+            );
 
           if (!isUserValid) {
             registerUser(registerBody);
           } else {
-            const { email, ...updateBody } = registerBody;
-            updateProfile(updateBody);
+            const { email, avatar, ...updateBody } = registerBody;
+            if (avatar) {
+              updateProfile({ ...updateBody, avatar });
+            } else {
+              updateProfile(updateBody);
+            }
           }
         }
       })
@@ -204,10 +224,10 @@ const Step1Form = () => {
 
   // Add function to split full name
   const splitFullName = (fullName: string) => {
-    if (!fullName) return { firstName: '', lastName: '' };
+    if (!fullName) return { firstName: "", lastName: "" };
     const nameParts = fullName.trim().split(/\s+/);
-    const firstName = nameParts[0] || '';
-    const lastName = nameParts.slice(1).join(' ') || '';
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
     return { firstName, lastName };
   };
 
