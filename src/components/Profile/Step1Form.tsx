@@ -109,9 +109,9 @@ const Step1Form = () => {
   });
 
   const updateProfile = (body: any) => {
+  
     UserController.updateProfile(body)
       .then((res) => {
-        // console.log("res", res.data.data);
         setLoading(false);
         localStorage.setItem("accessToken", res.data.data.accessToken);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
