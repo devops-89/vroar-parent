@@ -137,4 +137,29 @@ export const data = {
     { label: GENDER_DATA.OTHER },
     // { label: GENDER_DATA.PREFER_NOT_TO_SAY },
   ],
+
+  headerLinks1: [
+    {
+      label: "Parents",
+      href: "/parents",
+    },
+    {
+      label: "Mentors",
+      href: "/mentors",
+    },
+    {
+      label: "Companies",
+      href: "/companies",
+    },
+  ],
+  headerLinks2: [
+    {
+      label: "Pricing",
+      href: "/pricing",
+    },
+    {
+      label: "Book a Call",
+      href: "/book-a-call",
+    },
+  ],
 };

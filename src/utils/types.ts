@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { MEDIA_LIBRARY_TYPE, TOAST_STATUS, USER_TYPE } from "./enum";
-import { StaticImageData } from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export interface LayoutProps {

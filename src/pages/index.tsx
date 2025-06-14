@@ -1,10 +1,10 @@
 import Head from "next/head";
 
-import Banner from "@/components/banner";
+import { removeUserDetails } from "@/redux/reducers/User";
 import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { removeUserDetails } from "@/redux/reducers/User";
+import Banner from "@/components/Home/Banner";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ export default function Home() {
         <link rel="icon" href="/favicon_mytreks.png" />
       </Head>
       <Box>
+        {/* <Banner /> */}
         <Banner />
       </Box>
     </>

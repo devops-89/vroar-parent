@@ -10,6 +10,7 @@ export const enum COLORS {
   TRANSPARENT = "transparent",
   DONE = "#D3F9E1",
   DONE_TEXT = "#2F7B40",
+  BUTTON_COLOR = "linear-gradient(#fd9065 16%, #ca2600 81%",
 }
 
 export const enum USER_TYPE {

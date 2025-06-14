@@ -11,10 +11,12 @@ import { IconButton, useMediaQuery } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
 import MobileSidebar from "./Profile/MobileSidebar";
 import Sidebar from "./Profile/Sidebar";
+import Header from "./Header";
 
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
   const [show, setShow] = useState(true);
+  const [showHeader, setShowHeader] = useState(true);
 
   useEffect(() => {
     if (
@@ -27,6 +29,10 @@ const Layout = ({ children }: LayoutProps) => {
       setShow(false);
     }
   }, [router.pathname]);
+
+  // useEffect(()=>{
+  //   if()
+  // },[router.pathname])
   const dispatch = useDispatch();
   const getUserDetails = () => {
     UserController.getUser()
@@ -65,7 +71,7 @@ const Layout = ({ children }: LayoutProps) => {
           defer
         ></script>
       </Head>
-
+      <Header />
       {phone && show ? <MobileSidebar /> : show ? <ProfileSidebar /> : ""}
       {children}
     </div>
