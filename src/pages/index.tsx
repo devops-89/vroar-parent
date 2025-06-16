@@ -5,6 +5,7 @@ import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Banner from "@/components/Home/Banner";
+import AboutSection from "@/components/Home/About";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ export default function Home() {
       <Box>
         {/* <Banner /> */}
         <Banner />
+        <AboutSection />
       </Box>
     </>
   );
