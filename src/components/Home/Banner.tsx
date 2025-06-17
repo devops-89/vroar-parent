@@ -33,9 +33,10 @@ const Banner = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        p: 10,
       }}
     >
-      <Container sx={{ mt: 30 }}>
+      <Container sx={{ mt: 20 }}>
         <Grid container>
           <Grid size={10} margin={"auto"}>
             <Typography
@@ -146,7 +147,7 @@ const Banner = () => {
                   zIndex: 999,
                 }}
               >
-                <ButtonWithIcon />
+                <ButtonWithIcon label="Get Started Today" />
               </Box>
             </Box>
           </Grid>

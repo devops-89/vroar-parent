@@ -4,7 +4,7 @@ import { ArrowForward } from "@mui/icons-material";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 
-const ButtonWithIcon = () => {
+const ButtonWithIcon = ({ label }: { label: string }) => {
   return (
     <Button
       sx={{
@@ -24,6 +24,7 @@ const ButtonWithIcon = () => {
           //   transform: "translateY(-50%) rotate(325deg)",
           // },
         },
+        textTransform: "none",
       }}
       endIcon={
         <Box
@@ -50,7 +51,7 @@ const ButtonWithIcon = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "space-around",
-              transform: "rotate(325deg)", 
+              transform: "rotate(325deg)",
               transition: "transform 0.4s ease",
             }}
           >
@@ -60,7 +61,7 @@ const ButtonWithIcon = () => {
         </Box>
       }
     >
-      Get Started Today
+      {label}
     </Button>
   );
 };

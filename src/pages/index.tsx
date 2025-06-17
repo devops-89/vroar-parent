@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Banner from "@/components/Home/Banner";
 import AboutSection from "@/components/Home/About";
+import Choose from "@/components/Home/Choose";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ export default function Home() {
         {/* <Banner /> */}
         <Banner />
         <AboutSection />
+        <Choose />
       </Box>
     </>
   );
