@@ -1,12 +1,14 @@
 import { Box } from "@mui/material";
 import React, { useRef, useState } from "react";
-import PlayArrowButton from "./PlayArrow";
+import PlayArrowButton, { PauseButton } from "./PlayArrow";
 import choose from "@/homePage/video_thumbnail2.png";
 import ButtonWithIcon from "../ButtonWithIcon";
 
 const IntroVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   const handlePlay = async () => {
     try {
@@ -20,6 +22,7 @@ const IntroVideo = () => {
         if (playPromise !== undefined) {
           await playPromise;
           setIsPlaying(true);
+          setHasStarted(true);
         }
       }
     } catch (error) {
@@ -28,8 +31,17 @@ const IntroVideo = () => {
     }
   };
 
+  const handlePause = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+      setShowOverlay(false);
+    }
+  };
+
   const handleVideoEnd = () => {
     setIsPlaying(false);
+    setShowOverlay(false);
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
     }
@@ -49,6 +61,8 @@ const IntroVideo = () => {
             objectFit: "cover",
           },
         }}
+        onMouseEnter={() => setShowOverlay(true)}
+        onMouseLeave={() => setShowOverlay(false)}
       >
         <video
           ref={videoRef}
@@ -58,7 +72,7 @@ const IntroVideo = () => {
           onPause={() => setIsPlaying(false)}
           onPlay={() => setIsPlaying(true)}
           playsInline
-          controls={isPlaying}
+          controls={false}
         >
           <source
             src="https://dev-mytreks.s3.us-east-1.amazonaws.com/Videos/9o70QC.mp4"
@@ -67,19 +81,45 @@ const IntroVideo = () => {
           Your browser does not support the video tag.
         </video>
 
-        {!isPlaying && (
+        {/* Overlay logic */}
+        {((!hasStarted && !isPlaying) || (!isPlaying && showOverlay)) && (
           <Box
             sx={{
               position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              cursor: "pointer",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background: "rgba(0,0,0,0.4)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
               zIndex: 2,
+              cursor: "pointer",
             }}
             onClick={handlePlay}
           >
             <PlayArrowButton />
+          </Box>
+        )}
+        {isPlaying && showOverlay && (
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background: "rgba(0,0,0,0.4)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 2,
+              cursor: "pointer",
+            }}
+            onClick={handlePause}
+          >
+            <PauseButton />
           </Box>
         )}
       </Box>
