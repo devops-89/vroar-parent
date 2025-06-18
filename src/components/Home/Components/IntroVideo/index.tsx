@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
 import React, { useRef, useState } from "react";
 import PlayArrowButton from "./PlayArrow";
-import choose from "@/homePage/why-choose-section.avif";
+import choose from "@/homePage/video_thumbnail2.png";
+import ButtonWithIcon from "../ButtonWithIcon";
 
 const IntroVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -35,52 +36,57 @@ const IntroVideo = () => {
   };
 
   return (
-    <Box
-      sx={{
-        borderRadius: "20px",
-        overflow: "hidden",
-        position: "relative",
-        "& video": {
-          width: "100%",
-          height: "100%",
+    <>
+      <Box
+        sx={{
           borderRadius: "20px",
-          objectFit: "cover",
-        },
-      }}
-    >
-      <video
-        ref={videoRef}
-        poster={choose.src}
-        style={{ borderRadius: 20 }}
-        onEnded={handleVideoEnd}
-        onPause={() => setIsPlaying(false)}
-        onPlay={() => setIsPlaying(true)}
-        playsInline
-        controls={isPlaying}
+          overflow: "hidden",
+          position: "relative",
+          "& video": {
+            width: "100%",
+            height: "100%",
+            borderRadius: "20px",
+            objectFit: "cover",
+          },
+        }}
       >
-        <source
-          src="https://dev-mytreks.s3.us-east-1.amazonaws.com/Videos/9o70QC.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
-
-      {!isPlaying && (
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            cursor: "pointer",
-            zIndex: 2,
-          }}
-          onClick={handlePlay}
+        <video
+          ref={videoRef}
+          poster={choose.src}
+          style={{ borderRadius: 20 }}
+          onEnded={handleVideoEnd}
+          onPause={() => setIsPlaying(false)}
+          onPlay={() => setIsPlaying(true)}
+          playsInline
+          controls={isPlaying}
         >
-          <PlayArrowButton />
-        </Box>
-      )}
-    </Box>
+          <source
+            src="https://dev-mytreks.s3.us-east-1.amazonaws.com/Videos/9o70QC.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        {!isPlaying && (
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              cursor: "pointer",
+              zIndex: 2,
+            }}
+            onClick={handlePlay}
+          >
+            <PlayArrowButton />
+          </Box>
+        )}
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "center", mt: 7 }}>
+        <ButtonWithIcon label="About Us"  />
+      </Box>
+    </>
   );
 };
 

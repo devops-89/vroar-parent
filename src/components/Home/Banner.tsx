@@ -147,7 +147,7 @@ const Banner = () => {
                   zIndex: 999,
                 }}
               >
-                <ButtonWithIcon label="Get Started Today" />
+                <ButtonWithIcon label="Get Started Today" width="250px" />
               </Box>
             </Box>
           </Grid>
