@@ -26,6 +26,7 @@ const Badge = ({
         width: width,
         textAlign: "center",
         margin: margin,
+        backgroundColor: "#FFF9EA",
       }}
     >
       {label}

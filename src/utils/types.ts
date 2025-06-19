@@ -192,3 +192,9 @@ export interface USER_INVITE_DETAILS {
   status: string;
   updatedAt: string;
 }
+
+export interface CHOOSE_CARD_PROPS {
+  img: StaticImport;
+  title: string;
+  description: string;
+}

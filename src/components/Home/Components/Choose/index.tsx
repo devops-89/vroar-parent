@@ -1,8 +1,11 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
-import Badge from "./Components/Badge";
 import { nunito } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import Badge from "../Badge";
+import ChooseCard from "./ChooseCard";
+import { data } from "@/assets/data";
+import ButtonWithIcon from "../ButtonWithIcon";
 
 const Choose = () => {
   return (
@@ -42,6 +45,21 @@ const Choose = () => {
             </Typography>
           </Grid>
         </Grid>
+        <Grid container spacing={4} mt={5}>
+          {data.chooseCard.map((val, i) => (
+            <Grid size={4} key={i}>
+              <ChooseCard
+                img={val.img}
+                title={val.title}
+                description={val.description}
+              />
+            </Grid>
+          ))}
+        </Grid>
+
+        <Box sx={{ textAlign: "center", mt: 5 }}>
+          <ButtonWithIcon label="Discover How it works" width="300px" />
+        </Box>
       </Container>
     </Box>
   );

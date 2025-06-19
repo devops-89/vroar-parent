@@ -7,6 +7,9 @@ import {
   SOCIAL_LOGIN,
 } from "@/utils/enum";
 import { Person, Settings, Star } from "@mui/icons-material";
+import choose1 from "@/homePage/choose/personal_support.png";
+import choose2 from "@/homePage/choose/gamified_approach.avif";
+import choose3 from "@/homePage/choose/personalized_journey.avif";
 export const data = {
   socialIcons: [
     {
@@ -160,6 +163,24 @@ export const data = {
     {
       label: "Book a Call",
       href: "/book-a-call",
+    },
+  ],
+
+  chooseCard: [
+    {
+      img: choose1,
+      title: "Personal Support",
+      description: "A personal circle of coaches, counselors & mentors",
+    },
+    {
+      img: choose2,
+      title: "Gamified Approach",
+      description: "A gamified roadmap that makes growth feel like play",
+    },
+    {
+      img: choose3,
+      title: "Personalized Journey",
+      description: "A story your child can own and the world can’t ignore",
     },
   ],
 };

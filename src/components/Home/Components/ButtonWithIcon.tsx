@@ -12,20 +12,20 @@ const ButtonWithIcon = ({ label, width = "180px" }: { label: string; width?: str
         background: "linear-gradient(#fd9065 16%, #ca2600 81%)",
         borderRadius: "10rem",
         border: "2px solid #ffddd5",
-        padding: ".75rem 1.5rem",
+        padding: "10px",
         fontWeight: 700,
         fontSize: "1rem",
         fontFamily: nunito.style,
         boxShadow: "inset 0 0 #0000, 0 4px 12px #fd9065",
         transition: "all 0.3s ease",
-        ":hover": {
-          boxShadow: "inset 0 0 #0000, 0 6px 16px #fd9065",
-          // "& .arrow-track": {
-          //   transform: "translateY(-50%) rotate(325deg)",
-          // },
-        },
         textTransform: "none",
         width,
+        "&:hover": {
+          boxShadow: "inset 0 0 #0000, 0 6px 16px #fd9065",
+          "& .arrow-track": {
+            transform: "rotate(0deg) scale(1.1)", // Customize animation here
+          },
+        },
       }}
       endIcon={
         <Box
@@ -47,17 +47,15 @@ const ButtonWithIcon = ({ label, width = "180px" }: { label: string; width?: str
             sx={{
               position: "absolute",
               width: "100%",
-              height: "200%",
+              height: "100%",
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
-              justifyContent: "space-around",
+              justifyContent: "center",
               transform: "rotate(325deg)",
               transition: "transform 0.4s ease",
             }}
           >
             <ArrowForward sx={{ color: COLORS.PRIMARY }} />
-            {/* <ArrowForward sx={{ color: COLORS.PRIMARY }} /> */}
           </Box>
         </Box>
       }

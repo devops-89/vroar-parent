@@ -27,8 +27,8 @@ const Header = () => {
               border: "5px solid #fff3f0",
               paddingLeft: "2rem",
               paddingRight: "2rem",
-              paddingTop: "1.5rem",
-              paddingBottom: "1.5rem",
+              paddingTop: "1rem",
+              paddingBottom: "1rem",
             }}
           >
             <Stack
@@ -47,7 +47,7 @@ const Header = () => {
                   {val.label}
                 </Typography>
               ))}
-              <Image src={logo} alt="logo" />
+              <Image src={logo} alt="logo" width={100}  />
               {data.headerLinks2.map((val, i) => (
                 <Typography
                   sx={{
