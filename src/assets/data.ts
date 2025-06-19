@@ -10,6 +10,9 @@ import { Person, Settings, Star } from "@mui/icons-material";
 import choose1 from "@/homePage/choose/personal_support.png";
 import choose2 from "@/homePage/choose/gamified_approach.avif";
 import choose3 from "@/homePage/choose/personalized_journey.avif";
+import trekship1 from "@/homePage/trekship/internship.png";
+import trekship2 from "@/homePage/trekship/weekly.png";
+import trekship3 from "@/homePage/trekship/career.png";
 export const data = {
   socialIcons: [
     {
@@ -181,6 +184,24 @@ export const data = {
       img: choose3,
       title: "Personalized Journey",
       description: "A story your child can own and the world can’t ignore",
+    },
+  ],
+
+  trekshipData: [
+    {
+      img: trekship1,
+      title1: "Guarnteed",
+      title2: "internship placement",
+    },
+    {
+      img: trekship2,
+      title1: "Weekly goals + final",
+      title2: "presentations with feedback",
+    },
+    {
+      img: trekship3,
+      title1: "Boosts resumes, confidence, and",
+      title2: "career calrity",
     },
   ],
 };

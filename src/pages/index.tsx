@@ -8,6 +8,7 @@ import Banner from "@/components/Home/Banner";
 import AboutSection from "@/components/Home/About";
 import Choose from "@/components/Home/Components/Choose";
 import Trekship from "@/components/Home/trekship";
+import Mentors from "@/components/Home/Mentors/Index";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export default function Home() {
         <AboutSection />
         <Choose />
         <Trekship />
+        <Mentors />
       </Box>
     </>
   );

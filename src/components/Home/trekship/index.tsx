@@ -4,13 +4,15 @@ import trekshipBanner from "@/homePage/trekship_banner.webp";
 import Badge from "../Components/Badge";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
+import TrekshipCard from "./TrekshipCard";
+import { data } from "@/assets/data";
 const Trekship = () => {
   return (
     <Box
       sx={{
         backgroundImage: `url(${trekshipBanner.src})`,
         width: "100%",
-        height: "130vh",
+        height: "150vh",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -18,11 +20,10 @@ const Trekship = () => {
         alignItems: "flex-start",
         justifyContent: "start",
         mt: 10,
-        // pt: 10,
       }}
     >
       <Container sx={{ mt: 10 }}>
-        <Grid container>
+        <Grid container spacing={4}>
           <Grid size={10} margin="auto">
             <Badge label="MYTREKSHIP" width={100} margin="auto" />
             <Typography
@@ -55,6 +56,15 @@ const Trekship = () => {
               </Typography>
             </Box>
           </Grid>
+          {data.trekshipData.map((val, i) => (
+            <Grid size={4}>
+              <TrekshipCard
+                img={val.img}
+                title1={val.title1}
+                title2={val.title2}
+              />
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </Box>

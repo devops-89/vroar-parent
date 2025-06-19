@@ -12,7 +12,7 @@ const ButtonWithIcon = ({ label, width = "180px" }: { label: string; width?: str
         background: "linear-gradient(#fd9065 16%, #ca2600 81%)",
         borderRadius: "10rem",
         border: "2px solid #ffddd5",
-        padding: "10px",
+        padding: "8px",
         fontWeight: 700,
         fontSize: "1rem",
         fontFamily: nunito.style,

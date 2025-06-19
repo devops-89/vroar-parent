@@ -198,3 +198,14 @@ export interface CHOOSE_CARD_PROPS {
   title: string;
   description: string;
 }
+
+export interface TREKSHIP_CARD_PROPS {
+  img: StaticImport;
+  title1: string;
+  title2: string;
+}
+
+
+// export inteface MENTORS_PROPS_DATA{
+//   img:staticImport
+// }
