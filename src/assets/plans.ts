@@ -24,7 +24,7 @@ export const plans_data: STATIC_SUBSCRIPTION_PLANS[] = [
     ],
     img: explorer,
     
-    id: "prod_SRQ1qyZAgqV2F7", //prod-plans
+    id: "prod_SX3c93mj2z7sjO", //prod-plans
   },
   {
     benefits: [
@@ -56,6 +56,6 @@ export const plans_data: STATIC_SUBSCRIPTION_PLANS[] = [
     img: confidence,
 
 
-    id: "prod_SR9Oiph7ACyPOT", //prod-plans
+    id: "prod_SX3aUMKSiOhoof", //prod-plans
   },
 ];

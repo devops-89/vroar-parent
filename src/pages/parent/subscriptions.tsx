@@ -146,25 +146,25 @@ const Subscriptions = () => {
   const newData = [
     {
       heading: "Full Name",
-      value: user?.kids.length
+      value: user?.kids?.length
         ? `${user.kids[0].firstName} ${user.kids[0].lastName}`
         : `${inviteeData[0]?.firstName} ${inviteeData[0]?.lastName}`,
     },
     {
       heading: "Grade",
-      value: user.kids.length
+      value: user.kids?.length
         ? user?.kids[0].grade
         : `${inviteeData[0]?.grade} `,
     },
     {
       heading: "Email Address",
-      value: user.kids?.length
+      value: user?.kids?.length
         ? user?.kids[0].email
         : `${inviteeData[0]?.email} `,
     },
     {
       heading: "Phone Number",
-      value: user.kids.length
+      value: user?.kids?.length
         ? `${user.kids[0]?.countryCode} ${user.kids[0]?.phoneNo} `
         : `+${inviteeData[0]?.countryCode} ${inviteeData[0]?.phoneNo} `,
     },
