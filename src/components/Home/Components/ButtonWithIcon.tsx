@@ -4,7 +4,13 @@ import { ArrowForward } from "@mui/icons-material";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 
-const ButtonWithIcon = ({ label, width = "180px" }: { label: string; width?: string }) => {
+const ButtonWithIcon = ({
+  label,
+  width = "180px",
+}: {
+  label: string;
+  width?: string | number;
+}) => {
   return (
     <Button
       sx={{

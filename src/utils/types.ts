@@ -205,7 +205,8 @@ export interface TREKSHIP_CARD_PROPS {
   title2: string;
 }
 
-
-// export inteface MENTORS_PROPS_DATA{
-//   img:staticImport
-// }
+export interface MENTORS_PROPS_DATA {
+  img: StaticImport;
+  description: string;
+  id: string;
+}

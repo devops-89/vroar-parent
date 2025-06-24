@@ -9,6 +9,7 @@ import AboutSection from "@/components/Home/About";
 import Choose from "@/components/Home/Components/Choose";
 import Trekship from "@/components/Home/trekship";
 import Mentors from "@/components/Home/Mentors/Index";
+import Coaching from "@/components/Home/Components/Coaching/Index";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ export default function Home() {
         <Choose />
         <Trekship />
         <Mentors />
+        <Coaching />
       </Box>
     </>
   );

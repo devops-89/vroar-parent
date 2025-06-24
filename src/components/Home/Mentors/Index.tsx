@@ -1,9 +1,10 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import Badge from "../Components/Badge";
 import { nunito } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Home_hero_points from "../Components/Home_hero_points";
+import MentorContainer from "./MentorContainer";
 
 const Mentors = () => {
   const whyMentorsData = [
@@ -17,6 +18,8 @@ const Mentors = () => {
       label: "A gamified mentorship journey with real progress tracking",
     },
   ];
+
+  const [index, setIndex] = useState(0);
 
   return (
     <Box sx={{ mt: 10 }}>
@@ -59,6 +62,10 @@ const Mentors = () => {
             </Box>
           </Grid>
         </Grid>
+
+        <Box sx={{ mt: 6 }}>
+          <MentorContainer index={index} />
+        </Box>
       </Container>
     </Box>
   );

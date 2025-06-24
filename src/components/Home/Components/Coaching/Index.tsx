@@ -1,0 +1,82 @@
+import { Box, Grid, Stack, Typography } from "@mui/material";
+import React from "react";
+import coachingBanner from "@/homePage/coaching/coaching.webp";
+import Image from "next/image";
+import grass from "@/homePage/coaching/grass.png";
+import cactus from "@/homePage/coaching/green_cactus.png";
+import Badge from "../Badge";
+import { nunito } from "@/utils/fonts";
+import { COLORS } from "@/utils/enum";
+import CoachingCard from "./CoachingCard";
+const Coaching = () => {
+  return (
+    <Box
+      sx={{
+        backgroundImage: `url(${coachingBanner.src})`,
+        width: "100%",
+        height: "200vh",
+        position: "relative",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        mt: 10,
+      }}
+    >
+      <Box sx={{ position: "absolute", bottom: -100, left: 30 }}>
+        <Image src={grass} alt="" width={400} />
+      </Box>
+      <Box sx={{ position: "absolute", right: 0, bottom: -25 }}>
+        <Image src={cactus} alt="" width={400} />
+      </Box>
+      <Box
+        sx={{
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box>
+          <Badge label="coaching" margin="auto" width={100} />
+          <Typography
+            sx={{
+              fontSize: 64,
+              fontFamily: nunito.style,
+              mt: 3,
+              fontWeight: 800,
+              letterSpacing: 2,
+              textAlign: "center",
+            }}
+          >
+            Strength Coaching
+          </Typography>
+          <Typography
+            sx={{
+              width: 600,
+              margin: "auto",
+              textAlign: "center",
+              fontSize: 20,
+              fontFamily: nunito.style,
+              color: COLORS.TEXT_COLOR,
+              mt: 2,
+              lineHeight: 1.4,
+            }}
+          >
+            We don’t just reveal your child’s strengths, we show them how to use
+            them with purpose.
+          </Typography>
+
+          <Box>
+            <Grid container>
+              <Grid size={12}>
+                <CoachingCard />
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export default Coaching;
