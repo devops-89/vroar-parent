@@ -1,10 +1,13 @@
-import { MENTORS_PROPS_DATA } from "@/utils/types";
+import { COACHING_CARD_PROPS, MENTORS_PROPS_DATA } from "@/utils/types";
 import mentor1 from "@/homePage/mentors/homaSir.svg";
 import mentor2 from "@/homePage/mentors/amit.svg";
 import mentor3 from "@/homePage/mentors/ramsha.svg";
 import mentor4 from "@/homePage/mentors/warisha.svg";
 import mentor5 from "@/homePage/mentors/gallup.svg";
 import mentor6 from "@/homePage/mentors/mam4.svg";
+import coaching1 from "@/homePage/coaching/coaching1.png";
+import coaching2 from "@/homePage/coaching/coaching2.png";
+import coaching3 from "@/homePage/coaching/coaching3.png";
 
 export const MENTORS_DATA: MENTORS_PROPS_DATA[] = [
   {
@@ -42,5 +45,24 @@ export const MENTORS_DATA: MENTORS_PROPS_DATA[] = [
     description:
       "Dedicated PharmD candidate at Texas Tech University Health Sciences Center aspiring to make a meaningful impact in the field of pharmacy. Committed to delivering patient-centered care and eager to contribute to healthcare advancements through a passion for pharmacy.",
     id: "mentor6",
+  },
+];
+
+export const COACHING_DATA: COACHING_CARD_PROPS[] = [
+  {
+    img: coaching1,
+    heading: "Discover Your Strengths",
+    description:
+      "Clifton Strengths assessment with personalized interpretation",
+  },
+  {
+    img: coaching2,
+    heading: "Personalized Coaching",
+    description: "1:1 coaching sessions with certified strengths experts",
+  },
+  {
+    img: coaching3,
+    heading: "Strategic Growth Plan",
+    description: "Actionable strategies to fuel academic and life choices",
   },
 ];

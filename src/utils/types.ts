@@ -1,6 +1,9 @@
 import { ReactNode } from "react";
 import { MEDIA_LIBRARY_TYPE, TOAST_STATUS, USER_TYPE } from "./enum";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import {
+  StaticImageData,
+  StaticImport,
+} from "next/dist/shared/lib/get-img-props";
 
 export interface LayoutProps {
   children: ReactNode;
@@ -209,4 +212,10 @@ export interface MENTORS_PROPS_DATA {
   img: StaticImport;
   description: string;
   id: string;
+}
+
+export interface COACHING_CARD_PROPS {
+  img: StaticImageData;
+  heading: string;
+  description: string;
 }

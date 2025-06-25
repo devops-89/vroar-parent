@@ -8,6 +8,7 @@ import Badge from "../Badge";
 import { nunito } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import CoachingCard from "./CoachingCard";
+import { COACHING_DATA } from "@/assets/mentors";
 const Coaching = () => {
   return (
     <Box
@@ -36,7 +37,7 @@ const Coaching = () => {
           justifyContent: "center",
         }}
       >
-        <Box>
+        <Box sx={{mt:8}}>
           <Badge label="coaching" margin="auto" width={100} />
           <Typography
             sx={{
@@ -65,14 +66,21 @@ const Coaching = () => {
             We don’t just reveal your child’s strengths, we show them how to use
             them with purpose.
           </Typography>
-
-          <Box>
-            <Grid container>
-              <Grid size={12}>
-                <CoachingCard />
+          <Grid container sx={{ mt: 4}}>
+            <Grid size={6} margin={"auto"}>
+              <Grid container spacing={2}>
+                {COACHING_DATA.map((val, i) => (
+                  <Grid size={12} key={i}>
+                    <CoachingCard
+                      img={val.img}
+                      description={val.description}
+                      heading={val.heading}
+                    />
+                  </Grid>
+                ))}
               </Grid>
             </Grid>
-          </Box>
+          </Grid>
         </Box>
       </Box>
     </Box>
