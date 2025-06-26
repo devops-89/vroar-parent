@@ -21,7 +21,7 @@ const AboutSection = () => {
             <Stack direction={"row"} alignItems={"center"} spacing={2}>
               <Typography
                 sx={{
-                  fontFamily: nunito.style,
+                  fontFamily: "gomenasans,arial,sans-serif",
                   fontSize: 64,
                   fontWeight: 700,
                   lineHeight: 1,
@@ -32,7 +32,7 @@ const AboutSection = () => {
               <Image src={aboutus} alt="aboutus" width={80} height={80} />
               <Typography
                 sx={{
-                  fontFamily: nunito.style,
+                  fontFamily: "gomenasans,arial,sans-serif",
                   fontSize: 64,
                   fontWeight: 700,
                   lineHeight: 1,
@@ -43,7 +43,7 @@ const AboutSection = () => {
             </Stack>
             <Typography
               sx={{
-                fontFamily: nunito.style,
+                fontFamily: "gomenasans,arial,sans-serif",
                 fontSize: 64,
                 fontWeight: 700,
                 lineHeight: 1,

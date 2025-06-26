@@ -37,15 +37,15 @@ const Coaching = () => {
           justifyContent: "center",
         }}
       >
-        <Box sx={{mt:8}}>
+        <Box sx={{ mt: 8 }}>
           <Badge label="coaching" margin="auto" width={100} />
           <Typography
             sx={{
               fontSize: 64,
-              fontFamily: nunito.style,
+              fontFamily: "gomenasans,arial,sans-serif",
               mt: 3,
-              fontWeight: 800,
-              letterSpacing: 2,
+              fontWeight: 700,
+              // letterSpacing: 2,
               textAlign: "center",
             }}
           >
@@ -66,7 +66,7 @@ const Coaching = () => {
             We don’t just reveal your child’s strengths, we show them how to use
             them with purpose.
           </Typography>
-          <Grid container sx={{ mt: 4}}>
+          <Grid container sx={{ mt: 4 }}>
             <Grid size={6} margin={"auto"}>
               <Grid container spacing={2}>
                 {COACHING_DATA.map((val, i) => (

@@ -21,7 +21,7 @@ const Choose = () => {
                 textAlign: "center",
                 lineHeight: 1.2,
                 mt: 3,
-                fontFamily: nunito.style,
+                fontFamily: "gomenasans,arial,sans-serif",
                 mb: 4,
               }}
             >

@@ -30,8 +30,8 @@ const Mentors = () => {
             <Typography
               sx={{
                 fontSize: 64,
-                fontWeight: 800,
-                fontFamily: nunito.style,
+                fontWeight: 700,
+                fontFamily: "gomenasans,arial,sans-serif",
                 textAlign: "center",
               }}
             >

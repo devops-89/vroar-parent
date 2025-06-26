@@ -42,7 +42,7 @@ const Banner = () => {
             <Typography
               sx={{
                 fontSize: 68,
-                fontFamily: nunito.style,
+                fontFamily: "gomenasans,Arial,sans-serif",
                 fontWeight: 700,
                 color: COLORS.BLACK,
                 textAlign: "center",
@@ -56,7 +56,7 @@ const Banner = () => {
                 backgroundClip: "text",
                 color: COLORS.TRANSPARENT,
                 fontSize: 68,
-                fontFamily: nunito.style,
+                fontFamily: "gomenasans,Arial,sans-serif",
                 fontWeight: 700,
                 textAlign: "center",
               }}
