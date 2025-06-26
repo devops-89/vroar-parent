@@ -1,28 +1,16 @@
 import { AuthenticationController } from "@/assets/api/AuthenticationController";
-import {
-  getUserDetails,
-  googleCallbackUrl,
-  loadGoogleOAuthScript,
-  loadGoogleScript,
-} from "@/assets/apiCalling/user";
 import { data } from "@/assets/data";
 import bannerImage from "@/banner/banner-image.png";
 import parentBanner from "@/banner/parent-web.png";
-import { auth } from "@/lib/firebase";
 import {
-  addActiveStep,
-  removeActiveStep,
-  setActiveStep,
+  removeActiveStep
 } from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
-import { setUserDetails } from "@/redux/reducers/User";
 import { COLORS, SOCIAL_LOGIN, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
 import {
-  GoogleCredentialResponse,
-  GoogleNotification,
-  JwtPayload,
+  JwtPayload
 } from "@/utils/types";
 import { signUpValidationSchema } from "@/utils/validationSchema";
 import {
@@ -39,12 +27,10 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useFormik } from "formik";
-import { jwtDecode } from "jwt-decode";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 

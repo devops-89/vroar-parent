@@ -121,4 +121,12 @@ export const AuthenticationController = {
       throw error;
     }
   },
+  forgotPassword: async (data: { email: string }) => {
+    try {
+      let result = await publicApi.post("/forgotPassword", data);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

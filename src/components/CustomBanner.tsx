@@ -9,7 +9,6 @@ const CustomBanner = ({ children }: LayoutProps) => {
     <Box
       sx={{
         backgroundImage: `url(${bannerImage.src})`,
-        // width: "100%",
         height: { lg: "100vh", xs: "120vh" },
         display: "flex",
         alignItems: "center",
@@ -20,14 +19,14 @@ const CustomBanner = ({ children }: LayoutProps) => {
       }}
     >
       <Card sx={{ p: 2 }}>
-        <Grid container alignItems={"center"}>
+        <Grid container alignItems={"center"} spacing={3}>
           <Grid size={{ lg: 6, xs: 12 }}>
             <Image
               src={parent}
               alt=""
-              className="img-fluid"
+              // className="img-fluid"
               style={{ borderRadius: 8 }}
-              width={500}
+              width={450}
             />
           </Grid>
           <Grid size={{ lg: 6, xs: 12 }}>{children}</Grid>

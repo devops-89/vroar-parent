@@ -11,7 +11,7 @@ import { removeActiveStep } from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
 import { setUserDetails } from "@/redux/reducers/User";
 import { COLORS, SOCIAL_LOGIN, TOAST_STATUS } from "@/utils/enum";
-import { nunito } from "@/utils/fonts";
+import { nunito, roboto } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
 import { GoogleCredentialResponse, LOGIN_SCHEMA } from "@/utils/types";
 import { loginValidationSchema } from "@/utils/validationSchema";
@@ -84,6 +84,10 @@ const Login = () => {
 
   const showPasswordHandler = () => {
     setShowPassword(!showPassword);
+  };
+
+  const forgotPassword = () => {
+    router.push("/forgot-password");
   };
 
   const [socialLoading, setSocialLoading] = useState(false);
@@ -196,6 +200,20 @@ const Login = () => {
                   },
                 }}
               />
+              <Box sx={{ textAlign: "end" }}>
+                <Typography
+                  sx={{
+                    fontSize: 14,
+                    color: COLORS.PRIMARY,
+                    fontFamily: nunito.style,
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                  }}
+                  onClick={forgotPassword}
+                >
+                  Forgot Password
+                </Typography>
+              </Box>
               <Button
                 sx={{
                   backgroundColor: COLORS.PRIMARY,
