@@ -219,3 +219,14 @@ export interface COACHING_CARD_PROPS {
   heading: string;
   description: string;
 }
+
+export interface COUNSELING_CARD_DETAILS {
+  heading1: string;
+  heading2: string;
+  description: string;
+  img: StaticImageData;
+}
+
+export interface COUNSELING_SLIDER {
+  data: COUNSELING_CARD_DETAILS[];
+}

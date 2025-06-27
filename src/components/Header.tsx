@@ -19,7 +19,7 @@ const Header = () => {
       }}
     >
       <Grid container>
-        <Grid size={7} margin={"auto"}>
+        <Grid size={8} margin={"auto"}>
           <Box
             sx={{
               backgroundColor: COLORS.WHITE,
