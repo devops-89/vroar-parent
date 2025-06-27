@@ -44,7 +44,6 @@ const ForgotPasswordVerify = () => {
       };
       AuthenticationController.verifyForgotPassword(body)
         .then((res) => {
-          // console.log("res", res);
           dispatch(
             showToast({
               open: true,
@@ -56,7 +55,6 @@ const ForgotPasswordVerify = () => {
           router.push("/login");
         })
         .catch((err) => {
-          // console.log("err", err);
           let errMessage =
             (err.response && err.response.data.message) || err.message;
           dispatch(
