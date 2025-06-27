@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -29,6 +30,7 @@ const ForgotPassword = () => {
     },
   });
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const dispatch = useDispatch();
   const forgotPassword = (data: { email: string }) => {
     setLoading(true);
@@ -44,6 +46,7 @@ const ForgotPassword = () => {
           })
         );
         setLoading(false);
+        router.push("/forgot-password-verify");
       })
       .catch((err) => {
         let errMessage =

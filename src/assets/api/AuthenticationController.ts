@@ -129,4 +129,16 @@ export const AuthenticationController = {
       throw error;
     }
   },
+  verifyForgotPassword: async (data: {
+    referenceId: string | null;
+    password: string;
+    otp: string;
+  }) => {
+    try {
+      let result = await publicApi.post("/forgotPassword/verify", data);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
