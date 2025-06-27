@@ -27,6 +27,7 @@ const CustomBanner = ({ children }: LayoutProps) => {
               // className="img-fluid"
               style={{ borderRadius: 8 }}
               width={450}
+              height={500}
             />
           </Grid>
           <Grid size={{ lg: 6, xs: 12 }}>{children}</Grid>
