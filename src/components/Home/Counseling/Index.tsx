@@ -41,7 +41,7 @@ const Counseling = () => {
               counselors and students in high-impact sessions.
             </Typography>
 
-            <Box>
+            <Box sx={{ mt: 5 }}>
               <CounselingCard data={COUNSELING_CARD_DATA} />
             </Box>
           </Grid>

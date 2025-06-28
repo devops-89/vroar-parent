@@ -11,6 +11,7 @@ import Trekship from "@/components/Home/trekship";
 import Mentors from "@/components/Home/Mentors/Index";
 import Coaching from "@/components/Home/Components/Coaching/Index";
 import Counseling from "@/components/Home/Counseling/Index";
+import TestimonialSection from "@/components/Home/TestimonialBanner/Index";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ export default function Home() {
         <Mentors />
         <Coaching />
         <Counseling />
+        <TestimonialSection />
       </Box>
     </>
   );

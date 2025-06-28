@@ -15,4 +15,10 @@ export const COUNSELING_CARD_DATA = [
     heading2: "What Fits",
     description: "Uncover interests and strengths that guide career direction",
   },
+  {
+    img: counseling3,
+    heading1: "Clear",
+    heading2: "Next Steps",
+    description: "Leave each session with expert-backed, actionable plans",
+  },
 ];
