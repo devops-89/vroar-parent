@@ -48,7 +48,7 @@ const Banner = () => {
                 textAlign: "center",
               }}
             >
-              Unlock Your
+              Turn College Prep
             </Typography>
             <Typography
               sx={{
@@ -61,7 +61,7 @@ const Banner = () => {
                 textAlign: "center",
               }}
             >
-              Child's Superpowers
+              Chaos into Clarity
             </Typography>
             <Typography
               sx={{
@@ -71,9 +71,10 @@ const Banner = () => {
                 fontSize: 20,
               }}
             >
-              Blending neuroscience, psychology & AI delivered through gamified
-              coaching that builds unshakable confidence for the AI-powered
-              world ahead. Your child gets a dedicated circle of support.
+              By blending cutting-edge AI with expert mentorship, we help
+              students unlock their potential and craft a personalized roadmap
+              to success; so every student can step into college with clarity,
+              confidence, and the courage to aim higher.
             </Typography>
             <Stack
               direction={"row"}

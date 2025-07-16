@@ -51,18 +51,17 @@ export const MENTORS_DATA: MENTORS_PROPS_DATA[] = [
 export const COACHING_DATA: COACHING_CARD_PROPS[] = [
   {
     img: coaching1,
-    heading: "Discover Your Strengths",
-    description:
-      "Clifton Strengths assessment with personalized interpretation",
+    heading: "Strengths Discovery",
+    description: "Science-backed assessment + expert insight",
   },
   {
     img: coaching2,
-    heading: "Personalized Coaching",
-    description: "1:1 coaching sessions with certified strengths experts",
+    heading: "1:1 Coaching",
+    description: "Confidence-building sessions with certified coaches",
   },
   {
     img: coaching3,
-    heading: "Strategic Growth Plan",
-    description: "Actionable strategies to fuel academic and life choices",
+    heading: "Personal Growth Plan",
+    description: "A roadmap that links strengths to academics and careers",
   },
 ];

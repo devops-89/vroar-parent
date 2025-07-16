@@ -24,7 +24,7 @@ const Trekship = () => {
     >
       <Container sx={{ mt: 10 }}>
         <Grid container spacing={4}>
-          <Grid size={10} margin="auto">
+          <Grid size={9} margin="auto">
             <Badge label="MYTREKSHIP" width={100} margin="auto" />
             <Typography
               sx={{

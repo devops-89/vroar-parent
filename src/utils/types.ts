@@ -230,3 +230,10 @@ export interface COUNSELING_CARD_DETAILS {
 export interface COUNSELING_SLIDER {
   data: COUNSELING_CARD_DETAILS[];
 }
+
+export interface TESTIMONIAL_PROPS {
+  testimonial: string;
+  img: StaticImageData;
+  name: string;
+  progress?: number; // Progress bar value (0-100)
+}

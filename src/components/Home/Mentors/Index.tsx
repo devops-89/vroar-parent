@@ -9,13 +9,13 @@ import MentorContainer from "./MentorContainer";
 const Mentors = () => {
   const whyMentorsData = [
     {
-      label: "Scheduled 1:1 mentorship sessions",
+      label: "1:1 Sessions That Stick",
     },
     {
-      label: "Matched to your child’s strengths, goals, and interests",
+      label: "Strengths-Based Matching",
     },
     {
-      label: "A gamified mentorship journey with real progress tracking",
+      label: "Progress Made Fun",
     },
   ];
 
@@ -45,9 +45,8 @@ const Mentors = () => {
                 fontFamily: nunito.style,
               }}
             >
-              We don’t just assign mentors, we curate a personal circle of top
-              college achievers and professionals who guide your child, one step
-              at a time.
+              Not just a mentor but your child gets a curated circle of
+              achievers and experts who guide them with purpose.
             </Typography>
             <Box sx={{ textAlign: "center", mt: 4 }}>
               {whyMentorsData.map((val, i) => (

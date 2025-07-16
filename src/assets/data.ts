@@ -172,36 +172,37 @@ export const data = {
   chooseCard: [
     {
       img: choose1,
-      title: "Personal Support",
-      description: "A personal circle of coaches, counselors & mentors",
+      title: "Real Human Support",
+      description:
+        "Coaches and counselors focused on your child’s growth, not just grades.",
     },
     {
       img: choose2,
-      title: "Gamified Approach",
-      description: "A gamified roadmap that makes growth feel like play",
+      title: "Gamified Skill Building",
+      description: "Quests that turn learning into progress and play.",
     },
     {
       img: choose3,
-      title: "Personalized Journey",
-      description: "A story your child can own and the world can’t ignore",
+      title: "Personalized Roadmap",
+      description: "A strengths-based journey that evolves with your child.",
     },
   ],
 
   trekshipData: [
     {
       img: trekship1,
-      title1: "Guarnteed",
-      title2: "internship placement",
+      title1: "Guaranteed",
+      title2: "Internship Placement",
     },
     {
       img: trekship2,
-      title1: "Weekly goals + final",
-      title2: "presentations with feedback",
+      title1: "Weekly Milestones + Final ",
+      title2: "Showcase",
     },
     {
       img: trekship3,
-      title1: "Boosts resumes, confidence, and",
-      title2: "career calrity",
+      title1: "Career Clarity + Resume-Ready ",
+      title2: "Experience",
     },
   ],
 };

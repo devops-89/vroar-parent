@@ -12,6 +12,7 @@ const ChooseCard = ({ img, title, description }: CHOOSE_CARD_PROPS) => {
         backgroundColor: "#fff2f2",
         padding: "24px",
         borderRadius: "16px",
+        height: 250,
       }}
     >
       <Image src={img} alt="" width={90} />

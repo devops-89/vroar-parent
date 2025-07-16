@@ -49,7 +49,18 @@ const Coaching = () => {
               textAlign: "center",
             }}
           >
-            Strength Coaching
+            Strength Coaching That Builds
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: 64,
+              fontFamily: "gomenasans,arial,sans-serif",
+              fontWeight: 700,
+              // letterSpacing: 2,
+              textAlign: "center",
+            }}
+          >
+            Self-Awareness
           </Typography>
           <Typography
             sx={{
@@ -63,8 +74,10 @@ const Coaching = () => {
               lineHeight: 1.4,
             }}
           >
-            We don’t just reveal your child’s strengths, we show them how to use
-            them with purpose.
+            Knowing your strengths is powerful. Learning how to apply them to
+            life’s biggest decisions? That’s transformative. Our certified
+            coaches help your child turn raw potential into purposeful
+            direction.
           </Typography>
           <Grid container sx={{ mt: 4 }}>
             <Grid size={6} margin={"auto"}>

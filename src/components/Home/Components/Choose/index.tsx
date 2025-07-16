@@ -25,7 +25,7 @@ const Choose = () => {
                 mb: 4,
               }}
             >
-              Confidence isn’t taught it’s discovered and unlocked
+              Confidence isn’t taught. It’s uncovered, nurtured, and empowered.
             </Typography>
             <Typography
               sx={{
@@ -39,9 +39,9 @@ const Choose = () => {
                 lineHeight: 1.2,
               }}
             >
-              We blend proven psychology, the Clifton Strengths framework, and
-              responsible AI to help your child uncover what makes them unique
-              and build a future around it.
+              We’re helping your child discover who they are before deciding
+              what they want to do by combining neuroscience, the
+              CliftonStrengths® framework, and smart AI.
             </Typography>
           </Grid>
         </Grid>

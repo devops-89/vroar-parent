@@ -24,7 +24,7 @@ const Counseling = () => {
                 textAlign: "center",
               }}
             >
-              Career Counseling Workshops That Create True Clarity
+              Career Counseling That Turns Confusion Into Clarity
             </Typography>
             <Typography
               sx={{
@@ -37,8 +37,9 @@ const Counseling = () => {
                 mt: 3,
               }}
             >
-              Our career counseling workshops bring together experienced
-              counselors and students in high-impact sessions.
+              Our workshops go beyond generic advice. Students work 1:1 with
+              experienced counselors who help them align their strengths with
+              academic choices, career paths, and college goals; step by step.
             </Typography>
 
             <Box sx={{ mt: 5 }}>
