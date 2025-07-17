@@ -20,9 +20,11 @@ const TestimonialCard = ({ testimonial, img, name, progress = 0 }: TESTIMONIAL_P
         borderRadius: "20px",
         boxShadow:
           "0 8px 17px #0000000a, 0 31px 31px #00000008, 0 70px 42px #00000005, 0 125px 50px #00000003",
-        width: 600,
-        // height: 500,
+        width: "100%",
+        height: "100%",
         position: "relative",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <LinearProgress

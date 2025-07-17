@@ -2,6 +2,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  width: 0;
 }
 
 .img-fluid {
@@ -35,5 +39,5 @@
 }
 .swiper-3d .swiper-slide-shadow {
   background: transparent !important;
-  width:320
+  width: 320;
 }
