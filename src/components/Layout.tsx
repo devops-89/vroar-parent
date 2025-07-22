@@ -12,6 +12,7 @@ import { MoreVert } from "@mui/icons-material";
 import MobileSidebar from "./Profile/MobileSidebar";
 import Sidebar from "./Profile/Sidebar";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
@@ -74,6 +75,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Header />
       {phone && show ? <MobileSidebar /> : show ? <ProfileSidebar /> : ""}
       {children}
+      <Footer />
     </div>
   );
 };
