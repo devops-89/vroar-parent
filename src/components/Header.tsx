@@ -6,6 +6,7 @@ import React from "react";
 import Image from "next/image";
 import logo from "@/logo/Logo.png";
 import SimpleButton from "./Home/Components/SimpleButton";
+import Link from "next/link";
 const Header = () => {
   return (
     <Box
@@ -37,27 +38,31 @@ const Header = () => {
               justifyContent={"space-between"}
             >
               {data.headerLinks1.map((val, i) => (
-                <Typography
-                  sx={{
-                    color: COLORS.TEXT_COLOR,
-                    fontFamily: nunito.style,
-                    fontSize: 16,
-                  }}
-                >
-                  {val.label}
-                </Typography>
+                <Link href={val.href} className="link">
+                  <Typography
+                    sx={{
+                      color: COLORS.TEXT_COLOR,
+                      fontFamily: nunito.style,
+                      fontSize: 16,
+                    }}
+                  >
+                    {val.label}
+                  </Typography>
+                </Link>
               ))}
-              <Image src={logo} alt="logo" width={100}  />
+              <Image src={logo} alt="logo" width={100} />
               {data.headerLinks2.map((val, i) => (
-                <Typography
-                  sx={{
-                    color: COLORS.TEXT_COLOR,
-                    fontFamily: nunito.style,
-                    fontSize: 16,
-                  }}
-                >
-                  {val.label}
-                </Typography>
+                <Link href={val.href} className="link">
+                  <Typography
+                    sx={{
+                      color: COLORS.TEXT_COLOR,
+                      fontFamily: nunito.style,
+                      fontSize: 16,
+                    }}
+                  >
+                    {val.label}
+                  </Typography>
+                </Link>
               ))}
               <SimpleButton label="Sign In" />
             </Stack>

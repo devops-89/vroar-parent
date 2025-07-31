@@ -12,6 +12,7 @@ export const enum COLORS {
   DONE_TEXT = "#2F7B40",
   BUTTON_COLOR = "linear-gradient(#fd9065 16%, #ca2600 81%",
   CHOOSE_COLOR = "#fff2f2",
+  TEXT_GRADIENT = "linear-gradient(#fd9065,#ca2600 61%)",
 }
 
 export const enum USER_TYPE {

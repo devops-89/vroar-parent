@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { Provider, useDispatch } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import "swiper/css";
-
+import Aos from "aos";
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const script = document.createElement("script");
@@ -18,6 +18,10 @@ export default function App({ Component, pageProps }: AppProps) {
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
+  }, []);
+
+  useEffect(() => {
+    Aos.init();
   }, []);
   return (
     <Provider store={store}>

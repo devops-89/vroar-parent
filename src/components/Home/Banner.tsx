@@ -52,7 +52,7 @@ const Banner = () => {
             </Typography>
             <Typography
               sx={{
-                backgroundImage: COLORS.LINEAR_GRADIENT,
+                backgroundImage: COLORS.TEXT_GRADIENT,
                 backgroundClip: "text",
                 color: COLORS.TRANSPARENT,
                 fontSize: 68,

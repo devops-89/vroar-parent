@@ -46,6 +46,15 @@ const Footer = () => {
   const links2 = [
     {
       label: "Support",
+      url: "/support",
+    },
+    {
+      label: "Privacy Policy",
+      url: "/privacy-policy",
+    },
+    {
+      label: "Terms and Conditions",
+      url: "/terms-and-conditions",
     },
   ];
   return (
@@ -55,6 +64,7 @@ const Footer = () => {
         height: "80vh",
         backgroundSize: "cover",
         backgroundPosition: "50%",
+        position: "relative",
       }}
     >
       <Container>
@@ -96,13 +106,40 @@ const Footer = () => {
             </Box>
           </Grid>
         </Grid>
-        <Box sx={{ marginTop: "auto" }}>
+        <Box sx={{ position: "absolute", bottom: 10,width:"85%" }}>
           <Stack
             direction={"row"}
             alignItems={"center"}
             justifyContent={"space-between"}
           >
-            <Stack direction={"row"} alignItems={"center"} spacing={3}></Stack>
+            <Stack direction={"row"} alignItems={"center"} spacing={3}>
+              {links2.map((val, i) => (
+                <Link href={val.url} className="link" key={i}>
+                  <Typography
+                    sx={{
+                      color: "#262626",
+                      fontSize: 20,
+                      fontFamily: nunito.style,
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    {val.label}
+                  </Typography>
+                </Link>
+              ))}
+            </Stack>
+            <Typography
+              sx={{ fontFamily: nunito.style, fontSize: 16, fontWeight: 400 }}
+            >
+              {" "}
+              <Typography
+                component={"span"}
+                sx={{ fontWeight: 700, fontFamily: nunito.style, fontSize: 16 }}
+              >
+                Everybody Wins LLC.
+              </Typography>{" "}
+              All Rights Reserved
+            </Typography>
           </Stack>
         </Box>
       </Container>
