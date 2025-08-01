@@ -1,12 +1,32 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
-import React from "react";
+import img1 from "@/banner/parents/workshop/img1.avif";
+import img2 from "@/banner/parents/workshop/img2.avif";
 import banner from "@/banner/parents/workshopBanner.avif";
+import HeadingField from "@/components/common/Heading-Field";
+import ParaField from "@/components/common/Para-Field";
 import Badge from "@/components/Home/Components/Badge";
 import { COLORS } from "@/utils/enum";
-import { nunito } from "@/utils/fonts";
-import ParaField from "@/components/common/Para-Field";
-import HeadingField from "@/components/common/Heading-Field";
+import { Box, Container, Grid } from "@mui/material";
+import WorkshopCard from "./Workshop-card";
 const Workshop = () => {
+  const workshopData = [
+    {
+      img: img1,
+      workshopLabel: "Workshop 1",
+      heading: "High School Success Plan",
+      description:
+        "Create a personalized high school roadmap with the right classes, programs, and internships aligned to GPA, goals, and strengths",
+      labelColor: COLORS.DARK_YELLOW,
+    },
+    {
+      img: img2,
+      workshopLabel: "Workshop 2",
+      heading: "College & Career Prep",
+      description:
+        "Create a personalized high school roadmap with the right classes, programs, and internships aligned to GPA, goals, and strengths",
+      labelColor: COLORS.LIGHT_YELLOW,
+    },
+  ];
+
   return (
     <Box
       sx={{
@@ -32,7 +52,19 @@ const Workshop = () => {
               sx={{ mt: 2 }}
             />
           </Grid>
-          
+        </Grid>
+        <Grid container spacing={3} sx={{ mt: 3 }}>
+          {workshopData.map((val, i) => (
+            <Grid size={6}>
+              <WorkshopCard
+                img={val.img}
+                workshopLabel={val.workshopLabel}
+                heading={val.heading}
+                description={val.description}
+                labelColor={val.labelColor}
+              />
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </Box>

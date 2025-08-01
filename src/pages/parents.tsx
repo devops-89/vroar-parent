@@ -6,6 +6,7 @@ import { nunito } from "@/utils/fonts";
 import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
 import Parentsprogram from "@/components/Parents/parents-Program";
 import Workshop from "@/components/Parents/workshop/Index";
+import ParentCurriculum from "@/components/Parents/curriculum/Index";
 const Parents = () => {
   return (
     <Box>
@@ -76,6 +77,9 @@ const Parents = () => {
       </Box>
       <Box sx={{ pt: 10 }}>
         <Workshop />
+      </Box>
+      <Box sx={{ pt: 10 }}>
+        <ParentCurriculum />
       </Box>
     </Box>
   );
