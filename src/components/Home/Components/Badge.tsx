@@ -9,7 +9,7 @@ const Badge = ({
   margin,
 }: {
   label: string;
-  width: number | string;
+  width?: number | string;
   margin?: string;
 }) => {
   return (
@@ -19,7 +19,7 @@ const Badge = ({
         color: COLORS.PRIMARY,
         fontFamily: nunito.style.fontFamily,
         borderRadius: "1.5rem",
-        padding: "0.25rem .75rem",
+        padding: "4px 12px 2px",
         fontSize: ".75rem",
         fontWeight: 700,
         textTransform: "uppercase",

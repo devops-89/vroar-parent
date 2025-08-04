@@ -8,6 +8,7 @@ import CurriculumCard from "./Curriculum-card";
 import selfAwareness from "@/banner/parents/curriculum/self-awareness.avif";
 import alignedGoals from "@/banner/parents/curriculum/aligned-goals.avif";
 import selfReflection from "@/banner/parents/curriculum/self-reflection.avif";
+import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
 const ParentCurriculum = () => {
   const curriculumData = [
     {
@@ -45,7 +46,7 @@ const ParentCurriculum = () => {
             />
           </Grid>
         </Grid>
-        <Grid container>
+        <Grid container spacing={4} sx={{ mt: 4 }}>
           {curriculumData.map((val, i) => (
             <Grid size={4} key={i}>
               <CurriculumCard
@@ -56,6 +57,9 @@ const ParentCurriculum = () => {
             </Grid>
           ))}
         </Grid>
+        <Box sx={{ textAlign: "center", mt: 3 }}>
+          <ButtonWithIcon label="Book a Demo" />
+        </Box>
       </Container>
     </Box>
   );

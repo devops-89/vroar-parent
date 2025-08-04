@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button, SxProps, Theme } from "@mui/material";
 import { ArrowForward } from "@mui/icons-material";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
@@ -7,9 +7,11 @@ import { nunito } from "@/utils/fonts";
 const ButtonWithIcon = ({
   label,
   width = "180px",
+  sx,
 }: {
   label: string;
   width?: string | number;
+  sx?: SxProps<Theme>;
 }) => {
   return (
     <Button
@@ -21,7 +23,7 @@ const ButtonWithIcon = ({
         padding: "8px",
         fontWeight: 700,
         fontSize: "1rem",
-        fontFamily: nunito.style,
+        fontFamily: nunito.style.fontFamily,
         boxShadow: "inset 0 0 #0000, 0 4px 12px #fd9065",
         transition: "all 0.3s ease",
         textTransform: "none",
@@ -29,9 +31,10 @@ const ButtonWithIcon = ({
         "&:hover": {
           boxShadow: "inset 0 0 #0000, 0 6px 16px #fd9065",
           "& .arrow-track": {
-            transform: "rotate(0deg) scale(1.1)", // Customize animation here
+            transform: "rotate(0deg) scale(1.1)", 
           },
         },
+        ...sx,
       }}
       endIcon={
         <Box

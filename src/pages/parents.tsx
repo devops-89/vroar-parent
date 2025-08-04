@@ -7,6 +7,8 @@ import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
 import Parentsprogram from "@/components/Parents/parents-Program";
 import Workshop from "@/components/Parents/workshop/Index";
 import ParentCurriculum from "@/components/Parents/curriculum/Index";
+import OurMentorsParents from "@/components/Parents/Mentors";
+import OurParentApp from "@/components/Parents/OurApp";
 const Parents = () => {
   return (
     <Box>
@@ -80,6 +82,12 @@ const Parents = () => {
       </Box>
       <Box sx={{ pt: 10 }}>
         <ParentCurriculum />
+      </Box>
+      <Box sx={{ pt: 10 }}>
+        <OurMentorsParents />
+      </Box>
+      <Box sx={{ pt: 10 }}>
+        <OurParentApp />
       </Box>
     </Box>
   );

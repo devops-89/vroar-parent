@@ -22,6 +22,7 @@ const CurriculumCard = ({ img, heading, description }: CurriculumCardProps) => {
         position: "relative",
         boxShadow:
           "0 7px 15px #0000000a, 0 28px 28px #00000008, 0 63px 63px #00000005, 0 111px 111px #00000003",
+        // height: 420,
       }}
     >
       <Box sx={{ top: -20, position: "absolute", left: "50%", right: "50%" }}>
@@ -40,7 +41,7 @@ const CurriculumCard = ({ img, heading, description }: CurriculumCardProps) => {
         }}
       >
         <HeadingField label={heading} fontSize={24} sx={{ lineHeight: 1.1 }} />
-        <ParaField label={description} fontSize={16} sx={{ mt: 1 }} />
+        <ParaField label={description} fontSize={20} sx={{ mt: 1 }} />
       </Box>
     </Box>
   );
