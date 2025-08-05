@@ -9,6 +9,9 @@ import Workshop from "@/components/Parents/workshop/Index";
 import ParentCurriculum from "@/components/Parents/curriculum/Index";
 import OurMentorsParents from "@/components/Parents/Mentors";
 import OurParentApp from "@/components/Parents/OurApp";
+import phone_mock_banner from "@/banner/parents/why_mytreks/why_choose_section.jpg";
+import HeadingField from "@/components/common/Heading-Field";
+import ParaField from "@/components/common/Para-Field";
 const Parents = () => {
   return (
     <Box>
@@ -89,6 +92,32 @@ const Parents = () => {
       <Box sx={{ pt: 10 }}>
         <OurParentApp />
       </Box>
+      <Container maxWidth="lg">
+        <Box
+          sx={{
+            backgroundImage: `url(${phone_mock_banner.src})`,
+            border: `1px solid ${COLORS.WHITE}`,
+            backgroundPosition: "50%",
+            backgroundSize: "cover",
+            borderRadius: "57px",
+            height: "430px",
+            paddingLeft: "80px",
+            marginTop: "-70px",
+            position: "relative",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          <Grid>
+            <HeadingField
+              label="Turn Potential into Purpose Together."
+              color="#28084B"
+              textAlign="left"
+            />
+            <ParaField label="Enroll with MyTreks.ai Today" fontSize={20} />
+          </Grid>
+        </Box>
+      </Container>
     </Box>
   );
 };

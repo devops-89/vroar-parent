@@ -14,6 +14,7 @@ import Counseling from "@/components/Home/Counseling/Index";
 import TestimonialSection from "@/components/Home/TestimonialBanner/Index";
 import Contact from "@/components/Home/Contact";
 import FaqSection from "@/components/Home/Faqs";
+import { testimonial_data } from "@/assets/testimonial";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ export default function Home() {
         <Mentors />
         <Coaching />
         <Counseling />
-        <TestimonialSection />
+        <TestimonialSection testimonialData={testimonial_data} />
         <Contact />
         <FaqSection />
       </Box>

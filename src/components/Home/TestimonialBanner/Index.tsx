@@ -25,15 +25,18 @@ import "swiper/css/autoplay";
 import { Autoplay, EffectCards } from "swiper/modules";
 import { testimonial_data } from "@/assets/testimonial";
 import { COLORS } from "@/utils/enum";
+import { TESTIMONIAL_PROPS } from "@/utils/types";
 const AUTOPLAY_DELAY = 2000;
 
-const TestimonialSection = () => {
+interface testimonialDataProps {
+  testimonialData: TESTIMONIAL_PROPS[];
+}
+
+const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const swiperRef = useRef<SwiperClass | null>(null);
-  const totalSlides = testimonial_data.length;
 
-  // Reset progress to 0 if it reaches 100%
   useEffect(() => {
     if (progress >= 100) {
       setProgress(0);
@@ -117,7 +120,7 @@ const TestimonialSection = () => {
                   }}
                   loop
                 >
-                  {testimonial_data.map((val, i) => (
+                  {testimonialData.map((val, i) => (
                     <SwiperSlide key={i}>
                       <TestimonialCard
                         img={val.img}
@@ -137,7 +140,7 @@ const TestimonialSection = () => {
                     gap: 1,
                   }}
                 >
-                  {testimonial_data.map((_, i) => (
+                  {testimonialData.map((_, i) => (
                     <Box
                       key={i}
                       onClick={() => {

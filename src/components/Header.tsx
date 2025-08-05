@@ -50,7 +50,9 @@ const Header = () => {
                   </Typography>
                 </Link>
               ))}
-              <Image src={logo} alt="logo" width={100} />
+              <Link href={"/"}>
+                <Image src={logo} alt="logo" width={100} />
+              </Link>
               {data.headerLinks2.map((val, i) => (
                 <Link href={val.href} className="link">
                   <Typography
