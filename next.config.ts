@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       "vroar-bucket.s3.us-west-1.amazonaws.com",
       "prod-mytreks.s3.amazonaws.com",
     ],
+    unoptimized: true,
   },
 };
 

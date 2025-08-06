@@ -12,6 +12,11 @@ import OurParentApp from "@/components/Parents/OurApp";
 import phone_mock_banner from "@/banner/parents/why_mytreks/why_choose_section.jpg";
 import HeadingField from "@/components/common/Heading-Field";
 import ParaField from "@/components/common/Para-Field";
+import Image from "next/image";
+import phone_mock from "@/banner/parents/phone-mock.avif";
+import TestimonialSection from "@/components/Home/TestimonialBanner/Index";
+import { testimonial_data } from "@/assets/testimonial";
+import ParentTestimonial from "@/components/Parents/Testimonial/Parent-Testimonial";
 const Parents = () => {
   return (
     <Box>
@@ -92,7 +97,7 @@ const Parents = () => {
       <Box sx={{ pt: 10 }}>
         <OurParentApp />
       </Box>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Box
           sx={{
             backgroundImage: `url(${phone_mock_banner.src})`,
@@ -106,18 +111,44 @@ const Parents = () => {
             position: "relative",
             marginLeft: "auto",
             marginRight: "auto",
+            zIndex:99
           }}
         >
-          <Grid>
-            <HeadingField
-              label="Turn Potential into Purpose Together."
-              color="#28084B"
-              textAlign="left"
-            />
-            <ParaField label="Enroll with MyTreks.ai Today" fontSize={20} />
+          <Grid container>
+            <Grid size={6}>
+              <HeadingField
+                label="Turn Potential into Purpose Together."
+                color="#28084B"
+                textAlign="left"
+                fontSize={60}
+              />
+              <ParaField
+                label="Enroll with MyTreks.ai Today"
+                fontSize={20}
+                color="#28084B"
+                sx={{ mt: 2 }}
+              />
+              <ButtonWithIcon label="Enroll Now" sx={{ mt: 2 }} />
+            </Grid>
+            <Grid size={6}>
+              <Image
+                src={phone_mock}
+                alt=""
+                style={{
+                  position: "absolute",
+                  inset: "auto -3% 0% auto",
+                  top: -75,
+                  // height: "100%",
+                  width: 570,
+                  height: 500,
+                  maxWidth: "100%",
+                }}
+              />
+            </Grid>
           </Grid>
         </Box>
       </Container>
+      <ParentTestimonial />
     </Box>
   );
 };

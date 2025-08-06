@@ -43,7 +43,7 @@ const WhyMyTreks = () => {
         color={COLORS.WHITE}
         textAlign="center"
       />
-      <Container maxWidth="lg" sx={{ mt: 2 }}>
+      <Container sx={{ mt: 2 }}>
         <Grid container>
           <Grid size={9} margin={"auto"}>
             <Grid container spacing={4}>

@@ -36,10 +36,7 @@ const OurParentApp = () => {
   ];
   return (
     <Box sx={{ backgroundColor: "#fff3f0" }}>
-      <Container
-        maxWidth="lg"
-        sx={{ paddingTop: "80px"}}
-      >
+      <Container sx={{ paddingTop: "80px" }} >
         <Grid container>
           <Grid size={10} margin="auto">
             <Badge label="Our App" width={100} margin="auto" />

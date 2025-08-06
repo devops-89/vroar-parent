@@ -7,7 +7,10 @@ import Image from "next/image";
 import logo from "@/logo/Logo.png";
 import SimpleButton from "./Home/Components/SimpleButton";
 import Link from "next/link";
+import currentLink from "@/icons/current-link.avif";
+import { useRouter } from "next/router";
 const Header = () => {
+  const router = useRouter();
   return (
     <Box
       sx={{
@@ -38,8 +41,13 @@ const Header = () => {
               justifyContent={"space-between"}
             >
               {data.headerLinks1.map((val, i) => (
-                <Link href={val.href} className="link">
+                <Link
+                  href={val.href}
+                  className="link"
+                  key={i}
+                >
                   <Typography
+                    className={router.pathname === val.href ? "active_link" : ""}
                     sx={{
                       color: COLORS.TEXT_COLOR,
                       fontFamily: nunito.style,
