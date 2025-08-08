@@ -15,8 +15,9 @@ import ParaField from "@/components/common/Para-Field";
 import Image from "next/image";
 import phone_mock from "@/banner/parents/phone-mock.avif";
 import TestimonialSection from "@/components/Home/TestimonialBanner/Index";
-import { testimonial_data } from "@/assets/testimonial";
+import { parentTestimonial, testimonial_data } from "@/assets/testimonial";
 import ParentTestimonial from "@/components/Parents/Testimonial/Parent-Testimonial";
+import ParentFaqSection from "@/components/Parents/faq-section/Index";
 const Parents = () => {
   return (
     <Box>
@@ -111,7 +112,7 @@ const Parents = () => {
             position: "relative",
             marginLeft: "auto",
             marginRight: "auto",
-            zIndex:99
+            zIndex: 99,
           }}
         >
           <Grid container>
@@ -148,7 +149,12 @@ const Parents = () => {
           </Grid>
         </Box>
       </Container>
-      <ParentTestimonial />
+      <Box sx={{ mt: 8 }}>
+        <ParentTestimonial testimonialData={parentTestimonial} />
+      </Box>
+      <Box sx={{ mt: 10 }}>
+        <ParentFaqSection />
+      </Box>
     </Box>
   );
 };

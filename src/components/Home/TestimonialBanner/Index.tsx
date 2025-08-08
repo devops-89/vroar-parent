@@ -373,7 +373,7 @@ const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
                   ))}
                 </Swiper>
 
-                <Box
+                {/* <Box
                   sx={{
                     mt: 3,
                     display: "flex",
@@ -382,7 +382,7 @@ const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
                     gap: 1.5,
                   }}
                 >
-                  {testimonialData.map((_, i) => (
+                  {testimonialData.slice(0, 4).map((_, i) => (
                     <Box
                       key={i}
                       onClick={() => {
@@ -407,7 +407,7 @@ const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
                       }}
                     />
                   ))}
-                </Box>
+                </Box> */}
               </Box>
 
               <IconButton
