@@ -202,3 +202,9 @@ export const changePasswordValidationSchema = Yup.object().shape({
       "Password must contain at least one uppercase letter, one lowercase letter, and one number"
     ),
 });
+
+export const forgotPasswordEmailValidation = Yup.object().shape({
+  email: Yup.string()
+    .required("Please Enter Valid Email")
+    .email("Please Enter Valid Email"),
+});

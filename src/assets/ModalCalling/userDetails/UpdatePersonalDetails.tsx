@@ -40,6 +40,20 @@ const UpdatePersonalDetails = () => {
     label: user?.gender || "",
   });
 
+  const [relationWithChildren, setRelationWithChildren] = useState<{
+    label: string;
+  }>({
+    label: user?.relationWithChildren || "",
+  });
+
+  const relationShipWithChildrenHandler = (
+    e: SyntheticEvent<Element, Event>,
+    newValue: { label: string } | null
+  ) => {
+    setRelationWithChildren(newValue || { label: "" });
+    formik.setFieldValue("relationWithKid", newValue?.label || "");
+  };
+
   const [birthDate, setBirthDate] = useState(
     user?.birthDate ? moment.unix(user?.birthDate) : null
   );
@@ -50,6 +64,7 @@ const UpdatePersonalDetails = () => {
       lastName: user?.lastName || "",
       birthDate: user?.birthDate || "",
       gender: user?.gender || "",
+      relationWithKid: user?.relationWithKid || "",
     },
     onSubmit: (values) => {
       //   console.log("values", values);
@@ -185,6 +200,27 @@ const UpdatePersonalDetails = () => {
                 getOptionLabel={(option) => option.label}
                 value={gender}
                 onChange={genderChangeHandler}
+              />
+            </Grid>
+            <Grid size={12}>
+              <Autocomplete
+                renderInput={(params) => (
+                  <TextField
+                    sx={{
+                      ...loginTextField,
+                      "& label": {
+                        top: 0,
+                      },
+                    }}
+                    {...params}
+                    fullWidth
+                    label="Relation with Children"
+                  />
+                )}
+                options={data.relationshipData}
+                getOptionLabel={(option) => option.label}
+                value={relationWithChildren}
+                onChange={relationShipWithChildrenHandler}
               />
             </Grid>
             <Grid size={12}>

@@ -105,7 +105,7 @@ const ProfileSidebar = ({ drawerOpen, setDrawerOpen }: DRAWERPROPS) => {
           <Image src={logo} alt="" />
         </Box>
       )}
-      <Box sx={{ textAlign: "center", mt: drawerOpen ? 4 : 6 }}>
+      <Box sx={{ textAlign: "center", mt: drawerOpen ? 4 : 4 }}>
         {drawerOpen ? (
           <Stack
             direction={"row"}
@@ -151,7 +151,7 @@ const ProfileSidebar = ({ drawerOpen, setDrawerOpen }: DRAWERPROPS) => {
           {user?.email}
         </Typography>
       </Box>
-      <Box sx={{ mt: 5, p: 4, textAlign: "center" }}>
+      <Box sx={{ mt: 3, p: 4, textAlign: "center" }}>
         <List>
           {sidebarData.map((val, i) => (
             <ListItemButton
@@ -208,7 +208,6 @@ const ProfileSidebar = ({ drawerOpen, setDrawerOpen }: DRAWERPROPS) => {
           textAlign: "start",
         }}
       >
-        {/* <Divider sx={{ borderColor: "#FB953340", borderWidth: "1.5px" }} /> */}
         <Button
           startIcon={<Logout fontSize="large" />}
           sx={{

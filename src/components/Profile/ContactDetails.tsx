@@ -21,18 +21,7 @@ const ContactDetails = () => {
         >
           Contact Details
         </Typography>
-        {/* <Button
-          startIcon={<FaRegEdit />}
-          sx={{
-            fontSize: 16,
-            color: "#262626",
-            fontFamily: nunito.style,
-            textTransform: "initial",
-            fontWeight: 600,
-          }}
-        >
-          Edit
-        </Button> */}
+      
       </Stack>
       <Grid container sx={{ mt: 2 }}>
         <Grid size={6}>
