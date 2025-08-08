@@ -56,7 +56,6 @@ const Login = () => {
   const submitHandler = (body: LOGIN_SCHEMA) => {
     AuthenticationController.login(body)
       .then((res) => {
-        // console.log("res", res);
         dispatch(
           showToast({
             message: res.data.message,
