@@ -1,3 +1,4 @@
+import { COLORS } from "@/utils/enum";
 import { SxProps, Theme, Typography } from "@mui/material";
 import React from "react";
 interface HeadingFieldProps {
@@ -8,25 +9,24 @@ interface HeadingFieldProps {
   sx?: SxProps<Theme>;
   className?: string;
 }
-const HeadingField = ({
+const GradientText = ({
   fontSize,
   color,
   textAlign,
   label,
-  sx = {},
+  sx,
   className,
 }: HeadingFieldProps) => {
   return (
     <Typography
       sx={{
-        fontSize: fontSize || 68,
+        backgroundImage: COLORS.TEXT_GRADIENT,
+        backgroundClip: "text",
+        color: COLORS.TRANSPARENT,
+        fontSize: 68,
         fontFamily: "gomenasans,Arial,sans-serif",
         fontWeight: 700,
-        textAlign: textAlign || "center",
-        mt: 2,
-        color: color,
-        letterSpacing: "-.04rem",
-        ...sx,
+        textAlign: "center",
       }}
       className={className}
     >
@@ -35,4 +35,4 @@ const HeadingField = ({
   );
 };
 
-export default HeadingField;
+export default GradientText;

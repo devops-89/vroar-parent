@@ -1,17 +1,27 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import leaderShipBanner from "@/icons/parents-program/leader-ship-banner.avif";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import leadershipIcon from "@/icons/parents-program/leadership-coaching.avif";
 import { nunito } from "@/utils/fonts";
-const LeaderShipCard = () => {
+interface LeadershipCard {
+  backgroundImage: string;
+  icon: StaticImageData;
+  heading: string;
+  description: string;
+}
+const LeaderShipCard = ({
+  backgroundImage,
+  icon,
+  heading,
+  description,
+}: LeadershipCard) => {
   return (
     <Box>
       <Box
         sx={{
-          backgroundImage: `url(${leaderShipBanner.src})`,
+          backgroundImage: `url(${backgroundImage})`,
           height: "90vh",
-          // width: "100%",
           display: "flex",
           alignItems: "center",
           backgroundSize: "cover",
@@ -23,7 +33,7 @@ const LeaderShipCard = () => {
         }}
       >
         <Box sx={{ textAlign: "center" }}>
-          <Image src={leadershipIcon} alt="" width={300} />
+          <Image src={icon} alt="" width={300} />
           <Typography
             sx={{
               mt: 1,
@@ -35,7 +45,8 @@ const LeaderShipCard = () => {
               mb: 2,
             }}
           >
-            Leadership Coaching
+            {/* Leadership Coaching */}
+            {heading}
           </Typography>
           <Typography
             sx={{
@@ -49,7 +60,8 @@ const LeaderShipCard = () => {
               margin: "auto",
             }}
           >
-            1:1 coaching from leadership coaches
+            {/* 1:1 coaching from leadership coaches */}
+            {description}
           </Typography>
         </Box>
       </Box>

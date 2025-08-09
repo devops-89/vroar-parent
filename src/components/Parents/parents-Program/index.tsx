@@ -11,6 +11,10 @@ import flexibleScheduling from "@/icons/parents-program/flexible-scheduling.avif
 import CliftonStrength from "./Clifton-strength";
 import progressBanner from "@/icons/parents-program/progress-updates.avif";
 import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
+import leadershipBanner from "@/icons/parents-program/leader-ship-banner.avif";
+import leadershipicon from "@/icons/parents-program/leadership-coaching.avif";
+import confidenceIcon from "@/icons/parents-program/confidence_curriculum.avif";
+import confidenceBanner from "@/icons/parents-program/confidence_banner.avif";
 const Parentsprogram = () => {
   const careerData = [
     {
@@ -72,12 +76,22 @@ const Parentsprogram = () => {
             </Typography>
             <Grid container sx={{ mt: 10 }} spacing={7}>
               <Grid size={4}>
-                <LeaderShipCard />
+                <LeaderShipCard
+                  icon={leadershipicon}
+                  backgroundImage={leadershipBanner.src}
+                  heading="Leadership Coaching"
+                  description="1:1 coaching from leadership coaches"
+                />
               </Grid>
               <Grid size={8}>
                 <Grid container spacing={4}>
                   <Grid size={12}>
-                    <ConfidenceCurriculum />
+                    <ConfidenceCurriculum
+                      img={confidenceIcon}
+                      backgroundImage={confidenceBanner.src}
+                      heading="Confidence Curriculum"
+                      description="A tailored curriculum that builds clarity, confidence, and critical thinking"
+                    />
                   </Grid>
                   {careerData.map((item, index) => (
                     <Grid size={6} key={index}>

@@ -8,7 +8,7 @@ const SimpleButton = ({ label }: { label: string }) => {
     <Button
       sx={{
         borderRadius: "10rem",
-        background: COLORS.LINEAR_GRADIENT,
+        background: COLORS.BUTTON_COLOR,
         color: COLORS.WHITE,
         fontFamily: nunito.style,
         boxShadow: "inset 0 0 #0000,0 4px 12px #fd9065",

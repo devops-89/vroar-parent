@@ -1,23 +1,22 @@
-import React from "react";
+import { parentTestimonial } from "@/assets/testimonial";
 import banner from "@/banner/parents/parents-hero.avif";
-import { Box, Container, Grid, Typography } from "@mui/material";
-import { COLORS } from "@/utils/enum";
-import { nunito } from "@/utils/fonts";
-import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
-import Parentsprogram from "@/components/Parents/parents-Program";
-import Workshop from "@/components/Parents/workshop/Index";
-import ParentCurriculum from "@/components/Parents/curriculum/Index";
-import OurMentorsParents from "@/components/Parents/Mentors";
-import OurParentApp from "@/components/Parents/OurApp";
+import phone_mock from "@/banner/parents/phone-mock.avif";
 import phone_mock_banner from "@/banner/parents/why_mytreks/why_choose_section.jpg";
 import HeadingField from "@/components/common/Heading-Field";
 import ParaField from "@/components/common/Para-Field";
-import Image from "next/image";
-import phone_mock from "@/banner/parents/phone-mock.avif";
-import TestimonialSection from "@/components/Home/TestimonialBanner/Index";
-import { parentTestimonial, testimonial_data } from "@/assets/testimonial";
-import ParentTestimonial from "@/components/Parents/Testimonial/Parent-Testimonial";
+import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
+import ParentCurriculum from "@/components/Parents/curriculum/Index";
 import ParentFaqSection from "@/components/Parents/faq-section/Index";
+import OurMentorsParents from "@/components/Parents/Mentors";
+import OurParentApp from "@/components/Parents/OurApp";
+import Parentsprogram from "@/components/Parents/parents-Program";
+import ParentTestimonial from "@/components/Parents/Testimonial/Parent-Testimonial";
+import Workshop from "@/components/Parents/workshop/Index";
+import { COLORS } from "@/utils/enum";
+import { nunito } from "@/utils/fonts";
+import { Box, Container, Grid, Typography } from "@mui/material";
+import Image from "next/image";
+
 const Parents = () => {
   return (
     <Box>

@@ -26,10 +26,17 @@ const AboutSection = () => {
                   fontWeight: 700,
                   lineHeight: 1,
                 }}
+                data-aos="fade-right"
               >
                 Shaping
               </Typography>
-              <Image src={aboutus} alt="aboutus" width={80} height={80} />
+              <Image
+                src={aboutus}
+                alt="aboutus"
+                width={80}
+                height={80}
+                data-aos="fade-right"
+              />
               <Typography
                 sx={{
                   fontFamily: "gomenasans,arial,sans-serif",
@@ -37,6 +44,7 @@ const AboutSection = () => {
                   fontWeight: 700,
                   lineHeight: 1,
                 }}
+                data-aos="fade-right"
               >
                 the
               </Typography>
@@ -49,6 +57,7 @@ const AboutSection = () => {
                 lineHeight: 1,
                 mt: 2,
               }}
+              data-aos="fade-right"
             >
               Future of Immersion
             </Typography>
@@ -61,6 +70,7 @@ const AboutSection = () => {
                 fontWeight: 400,
                 lineHeight: "33.6px",
               }}
+              data-aos="fade-right"
             >
               We fuse innovation with immersive storytelling, crafting inspiring
               gaming experiences.

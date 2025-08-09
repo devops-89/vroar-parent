@@ -20,6 +20,9 @@ import img4 from "@/homePage/choose-icon4.avif";
 import Image from "next/image";
 import frame from "@/homePage/Choose-frame.avif";
 import ButtonWithIcon from "./Components/ButtonWithIcon";
+import HeadingField from "../common/Heading-Field";
+import GradientText from "../common/Greadient-text";
+import ParaField from "../common/Para-Field";
 const Banner = () => {
   return (
     <Box
@@ -39,43 +42,23 @@ const Banner = () => {
       <Container sx={{ mt: 20 }}>
         <Grid container>
           <Grid size={10} margin={"auto"}>
-            <Typography
-              sx={{
-                fontSize: 68,
-                fontFamily: "gomenasans,Arial,sans-serif",
-                fontWeight: 700,
-                color: COLORS.BLACK,
-                textAlign: "center",
-              }}
-            >
-              Turn College Prep
-            </Typography>
-            <Typography
-              sx={{
-                backgroundImage: COLORS.TEXT_GRADIENT,
-                backgroundClip: "text",
-                color: COLORS.TRANSPARENT,
-                fontSize: 68,
-                fontFamily: "gomenasans,Arial,sans-serif",
-                fontWeight: 700,
-                textAlign: "center",
-              }}
-            >
-              Chaos into Clarity
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: nunito.style,
-                color: COLORS.BLACK,
-                textAlign: "center",
-                fontSize: 20,
-              }}
-            >
-              By blending cutting-edge AI with expert mentorship, we help
+            <HeadingField
+              label="Turn College Prep"
+              className=""
+              data-aos="fade-in"
+            />
+
+            <GradientText label="Chaos into Clarity" data-aos="fade-in" />
+
+            <ParaField
+              label="By blending cutting-edge AI with expert mentorship, we help
               students unlock their potential and craft a personalized roadmap
               to success; so every student can step into college with clarity,
-              confidence, and the courage to aim higher.
-            </Typography>
+              confidence, and the courage to aim higher."
+              fontSize={20}
+              textAlign="center"
+              data-aos="fade-in"  
+            />
             <Stack
               direction={"row"}
               alignItems={"center"}
@@ -116,8 +99,8 @@ const Banner = () => {
                   justifyContent={"space-between"}
                   sx={{ position: "absolute", top: 20, width: "100%", px: 4 }}
                 >
-                  <CurvedBadge icon={img1} />
-                  <CurvedBadge icon={img2} />
+                  <CurvedBadge icon={img1} char="MYTREKSHIP" />
+                  <CurvedBadge icon={img2} char="CAREER COUNSEL" />
                 </Stack>
                 <Box
                   sx={{
@@ -135,8 +118,8 @@ const Banner = () => {
                   justifyContent={"space-around"}
                   sx={{ position: "absolute", bottom: 20, width: "100%" }}
                 >
-                  <CurvedBadge icon={img3} />
-                  <CurvedBadge icon={img4} />
+                  <CurvedBadge icon={img3} char="Mentorship guide" />
+                  <CurvedBadge icon={img4} char="Career voyage" />
                 </Stack>
               </Box>
               <Box

@@ -21,7 +21,10 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   useEffect(() => {
-    Aos.init();
+    Aos.init({
+      // delay: 500,
+      mirror: false,
+    });
   }, []);
   return (
     <Provider store={store}>

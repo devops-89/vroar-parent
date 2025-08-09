@@ -10,7 +10,7 @@ export const enum COLORS {
   TRANSPARENT = "transparent",
   DONE = "#D3F9E1",
   DONE_TEXT = "#2F7B40",
-  BUTTON_COLOR = "linear-gradient(#fd9065 16%, #ca2600 81%",
+  BUTTON_COLOR = "linear-gradient(#fd9065 16%, #ca2600 81%)",
   CHOOSE_COLOR = "#fff2f2",
   TEXT_GRADIENT = "linear-gradient(#fd9065,#ca2600 61%)",
   DARK_YELLOW = "#ffc935",

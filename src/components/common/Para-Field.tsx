@@ -8,6 +8,7 @@ interface ParaFieldProps {
   label: string;
   textAlign?: "left" | "center" | "right";
   sx?: SxProps<Theme>;
+  className?: string;
 }
 const ParaField = ({
   fontSize,
@@ -15,6 +16,7 @@ const ParaField = ({
   label,
   textAlign,
   sx = {},
+  className,
 }: ParaFieldProps) => {
   return (
     <Typography
@@ -25,6 +27,7 @@ const ParaField = ({
         textAlign,
         ...sx, // Merge custom sx
       }}
+      className={className}
     >
       {label}
     </Typography>

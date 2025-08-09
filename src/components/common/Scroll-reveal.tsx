@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useMemo, ReactNode, RefObject } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./ScrollReveal.css";
+import HeadingField from "./Heading-Field";
+import { Typography } from "@mui/material";
+import { nunito } from "@/utils/fonts";
+// import "./ScrollReveal.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +26,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   scrollContainerRef,
   enableBlur = true,
   baseOpacity = 0.1,
-  baseRotation = 3,
+  baseRotation = 0,
   blurStrength = 4,
   containerClassName = "",
   textClassName = "",
@@ -121,9 +124,17 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   ]);
 
   return (
-    <h2 ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
-      <p className={`scroll-reveal-text ${textClassName}`}>{splitText}</p>
-    </h2>
+    <Typography
+      ref={containerRef}
+      className={`scroll-reveal ${containerClassName} ${textClassName}`}
+      sx={{
+        fontSize: 44,
+        fontFamily: nunito.style,
+        fontWeight: 700,
+      }}
+    >
+      {splitText}
+    </Typography>
   );
 };
 
