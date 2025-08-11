@@ -20,7 +20,7 @@ const ButtonWithIcon = ({
         background: "linear-gradient(#fd9065 16%, #ca2600 81%)",
         borderRadius: "10rem",
         border: "2px solid #ffddd5",
-        padding: "8px",
+        padding: "8px 16px",
         fontWeight: 700,
         fontSize: "1rem",
         fontFamily: nunito.style.fontFamily,
@@ -28,15 +28,60 @@ const ButtonWithIcon = ({
         transition: "all 0.3s ease",
         textTransform: "none",
         width,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
         "&:hover": {
           boxShadow: "inset 0 0 #0000, 0 6px 16px #fd9065",
-          "& .arrow-track": {
-            transform: "rotate(0deg) scale(1.1)", 
-          },
+        },
+        "&:hover .text-track": {
+          transform: "translateY(-50%)",
+        },
+        "&:hover .icon-track": {
+          transform: "translateY(-25%)",
+        },
+        "&:hover .arrow-rotate": {
+          transform: "rotate(0deg) scale(1.1)",
+        },
+        ".icon-track":{
+          transform:"translateY(25%)"
         },
         ...sx,
       }}
-      endIcon={
+    >
+      <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1.25 }}>
+        {/* Text swap viewport */}
+        <Box
+          className="text-viewport"
+          sx={{
+            position: "relative",
+            overflow: "hidden",
+            height: "2.5rem",
+            minWidth: "11ch",
+          }}
+        >
+          <Box
+            className="text-track"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              transition: "transform 0.4s ease",
+            }}
+          >
+            {[0, 1].map((idx) => (
+              <Box
+                key={idx}
+                sx={{ height: "2.5rem", display: "flex", alignItems: "center" }}
+              >
+                <Box component="span" sx={{ lineHeight: "2.5rem" }}>
+                  {label}
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        {/* Static white circle with inner icon swap */}
         <Box
           sx={{
             backgroundColor: COLORS.WHITE,
@@ -47,29 +92,48 @@ const ButtonWithIcon = ({
             alignItems: "center",
             justifyContent: "center",
             boxShadow: 3,
-            position: "relative",
             overflow: "hidden",
           }}
         >
           <Box
-            className="arrow-track"
+            className="icon-track"
             sx={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              transform: "rotate(325deg)",
+              flexDirection: "column",
               transition: "transform 0.4s ease",
+              willChange: "transform",
             }}
           >
-            <ArrowForward sx={{ color: COLORS.PRIMARY }} />
+            {[0, 1].map((idx) => (
+              <Box
+                key={idx}
+                sx={{
+                  width: "100%",
+                  height: "2.5rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Box
+                  className="arrow-rotate"
+                  sx={{
+                    width: 22,
+                    height: 22,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    transform: "rotate(325deg)",
+                    transition: "transform 0.2s ease",
+                  }}
+                >
+                  <ArrowForward sx={{ color: COLORS.PRIMARY, fontSize: 20 }} />
+                </Box>
+              </Box>
+            ))}
           </Box>
         </Box>
-      }
-    >
-      {label}
+      </Box>
     </Button>
   );
 };

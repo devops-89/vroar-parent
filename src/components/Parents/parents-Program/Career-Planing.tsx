@@ -26,7 +26,7 @@ const CareerPlaning = ({ img, heading, description, height }: bannerProps) => {
           fontSize: 32,
           fontFamily: nunito.style,
           fontWeight: 700,
-          textAlign: "center",
+          textAlign: "left",
           lineHeight: 1.2,
         }}
       >
@@ -37,7 +37,7 @@ const CareerPlaning = ({ img, heading, description, height }: bannerProps) => {
           fontSize: 20,
           fontFamily: nunito.style,
 
-          textAlign: "center",
+          textAlign: "left",
           lineHeight: 1.4,
         }}
       >

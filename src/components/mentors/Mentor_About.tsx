@@ -17,25 +17,75 @@ const MentorAbout = () => {
     >
       <Grid container>
         <Grid size={7} margin={"auto"}>
-          <ScrollReveal
-            baseOpacity={1}
-            enableBlur={true}
-            baseRotation={5}
-            blurStrength={3}
-          >
-            At MyTreks.ai, we connect passionate professionals with motivated
-            students through our gamified career exploration platform.
-          </ScrollReveal>
-          <Box sx={{ mt: 3 }}>
+          <Stack justifyContent={"center"}>
             <ScrollReveal
               baseOpacity={1}
               enableBlur={true}
               baseRotation={5}
               blurStrength={3}
             >
-              Students use their earned achievements to unlock valuable sessions
-              with mentors like you.
+              At MyTreks.ai, we connect
             </ScrollReveal>
+            <ScrollReveal
+              baseOpacity={1}
+              enableBlur={true}
+              baseRotation={5}
+              blurStrength={3}
+            >
+              passionate professionals with
+            </ScrollReveal>
+            <ScrollReveal
+              baseOpacity={1}
+              enableBlur={true}
+              baseRotation={5}
+              blurStrength={3}
+            >
+              motivated students through our
+            </ScrollReveal>
+            <ScrollReveal
+              baseOpacity={1}
+              enableBlur={true}
+              baseRotation={5}
+              blurStrength={3}
+            >
+              gamified career exploration
+            </ScrollReveal>
+            <ScrollReveal
+              baseOpacity={1}
+              enableBlur={true}
+              baseRotation={5}
+              blurStrength={3}
+            >
+              platform.
+            </ScrollReveal>
+          </Stack>
+          <Box sx={{ mt: 3 }}>
+            <Stack justifyContent={"center"}>
+              <ScrollReveal
+                baseOpacity={1}
+                enableBlur={true}
+                baseRotation={5}
+                blurStrength={3}
+              >
+                Students use their earned
+              </ScrollReveal>
+              <ScrollReveal
+                baseOpacity={1}
+                enableBlur={true}
+                baseRotation={5}
+                blurStrength={3}
+              >
+                achievements to unlock valuable
+              </ScrollReveal>
+              <ScrollReveal
+                baseOpacity={1}
+                enableBlur={true}
+                baseRotation={5}
+                blurStrength={3}
+              >
+                sessions with mentors like you.
+              </ScrollReveal>
+            </Stack>
           </Box>
         </Grid>
       </Grid>

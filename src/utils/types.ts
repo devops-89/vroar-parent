@@ -237,3 +237,9 @@ export interface TESTIMONIAL_PROPS {
   name: string;
   progress?: number; // Progress bar value (0-100)
 }
+
+export interface MENTOR_PROGRESS_CARD {
+  img: StaticImageData;
+  heading: string;
+  description: string;
+}

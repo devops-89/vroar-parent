@@ -12,65 +12,70 @@ import img4 from "@/icons/mentor_star.svg";
 import img3 from "@/icons/bulb.avif";
 import MentorAbout from "@/components/mentors/Mentor_About";
 import PerksMentor from "@/components/mentors/Perks-Mentor";
+import Bementor from "@/components/mentors/Be-A-Mentor";
 const Mentors = () => {
   return (
-    <Box
-      sx={{
-        backgroundImage: `url(${backgroundBanner.src})`,
-        height: "100%",
-        backroundSize: "cover",
-        backgroundPosition: "50%",
-        pt: 20,
-      }}
-    >
-      <Container sx={{ position: "relative" }}>
-        <Grid container>
-          <Grid size={8} margin={"auto"}>
-            <Stack spacing={-2}>
-              <GradientText label="Shape Lives" />
-              <HeadingField label="in Just 1 Hour A Month" />
-            </Stack>
-            <ParaField
-              label="Become a mentor or speaker."
-              textAlign="center"
-              fontSize={24}
-            />
-            <Box sx={{ position: "relative" }}>
-              <MentorMiddle />
-              <Stack
-                direction={"row"}
-                alignItems={"ceenter"}
-                justifyContent={"space-between"}
-                sx={{
-                  position: "absolute",
-                  top: "20%",
-                  width: "100%",
-                }}
-              >
-                <CurvedBadge icon={hat} char="mytrekship" />
-                <CurvedBadge icon={img2} char="Career Counsel" />
+    <Box>
+      <Box
+        sx={{
+          backgroundImage: `url(${backgroundBanner.src})`,
+          height: "100%",
+          backroundSize: "cover",
+          backgroundPosition: "50%",
+          pt: 20,
+        }}
+      >
+        <Container sx={{ position: "relative" }}>
+          <Grid container>
+            <Grid size={8} margin={"auto"}>
+              <Stack spacing={-2}>
+                <GradientText label="Shape Lives" />
+                <HeadingField label="in Just 1 Hour A Month" />
               </Stack>
-            </Box>
+              <ParaField
+                label="Become a mentor or speaker."
+                textAlign="center"
+                fontSize={24}
+              />
+              <Box sx={{ position: "relative" }}>
+                <MentorMiddle />
+                <Stack
+                  direction={"row"}
+                  alignItems={"ceenter"}
+                  justifyContent={"space-between"}
+                  sx={{
+                    position: "absolute",
+                    top: "20%",
+                    width: "100%",
+                  }}
+                >
+                  <CurvedBadge icon={hat} char="mytrekship" />
+                  <CurvedBadge icon={img2} char="Career Counsel" />
+                </Stack>
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
-        <Box sx={{ position: "relative" }}>
-          <Stack
-            direction={"row"}
-            alignItems={"ceenter"}
-            justifyContent={"space-between"}
-            sx={{
-              position: "absolute",
-              top: -100,
-              width: "100%",
-            }}
-          >
-            <CurvedBadge icon={img3} char="coaching strengths" />
-            <CurvedBadge icon={img4} char="Career voyage" />
-          </Stack>
-        </Box>
-      </Container>
+          <Box sx={{ position: "relative" }}>
+            <Stack
+              direction={"row"}
+              alignItems={"ceenter"}
+              justifyContent={"space-between"}
+              sx={{
+                position: "absolute",
+                top: -100,
+                width: "100%",
+              }}
+            >
+              <CurvedBadge icon={img3} char="coaching strengths" />
+              <CurvedBadge icon={img4} char="Career voyage" />
+            </Stack>
+          </Box>
+        </Container>
+      </Box>
       <MentorAbout />
+
       <PerksMentor />
+      <Bementor />
     </Box>
   );
 };
