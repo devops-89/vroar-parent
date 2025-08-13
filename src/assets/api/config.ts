@@ -1,7 +1,6 @@
+import { DEVICE_TYPE } from "@/utils/enum";
 import Axios, { InternalAxiosRequestConfig } from "axios";
 import { serverApiUrl } from "./serverConstants";
-import { config } from "process";
-import { DEVICE_TYPE } from "@/utils/enum";
 
 const securedApi = Axios.create({
   baseURL: serverApiUrl.authentication,
@@ -37,4 +36,4 @@ securedApi.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   return config;
 });
 
-export { securedApi, publicApi, userSecuredApi, userPublicApi };
+export { publicApi, securedApi, userPublicApi, userSecuredApi };

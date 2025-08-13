@@ -16,6 +16,7 @@ export const enum COLORS {
   DARK_YELLOW = "#ffc935",
   LIGHT_BLACK = "#262626",
   LIGHT_YELLOW = "#F1FF3F",
+  orangeBorderColor = "#d03801",
 }
 
 export const enum USER_TYPE {

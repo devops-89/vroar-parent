@@ -10,7 +10,7 @@ import Image from "next/image";
 import ButtonWithIcon from "../Home/Components/ButtonWithIcon";
 const Bementor = () => {
   return (
-    <Box sx={{ pt: 10, backgroundColor: "#fff3f0" }}>
+    <Box sx={{ pt: 10, backgroundColor: "#fff3f0", pb: 10 }}>
       <Container>
         <Grid container>
           <Grid size={9} margin={"auto"}>
@@ -57,7 +57,7 @@ Share your journey, offer real advice, and make a lasting impact"
             </React.Fragment>
           ))}
         </Grid>
-        <Box textAlign={"center"} sx={{ mt: 5 }}>
+        <Box textAlign={"center"} sx={{ mt: 6 }}>
           <ButtonWithIcon label="Become a Mentor" width={"fit-content"} />
         </Box>
       </Container>

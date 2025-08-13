@@ -13,6 +13,7 @@ import img3 from "@/icons/bulb.avif";
 import MentorAbout from "@/components/mentors/Mentor_About";
 import PerksMentor from "@/components/mentors/Perks-Mentor";
 import Bementor from "@/components/mentors/Be-A-Mentor";
+import SpeakerPerks from "@/components/mentors/Speaker-Perks";
 const Mentors = () => {
   return (
     <Box>
@@ -76,6 +77,7 @@ const Mentors = () => {
 
       <PerksMentor />
       <Bementor />
+      <SpeakerPerks />
     </Box>
   );
 };
