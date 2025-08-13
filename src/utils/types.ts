@@ -243,3 +243,9 @@ export interface MENTOR_PROGRESS_CARD {
   heading: string;
   description: string;
 }
+
+export interface SPEAKER_PERKS_CARD {
+  img: StaticImageData;
+  heading: string;
+  description: string;
+}

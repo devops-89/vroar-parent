@@ -1,4 +1,8 @@
-import { COACHING_CARD_PROPS, MENTORS_PROPS_DATA } from "@/utils/types";
+import {
+  COACHING_CARD_PROPS,
+  MENTORS_PROPS_DATA,
+  SPEAKER_PERKS_CARD,
+} from "@/utils/types";
 import mentor1 from "@/homePage/mentors/homaSir.svg";
 import mentor2 from "@/homePage/mentors/amit.svg";
 import mentor3 from "@/homePage/mentors/ramsha.svg";
@@ -8,7 +12,10 @@ import mentor6 from "@/homePage/mentors/mam4.svg";
 import coaching1 from "@/homePage/coaching/coaching1.png";
 import coaching2 from "@/homePage/coaching/coaching2.png";
 import coaching3 from "@/homePage/coaching/coaching3.png";
-
+import speakerperksimage1 from "@/banner/mentors/speaker_perks/perks-card/showcase-knowleedge.avif";
+import speakerperksimage2 from "@/banner/mentors/speaker_perks/perks-card/build.avif";
+import speakerperksimage3 from "@/banner/mentors/speaker_perks/perks-card/connect-families.avif";
+import speakerperksimage4 from "@/banner/mentors/speaker_perks/perks-card/make-difference.avif";
 export const MENTORS_DATA: MENTORS_PROPS_DATA[] = [
   {
     img: mentor1,
@@ -63,5 +70,28 @@ export const COACHING_DATA: COACHING_CARD_PROPS[] = [
     img: coaching3,
     heading: "Personal Growth Plan",
     description: "A roadmap that links strengths to academics and careers",
+  },
+];
+
+export const SPEAKER_PERKS_DATA: SPEAKER_PERKS_CARD[] = [
+  {
+    img: speakerperksimage1,
+    heading: "Showcase Your Knowledge",
+    description: "Present on topics where you excel",
+  },
+  {
+    img: speakerperksimage2,
+    heading: "Build Your Profile",
+    description: "Present on topics where you excel",
+  },
+  {
+    img: speakerperksimage3,
+    heading: "Connect with Families",
+    description: "Engage with motivated students and parents",
+  },
+  {
+    img: speakerperksimage4,
+    heading: "Make a Difference",
+    description: "Inspire young mind at a critical desicion-making stage",
   },
 ];

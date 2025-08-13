@@ -5,7 +5,13 @@ import React from "react";
 import card1 from "@/banner/mentors/speaker_perks/perks-card/build.avif";
 import HeadingField from "../common/Heading-Field";
 import ParaField from "../common/Para-Field";
-const SpeakerPerksCard = () => {
+import { SPEAKER_PERKS_CARD } from "@/utils/types";
+
+const SpeakerPerksCard = ({
+  img,
+  heading,
+  description,
+}: SPEAKER_PERKS_CARD) => {
   return (
     <Card
       sx={{
@@ -17,16 +23,16 @@ const SpeakerPerksCard = () => {
         gap: 5,
       }}
     >
-      <Image src={card1} alt="" />
+      <Image src={img} alt="" />
       <Box>
         <HeadingField
-          label="Connect with Families"
+          label={heading}
           fontSize={24}
           sx={{ lineHeight: 1.4, fontWeight: 700, textAlign: "left" }}
         />
         <ParaField
-          label="Engage with motivated students and parents"
-          sx={{ fontSize: 20, lineHeight: 1.4 }}
+          label={description}
+          sx={{ fontSize: 20, lineHeight: 1.4, mt: 1 }}
         />
       </Box>
     </Card>
