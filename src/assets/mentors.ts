@@ -94,4 +94,44 @@ export const SPEAKER_PERKS_DATA: SPEAKER_PERKS_CARD[] = [
     heading: "Make a Difference",
     description: "Inspire young mind at a critical desicion-making stage",
   },
+  {
+    img: speakerperksimage1,
+    heading: "Showcase Your Knowledge",
+    description: "Present on topics where you excel",
+  },
+  {
+    img: speakerperksimage2,
+    heading: "Build Your Profile",
+    description: "Present on topics where you excel",
+  },
+  {
+    img: speakerperksimage3,
+    heading: "Connect with Families",
+    description: "Engage with motivated students and parents",
+  },
+  {
+    img: speakerperksimage4,
+    heading: "Make a Difference",
+    description: "Inspire young mind at a critical desicion-making stage",
+  },
+  {
+    img: speakerperksimage1,
+    heading: "Showcase Your Knowledge",
+    description: "Present on topics where you excel",
+  },
+  {
+    img: speakerperksimage2,
+    heading: "Build Your Profile",
+    description: "Present on topics where you excel",
+  },
+  {
+    img: speakerperksimage3,
+    heading: "Connect with Families",
+    description: "Engage with motivated students and parents",
+  },
+  {
+    img: speakerperksimage4,
+    heading: "Make a Difference",
+    description: "Inspire young mind at a critical desicion-making stage",
+  },
 ];

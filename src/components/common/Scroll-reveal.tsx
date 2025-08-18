@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useMemo, ReactNode, RefObject } from "react";
+import { nunito } from "@/utils/fonts";
+import { Typography } from "@mui/material";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import HeadingField from "./Heading-Field";
-import { Typography } from "@mui/material";
-import { nunito } from "@/utils/fonts";
+import React, { ReactNode, RefObject, useEffect, useMemo, useRef } from "react";
 // import "./ScrollReveal.css";
 
 gsap.registerPlugin(ScrollTrigger);

@@ -1,17 +1,20 @@
-import { Box, Container, Grid, Stack } from "@mui/material";
-import React, { useState } from "react";
+import { SPEAKER_PERKS_DATA } from "@/assets/mentors";
+import exclamation from "@/banner/mentors/speaker_perks/exclamation_point.avif";
+import mic from "@/banner/mentors/speaker_perks/mic.avif";
 import speaker_banner from "@/banner/mentors/speaker_perks/speaker_perks_banner.avif";
+import { COLORS } from "@/utils/enum";
+import { ArrowUpward } from "@mui/icons-material";
+import { Box, Container, Grid, Stack } from "@mui/material";
+import Image from "next/image";
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Badge from "../Home/Components/Badge";
 import HeadingField from "../common/Heading-Field";
-import { COLORS } from "@/utils/enum";
-import mic from "@/banner/mentors/speaker_perks/mic.avif";
-import Image from "next/image";
-import ParaField from "../common/Para-Field";
-import exclamation from "@/banner/mentors/speaker_perks/exclamation_point.avif";
 import IconBox from "../common/Icon-Box";
-import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
-import { Swiper, SwiperSlide } from "swiper/react";
+import ParaField from "../common/Para-Field";
 import SpeakerPerksCard from "./Speaker-Perks-Card";
+import { Autoplay } from "swiper/modules";
+import "swiper/css/autoplay";
 const SpeakerPerks = () => {
   const [show, setShow] = useState<Boolean>(false);
 
@@ -28,11 +31,13 @@ const SpeakerPerks = () => {
         alignItems: "center",
         justifyContent: "center",
         height: "100vh",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <Container>
-        <Grid container alignItems={"center"}>
-          <Grid size={6} sx={{ position: "relative", height: "100vh" }}>
+        <Grid container alignItems={"center"} spacing={10}>
+          <Grid size={6} sx={{ position: "relative", height: "100vh",pt:10 }}>
             <Badge label="Perks of a Speaker" width={160} />
             <Stack spacing={-4}>
               <Stack
@@ -146,12 +151,81 @@ const SpeakerPerks = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid size={6}>
-            <Swiper>
-              <SwiperSlide>
-                <SpeakerPerksCard />
-              </SwiperSlide>
-            </Swiper>
+          <Grid size={6} sx={{ position: "relative", height: "100%" }}>
+            <Box
+              sx={{
+                position: "relative",
+                height: "100%",
+                width: "100%",
+                overflow: "hidden",
+              }}
+            >
+              <Box
+                sx={{
+                  height: "650px",
+                  position: "relative",
+                  width: "100%",
+                  overflow: "hidden",
+                }}
+              >
+                <Swiper
+                  direction="vertical"
+                  slidesPerView={4}
+                  spaceBetween={20}
+                  loop={true}
+                  speed={800} // smooth transition
+                  modules={[Autoplay]}
+                  autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                  }}
+                  style={{ height: "100%" }}
+                  grabCursor={true}
+                >
+                  {SPEAKER_PERKS_DATA.map((val, i) => (
+                    <SwiperSlide key={i}>
+                      <SpeakerPerksCard
+                        img={val.img}
+                        heading={val.heading}
+                        description={val.description}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </Box>
+
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: "40px",
+                  background: "linear-gradient(#e63e00,#d1380200)",
+                  backdropFilter: "blur(2px)",
+                  WebkitBackdropFilter: "blur(2px)",
+                  zIndex: 2,
+                  pointerEvents: "none",
+                }}
+              />
+
+              <Box
+                sx={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: "40px",
+                  background: "linear-gradient(#d1380200,#a42c01)",
+
+                  backdropFilter: "blur(2px)",
+                  WebkitBackdropFilter: "blur(2px)",
+                  zIndex: 2,
+                  pointerEvents: "none",
+                }}
+              />
+            </Box>
           </Grid>
         </Grid>
       </Container>
