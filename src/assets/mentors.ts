@@ -1,4 +1,5 @@
 import {
+  BE_SPEAKER_CARD_PROPS,
   COACHING_CARD_PROPS,
   MENTORS_PROPS_DATA,
   SPEAKER_PERKS_CARD,
@@ -16,6 +17,10 @@ import speakerperksimage1 from "@/banner/mentors/speaker_perks/perks-card/showca
 import speakerperksimage2 from "@/banner/mentors/speaker_perks/perks-card/build.avif";
 import speakerperksimage3 from "@/banner/mentors/speaker_perks/perks-card/connect-families.avif";
 import speakerperksimage4 from "@/banner/mentors/speaker_perks/perks-card/make-difference.avif";
+import number1 from "@/Mentors/1.avif";
+import number2 from "@/Mentors/2.avif";
+import number3 from "@/Mentors/3.avif";
+import number4 from "@/Mentors/4.avif";
 export const MENTORS_DATA: MENTORS_PROPS_DATA[] = [
   {
     img: mentor1,

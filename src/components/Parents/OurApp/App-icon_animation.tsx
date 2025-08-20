@@ -23,7 +23,6 @@ const AppIconAnimation = () => {
 
         const data = await response.json();
 
-        // Validate that the animation data has the required structure
         if (!data || typeof data !== "object" || !data.layers) {
           throw new Error("Invalid animation data structure");
         }

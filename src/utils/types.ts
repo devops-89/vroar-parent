@@ -249,3 +249,9 @@ export interface SPEAKER_PERKS_CARD {
   heading: string;
   description: string;
 }
+
+export interface BE_SPEAKER_CARD_PROPS {
+  img: StaticImageData;
+  heading: string;
+  description: string;
+}

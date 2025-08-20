@@ -14,6 +14,8 @@ import MentorAbout from "@/components/mentors/Mentor_About";
 import PerksMentor from "@/components/mentors/Perks-Mentor";
 import Bementor from "@/components/mentors/Be-A-Mentor";
 import SpeakerPerks from "@/components/mentors/Speaker-Perks";
+import BeSpeaker from "@/components/mentors/Be-Speaker";
+import WhyChoose from "@/components/mentors/Why-Choose";
 const Mentors = () => {
   return (
     <Box>
@@ -78,6 +80,8 @@ const Mentors = () => {
       <PerksMentor />
       <Bementor />
       <SpeakerPerks />
+      <BeSpeaker />
+      <WhyChoose />
     </Box>
   );
 };
