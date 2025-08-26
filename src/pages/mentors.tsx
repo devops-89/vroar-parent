@@ -16,6 +16,10 @@ import Bementor from "@/components/mentors/Be-A-Mentor";
 import SpeakerPerks from "@/components/mentors/Speaker-Perks";
 import BeSpeaker from "@/components/mentors/Be-Speaker";
 import WhyChoose from "@/components/mentors/Why-Choose";
+import Whyjoinus from "@/components/mentors/Why-Join-Us";
+import Testimonials from "@/components/mentors/Testimonials";
+import { MENTOR_TESTIMONIALS } from "@/assets/mentors";
+import MentorFaqSection from "@/components/mentors/Faq-section";
 const Mentors = () => {
   return (
     <Box>
@@ -82,6 +86,9 @@ const Mentors = () => {
       <SpeakerPerks />
       <BeSpeaker />
       <WhyChoose />
+      <Whyjoinus />
+      <Testimonials testimonialData={MENTOR_TESTIMONIALS} />
+      <MentorFaqSection />
     </Box>
   );
 };

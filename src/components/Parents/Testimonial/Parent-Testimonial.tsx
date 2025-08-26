@@ -154,42 +154,6 @@ const ParentTestimonial = ({ testimonialData }: testimonialDataProps) => {
                     </SwiperSlide>
                   ))}
                 </Swiper>
-
-                {/* <Box
-                  sx={{
-                    mt: 3,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 1.5,
-                  }}
-                >
-                  {testimonialData.map((_, i) => (
-                    <Box
-                      key={i}
-                      onClick={() => {
-                        if (swiperRef.current) {
-                          swiperRef.current.slideTo(i);
-                        }
-                      }}
-                      sx={{
-                        backgroundColor:
-                          i === currentIndex % testimonialData.length
-                            ? COLORS.PRIMARY
-                            : COLORS.WHITE,
-                        width:
-                          i === currentIndex % testimonialData.length ? 40 : 20,
-                        height: 5,
-                        borderRadius: 5,
-                        cursor: "pointer",
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          opacity: 0.8,
-                        },
-                      }}
-                    />
-                  ))}
-                </Box> */}
               </Box>
 
               <IconButton

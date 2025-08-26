@@ -235,7 +235,7 @@ export interface TESTIMONIAL_PROPS {
   testimonial: string;
   img: StaticImageData;
   name: string;
-  progress?: number; // Progress bar value (0-100)
+  progress?: number;
 }
 
 export interface MENTOR_PROGRESS_CARD {
@@ -251,6 +251,12 @@ export interface SPEAKER_PERKS_CARD {
 }
 
 export interface BE_SPEAKER_CARD_PROPS {
+  img: StaticImageData;
+  heading: string;
+  description: string;
+}
+
+export interface JOIN_CARD_PROPS {
   img: StaticImageData;
   heading: string;
   description: string;

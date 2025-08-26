@@ -65,7 +65,7 @@ const OurParentApp = () => {
               <ButtonWithIcon
                 label="get Demo of the App"
                 sx={{ textTransform: "capitalize", mt: 8 }}
-                width={250}
+                width={300}
               />
             </Box>
           </Grid>

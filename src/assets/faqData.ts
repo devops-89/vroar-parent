@@ -24,3 +24,36 @@ export const ParentFaqData: List[] = [
       "Our program equips your child with self-awareness and critical thinking through CliftonStrengths-based coaching and self-reflection exercises, enabling them to craft compelling college essays that showcase their strengths and decision-making abilities. The career advising workshops, MyTrekship experience, and mentorship sessions further strengthen their portfolio with strategic class choices, internships, real-world projects, and professional connections that impress admissions officers.",
   },
 ];
+
+export const MENTOR_FAQ_DATA: List[] = [
+  {
+    label: "What does a mentor do?",
+    value:
+      "Mentors guide middle and high school students one-on-one via Google Meet, sharing career and college insights in sessions under an hour. Sessions are recorded and encrypted for safety.",
+  },
+  {
+    label: "What’s the time commitment?",
+    value:
+      "Maximum one session per month, under an hour, via Google Meet. No minimum. You set your availability.",
+  },
+  {
+    label: "How do students book mentors?",
+    value:
+      "Students work hard to earn “coins” in the MyTreks.ai app by completing challenging tasks like career workshops, coaching sessions, or online learning modules. They use these coins to unlock a session with a mentor of nnkjjjchoice, showing dedication. Our administrator coordinates the session, ensuring students have no direct access to mentors for safety and privacy.",
+  },
+  {
+    label: "Is mentoring paid?",
+    value:
+      "No, it’s volunteer-based. Your time is valued, and students earn sessions to respect your expertise.",
+  },
+  {
+    label: "Can speakers promote their businesses?",
+    value:
+      "No, it’s volunteer-based. Your time is valued, and students earn sessions to respect your expertise.Yes, you can promote products, services, or businesses at the end of your webinar.",
+  },
+  {
+    label: "How does the background check work?",
+    value:
+      "Complete a secure third-party background check after applying. Once cleared, we set up your profile.",
+  },
+];
