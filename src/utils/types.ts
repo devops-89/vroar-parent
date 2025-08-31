@@ -91,12 +91,14 @@ export interface SUBSCRIPTION_PLANS {
   prices: SUBSCRIPTION_PLANS_PRICE[];
   benefits?: List[];
   img?: StaticImport | string;
+  strike:boolean
 }
 
 export interface STATIC_SUBSCRIPTION_PLANS {
   benefits: List[];
   img: StaticImport | string;
   id: string;
+  strike: boolean;
 }
 
 export interface PLAN_BADGES {

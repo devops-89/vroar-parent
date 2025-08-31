@@ -408,6 +408,7 @@ const Subscriptions = () => {
                                     prices={val.prices}
                                     img={val.img}
                                     benefits={val.benefits}
+                                    strike={val.strike}
                                   />
                                 </Grid>
                               ))}
