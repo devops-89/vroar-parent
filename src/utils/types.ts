@@ -261,3 +261,4 @@ export interface JOIN_CARD_PROPS {
   heading: string;
   description: string;
 }
+
