@@ -1,28 +1,19 @@
-import {
-  Box,
-  Container,
-  Divider,
-  Grid,
-  Stack,
-  Typography,
-} from "@mui/material";
-import React from "react";
-import bannerImage from "@/homePage/hero-section-baner.avif";
-import { nunito } from "@/utils/fonts";
-import { COLORS } from "@/utils/enum";
-import Home_hero_points from "./Components/Home_hero_points";
-import chooseBanner from "@/homePage/why-choose-section.avif";
-import CurvedBadge from "./Components/ChooseIcon";
+import frame from "@/homePage/Choose-frame.avif";
 import img1 from "@/homePage/choose-icon1.avif";
 import img2 from "@/homePage/choose-icon2.avif";
 import img3 from "@/homePage/choose-icon3.avif";
 import img4 from "@/homePage/choose-icon4.avif";
+import bannerImage from "@/homePage/hero-section-baner.avif";
+import chooseBanner from "@/homePage/why-choose-section.avif";
+import { COLORS } from "@/utils/enum";
+import { Box, Container, Divider, Grid, Stack } from "@mui/material";
 import Image from "next/image";
-import frame from "@/homePage/Choose-frame.avif";
-import ButtonWithIcon from "./Components/ButtonWithIcon";
-import HeadingField from "../common/Heading-Field";
 import GradientText from "../common/Greadient-text";
+import HeadingField from "../common/Heading-Field";
 import ParaField from "../common/Para-Field";
+import ButtonWithIcon from "./Components/ButtonWithIcon";
+import CurvedBadge from "./Components/ChooseIcon";
+import Home_hero_points from "./Components/Home_hero_points";
 const Banner = () => {
   return (
     <Box
@@ -42,13 +33,20 @@ const Banner = () => {
       <Container sx={{ mt: 20 }}>
         <Grid container>
           <Grid size={10} margin={"auto"}>
-            <HeadingField
-              label="Turn College Prep"
-              className=""
-              data-aos="fade-in"
-            />
-
-            <GradientText label="Chaos into Clarity" data-aos="fade-in" />
+            <Box data-aos="fade-left">
+              <HeadingField
+                label="Turn College Prep"
+                className=""
+                sx={{ fontFamily: "gomenasans-bold" }}
+              />
+            </Box>
+            <Box data-aos="fade-left">
+              <GradientText
+                label="Chaos into Clarity"
+                data-aos="fade-in"
+                sx={{ fontFamily: "gomenasans-bold" }}
+              />
+            </Box>
 
             <ParaField
               label="By blending cutting-edge AI with expert mentorship, we help
@@ -57,7 +55,7 @@ const Banner = () => {
               confidence, and the courage to aim higher."
               fontSize={20}
               textAlign="center"
-              data-aos="fade-in"  
+              data-aos="fade-in"
             />
             <Stack
               direction={"row"}

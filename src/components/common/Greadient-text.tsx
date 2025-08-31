@@ -24,11 +24,13 @@ const GradientText = ({
         backgroundClip: "text",
         color: COLORS.TRANSPARENT,
         fontSize: 68,
-        fontFamily: "gomenasans,Arial,sans-serif",
+        fontFamily: "gomenasans-bold,Arial,sans-serif",
         fontWeight: 700,
         textAlign: "center",
+        ...sx,
       }}
       className={className}
+
     >
       {label}
     </Typography>

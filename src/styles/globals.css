@@ -21,9 +21,19 @@
   display: none;
 }
 
-@font-face {
+/* @font-face {
   font-family: "gomenasans";
   src: url("../assets/fonts/Gomenasans-Regular.ttf");
+} */
+
+@font-face {
+  font-family: "gomenasans";
+  src: url("../assets/fonts/gomenasans.otf");
+}
+
+@font-face {
+  font-family: "gomenasans-bold";
+  src: url("../assets/fonts/Gomenasans-Bold.otf");
 }
 
 .tesimonial_swiper {

@@ -43,8 +43,8 @@ const ButtonWithIcon = ({
         "&:hover .arrow-rotate": {
           transform: "rotate(0deg) scale(1.1)",
         },
-        ".icon-track":{
-          transform:"translateY(25%)"
+        ".icon-track": {
+          transform: "translateY(25%)",
         },
         ...sx,
       }}
@@ -71,9 +71,12 @@ const ButtonWithIcon = ({
             {[0, 1].map((idx) => (
               <Box
                 key={idx}
-                sx={{ height: "2.5rem", display: "flex", alignItems: "center" }}
+                sx={{ height: "2.5rem", display: "flex", alignItems: "center",justifyContent:"center" }}
               >
-                <Box component="span" sx={{ lineHeight: "2.5rem" }}>
+                <Box
+                  component="span"
+                  sx={{ lineHeight: "2.5rem", textAlign: "center" }}
+                >
                   {label}
                 </Box>
               </Box>
@@ -81,7 +84,6 @@ const ButtonWithIcon = ({
           </Box>
         </Box>
 
-        {/* Static white circle with inner icon swap */}
         <Box
           sx={{
             backgroundColor: COLORS.WHITE,

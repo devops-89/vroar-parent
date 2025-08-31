@@ -9,6 +9,7 @@ interface ParaFieldProps {
   textAlign?: "left" | "center" | "right";
   sx?: SxProps<Theme>;
   className?: string;
+  dataaos?: string;
 }
 const ParaField = ({
   fontSize,
@@ -17,17 +18,19 @@ const ParaField = ({
   textAlign,
   sx = {},
   className,
+  dataaos,
 }: ParaFieldProps) => {
   return (
     <Typography
       sx={{
         fontFamily: nunito.style.fontFamily,
-        fontSize,
+        fontSize: fontSize || 24,
         color,
         textAlign,
         ...sx, // Merge custom sx
       }}
       className={className}
+      data-aos={dataaos}
     >
       {label}
     </Typography>

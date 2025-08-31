@@ -20,6 +20,7 @@ const Header = () => {
         // transform: "translateX(50%)",
         width: "100%",
         top: "2rem",
+        zIndex:999
       }}
     >
       <Grid container>

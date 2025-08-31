@@ -11,6 +11,7 @@ import { Provider, useDispatch } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import "swiper/css";
 import Aos from "aos";
+import "aos/dist/aos.css";
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const script = document.createElement("script");
@@ -22,8 +23,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     Aos.init({
-      // delay: 500,
-      mirror: false,
+      delay: 500,
+      mirror: true,
     });
   }, []);
   return (

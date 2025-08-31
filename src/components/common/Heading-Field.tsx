@@ -7,6 +7,7 @@ interface HeadingFieldProps {
   label: string;
   sx?: SxProps<Theme>;
   className?: string;
+  dataaos?: string;
 }
 const HeadingField = ({
   fontSize,
@@ -15,12 +16,13 @@ const HeadingField = ({
   label,
   sx = {},
   className,
+  dataaos,
 }: HeadingFieldProps) => {
   return (
     <Typography
       sx={{
         fontSize: fontSize || 68,
-        fontFamily: "gomenasans,Arial,sans-serif",
+        fontFamily: "gomenasans,Arial, sans-serif",
         fontWeight: 700,
         textAlign: textAlign || "center",
         mt: 2,
@@ -29,6 +31,7 @@ const HeadingField = ({
         ...sx,
       }}
       className={className}
+      data-aos={dataaos}
     >
       {label}
     </Typography>
