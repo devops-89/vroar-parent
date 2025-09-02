@@ -260,5 +260,12 @@ export interface JOIN_CARD_PROPS {
   img: StaticImageData;
   heading: string;
   description: string;
+  isLast?: Boolean;
 }
 
+export interface BENEFITS_CARD_PROPS {
+  benefits_user: string;
+  list: List[];
+  isLast: Boolean;
+  bgColor: string;
+}

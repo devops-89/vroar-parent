@@ -12,6 +12,7 @@ import mentor6 from "@/homePage/mentors/mam4.svg";
 import mentor3 from "@/homePage/mentors/ramsha.svg";
 import mentor4 from "@/homePage/mentors/warisha.svg";
 import {
+  BENEFITS_CARD_PROPS,
   COACHING_CARD_PROPS,
   JOIN_CARD_PROPS,
   MENTORS_PROPS_DATA,
@@ -25,6 +26,9 @@ import icon3 from "@/Mentors/join_us/icon3.svg";
 import icon4 from "@/Mentors/join_us/icon4.svg";
 import icon5 from "@/Mentors/join_us/icon5.svg";
 import icon6 from "@/Mentors/join_us/icon6.svg";
+import support1 from "@/companies/micro-internships.avif";
+import support2 from "@/companies/mentor-guide.avif";
+import support3 from "@/companies/driven-network.avif";
 export const MENTORS_DATA: MENTORS_PROPS_DATA[] = [
   {
     img: mentor1,
@@ -235,5 +239,61 @@ export const MENTOR_TESTIMONIALS: TESTIMONIAL_PROPS[] = [
       "Mentoring students on the platform was a genuinely rewarding experience. It was fun to watch their curiosity grow as they explored new tools, asked thoughtful questions, and applied their learning to real-world scenarios. The platform made it easy to connect with students in meaningful ways, and I was impressed by how motivated and engaged they were. Guiding them through their journeys—whether they engaged they were. Guiding them through their journeys—whether they them next.",
     name: "Ramsha Khan",
     img: mentor3,
+  },
+];
+
+export const SUPPORT_CARD_DATA: JOIN_CARD_PROPS[] = [
+  {
+    img: support1,
+    heading: "Offer Micro-Internships",
+    description: "Host micro-internships or shadowing opportunities",
+    isLast: false,
+  },
+  {
+    img: support2,
+    heading: "Mentor & Guide",
+    description: "Share your expertise through mentorship",
+    isLast: false,
+  },
+  {
+    img: support3,
+    heading: "Driven Network",
+    description: "Join a purpose-driven community of change-makers",
+    isLast: true,
+  },
+];
+
+export const BENEFITS_CARD_DATA: BENEFITS_CARD_PROPS[] = [
+  {
+    benefits_user: "companies",
+    list: [
+      {
+        label: "Just 6 hours across 3 weeks",
+      },
+      {
+        label: "Nationwide reach with zero logistics",
+      },
+      {
+        label: "Be the reason someone discovers their calling",
+      },
+    ],
+    isLast: false,
+    bgColor: "#F4E1FE",
+  },
+  {
+    benefits_user: "Parents",
+    list: [
+      {
+        label: "Access to internships with vetted companies",
+      },
+      {
+        label: "Always-on support from coaches & counselors",
+      },
+      {
+        label: "Watch your teen grow into their potential",
+      },
+    ],
+    isLast: true,
+    bgColor: "#E0E6FE",
   },
 ];

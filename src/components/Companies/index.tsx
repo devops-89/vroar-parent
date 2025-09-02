@@ -3,6 +3,8 @@ import React from "react";
 import HeroSection from "./components/hero-section";
 import FeatureGrid from "./components/feature-grid";
 import Support from "./components/support";
+import Benefits from "./components/benefits";
+import ProgramBreakdown from "./components/program-breakdown";
 
 const CompanyLayout = () => {
   return (
@@ -13,6 +15,12 @@ const CompanyLayout = () => {
       </Box>
       <Box sx={{ mt: 20 }}>
         <Support />
+      </Box>
+      <Box sx={{ mt: 20 }}>
+        <Benefits />
+      </Box>
+      <Box sx={{ mt: 10 }}>
+        <ProgramBreakdown />
       </Box>
     </Box>
   );
