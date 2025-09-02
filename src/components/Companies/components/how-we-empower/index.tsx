@@ -22,6 +22,7 @@ const Empower = () => {
                 letterSpacing: "-.04em",
                 mt: 2,
               }}
+              dataaos="fade-up"
             />
             <ParaField
               label="From internships to coaching, we help teens connect passion to profession, especially those in underserved communities and military households."
@@ -31,12 +32,18 @@ const Empower = () => {
                 textAlign: "center",
                 mt: 2,
               }}
+              dataaos="fade-up"
             />
           </Grid>
         </Grid>
         <Grid container spacing={4} mt={3}>
           {empowerCard_data.map((val, i) => (
-            <Grid size={4} key={i}>
+            <Grid
+              size={4}
+              key={i}
+              data-aos="fade-left"
+              data-aos-delay={`${i * 200}`}
+            >
               <EmpowerCard
                 img={val.img}
                 heading={val.heading}

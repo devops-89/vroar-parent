@@ -4,7 +4,12 @@ import { Box } from "@mui/material";
 import appIcon from "@/icons/MyTreks _ App Icon.svg";
 import Image from "next/image";
 
-const AppIconAnimation = () => {
+interface APP_ICON_ANIMATION_PROPS {
+  width?: number;
+  height?: number;
+}
+
+const AppIconAnimation = ({ width, height }: APP_ICON_ANIMATION_PROPS) => {
   const [animationData, setAnimationData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,10 +46,8 @@ const AppIconAnimation = () => {
 
   if (isLoading) {
     return (
-      <Box sx={{ position: "relative" }}>
-        <Box sx={{ position: "absolute", top: 0 }}>
-          <Image src={appIcon} alt="App Icon" />
-        </Box>
+      <Box sx={{ position: "relative", width: width, height: height }}>
+        <Image src={appIcon} alt="App Icon" width={width} height={height} />
       </Box>
     );
   }
@@ -52,26 +55,22 @@ const AppIconAnimation = () => {
   if (error) {
     console.error("Animation error:", error);
     return (
-      <Box sx={{ position: "relative" }}>
-        <Box sx={{ position: "absolute", top: 0 }}>
-          <Image src={appIcon} alt="App Icon" />
-        </Box>
+      <Box sx={{ position: "relative", width: width, height: height }}>
+        <Image src={appIcon} alt="App Icon" width={width} height={height} />
       </Box>
     );
   }
 
   return (
-    <Box sx={{ position: "relative" }}>
-      <Box sx={{ position: "absolute", top: 0 }}>
-        {animationData && (
-          <Lottie
-            animationData={animationData}
-            loop={true}
-            style={{ width: "100%", height: "100%" }}
-          />
-        )}
-      </Box>
-    </Box>  
+    <Box sx={{ position: "relative", width: width, height: height }}>
+      {animationData && (
+        <Lottie
+          animationData={animationData}
+          loop={true}
+          style={{ width: width, height: height }}
+        />
+      )}
+    </Box>
   );
 };
 
