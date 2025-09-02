@@ -1,3 +1,4 @@
+import { Accordion_Company } from "@/assets/mentors";
 import HeadingField from "@/components/common/Heading-Field";
 import ParaField from "@/components/common/Para-Field";
 import Badge from "@/components/Home/Components/Badge";
@@ -9,15 +10,28 @@ import {
   AccordionSummary,
   Box,
   Container,
+  Divider,
   Grid,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Stack,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 const ProgramBreakdown = () => {
+  const [expanded, setExpanded] = useState<string | false>("panel0");
+
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+      setExpanded(newExpanded ? panel : false);
+    };
+
   return (
     <Box>
       <Container maxWidth="lg">
-        <Grid container>
+        <Grid container spacing={8}>
           <Grid size={5}>
             <Badge label="Program breakdown" width={200} />
             <HeadingField
@@ -55,18 +69,100 @@ const ProgramBreakdown = () => {
             </Box>
           </Grid>
           <Grid size={7}>
-            <Accordion sx={{ backgroundColor: "#fff2f2" }}>
-              <AccordionSummary
-                expandIcon={
-                  <Box sx={{ backgroundColor: COLORS.WHITE }}>
-                    <ArrowDownward />
-                  </Box>
-                }
+            {Accordion_Company.map((val, i) => (
+              <Accordion
+                key={`accordion-${i}`}
+                sx={{
+                  boxShadow: "none",
+                  border: expanded === `panel${i}` ? "1px solid #dcdcdc" : "",
+                  borderRadius: "16px",
+                  overflow: "hidden",
+                  "&:before": { display: "none" },
+                  mb: 2,
+                }}
+                onChange={handleChange(`panel${i}`)}
+                expanded={expanded === `panel${i}`}
               >
-                Hello
-              </AccordionSummary>
-              <AccordionDetails>Heloo</AccordionDetails>
-            </Accordion>
+                <AccordionSummary
+                  expandIcon={
+                    <Box
+                      sx={{
+                        backgroundColor: COLORS.WHITE,
+                        borderRadius: "16px",
+                        width: 40,
+                        height: 40,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <ArrowDownward
+                        sx={{ fontSize: 32, color: COLORS.PRIMARY }}
+                      />
+                    </Box>
+                  }
+                  sx={{
+                    backgroundColor: "#fff2f2",
+                    padding: "30px 24px",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <Stack direction={"row"} alignItems={"center"} gap={4}>
+                    <ParaField
+                      label={`Week ${i + 1}`}
+                      sx={{ fontSize: 24, fontWeight: 700 }}
+                    />
+                    <Divider orientation="vertical" flexItem />
+                    <ParaField
+                      label={val.heading}
+                      sx={{ fontSize: 24, fontWeight: 700 }}
+                    />
+                  </Stack>
+                </AccordionSummary>
+                <AccordionDetails
+                  sx={{ backgroundColor: COLORS.WHITE, px: 4, py: 2 }}
+                >
+                  <Stack
+                    direction={"row"}
+                    alignItems={"center"}
+                    justifyContent={"space-between"}
+                  >
+                    <ParaField
+                      label="Key Actions"
+                      sx={{ fontSize: 24, fontWeight: 700 }}
+                    />
+                    <ParaField
+                      label={`Time : ${val.time}`}
+                      sx={{ fontSize: 24, fontWeight: 700 }}
+                    />
+                  </Stack>
+                  <List>
+                    {val.list.map((item, index) => (
+                      <ListItem key={`list-item-${i}-${index}`} disablePadding>
+                        <ListItemAvatar sx={{ minWidth: 30 }}>
+                          <Box
+                            sx={{
+                              backgroundColor: COLORS.PRIMARY,
+                              width: 10,
+                              height: 10,
+                              borderRadius: 20,
+                            }}
+                          ></Box>
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={
+                            <ParaField
+                              label={item.label}
+                              sx={{ fontSize: 24, lineHeight: 1.4 }}
+                            />
+                          }
+                        />
+                      </ListItem>
+                    ))}
+                  </List>
+                </AccordionDetails>
+              </Accordion>
+            ))}
           </Grid>
         </Grid>
       </Container>

@@ -29,6 +29,9 @@ import icon6 from "@/Mentors/join_us/icon6.svg";
 import support1 from "@/companies/micro-internships.avif";
 import support2 from "@/companies/mentor-guide.avif";
 import support3 from "@/companies/driven-network.avif";
+import empower1 from "@/companies/career.avif";
+import empower2 from "@/companies/internship.avif";
+import empower3 from "@/companies/confidence.avif";
 export const MENTORS_DATA: MENTORS_PROPS_DATA[] = [
   {
     img: mentor1,
@@ -295,5 +298,71 @@ export const BENEFITS_CARD_DATA: BENEFITS_CARD_PROPS[] = [
     ],
     isLast: true,
     bgColor: "#E0E6FE",
+  },
+];
+
+export const Accordion_Company = [
+  {
+    heading: "Orientation & Project Definition",
+    time: "2 hrs",
+    list: [
+      {
+        label: "Host a 1-hour Zoom orientation",
+      },
+      {
+        label: "Share 2-3 key resources",
+      },
+      {
+        label: "Assist students in defining their project",
+      },
+    ],
+  },
+  {
+    heading: "Research & Mentorship",
+    time: "2 hrs",
+    list: [
+      {
+        label: "Review student progress and provide feedback",
+      },
+      {
+        label: "Hold 1:1 mentorship session (30 mins)",
+      },
+      {
+        label: "Guide students in refining their project direction",
+      },
+    ],
+  },
+  {
+    heading: "Project Presentation & Certification",
+    time: "2 hrs",
+    list: [
+      {
+        label: "Host 1-hour project showcase",
+      },
+      {
+        label: "Share final feedback",
+      },
+      {
+        label: "Award certificate",
+      },
+    ],
+  },
+];
+
+export const empowerCard_data: JOIN_CARD_PROPS[] = [
+  {
+    img: empower1,
+    heading: "Career Access",
+    description: "Career access for every student, everywhere",
+  },
+  {
+    img: empower2,
+    heading: "Scalable Internship",
+    description: "Affordable, scalable internship models",
+  },
+  {
+    img: empower3,
+    heading: "Confidence & Growth",
+    description: "Confidence-building, life-shaping guidance",
   },
 ];

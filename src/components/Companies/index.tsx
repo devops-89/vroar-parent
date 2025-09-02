@@ -5,6 +5,8 @@ import FeatureGrid from "./components/feature-grid";
 import Support from "./components/support";
 import Benefits from "./components/benefits";
 import ProgramBreakdown from "./components/program-breakdown";
+import Empower from "./components/how-we-empower";
+import Promise from "./components/promise";
 
 const CompanyLayout = () => {
   return (
@@ -21,6 +23,12 @@ const CompanyLayout = () => {
       </Box>
       <Box sx={{ mt: 10 }}>
         <ProgramBreakdown />
+      </Box>
+      <Box sx={{ mt: 10 }}>
+        <Empower />
+      </Box>
+      <Box>
+        <Promise />
       </Box>
     </Box>
   );
