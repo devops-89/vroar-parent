@@ -6,6 +6,7 @@ import HeadingField from "@/components/common/Heading-Field";
 import { COLORS } from "@/utils/enum";
 import ParaField from "@/components/common/Para-Field";
 import AppIconAnimation from "@/components/Parents/OurApp/App-icon_animation";
+import PromiseCard from "./promise-card";
 const Promise = () => {
   return (
     <Box
@@ -15,6 +16,7 @@ const Promise = () => {
         backgroundPosition: "50%",
         backgroundSize: "cover",
         py: 10,
+        position: "relative",
       }}
     >
       <Container>
@@ -40,15 +42,90 @@ const Promise = () => {
                 mt: 2,
               }}
             />
-            <Box></Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <AppIconAnimation />
+            <Box sx={{ position: "relative", mt: 10 }}>
+              <Box
+                sx={{
+                  position: "absolute",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  zIndex: 999,
+                  width: "100%",
+                }}
+              >
+                <PromiseCard sx={{ backgroundColor: COLORS.WHITE }}>
+                  <ParaField
+                    label="COMPANIES"
+                    sx={{
+                      color: COLORS.PRIMARY,
+                      fontSize: 18,
+                      fontWeight: 700,
+                    }}
+                  />
+                  <ParaField
+                    label="You have the power to change lives without changing your calendar"
+                    sx={{ fontSize: 18, fontWeight: 700, mt: 2 }}
+                  />
+                </PromiseCard>
+                <PromiseCard sx={{ backgroundColor: COLORS.WHITE }}>
+                  <ParaField
+                    label="PARENTS"
+                    sx={{
+                      color: COLORS.PRIMARY,
+                      fontSize: 18,
+                      fontWeight: 700,
+                    }}
+                  />
+                  <ParaField
+                    label="Your child deserves more than test scores. They deserve a launchpad"
+                    sx={{ fontSize: 18, fontWeight: 700, mt: 2 }}
+                  />
+                </PromiseCard>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <AppIconAnimation />
+              </Box>
+              <Box
+                sx={{
+                  textAlign: "center",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <PromiseCard
+                  sx={{
+                    position: "absolute",
+                    mt: "-40px",
+                    background: COLORS.TEXT_GRADIENT,
+                    border: "none",
+                  }}
+                >
+                  <ParaField
+                    label="MYTREKS"
+                    sx={{
+                      color: COLORS.WHITE,
+                      fontSize: 18,
+                      fontWeight: 700,
+                    }}
+                  />
+                  <ParaField
+                    label="With MyTreks.ai, we build that launchpad together"
+                    sx={{
+                      color: COLORS.WHITE,
+                      fontSize: 18,
+                      fontWeight: 700,
+                      mt: 2,
+                    }}
+                  />
+                </PromiseCard>
+              </Box>
             </Box>
           </Grid>
         </Grid>

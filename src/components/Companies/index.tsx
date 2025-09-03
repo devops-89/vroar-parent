@@ -7,6 +7,8 @@ import Benefits from "./components/benefits";
 import ProgramBreakdown from "./components/program-breakdown";
 import Empower from "./components/how-we-empower";
 import Promise from "./components/promise";
+import CompanyTestimonial from "./components/testimonial";
+import { companyTestimonial } from "@/assets/testimonial";
 
 const CompanyLayout = () => {
   return (
@@ -29,6 +31,9 @@ const CompanyLayout = () => {
       </Box>
       <Box>
         <Promise />
+      </Box>
+      <Box sx={{ mt: 45 }}>
+        <CompanyTestimonial testimonialData={companyTestimonial} />
       </Box>
     </Box>
   );
