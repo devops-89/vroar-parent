@@ -47,9 +47,9 @@ const PlanCard = ({
   const priceIndex =
     isRecurring && hasYearly
       ? switchStatus
-        ? prices.findIndex((p) => p.interval === "year") // Yearly
-        : prices.findIndex((p) => p.interval === "month") // Monthly
-      : 0; // One-time or no yearly option
+        ? prices.findIndex((p) => p.interval === "year")
+        : prices.findIndex((p) => p.interval === "month")
+      : 0;
 
   const selectedPrice = prices[priceIndex];
 
@@ -163,8 +163,12 @@ const PlanCard = ({
           $
           {isRecurring && hasYearly
             ? switchStatus
-              ? Math.round((prices.find((p) => p.interval === "year")?.amount || 0) / 12) 
-              : Math.round((prices.find((p) => p.interval === "month")?.amount || 0) / 3) 
+              ? Math.round(
+                  (prices.find((p) => p.interval === "year")?.amount || 0) / 12
+                )
+              : Math.round(
+                  (prices.find((p) => p.interval === "month")?.amount || 0) / 3
+                )
             : prices[0]?.amount}
         </Typography>
 

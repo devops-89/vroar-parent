@@ -4,6 +4,7 @@ import bg_image from "@/pricing/web_view.avif";
 import Badge from "@/components/Home/Components/Badge";
 import HeadingField from "@/components/common/Heading-Field";
 import GradientText from "@/components/common/Greadient-text";
+import ParaField from "@/components/common/Para-Field";
 const HeroSection = () => {
   return (
     <Box
@@ -30,6 +31,10 @@ const HeroSection = () => {
             <GradientText
               label="your child's future!"
               sx={{ fontFamily: "gomenasans-bold", lineHeight: 1.1 }}
+            />
+            <ParaField
+              label="Flexible pricing to match your needs. Get started today!"
+              sx={{ fontSize: 24, textAlign: "center", mt: 2 }}
             />
           </Grid>
         </Grid>
