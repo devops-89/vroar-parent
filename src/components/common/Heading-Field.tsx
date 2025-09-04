@@ -1,6 +1,6 @@
 import { SxProps, Theme, Typography } from "@mui/material";
-import React from "react";
-interface HeadingFieldProps {
+import React, { ComponentProps } from "react";
+type HeadingFieldProps = {
   fontSize?: string | number;
   color?: string;
   textAlign?: "left" | "center" | "right";
@@ -8,7 +8,7 @@ interface HeadingFieldProps {
   sx?: SxProps<Theme>;
   className?: string;
   dataaos?: string;
-}
+} & Omit<ComponentProps<typeof Typography>, "sx" | "className" | "color" | "align" | "children">;
 const HeadingField = ({
   fontSize,
   color,
@@ -17,6 +17,7 @@ const HeadingField = ({
   sx = {},
   className,
   dataaos,
+  ...rest
 }: HeadingFieldProps) => {
   return (
     <Typography
@@ -32,6 +33,7 @@ const HeadingField = ({
       }}
       className={className}
       data-aos={dataaos}
+      {...rest}
     >
       {label}
     </Typography>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Box, Button, SxProps, Theme } from "@mui/material";
 import { ArrowForward } from "@mui/icons-material";
 import { COLORS } from "@/utils/enum";
@@ -9,7 +9,7 @@ const ButtonWithIcon = ({
   width = "180px",
   sx,
 }: {
-  label: string;
+  label: ReactNode;
   width?: string | number;
   sx?: SxProps<Theme>;
 }) => {
@@ -71,7 +71,12 @@ const ButtonWithIcon = ({
             {[0, 1].map((idx) => (
               <Box
                 key={idx}
-                sx={{ height: "2.5rem", display: "flex", alignItems: "center",justifyContent:"center" }}
+                sx={{
+                  height: "2.5rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
                 <Box
                   component="span"
@@ -95,6 +100,8 @@ const ButtonWithIcon = ({
             justifyContent: "center",
             boxShadow: 3,
             overflow: "hidden",
+            position: "absolute",
+            right: 10,
           }}
         >
           <Box

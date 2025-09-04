@@ -8,6 +8,7 @@ interface HeadingFieldProps {
   label: string;
   sx?: SxProps<Theme>;
   className?: string;
+  dataaos?: string;
 }
 const GradientText = ({
   fontSize,
@@ -16,6 +17,7 @@ const GradientText = ({
   label,
   sx,
   className,
+  dataaos,
 }: HeadingFieldProps) => {
   return (
     <Typography
@@ -30,7 +32,7 @@ const GradientText = ({
         ...sx,
       }}
       className={className}
-
+      data-aos={dataaos}
     >
       {label}
     </Typography>

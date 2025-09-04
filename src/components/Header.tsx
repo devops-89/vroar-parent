@@ -20,7 +20,7 @@ const Header = () => {
         // transform: "translateX(50%)",
         width: "100%",
         top: "2rem",
-        zIndex:999
+        zIndex: 999,
       }}
     >
       <Grid container>
@@ -42,13 +42,11 @@ const Header = () => {
               justifyContent={"space-between"}
             >
               {data.headerLinks1.map((val, i) => (
-                <Link
-                  href={val.href}
-                  className="link"
-                  key={i}
-                >
+                <Link href={val.href} className="link" key={i}>
                   <Typography
-                    className={router.pathname === val.href ? "active_link" : ""}
+                    className={
+                      router.pathname === val.href ? "active_link" : ""
+                    }
                     sx={{
                       color: COLORS.TEXT_COLOR,
                       fontFamily: nunito.style,
@@ -70,6 +68,9 @@ const Header = () => {
                       fontFamily: nunito.style,
                       fontSize: 16,
                     }}
+                    className={
+                      router.pathname === val.href ? "active_link" : ""
+                    }
                   >
                     {val.label}
                   </Typography>

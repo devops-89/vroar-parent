@@ -54,4 +54,12 @@ export const UserController = {
       throw error;
     }
   },
+  getPlansPublic: async () => {
+    try {
+      let result = await userPublicApi.get("/payment/products");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

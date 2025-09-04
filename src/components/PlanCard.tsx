@@ -24,6 +24,7 @@ import { UserController } from "@/assets/api/UserController";
 import { useDispatch } from "react-redux";
 import { showToast } from "@/redux/reducers/Toast";
 import { useRouter } from "next/router";
+import ButtonWithIcon from "./Home/Components/ButtonWithIcon";
 
 const PlanCard = ({
   description,
@@ -198,74 +199,18 @@ const PlanCard = ({
       </Stack>
 
       <Box mt={3} position="relative">
-        <Button
-          fullWidth
-          disabled={loading}
-          onClick={() =>
-            createPaymentLink(
-              isRecurring && hasYearly
-                ? switchStatus
-                  ? prices.find((p) => p.interval === "year")?.id ||
-                    prices[0].id
-                  : prices.find((p) => p.interval === "month")?.id ||
-                    prices[0].id
-                : prices[0].id
+        <ButtonWithIcon
+          label={
+            loading ? (
+              <CircularProgress sx={{ color: COLORS.WHITE }} size={20} />
+            ) : selectedPrice.isRecurring ? (
+              "Unlock Confidence"
+            ) : (
+              "Explore Now"
             )
           }
-          sx={{
-            background: COLORS.LINEAR_GRADIENT,
-            fontFamily: nunito.style,
-            color: COLORS.WHITE,
-            borderRadius: 6,
-            fontSize: 15,
-            fontWeight: 600,
-            p: 1.5,
-            position: "relative",
-            boxShadow: selectedPrice.isRecurring
-              ? "0px 0px 4px 4px rgba(253, 144, 101, 1)"
-              : "0px 0px 4px 4px rgba(253, 144, 101, 0.4)",
-            ":hover": {
-              "& .icon": {
-                transform: "rotate(0deg)",
-              },
-            },
-          }}
-          endIcon={
-            <Box
-              sx={{
-                position: "absolute",
-                left: { lg: "90%", xs: "80%" },
-                top: 5,
-                width: 40,
-                height: 40,
-                borderRadius: "50%",
-                backgroundColor: COLORS.WHITE,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0px 0px 2px 2px rgba(255,255,255,0.2)",
-              }}
-            >
-              <ArrowForward
-                className="icon"
-                sx={{
-                  fontSize: 25,
-                  color: COLORS.PRIMARY,
-                  transform: "rotate(-45deg)",
-                  transition: "0.5s ease all",
-                }}
-              />
-            </Box>
-          }
-        >
-          {loading ? (
-            <CircularProgress sx={{ color: COLORS.WHITE }} size={20} />
-          ) : selectedPrice.isRecurring ? (
-            "Unlock Confidence"
-          ) : (
-            "Explore Now"
-          )}
-        </Button>
+          sx={{ width: "100%" }}
+        />
 
         <Box mt={5}>
           <Typography
@@ -281,7 +226,11 @@ const PlanCard = ({
           </Typography>
           <List>
             {benefits?.map((val, i) => (
-              <ListItem key={i}>
+              <ListItem
+                key={i}
+                data-aos="fade-up"
+                data-aos-delay={`${i + 1 * 200}`}
+              >
                 <ListItemAvatar>
                   <Image src={tick} alt="tick" />
                 </ListItemAvatar>
