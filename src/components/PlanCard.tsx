@@ -32,6 +32,7 @@ const PlanCard = ({
   prices,
   img,
   benefits,
+  strike
 }: SUBSCRIPTION_PLANS) => {
   if (!prices || prices.length === 0) {
     return <Typography>No pricing available for this plan.</Typography>;
@@ -163,11 +164,16 @@ const PlanCard = ({
           $
           {isRecurring && hasYearly
             ? switchStatus
-              ? Math.round((prices.find((p) => p.interval === "year")?.amount || 0) / 12) 
-              : Math.round((prices.find((p) => p.interval === "month")?.amount || 0) / 3) 
+              ? Math.round((prices.find((p) => p.interval === "year")?.amount || 0) / 12)
+              : Math.round((prices.find((p) => p.interval === "month")?.amount || 0) / 3)
             : prices[0]?.amount}
         </Typography>
 
+        {strike && (
+          <Typography sx={{ textDecoration: "line-through", fontSize: 20, fontFamily: nunito.style.fontFamily, fontWeight: 700 }}>$399</Typography>
+        )
+
+        }
         {selectedPrice.isRecurring ? (
           <Stack direction="row" spacing={2} alignItems="center">
             <PlanBadges
@@ -202,9 +208,9 @@ const PlanCard = ({
               isRecurring && hasYearly
                 ? switchStatus
                   ? prices.find((p) => p.interval === "year")?.id ||
-                    prices[0].id
+                  prices[0].id
                   : prices.find((p) => p.interval === "month")?.id ||
-                    prices[0].id
+                  prices[0].id
                 : prices[0].id
             )
           }

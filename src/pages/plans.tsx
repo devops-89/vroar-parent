@@ -34,7 +34,7 @@ const Plans = () => {
         const response = res.data.data;
         console.log("Backend plans:", response);
         console.log("Static plans:", plans_data);
-        
+
         // First, merge static data with matching backend plans
         const mergedArray = response.map((apiPlan: any) => {
           const staticPlan = plans_data.find(
@@ -150,6 +150,7 @@ const Plans = () => {
                                   prices={val.prices}
                                   img={val.img}
                                   benefits={val.benefits}
+                                  strike={val.strike}
                                 />
                               </Grid>
                             ))}

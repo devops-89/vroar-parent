@@ -10,21 +10,29 @@ export const plans_data: STATIC_SUBSCRIPTION_PLANS[] = [
   {
     benefits: [
       {
-        label: "1-Hour Coaching Session",
+        label: "One-on-One Strength Coaching Workshop – flagship feature",
       },
       {
-        label: "High School Counselor Session",
+        label: "Unlimited Monthly Webinars",
       },
       {
-        label: "Limited App Learning Access",
+        label: "Gamified Roadmaps",
       },
       {
-        label: "Limited Monthly Webinars",
+        label: "Personalized Learning",
+      },
+      {
+        label: "One-on-One Workshops",
+      },
+      {
+        label: "Academic Plan with a Career Counselor",
       },
     ],
     img: explorer,
 
-    id: "prod_SLQ1MSck5JtXTA", //uat plans
+    // id: "prod_SLQ1MSck5JtXTA", //uat plans
+    id: "prod_SympOqDUuezXAf", //$25 plan uat
+    strike: true,
   },
   {
     benefits: [
@@ -56,5 +64,6 @@ export const plans_data: STATIC_SUBSCRIPTION_PLANS[] = [
     img: confidence,
 
     id: "prod_SLQ4gXibjr7hz9", // uat plans
+    strike: false,
   },
 ];
