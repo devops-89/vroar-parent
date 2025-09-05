@@ -14,7 +14,9 @@ import ParaField from "../common/Para-Field";
 import ButtonWithIcon from "./Components/ButtonWithIcon";
 import CurvedBadge from "./Components/ChooseIcon";
 import Home_hero_points from "./Components/Home_hero_points";
+import { useRouter } from "next/router";
 const Banner = () => {
+  const router = useRouter();
   return (
     <Box
       sx={{
