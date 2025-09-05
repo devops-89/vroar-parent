@@ -69,19 +69,27 @@ const Banner = () => {
               spacing={2}
               justifyContent={"center"}
               mt={2}
-              flexWrap={{xs:"wrap",lg:"nowrap"}}
+              flexWrap={{ xs: "wrap", lg: "nowrap" }}
             >
               <Home_hero_points label="Coaches" />
               <Divider
                 orientation="vertical"
                 flexItem
-                sx={{ backgroundColor: COLORS.PRIMARY, width: "2px" }}
+                sx={{
+                  backgroundColor: COLORS.PRIMARY,
+                  width: "2px",
+                  display: { xs: "none", lg: "flex" },
+                }}
               />
               <Home_hero_points label="Counselors" />
               <Divider
                 orientation="vertical"
                 flexItem
-                sx={{ backgroundColor: COLORS.PRIMARY, width: "2px" }}
+                sx={{
+                  backgroundColor: COLORS.PRIMARY,
+                  width: "2px",
+                  display: { xs: "none", lg: "flex" },
+                }}
               />
               <Home_hero_points label="Mentors" />
             </Stack>
