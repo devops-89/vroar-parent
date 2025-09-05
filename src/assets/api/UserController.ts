@@ -62,4 +62,14 @@ export const UserController = {
       throw error;
     }
   },
+  getMentorList: async () => {
+    try {
+      let result = await userPublicApi.get(
+        "/user/publicMentorsList?page=1&&pageSize=20"
+      );
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

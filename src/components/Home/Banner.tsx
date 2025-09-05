@@ -27,24 +27,30 @@ const Banner = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        p: 10,
+        p: { lg: 10, xs: 0 },
       }}
     >
-      <Container sx={{ mt: 20 }}>
+      <Container sx={{ mt: { lg: 20, xs: 20 } }}>
         <Grid container>
-          <Grid size={10} margin={"auto"}>
+          <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
             <Box data-aos="fade-left">
               <HeadingField
                 label="Turn College Prep"
                 className=""
-                sx={{ fontFamily: "gomenasans-bold" }}
+                sx={{
+                  fontFamily: "gomenasans-bold",
+                  fontSize: { xs: 32, lg: 68 },
+                }}
               />
             </Box>
             <Box data-aos="fade-left">
               <GradientText
                 label="Chaos into Clarity"
                 data-aos="fade-in"
-                sx={{ fontFamily: "gomenasans-bold" }}
+                sx={{
+                  fontFamily: "gomenasans-bold",
+                  fontSize: { xs: 32, lg: 68 },
+                }}
               />
             </Box>
 
@@ -53,7 +59,7 @@ const Banner = () => {
               students unlock their potential and craft a personalized roadmap
               to success; so every student can step into college with clarity,
               confidence, and the courage to aim higher."
-              fontSize={20}
+              sx={{ fontSize: { lg: 20, xs: 18 } }}
               textAlign="center"
               data-aos="fade-in"
             />
@@ -63,6 +69,7 @@ const Banner = () => {
               spacing={2}
               justifyContent={"center"}
               mt={2}
+              flexWrap={{xs:"wrap",lg:"nowrap"}}
             >
               <Home_hero_points label="Coaches" />
               <Divider

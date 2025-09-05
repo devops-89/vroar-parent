@@ -1,9 +1,15 @@
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import { Button, Box } from "@mui/material";
+import { Button, Box, Theme, SxProps } from "@mui/material";
 import React from "react";
 
-const SimpleButton = ({ label }: { label: string }) => {
+const SimpleButton = ({
+  label,
+  sx,
+}: {
+  label: string;
+  sx?: SxProps<Theme>;
+}) => {
   return (
     <Button
       sx={{
@@ -25,6 +31,7 @@ const SimpleButton = ({ label }: { label: string }) => {
         "&:hover .text-track": {
           transform: "translateY(-50%)",
         },
+        ...sx,
       }}
     >
       {/* Text Swap Animation */}

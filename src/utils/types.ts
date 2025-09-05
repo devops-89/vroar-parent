@@ -269,3 +269,16 @@ export interface BENEFITS_CARD_PROPS {
   isLast: Boolean;
   bgColor: string;
 }
+
+export interface MENTOR_PROFESSIONAL_BACKGROUND {
+  company: string;
+}
+
+export interface MENTOR_CARD_PROPS {
+  avatar: string;
+  firstName: string;
+  lastName: string;
+  careerSummary: string;
+  designation: string;
+  professionalBackground: MENTOR_PROFESSIONAL_BACKGROUND[];
+}

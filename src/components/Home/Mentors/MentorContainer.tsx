@@ -5,6 +5,8 @@ import Image from "next/image";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import ButtonWithIcon from "../Components/ButtonWithIcon";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const MentorContainer = ({ index }: { index: string | number }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -66,7 +68,9 @@ const MentorContainer = ({ index }: { index: string | number }) => {
         </Grid>
       </Grid>
       <Box sx={{ textAlign: "center", mt: 8 }}>
-        <ButtonWithIcon label="Meet Our Mentors" width={250} />
+        <Link href={"/all-mentors"}>
+          <ButtonWithIcon label="Meet Our Mentors" width={250} />
+        </Link>
       </Box>
     </Container>
   );

@@ -100,8 +100,8 @@ const ButtonWithIcon = ({
             justifyContent: "center",
             boxShadow: 3,
             overflow: "hidden",
-            position: "absolute",
-            right: 10,
+            position: "relative",
+            right: 0,
           }}
         >
           <Box

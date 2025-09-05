@@ -1,30 +1,46 @@
 import { data } from "@/assets/data";
+import logo from "@/logo/Logo.png";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import { Box, Grid, Stack, Typography } from "@mui/material";
-import React from "react";
+import { Box, Grid, IconButton, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import logo from "@/logo/Logo.png";
-import SimpleButton from "./Home/Components/SimpleButton";
 import Link from "next/link";
-import currentLink from "@/icons/current-link.avif";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import SimpleButton from "./Home/Components/SimpleButton";
+import { Menu } from "@mui/icons-material";
 const Header = () => {
   const router = useRouter();
+  const [isStuck, setIsStuck] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsStuck(window.scrollY > 20);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
     <Box
       sx={{
-        position: "absolute",
-        // left: "50%",
-        // right: "50%",
-        // transform: "translateX(50%)",
+        position: isStuck ? "fixed" : "absolute",
         width: "100%",
-        top: "2rem",
-        zIndex: 999,
+        top: isStuck ? 0 : "1rem",
+        left: 0,
+        zIndex: 9999,
+        transition: "top 300ms ease",
       }}
     >
       <Grid container>
-        <Grid size={8} margin={"auto"}>
+        <Grid
+          size={{ lg: 8, xs: 12 }}
+          margin={"auto"}
+          sx={{
+            transition: "top 300ms ease,",
+            backgroundColor: isStuck ? "transparent" : "transparent",
+          }}
+        >
           <Box
             sx={{
               backgroundColor: COLORS.WHITE,
@@ -34,12 +50,15 @@ const Header = () => {
               paddingRight: "2rem",
               paddingTop: "1rem",
               paddingBottom: "1rem",
+              transition: "transform 300ms ease",
+              transform: isStuck ? "translateY(6px)" : "translateY(0)",
             }}
           >
             <Stack
               direction={"row"}
               alignItems={"center"}
               justifyContent={"space-between"}
+              sx={{ display: { xs: "none", lg: "flex" } }}
             >
               {data.headerLinks1.map((val, i) => (
                 <Link href={val.href} className="link" key={i}>
@@ -77,6 +96,25 @@ const Header = () => {
                 </Link>
               ))}
               <SimpleButton label="Sign In" />
+            </Stack>
+
+            <Stack
+              direction={"row"}
+              alignItems={"center"}
+              justifyContent={"space-between"}
+              sx={{ display: { xs: "flex", lg: "none" } }}
+            >
+              <Link href={"/"}>
+                <Image src={logo} alt="logo" width={100} />
+              </Link>
+              <IconButton
+                sx={{
+                  backgroundColor: COLORS.WHITE,
+                  boxShadow: "0px 0px 1px 1px #00000030",
+                }}
+              >
+                <Menu sx={{ color: COLORS.PRIMARY }} />
+              </IconButton>
             </Stack>
           </Box>
         </Grid>
