@@ -31,7 +31,7 @@ const Trekship = () => {
                 mt: 2,
                 color: COLORS.WHITE,
                 fontSize: 64,
-                fontFamily: "gomenasans,arial,sans-serif",
+                fontFamily: "gomenasans-bold",
                 fontWeight: 700,
                 textAlign: "center",
                 lineHeight: 1.1,

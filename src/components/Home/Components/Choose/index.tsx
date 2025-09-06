@@ -21,9 +21,10 @@ const Choose = () => {
                 textAlign: "center",
                 lineHeight: 1.2,
                 mt: 3,
-                fontFamily: "gomenasans,arial,sans-serif",
+                fontFamily: "gomenasans-bold",
                 mb: 4,
               }}
+              data-aos="fade-up"
             >
               Confidence isn’t taught. It’s uncovered, nurtured, and empowered.
             </Typography>
@@ -38,6 +39,7 @@ const Choose = () => {
                 fontFamily: nunito.style,
                 lineHeight: 1.2,
               }}
+              data-aos="fade-up"
             >
               We’re helping your child discover who they are before deciding
               what they want to do by combining neuroscience, the
@@ -47,7 +49,12 @@ const Choose = () => {
         </Grid>
         <Grid container spacing={4} mt={5}>
           {data.chooseCard.map((val, i) => (
-            <Grid size={4} key={i}>
+            <Grid
+              size={4}
+              key={i}
+              data-aos="fade-right"
+              data-aos-delay={`${i + 1 * 200}`}
+            >
               <ChooseCard
                 img={val.img}
                 title={val.title}

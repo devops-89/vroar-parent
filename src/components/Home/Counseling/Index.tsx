@@ -15,7 +15,7 @@ const Counseling = () => {
             <Badge label="counseling" width={100} margin="auto" />
             <Typography
               sx={{
-                fontFamily: "gomenasans,arial,sans-serif",
+                fontFamily: "gomenasans-bold,arial,sans-serif",
                 fontWeight: 700,
                 fontSize: 64,
                 // letterSpacing: "-2.50px",

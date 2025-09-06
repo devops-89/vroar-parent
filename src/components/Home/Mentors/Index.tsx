@@ -31,7 +31,7 @@ const Mentors = () => {
               sx={{
                 fontSize: 64,
                 fontWeight: 700,
-                fontFamily: "gomenasans,arial,sans-serif",
+                fontFamily: "gomenasans-bold",
                 textAlign: "center",
               }}
             >

@@ -28,7 +28,7 @@ const Header = () => {
         width: "100%",
         top: isStuck ? 0 : "1rem",
         left: 0,
-        zIndex: 9999,
+        zIndex: 99999,
         transition: "top 300ms ease",
       }}
     >

@@ -21,7 +21,7 @@ const AboutSection = () => {
             <Stack direction={"row"} alignItems={"center"} spacing={2}>
               <Typography
                 sx={{
-                  fontFamily: "gomenasans,arial,sans-serif",
+                  fontFamily: "gomenasans-bold",
                   fontSize: 64,
                   fontWeight: 700,
                   lineHeight: 1,
@@ -39,7 +39,7 @@ const AboutSection = () => {
               />
               <Typography
                 sx={{
-                  fontFamily: "gomenasans,arial,sans-serif",
+                  fontFamily: "gomenasans-bold",
                   fontSize: 64,
                   fontWeight: 700,
                   lineHeight: 1,
@@ -51,7 +51,7 @@ const AboutSection = () => {
             </Stack>
             <Typography
               sx={{
-                fontFamily: "gomenasans,arial,sans-serif",
+                fontFamily: "gomenasans-bold",
                 fontSize: 64,
                 fontWeight: 700,
                 lineHeight: 1,

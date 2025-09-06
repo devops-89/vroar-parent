@@ -42,7 +42,7 @@ const Coaching = () => {
           <Typography
             sx={{
               fontSize: 64,
-              fontFamily: "gomenasans,arial,sans-serif",
+              fontFamily: "gomenasans-bold",
               mt: 3,
               fontWeight: 700,
               // letterSpacing: 2,
@@ -54,7 +54,7 @@ const Coaching = () => {
           <Typography
             sx={{
               fontSize: 64,
-              fontFamily: "gomenasans,arial,sans-serif",
+              fontFamily: "gomenasans-bold",
               fontWeight: 700,
               // letterSpacing: 2,
               textAlign: "center",
