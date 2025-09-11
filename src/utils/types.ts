@@ -282,3 +282,10 @@ export interface MENTOR_CARD_PROPS {
   designation: string;
   professionalBackground: MENTOR_PROFESSIONAL_BACKGROUND[];
 }
+
+export interface TEAM_CARD_PROPS {
+  img: StaticImageData;
+  name: string;
+  designation: string;
+  summary: string;
+}

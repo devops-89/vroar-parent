@@ -43,15 +43,16 @@ const Header = () => {
         >
           <Box
             sx={{
-              backgroundColor: COLORS.WHITE,
+              backgroundColor: isStuck ? COLORS.WHITE : COLORS.WHITE,
               borderRadius: "20rem",
-              border: "5px solid #fff3f0",
+              border: isStuck ? "5px solid #fff3f0" : "5px solid #fff3f0",
               paddingLeft: "2rem",
               paddingRight: "2rem",
               paddingTop: "1rem",
               paddingBottom: "1rem",
               transition: "transform 300ms ease",
               transform: isStuck ? "translateY(6px)" : "translateY(0)",
+              backdropFilter: "blur(10px)",
             }}
           >
             <Stack
@@ -67,7 +68,7 @@ const Header = () => {
                       router.pathname === val.href ? "active_link" : ""
                     }
                     sx={{
-                      color: COLORS.TEXT_COLOR,
+                      color: isStuck ? COLORS.BLACK : COLORS.TEXT_COLOR,
                       fontFamily: nunito.style,
                       fontSize: 16,
                     }}
@@ -83,7 +84,7 @@ const Header = () => {
                 <Link href={val.href} className="link">
                   <Typography
                     sx={{
-                      color: COLORS.TEXT_COLOR,
+                      color: isStuck ? COLORS.BLACK : COLORS.TEXT_COLOR,
                       fontFamily: nunito.style,
                       fontSize: 16,
                     }}

@@ -6,7 +6,14 @@ import img4 from "@/homePage/choose-icon4.avif";
 import bannerImage from "@/homePage/hero-section-baner.avif";
 import chooseBanner from "@/homePage/why-choose-section.avif";
 import { COLORS } from "@/utils/enum";
-import { Box, Container, Divider, Grid, Stack } from "@mui/material";
+import {
+  Box,
+  Container,
+  Divider,
+  Grid,
+  Stack,
+  useMediaQuery,
+} from "@mui/material";
 import Image from "next/image";
 import GradientText from "../common/Greadient-text";
 import HeadingField from "../common/Heading-Field";
@@ -17,6 +24,8 @@ import Home_hero_points from "./Components/Home_hero_points";
 import { useRouter } from "next/router";
 const Banner = () => {
   const router = useRouter();
+  const phone = useMediaQuery("(max-width:600px)");
+
   return (
     <Box
       sx={{
@@ -95,14 +104,14 @@ const Banner = () => {
               />
               <Home_hero_points label="Mentors" />
             </Stack>
-            <Box sx={{ mt: 25, position: "relative" }}>
+            <Box sx={{ mt: {lg:25,xs:10}, position: "relative" }}>
               <Box
                 sx={{
                   backgroundImage: `url(${chooseBanner.src})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
-                  height: "40vh",
+                  height: { lg: "40vh", xs: "20vh" },
                   marginTop: 10,
                   borderRadius: "3.125rem",
                   position: "relative",
@@ -112,7 +121,12 @@ const Banner = () => {
                   direction={"row"}
                   alignItems={"center"}
                   justifyContent={"space-between"}
-                  sx={{ position: "absolute", top: 20, width: "100%", px: 4 }}
+                  sx={{
+                    position: "absolute",
+                    top: 20,
+                    width: "100%",
+                    px: { lg: 4, xs: 1 },
+                  }}
                 >
                   <CurvedBadge icon={img1} char="MYTREKSHIP" />
                   <CurvedBadge icon={img2} char="CAREER COUNSEL" />
@@ -120,18 +134,28 @@ const Banner = () => {
                 <Box
                   sx={{
                     position: "absolute",
-                    top: -145,
+                    top: { lg: -145, xs: -20 },
                     left: "50%",
                     transform: "translateX(-50%)",
                   }}
                 >
-                  <Image src={frame} alt="frame" width={400} height={400} />
+                  <Image
+                    src={frame}
+                    alt="frame"
+                    width={phone ? 170 : 400}
+                    height={phone ? 170 : 400}
+                  />
                 </Box>
                 <Stack
                   direction={"row"}
                   alignItems={"center"}
-                  justifyContent={"space-around"}
-                  sx={{ position: "absolute", bottom: 20, width: "100%" }}
+                  justifyContent={{ lg: "space-around", xs: "space-between" }}
+                  sx={{
+                    position: "absolute",
+                    bottom: 20,
+                    width: "100%",
+                    px: { lg: 0, xs: 3 },
+                  }}
                 >
                   <CurvedBadge icon={img3} char="Mentorship guide" />
                   <CurvedBadge icon={img4} char="Career voyage" />
@@ -146,7 +170,10 @@ const Banner = () => {
                   zIndex: 999,
                 }}
               >
-                <ButtonWithIcon label="Get Started Today" width="250px" />
+                <ButtonWithIcon
+                  label="Get Started Today"
+                  sx={{ width: { lg: 250, xs: 200 } }}
+                />
               </Box>
             </Box>
           </Grid>

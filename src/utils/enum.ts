@@ -1,3 +1,5 @@
+import { useMediaQuery } from "@mui/material";
+
 export const enum COLORS {
   PRIMARY = "#FB5933",
   SECONDARY = "#fcb52e",
@@ -161,3 +163,5 @@ export enum DEVICE_TYPE {
   ANDROID = "ANDROID",
   IOS = "IOS",
 }
+
+

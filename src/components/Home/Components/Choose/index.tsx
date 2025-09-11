@@ -16,7 +16,7 @@ const Choose = () => {
             <Badge label="Why Mytreks.ai?" width={150} margin="auto" />
             <Typography
               sx={{
-                fontSize: "4rem",
+                fontSize: { lg: 64, xs: 20 },
                 fontWeight: 700,
                 textAlign: "center",
                 lineHeight: 1.2,
@@ -32,9 +32,9 @@ const Choose = () => {
               sx={{
                 textAlign: "center",
                 // mt: 7,
-                width: 780,
+                width: { lg: 780, xs: "100%" },
                 margin: "auto",
-                fontSize: 20,
+                fontSize: { lg: 20, xs: 14 },
                 color: COLORS.TEXT_COLOR,
                 fontFamily: nunito.style,
                 lineHeight: 1.2,
@@ -50,7 +50,7 @@ const Choose = () => {
         <Grid container spacing={4} mt={5}>
           {data.chooseCard.map((val, i) => (
             <Grid
-              size={4}
+              size={{ lg: 4, xs: 16 }}
               key={i}
               data-aos="fade-right"
               data-aos-delay={`${i + 1 * 200}`}

@@ -12,6 +12,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import "swiper/css";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { useMediaQuery } from "@mui/material";
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const script = document.createElement("script");
@@ -27,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
       mirror: true,
     });
   }, []);
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

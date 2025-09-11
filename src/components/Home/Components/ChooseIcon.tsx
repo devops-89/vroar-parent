@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Avatar, Typography } from "@mui/material";
+import { Box, Avatar, Typography, useMediaQuery } from "@mui/material";
 import img from "@/homePage/choose-icon1.avif";
 import Image from "next/image";
 import { nunito } from "@/utils/fonts";
@@ -8,13 +8,13 @@ import { StaticImport } from "next/dist/shared/lib/get-img-props";
 const CurvedBadge = ({ icon, char }: { icon: StaticImport; char: string }) => {
   const radius = 40;
   const startAngle = -90 - (char.length * 8) / 2;
-
+  const phone = useMediaQuery("(max-width:600px)");
   return (
     <Box
       sx={{
         position: "relative",
-        width: 80,
-        height: 80,
+        width: { lg: 80, xs: 50 },
+        height: { lg: 80, xs: 50 },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -60,7 +60,7 @@ const CurvedBadge = ({ icon, char }: { icon: StaticImport; char: string }) => {
                 left: `${x}%`,
                 top: `${y}%`,
                 transform: `translate(-50%, -50%) rotate(${angle + 90}deg)`,
-                fontSize: 12,
+                fontSize: { lg: 12, xs: 8 },
                 color: "#000",
                 letterSpacing: 1,
                 textTransform: "uppercase",
@@ -78,13 +78,18 @@ const CurvedBadge = ({ icon, char }: { icon: StaticImport; char: string }) => {
       {/* Center Badge */}
       <Avatar
         sx={{
-          width: 50,
-          height: 50,
+          width: { lg: 50, xs: 30 },
+          height: { lg: 50, xs: 30 },
           boxShadow: 3,
           zIndex: 1,
         }}
       >
-        <Image src={icon} alt="choose-icon" width={50} height={50} />
+        <Image
+          src={icon}
+          alt="choose-icon"
+          width={phone ? 30 : 50}
+          height={phone ? 30 : 50}
+        />
       </Avatar>
     </Box>
   );

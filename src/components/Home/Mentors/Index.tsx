@@ -29,11 +29,14 @@ const Mentors = () => {
           <Grid size={9} margin={"auto"} mt={3}>
             <Typography
               sx={{
-                fontSize: 64,
+                fontSize: { lg: 64, xs: 25 },
                 fontWeight: 700,
                 fontFamily: "gomenasans-bold",
                 textAlign: "center",
+                lineHeight: "1.1",
+                letterSpacing: "-.04em",
               }}
+              data-aos="fade-up"
             >
               A Personal Advisory Board for your child
             </Typography>
@@ -43,26 +46,34 @@ const Mentors = () => {
                 color: COLORS.TEXT_COLOR,
                 fontSize: 20,
                 fontFamily: nunito.style,
+                mt: 1,
               }}
+              data-aos="fade-up"
             >
               Not just a mentor but your child gets a curated circle of
               achievers and experts who guide them with purpose.
             </Typography>
             <Box sx={{ textAlign: "center", mt: 4 }}>
               {whyMentorsData.map((val, i) => (
-                <Home_hero_points
-                  label={val.label}
+                <Box
                   key={i}
-                  color={COLORS.TEXT_COLOR}
-                  justifyContent={"center"}
-                  mt={2}
-                />
+                  data-aos={"fade-left"}
+                  data-aos-delay={`${i + 1 * 100}`}
+                >
+                  <Home_hero_points
+                    label={val.label}
+                    key={i}
+                    color={COLORS.TEXT_COLOR}
+                    justifyContent={"center"}
+                    mt={2}
+                  />
+                </Box>
               ))}
             </Box>
           </Grid>
         </Grid>
 
-        <Box sx={{ mt: 6 }}>
+        <Box sx={{ mt: 6 }} data-aos="fade-left">
           <MentorContainer index={index} />
         </Box>
       </Container>

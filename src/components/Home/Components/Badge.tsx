@@ -1,16 +1,19 @@
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import { Box } from "@mui/material";
+import { Theme } from "@emotion/react";
+import { Box, SxProps } from "@mui/material";
 import React from "react";
 
 const Badge = ({
   label,
   width,
   margin,
+  sx,
 }: {
   label: string;
   width?: number | string;
   margin?: string;
+  sx?: SxProps<Theme>;
 }) => {
   return (
     <Box
@@ -27,6 +30,7 @@ const Badge = ({
         textAlign: "center",
         margin: margin,
         backgroundColor: "#FFF9EA",
+        ...sx,
       }}
     >
       {label}

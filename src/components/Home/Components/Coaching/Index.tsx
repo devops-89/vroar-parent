@@ -56,7 +56,6 @@ const Coaching = () => {
               fontSize: 64,
               fontFamily: "gomenasans-bold",
               fontWeight: 700,
-              // letterSpacing: 2,
               textAlign: "center",
             }}
           >

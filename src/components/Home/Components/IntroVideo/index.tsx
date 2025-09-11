@@ -96,6 +96,7 @@ const IntroVideo = () => {
               justifyContent: "center",
               zIndex: 2,
               cursor: "pointer",
+              transform: "translateX(-50%,50%)",
             }}
             onClick={handlePlay}
           >
@@ -116,6 +117,7 @@ const IntroVideo = () => {
               justifyContent: "center",
               zIndex: 2,
               cursor: "pointer",
+              transform: "translateX(-50%,50%)",
             }}
             onClick={handlePause}
           >
@@ -123,8 +125,10 @@ const IntroVideo = () => {
           </Box>
         )}
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center", mt: 7 }}>
-        <ButtonWithIcon label="About Us"  />
+      <Box
+        sx={{ display: "flex", justifyContent: "center", mt: { lg: 7, xs: 4 } }}
+      >
+        <ButtonWithIcon label="About Us" />
       </Box>
     </>
   );

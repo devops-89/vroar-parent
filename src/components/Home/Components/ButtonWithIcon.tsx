@@ -22,7 +22,7 @@ const ButtonWithIcon = ({
         border: "2px solid #ffddd5",
         padding: "8px 16px",
         fontWeight: 700,
-        fontSize: "1rem",
+        fontSize: { lg: 16, xs: 12 },
         fontFamily: nunito.style.fontFamily,
         boxShadow: "inset 0 0 #0000, 0 4px 12px #fd9065",
         transition: "all 0.3s ease",
