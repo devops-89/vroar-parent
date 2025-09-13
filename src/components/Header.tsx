@@ -27,7 +27,7 @@ const Header = () => {
         position: isStuck ? "fixed" : "absolute",
         width: isStuck ? "80%" : "100%",
         top: isStuck ? 0 : "1rem",
-        left: { lg: 0, xs: isStuck ? "50%" : 0 },
+        left: 0,
         zIndex: 99999,
         transition: "top 300ms ease",
         margin: "auto",
