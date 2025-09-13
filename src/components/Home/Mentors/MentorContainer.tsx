@@ -14,7 +14,7 @@ const MentorContainer = ({ index }: { index: string | number }) => {
   return (
     <Container>
       <Grid container spacing={5}>
-        <Grid size={6}>
+        <Grid size={{ lg: 6, xs: 12 }}>
           <Grid container spacing={4}>
             {MENTORS_DATA.map((val, i) => (
               <Grid size={4} key={val.id}>
@@ -57,7 +57,7 @@ const MentorContainer = ({ index }: { index: string | number }) => {
             ))}
           </Grid>
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ lg: 6, xs: 12 }}>
           <div>
             <Typography
               sx={{ fontSize: 18, fontFamily: nunito.style, lineHeight: 2 }}

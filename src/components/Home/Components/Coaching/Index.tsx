@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import coachingBanner from "@/homePage/coaching/coaching.webp";
 import Image from "next/image";
@@ -10,12 +10,13 @@ import { COLORS } from "@/utils/enum";
 import CoachingCard from "./CoachingCard";
 import { COACHING_DATA } from "@/assets/mentors";
 const Coaching = () => {
+  const phone = useMediaQuery("(max-width:600px)");
   return (
     <Box
       sx={{
         backgroundImage: `url(${coachingBanner.src})`,
         width: "100%",
-        height: "200vh",
+        height: { lg: "200vh", xs: "140vh" },
         position: "relative",
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -23,11 +24,11 @@ const Coaching = () => {
         mt: 10,
       }}
     >
-      <Box sx={{ position: "absolute", bottom: -100, left: 30 }}>
-        <Image src={grass} alt="" width={400} />
+      <Box sx={{ position: "absolute", bottom: -80, left: { lg: 30, xs: 0 } }}>
+        <Image src={grass} alt="" width={phone ? 150 : 400} />
       </Box>
       <Box sx={{ position: "absolute", right: 0, bottom: -25 }}>
-        <Image src={cactus} alt="" width={400} />
+        <Image src={cactus} alt="" width={phone ? 150 : 400} />
       </Box>
       <Box
         sx={{
@@ -41,7 +42,7 @@ const Coaching = () => {
           <Badge label="coaching" margin="auto" width={100} />
           <Typography
             sx={{
-              fontSize: 64,
+              fontSize: { lg: 64, xs: 30 },
               fontFamily: "gomenasans-bold",
               mt: 3,
               fontWeight: 700,
@@ -53,7 +54,7 @@ const Coaching = () => {
           </Typography>
           <Typography
             sx={{
-              fontSize: 64,
+              fontSize: { lg: 64, xs: 30 },
               fontFamily: "gomenasans-bold",
               fontWeight: 700,
               textAlign: "center",
@@ -63,7 +64,7 @@ const Coaching = () => {
           </Typography>
           <Typography
             sx={{
-              width: 600,
+              width: { lg: 600, xs: "100%" },
               margin: "auto",
               textAlign: "center",
               fontSize: 20,
@@ -79,7 +80,7 @@ const Coaching = () => {
             direction.
           </Typography>
           <Grid container sx={{ mt: 4 }}>
-            <Grid size={6} margin={"auto"}>
+            <Grid size={{ lg: 6, xs: 12 }} margin={"auto"}>
               <Grid container spacing={2}>
                 {COACHING_DATA.map((val, i) => (
                   <Grid size={12} key={i}>

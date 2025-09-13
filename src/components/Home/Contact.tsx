@@ -22,7 +22,7 @@ const Contact = () => {
     <Box
       sx={{
         backgroundImage: `url(${contact_banner.src})`,
-        height: "100vh",
+        height: { lg: "100vh", xs: "90vh" },
         backgroundPosition: "50% 100%",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -32,31 +32,37 @@ const Contact = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container>
-          <Grid size={6}>
-            <Badge label="Get in touch" width={120} />
+        <Grid container spacing={{ lg: 0, xs: 5 }}>
+          <Grid size={{ lg: 6, xs: 12 }}>
+            <Badge
+              label="Get in touch"
+              width={120}
+              sx={{ margin: { lg: "", xs: "auto" } }}
+            />
             <Typography
               sx={{
-                fontSize: 64,
+                fontSize: { lg: 64, xs: 36 },
                 fontFamily: "gomenasana,sans-serif",
                 fontWeight: 600,
+                textAlign: { lg: "start", xs: "center" },
               }}
             >
               Contact Us
             </Typography>
             <Typography
               sx={{
-                fontSize: 16,
+                fontSize: { lg: 16, xs: 14 },
                 fontFamily: "gomenasana,sans-serif",
                 width: 400,
                 fontWeight: 500,
+                textAlign: { lg: "start", xs: "center" },
               }}
             >
               Connect with peers, mentors, and families to share experiences and
               thrive.
             </Typography>
             <Stack
-              direction={"row"}
+              direction={{ lg: "row", xs: "column" }}
               alignItems={"center"}
               justifyContent={"flex-start"}
               spacing={3}
@@ -78,7 +84,12 @@ const Contact = () => {
               </Box>
               <Box>
                 <Typography
-                  sx={{ fontSize: 24, lineHeight: 1.4, fontWeight: 550 }}
+                  sx={{
+                    fontSize: 24,
+                    lineHeight: 1.4,
+                    fontWeight: 550,
+                    textAlign: { lg: "start", xs: "center" },
+                  }}
                 >
                   Email
                 </Typography>
@@ -86,7 +97,7 @@ const Contact = () => {
               </Box>
             </Stack>
           </Grid>
-          <Grid size={6}>
+          <Grid size={{ lg: 6, xs: 12 }}>
             <Card
               sx={{
                 backgroundColor: COLORS.WHITE,
@@ -123,7 +134,7 @@ const Contact = () => {
                     label="Enter Your Query"
                     multiline
                   />
-                  <ButtonWithIcon label="Send Enquiry" width={"100%"}  />
+                  <ButtonWithIcon label="Send Enquiry" width={"100%"} />
                 </Stack>
               </form>
             </Card>

@@ -17,7 +17,7 @@ import { nunito } from "@/utils/fonts";
 import FaqMinusIcon from "./Faq-minus-icon";
 
 const FaqCard = () => {
-  const [expanded, setExpanded] = useState<string | false>("panel1");
+  const [expanded, setExpanded] = useState<string | false>("");
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {

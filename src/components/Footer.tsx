@@ -61,7 +61,7 @@ const Footer = () => {
     <Box
       sx={{
         backgroundImage: `url(${footerBanner.src})`,
-        height: "80vh",
+        height: { lg: "80vh", xs: "100%" },
         backgroundSize: "cover",
         backgroundPosition: "50%",
         position: "relative",
@@ -69,14 +69,23 @@ const Footer = () => {
     >
       <Container>
         <Grid container>
-          <Grid size={8}>
+          <Grid size={{ lg: 8, xs: 12 }}>
             <Box sx={{ pt: "100px" }}>
-              <Image src={logo} alt="" width={120} />
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: { lg: "flex-start", xs: "center" },
+                }}
+              >
+                <Image src={logo} alt="" width={120} />
+              </Box>
               <Stack
-                direction="row"
+                direction={{ lg: "row", xs: "column" }}
                 alignItems={"center"}
                 spacing={4}
                 sx={{ mt: 3 }}
+                justifyContent={{ lg: "flex-start", xs: "center" }}
               >
                 {links.map((val, i) => (
                   <Link href={val.url} className="link">
@@ -99,6 +108,7 @@ const Footer = () => {
                 alignItems={"center"}
                 spacing={3}
                 sx={{ mt: 2 }}
+                justifyContent={{ lg: "flex-start", xs: "center" }}
               >
                 <Image src={insta} alt="" width={45} />
                 <Image src={linkedin} alt="" width={45} />
@@ -106,13 +116,24 @@ const Footer = () => {
             </Box>
           </Grid>
         </Grid>
-        <Box sx={{ position: "absolute", bottom: 10,width:"85%" }}>
+        <Box
+          sx={{
+            position: { lg: "absolute", xs: "inherit" },
+            bottom: { lg: 10, xs: 0 },
+            width: { lg: "85%", xs: "95%" },
+          }}
+        >
           <Stack
-            direction={"row"}
+            direction={{ lg: "row", xs: "column" }}
             alignItems={"center"}
-            justifyContent={"space-between"}
+            justifyContent={{ lg: "space-between", xs: "center" }}
+            spacing={{ lg: 0, xs: 2 }}
           >
-            <Stack direction={"row"} alignItems={"center"} spacing={3}>
+            <Stack
+              direction={{ lg: "row", xs: "column" }}
+              alignItems={"center"}
+              spacing={{ lg: 3, xs: 1 }}
+            >
               {links2.map((val, i) => (
                 <Link href={val.url} className="link" key={i}>
                   <Typography

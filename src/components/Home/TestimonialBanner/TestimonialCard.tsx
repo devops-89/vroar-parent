@@ -13,7 +13,12 @@ import quote from "@/icons/testimonial_icon.avif";
 import avatar from "@/homePage/testimonial/avatar1.avif";
 import { COLORS } from "@/utils/enum";
 import { TESTIMONIAL_PROPS } from "@/utils/types";
-const TestimonialCard = ({ testimonial, img, name, progress = 0 }: TESTIMONIAL_PROPS) => {
+const TestimonialCard = ({
+  testimonial,
+  img,
+  name,
+  progress = 0,
+}: TESTIMONIAL_PROPS) => {
   return (
     <Card
       sx={{
@@ -37,10 +42,6 @@ const TestimonialCard = ({ testimonial, img, name, progress = 0 }: TESTIMONIAL_P
         <Typography
           sx={{ fontFamily: "gomenasans,sans-serif", fontSize: 18, mt: 3 }}
         >
-          {/* Students dedicate significant effort to prepare thoroughly, ensuring
-          they are confident and well-equipped for the conversation. Their
-          structured approach and commitment to learning enable them to engage
-          meaningfully */}
           {testimonial}
         </Typography>
         <Stack direction="row" alignItems={"center"} spacing={2} sx={{ mt: 2 }}>

@@ -26,7 +26,7 @@ const Mentors = () => {
       <Container>
         <Badge label="Mentors" width={100} margin="auto" />
         <Grid container>
-          <Grid size={9} margin={"auto"} mt={3}>
+          <Grid size={{ lg: 9, xs: 12 }} margin={"auto"} mt={3}>
             <Typography
               sx={{
                 fontSize: { lg: 64, xs: 25 },
