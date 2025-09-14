@@ -44,7 +44,7 @@ const Banner = () => {
       <Container sx={{ mt: { lg: 20, xs: 5 } }}>
         <Grid container>
           <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
-            <Box data-aos="fade-left">
+            <Box data-aos="fade-up">
               <HeadingField
                 label="Turn College Prep"
                 className=""
@@ -54,7 +54,7 @@ const Banner = () => {
                 }}
               />
             </Box>
-            <Box data-aos="fade-left">
+            <Box data-aos="fade-up">
               <GradientText
                 label="Chaos into Clarity"
                 data-aos="fade-in"
@@ -72,7 +72,7 @@ const Banner = () => {
               confidence, and the courage to aim higher."
               sx={{ fontSize: { lg: 20, xs: 18 } }}
               textAlign="center"
-              data-aos="fade-in"
+              data-aos="fade-up"
             />
             <Stack
               direction={"row"}

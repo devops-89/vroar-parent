@@ -27,19 +27,18 @@ const Parents = () => {
           backgroundPosition: "50%",
           backgroundSize: "cover",
           backgrooundRepeat: "no-repeat",
-          pt: 20,
-          pb: 20,
+          py: { lg: 20, xs: 5 },
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        <Container sx={{ mt: 20 }}>
+        <Container sx={{ mt: { lg: 20, xs: 10 } }}>
           <Grid container>
-            <Grid size={10} margin={"auto"}>
+            <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
               <Typography
                 sx={{
-                  fontSize: 68,
+                  fontSize: { lg: 68, xs: 35 },
                   fontFamily: "gomenasans,Arial,sans-serif",
                   fontWeight: 700,
                   color: COLORS.BLACK,
@@ -55,7 +54,7 @@ const Parents = () => {
                   backgroundImage: COLORS.TEXT_GRADIENT,
                   backgroundClip: "text",
                   color: COLORS.TRANSPARENT,
-                  fontSize: 68,
+                  fontSize: { lg: 68, xs: 35 },
                   fontFamily: "gomenasans,Arial,sans-serif",
                   fontWeight: 700,
                   textAlign: "center",
@@ -68,7 +67,7 @@ const Parents = () => {
                   fontFamily: nunito.style,
                   color: COLORS.BLACK,
                   textAlign: "center",
-                  fontSize: 20,
+                  fontSize: { lg: 20, xs: 18},
                   mt: 3,
                 }}
               >

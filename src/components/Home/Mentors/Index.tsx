@@ -57,7 +57,7 @@ const Mentors = () => {
               {whyMentorsData.map((val, i) => (
                 <Box
                   key={i}
-                  data-aos={"fade-left"}
+                  data-aos={"fade-up"}
                   data-aos-delay={`${i + 1 * 100}`}
                 >
                   <Home_hero_points
@@ -73,7 +73,7 @@ const Mentors = () => {
           </Grid>
         </Grid>
 
-        <Box sx={{ mt: 6 }} data-aos="fade-left">
+        <Box sx={{ mt: 6 }} data-aos="fade-up">
           <MentorContainer index={index} />
         </Box>
       </Container>

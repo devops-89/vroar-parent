@@ -62,7 +62,7 @@ const Trekship = () => {
             <Grid
               size={{ lg: 4, xs: 12 }}
               key={i}
-              data-aos="fade-right"
+              data-aos="fade-up"
               data-aos-duration={`${i + 1 * 100}`}
             >
               <TrekshipCard

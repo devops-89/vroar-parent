@@ -43,7 +43,7 @@ const AboutSection = () => {
                   fontWeight: 700,
                   lineHeight: { lg: 1, xs: "14px" },
                 }}
-                data-aos="fade-right"
+                data-aos="fade-up"
               >
                 Shaping
               </Typography>
@@ -53,7 +53,7 @@ const AboutSection = () => {
                   alt="aboutus"
                   width={80}
                   height={80}
-                  data-aos="fade-right"
+                  data-aos="fade-up"
                 />
               )}
               <Typography
@@ -63,7 +63,7 @@ const AboutSection = () => {
                   fontWeight: 700,
                   lineHeight: { lg: 1, xs: "14px" },
                 }}
-                data-aos="fade-right"
+                data-aos="fade-up"
               >
                 the
               </Typography>
@@ -76,7 +76,7 @@ const AboutSection = () => {
                 lineHeight: { lg: 1, xs: "14px" },
                 mt: 2,
               }}
-              data-aos="fade-right"
+              data-aos="fade-up"
             >
               Future of Immersion
             </Typography>
@@ -91,7 +91,7 @@ const AboutSection = () => {
                 textAlign: { lg: "start", xs: "center" },
                 mt: { lg: 2, xs: 0 },
               }}
-              data-aos="fade-right"
+              data-aos="fade-up"
             >
               We fuse innovation with immersive storytelling, crafting inspiring
               gaming experiences.
