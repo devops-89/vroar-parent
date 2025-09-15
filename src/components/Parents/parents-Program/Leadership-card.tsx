@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, SxProps, Theme, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import leaderShipBanner from "@/icons/parents-program/leader-ship-banner.avif";
 import Image, { StaticImageData } from "next/image";
@@ -9,13 +9,16 @@ interface LeadershipCard {
   icon: StaticImageData;
   heading: string;
   description: string;
+  sx?: SxProps<Theme>;
 }
 const LeaderShipCard = ({
   backgroundImage,
   icon,
   heading,
   description,
+  sx,
 }: LeadershipCard) => {
+  const phone = useMediaQuery("(max-width:600px)");
   return (
     <Box>
       <Box
@@ -30,19 +33,20 @@ const LeaderShipCard = ({
           borderRadius: "20px",
           justifyContent: "center",
           pb: 4,
+          ...sx,
         }}
       >
         <Box sx={{ textAlign: "center" }}>
-          <Image src={icon} alt="" width={300} />
+          <Image src={icon} alt="" width={phone ? 100 : 300} />
           <Typography
             sx={{
               mt: 1,
-              fontSize: 32,
+              fontSize: { lg: 32, xs: 25 },
               fontFamily: nunito.style,
               fontWeight: 700,
               textAlign: "center",
               lineHeight: 1.2,
-              mb: 2,
+              mb: { lg: 2, xs: 1 },
             }}
           >
             {/* Leadership Coaching */}
@@ -51,7 +55,7 @@ const LeaderShipCard = ({
           <Typography
             sx={{
               mt: 2,
-              fontSize: 20,
+              fontSize: { lg: 20, xs: 16 },
               fontFamily: nunito.style,
 
               textAlign: "center",

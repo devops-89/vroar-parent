@@ -42,8 +42,8 @@ const Parentsprogram = () => {
               sx={{
                 letterSpacing: "-.04rem",
                 mt: "-1rem",
-                fontFamily: "gomenasans,sans-serif",
-                fontSize: { lg: 68, xs: 35 },
+                fontFamily: "gomenasans-bold,sans-serif",
+                fontSize: { lg: 68, xs: 30 },
                 fontWeight: 700,
                 lineHeight: 1.1,
                 textAlign: "center",
@@ -54,7 +54,7 @@ const Parentsprogram = () => {
             <Typography
               sx={{
                 letterSpacing: "-.04rem",
-                fontFamily: "gomenasans,sans-serif",
+                fontFamily: "gomenasans-bold,sans-serif",
                 fontSize: { lg: 68, xs: 35 },
                 fontWeight: 700,
                 lineHeight: 1.1,

@@ -33,13 +33,13 @@ const Parents = () => {
           justifyContent: "center",
         }}
       >
-        <Container sx={{ mt: { lg: 20, xs: 10 } }}>
+        <Container sx={{ mt: { lg: 10, xs: 10 } }}>
           <Grid container>
             <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
               <Typography
                 sx={{
                   fontSize: { lg: 68, xs: 35 },
-                  fontFamily: "gomenasans,Arial,sans-serif",
+                  fontFamily: "gomenasans-bold,Arial,sans-serif",
                   fontWeight: 700,
                   color: COLORS.BLACK,
                   textAlign: "center",
@@ -55,7 +55,7 @@ const Parents = () => {
                   backgroundClip: "text",
                   color: COLORS.TRANSPARENT,
                   fontSize: { lg: 68, xs: 35 },
-                  fontFamily: "gomenasans,Arial,sans-serif",
+                  fontFamily: "gomenasans-bold,Arial,sans-serif",
                   fontWeight: 700,
                   textAlign: "center",
                 }}

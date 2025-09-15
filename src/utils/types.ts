@@ -289,3 +289,9 @@ export interface TEAM_CARD_PROPS {
   designation: string;
   summary: string;
 }
+
+export interface MOBILE_PROGRAM_CARD {
+  img: StaticImageData;
+  heading: string;
+  description: string;
+}

@@ -1,20 +1,20 @@
 import { Box } from "@mui/material";
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import LeaderShipCard from "./Leadership-card";
-// import leadershipIcon from '@/homePage/'
+import MobileProgramCard from "./mobile-program-card";
+import { Mobile_program_card } from "@/assets/Counseling";
 const ProgramSlider = () => {
   return (
     <Box>
-      <Swiper>
-        <SwiperSlide>
-          {/* <LeaderShipCard
-            icon={leadershipicon}
-            backgroundImage={leadershipBanner.src}
-            heading="Leadership Coaching"
-            description="1:1 coaching from leadership coaches"
-          /> */}
-        </SwiperSlide>
+      <Swiper centeredSlides={true}>
+        {Mobile_program_card.map((val, i) => (
+          <SwiperSlide>
+            <MobileProgramCard
+              img={val.img}
+              heading={val.heading}
+              description={val.description}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Box>
   );

@@ -2,14 +2,12 @@ import { data } from "@/assets/data";
 import logo from "@/logo/Logo.png";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import { Box, Grid, IconButton, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import SimpleButton from "./Home/Components/SimpleButton";
-import { Menu } from "@mui/icons-material";
-import HeaderSidebar from "./Home/drawer";
 const Header = () => {
   const router = useRouter();
   const [isStuck, setIsStuck] = useState(false);
@@ -34,11 +32,12 @@ const Header = () => {
         transition: "top 300ms ease",
         px: { xs: 1, sm: 2, md: 0 },
         boxSizing: "border-box",
+        margin: "auto",
       }}
     >
       <Grid container>
         <Grid
-          size={{ lg: 8, xs: 12 }}
+          size={{ lg: 8 }}
           margin={"auto"}
           sx={{
             transition: "top 300ms ease,",
@@ -58,7 +57,7 @@ const Header = () => {
               transition: "transform 300ms ease",
               transform: isStuck ? "translateY(6px)" : "translateY(0)",
               backdropFilter: "blur(10px)",
-              width: isStuck ? "80%" : "100%",
+              width: isStuck ? "100%" : "100%",
               boxSizing: "border-box",
               overflow: "hidden",
             }}
@@ -106,44 +105,8 @@ const Header = () => {
               ))}
               <SimpleButton label="Sign In" />
             </Stack>
-
-            <Stack
-              direction={"row"}
-              alignItems={"center"}
-              justifyContent={"space-between"}
-              sx={{
-                display: { xs: "flex", lg: "none" },
-                width: "100%",
-                minWidth: 0,
-              }}
-            >
-              <Link href={"/"}>
-                <Image
-                  src={logo}
-                  alt="logo"
-                  width={80}
-                  height={40}
-                  style={{
-                    maxWidth: "100%",
-                    height: "auto",
-                    objectFit: "contain",
-                  }}
-                />
-              </Link>
-              <IconButton
-                sx={{
-                  backgroundColor: COLORS.WHITE,
-                  boxShadow: "0px 0px 1px 1px #00000030",
-                  flexShrink: 0,
-                }}
-                onClick={() => setOpen(true)}
-              >
-                <Menu sx={{ color: COLORS.PRIMARY }} />
-              </IconButton>
-            </Stack>
           </Box>
         </Grid>
-        <HeaderSidebar open={open} setOpen={setOpen} />
       </Grid>
     </Box>
   );

@@ -13,6 +13,7 @@ import MobileSidebar from "./Profile/MobileSidebar";
 import Sidebar from "./Profile/Sidebar";
 import Header from "./Header";
 import Footer from "./Footer";
+import MobileHeader from "./Home/widgets/mobile-header";
 
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
@@ -72,7 +73,7 @@ const Layout = ({ children }: LayoutProps) => {
           defer
         ></script>
       </Head>
-      <Header />
+      {phone ? <MobileHeader /> : <Header />}
       {phone && show ? <MobileSidebar /> : show ? <ProfileSidebar /> : ""}
       {children}
       <Footer />
