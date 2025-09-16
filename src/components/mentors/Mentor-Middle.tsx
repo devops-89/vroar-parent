@@ -1,14 +1,10 @@
-import { Box, Stack } from "@mui/material";
-import Image from "next/image";
-import React from "react";
 import middleMentor from "@/banner/mentors/mentor_hero.avif";
 import { COLORS } from "@/utils/enum";
+import { nunito } from "@/utils/fonts";
+import { Box, Stack } from "@mui/material";
+import Image from "next/image";
 import SimpleButton from "../Home/Components/SimpleButton";
 import Secondarybutton from "../common/Secondary-Button";
-import { nunito } from "@/utils/fonts";
-import CurvedBadge from "../Home/Components/ChooseIcon";
-import hat from "@/homePage/choose-icon1.avif";
-import img2 from "@/homePage/choose-icon2.avif";
 const MentorMiddle = () => {
   return (
     <Box sx={{ position: "relative" }}>
@@ -20,20 +16,20 @@ const MentorMiddle = () => {
       <Box
         sx={{
           textAlign: "center",
-          margin: "auto",
+          margin: { lg: "auto", xs: "0" },
         }}
       >
         <Stack
-          direction={"row"}
+          direction={{ lg: "row", xs: "column" }}
           sx={{
-            backgroundColor: COLORS.WHITE,
+            backgroundColor: { lg: COLORS.WHITE, xs: COLORS.TRANSPARENT },
             borderRadius: "160px",
             padding: "16px",
-            position: "absolute",
+            position: { lg: "absolute", xs: "initial" },
             bottom: "1.375rem",
             left: "50%",
-            transform: "translateX(-50%)",
-            width: "60%",
+            transform: { lg: "translateX(-50%)", xs: "" },
+            width: { lg: "60%", xs: "100%" },
             zIndex: 999,
           }}
           alignItems={"center"}

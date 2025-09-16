@@ -16,7 +16,7 @@ const Choose = () => {
             <Badge label="Why Mytreks.ai?" width={150} margin="auto" />
             <Typography
               sx={{
-                fontSize: { lg: 64, xs: 20 },
+                fontSize: { lg: 64, xs: 25 },
                 fontWeight: 700,
                 textAlign: "center",
                 lineHeight: 1.2,
@@ -50,9 +50,9 @@ const Choose = () => {
         <Grid container spacing={4} mt={5}>
           {data.chooseCard.map((val, i) => (
             <Grid
-              size={{ lg: 4, xs: 16 }}
+              size={{ lg: 4, xs: 12 }}
               key={i}
-              data-aos="fade-right"
+              data-aos="fade-up"
               data-aos-delay={`${i + 1 * 200}`}
             >
               <ChooseCard

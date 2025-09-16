@@ -31,24 +31,28 @@ const ParentCurriculum = () => {
     <Box>
       <Container maxWidth="lg">
         <Grid container>
-          <Grid size={8} margin={"auto"}>
+          <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
             <Badge label="OUR CURRICULUM" width={150} margin="auto" />
             <HeadingField
               label="Brain-Based Learning That Sticks"
-              sx={{ mt: 2, lineHeight: 1.2 }}
+              sx={{
+                mt: 2,
+                lineHeight: 1.2,
+                fontSize: { xs: 30, lg: 68 },
+                fontFamily: "gomenasans-bold",
+              }}
             />
             <ParaField
               label="Neuroscience-backed. Gamified. Metacognitive. Our curriculum keeps students engaged and evolving."
-              fontSize={20}
               color={COLORS.LIGHT_BLACK}
               textAlign="center"
-              sx={{ mt: 2 }}
+              sx={{ mt: 2, fontSize: { xs: 16, lg: 20 } }}
             />
           </Grid>
         </Grid>
         <Grid container spacing={4} sx={{ mt: 4 }}>
           {curriculumData.map((val, i) => (
-            <Grid size={4} key={i}>
+            <Grid size={{ lg: 4, xs: 12 }} key={i}>
               <CurriculumCard
                 img={val.img}
                 heading={val.heading}

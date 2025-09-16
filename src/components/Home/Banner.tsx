@@ -41,7 +41,7 @@ const Banner = () => {
         p: { lg: 10, xs: 0 },
       }}
     >
-      <Container sx={{ mt: { lg: 20, xs: 5 } }}>
+      <Container sx={{ mt: { lg: 20, xs: 15 } }}>
         <Grid container>
           <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
             <Box data-aos="fade-up">

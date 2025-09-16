@@ -29,20 +29,32 @@ const Mentors = () => {
           height: "100%",
           backroundSize: "cover",
           backgroundPosition: "50%",
-          pt: 20,
+          pt: { lg: 20, xs: 20 },
         }}
       >
         <Container sx={{ position: "relative" }}>
           <Grid container>
-            <Grid size={8} margin={"auto"}>
+            <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
               <Stack spacing={-2}>
-                <GradientText label="Shape Lives" />
-                <HeadingField label="in Just 1 Hour A Month" />
+                <GradientText
+                  label="Shape Lives"
+                  sx={{
+                    fontSize: { lg: 68, xs: 35 },
+                    fontFamily: "gomenasans-bold",
+                  }}
+                />
+                <HeadingField
+                  label="in Just 1 Hour A Month"
+                  sx={{
+                    fontSize: { lg: 68, xs: 35 },
+                    fontFamily: "gomenasans-bold",
+                  }}
+                />
               </Stack>
               <ParaField
                 label="Become a mentor or speaker."
                 textAlign="center"
-                fontSize={24}
+                sx={{ fontSize: { lg: 24, xs: 16 } }}
               />
               <Box sx={{ position: "relative" }}>
                 <MentorMiddle />

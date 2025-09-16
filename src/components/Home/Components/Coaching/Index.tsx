@@ -16,7 +16,7 @@ const Coaching = () => {
       sx={{
         backgroundImage: `url(${coachingBanner.src})`,
         width: "100%",
-        height: { lg: "200vh", xs: "140vh" },
+        height: { lg: "200vh", xs: "150vh" },
         position: "relative",
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -24,11 +24,17 @@ const Coaching = () => {
         mt: 10,
       }}
     >
-      <Box sx={{ position: "absolute", bottom: -80, left: { lg: 30, xs: 0 } }}>
-        <Image src={grass} alt="" width={phone ? 150 : 400} />
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: { lg: -80, xs: -50 },
+          left: { lg: 30, xs: 0 },
+        }}
+      >
+        <Image src={grass} alt="" width={phone ? 100 : 400} />
       </Box>
       <Box sx={{ position: "absolute", right: 0, bottom: -25 }}>
-        <Image src={cactus} alt="" width={phone ? 150 : 400} />
+        <Image src={cactus} alt="" width={phone ? 100 : 400} />
       </Box>
       <Box
         sx={{

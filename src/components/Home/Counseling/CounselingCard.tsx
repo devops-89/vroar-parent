@@ -18,7 +18,7 @@ const CounselingCard = ({ data }: COUNSELING_SLIDER) => {
         sx={{
           backgroundColor: "#f6f6f6",
           borderRadius: "2.5rem",
-          padding: "40px",
+          padding: { lg: "40px", xs: "25px" },
         }}
       >
         <Swiper
@@ -35,7 +35,7 @@ const CounselingCard = ({ data }: COUNSELING_SLIDER) => {
                     <Typography
                       sx={{
                         fontSize: { lg: 36, xs: 25 },
-                        fontFamily: "gomenasans, arial,sans-serif",
+                        fontFamily: "gomenasans-bold, arial,sans-serif",
                         fontWeight: 600,
                       }}
                     >
@@ -44,7 +44,7 @@ const CounselingCard = ({ data }: COUNSELING_SLIDER) => {
                     <Typography
                       sx={{
                         fontSize: { lg: 36, xs: 25 },
-                        fontFamily: "gomenasans, arial,sans-serif",
+                        fontFamily: "gomenasans-bold, arial,sans-serif",
                         fontWeight: 600,
                       }}
                     >
@@ -54,7 +54,7 @@ const CounselingCard = ({ data }: COUNSELING_SLIDER) => {
                       sx={{
                         fontSize: { lg: 18, xs: 14 },
                         fontFamily: nunito.style,
-                        mt: 3,
+                        mt: { lg: 3, xs: 1},
                       }}
                     >
                       {val.description}

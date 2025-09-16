@@ -62,7 +62,7 @@ const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
     <Box
       sx={{
         backgroundImage: `url(${banner.src})`,
-        height: { lg: "120vh", xs: "100vh" },
+        height: { lg: "120vh", xs: "100%" },
         backgroundPosition: "50% 100%",
         backgroundSize: "cover",
         mt: 10,
@@ -70,7 +70,7 @@ const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        pt: { lg: 20, xs: 5 },
+        py: { lg: 10, xs: 4 },
       }}
     >
       <Container>
@@ -189,7 +189,7 @@ const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
               <Box
                 sx={{
                   width: { xs: "90%", md: 600 },
-                  height: 500,
+                  height: {lg:500,xs:350},
                   mt: 5,
                   margin: "auto",
                 }}
@@ -234,6 +234,7 @@ const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
                 alignItems="center"
                 justifyContent={"center"}
                 spacing={3}
+                sx={{ mt: { xs: 4} }}
               >
                 <IconButton
                   onClick={() => swiperRef.current?.slidePrev()}

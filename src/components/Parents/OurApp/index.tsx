@@ -36,23 +36,22 @@ const OurParentApp = () => {
   ];
   return (
     <Box sx={{ backgroundColor: "#fff3f0" }}>
-      <Container sx={{ paddingTop: "80px" }} >
+      <Container sx={{ paddingTop: "80px" }}>
         <Grid container>
-          <Grid size={10} margin="auto">
+          <Grid size={{ lg: 10, xs: 12 }} margin="auto">
             <Badge label="Our App" width={100} margin="auto" />
             <HeadingField
               label="Stay Informed. Not Overwhelmed."
-              fontSize={68}
+              sx={{ fontSize: { lg: 68, xs: 35 } }}
             />
             <ParaField
               label="Our secure app gives you a transparent view of your child’s growth without any micromanagement."
-              fontSize={20}
-              sx={{ textAlign: "center" }}
+              sx={{ textAlign: "center", fontSize: { lg: 20, xs: 16 } }}
               color={COLORS.LIGHT_BLACK}
             />
             <Grid container spacing={3} sx={{ mt: 3 }}>
               {appData.map((val, i) => (
-                <Grid size={6} key={i}>
+                <Grid size={{ lg: 6, xs: 12 }} key={i}>
                   <AppFeatureCard
                     img={val.img}
                     heading={val.heading}

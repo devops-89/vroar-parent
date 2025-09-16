@@ -97,7 +97,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         {
           ease: "none",
           filter: "blur(0px)",
-          stagger: 0.05,
+          // stagger: 0.05,
           scrollTrigger: {
             trigger: el,
             scroller,
@@ -127,7 +127,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
       ref={containerRef}
       className={`scroll-reveal ${containerClassName} ${textClassName}`}
       sx={{
-        fontSize: 44,
+        fontSize: { lg: 44, xs: 25 },
         fontFamily: nunito.style,
         fontWeight: 700,
       }}

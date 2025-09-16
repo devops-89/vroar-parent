@@ -16,7 +16,7 @@ const MentorAbout = () => {
       }}
     >
       <Grid container>
-        <Grid size={7} margin={"auto"}>
+        <Grid size={{ lg: 7, xs: 11 }} margin={"auto"}>
           <Stack justifyContent={"center"}>
             <ScrollReveal
               baseOpacity={1}
@@ -89,10 +89,17 @@ const MentorAbout = () => {
           </Box>
         </Grid>
       </Grid>
-      <Box sx={{ position: "absolute", top: "20%", right: 100 }}>
+      <Box sx={{ position: "absolute", top: { lg: "20%", xs: 0 }, right: 100 }}>
         <CurvedBadge char="mentorship guide" icon={img1} />
       </Box>
-      <Box sx={{ position: "absolute", left: 50, bottom: "50%", top: "50%" }}>
+      <Box
+        sx={{
+          position: "absolute",
+          left: 50,
+          bottom: { lg: "50%", xs: 0 },
+          top: { lg: "50%", xs: "90%" },
+        }}
+      >
         <CurvedBadge char="Gamified Learning" icon={img2} />
       </Box>
     </Box>

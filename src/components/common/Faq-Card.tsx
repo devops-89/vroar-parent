@@ -58,7 +58,7 @@ const FaqCard = ({ data }: FAQ_DATA_PROPS) => {
             >
               <Typography
                 sx={{
-                  fontSize: 20,
+                  fontSize: { lg: 20, xs: 16 },
                   lineHeight: 1.4,
                   fontFamily: "gomenasans,sans-serif",
                   fontWeight: 700,
@@ -70,7 +70,10 @@ const FaqCard = ({ data }: FAQ_DATA_PROPS) => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <ParaField label={val.value || ""} />
+              <ParaField
+                label={val.value || ""}
+                sx={{ fontSize: { lg: 16, xs: 14 } }}
+              />
             </AccordionDetails>
           </Accordion>
         ))}

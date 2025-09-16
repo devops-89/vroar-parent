@@ -6,6 +6,7 @@ import {
   LinearProgress,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import Image from "next/image";
 import React from "react";
@@ -19,6 +20,7 @@ const TestimonialCard = ({
   name,
   progress = 0,
 }: TESTIMONIAL_PROPS) => {
+  const phone = useMediaQuery("(max-width:600px)");
   return (
     <Card
       sx={{
@@ -38,9 +40,18 @@ const TestimonialCard = ({
         sx={{ color: COLORS.PRIMARY, backgroundColor: COLORS.PRIMARY }}
       />
       <Box sx={{ p: 5 }}>
-        <Image src={quote} alt="" width={80} height={60} />
+        <Image
+          src={quote}
+          alt=""
+          width={phone ? 50 : 80}
+          height={phone ? 30 : 60}
+        />
         <Typography
-          sx={{ fontFamily: "gomenasans,sans-serif", fontSize: 18, mt: 3 }}
+          sx={{
+            fontFamily: "gomenasans,sans-serif",
+            fontSize: { lg: 18, xs: 14 },
+            mt: 3,
+          }}
         >
           {testimonial}
         </Typography>

@@ -8,6 +8,9 @@ import leadership from "@/icons/parents-program/leadership-coaching.avif";
 import clifton from "@/icons/parents-program/clifton_star.avif";
 import progress from "@/icons/parents-program/bell.avif";
 import confidence from "@/icons/parents-program/book.avif";
+import clock from "@/Mentors/join_us/clock.avif";
+import coins from "@/Mentors/join_us/coin.avif";
+import calendar from "@/Mentors/join_us/calendar.avif";
 export const COUNSELING_CARD_DATA = [
   {
     img: counseling1,
@@ -64,5 +67,28 @@ export const Mobile_program_card: MOBILE_PROGRAM_CARD[] = [
     img: progress,
     heading: "Progress Updates",
     description: "Real time progress updates for parents via our app",
+  },
+];
+
+export const MENTOR_PAGE_PROGRAM_CARD: MOBILE_PROGRAM_CARD[] = [
+  {
+    img: clock,
+    heading: "Minimal Time Commitment",
+    description: "Just one hour monthly",
+  },
+  {
+    img: leadership,
+    heading: "Maximum Impact",
+    description: "Guide students who are truly invested",
+  },
+  {
+    img: coins,
+    heading: "Meaningful Connections",
+    description: "Student must earn coins to meet with you",
+  },
+  {
+    img: calendar,
+    heading: "Flexible scheduling",
+    description: "Work within your availability",
   },
 ];

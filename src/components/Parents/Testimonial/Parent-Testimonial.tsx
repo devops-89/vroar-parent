@@ -5,6 +5,7 @@ import {
   IconButton,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import testi_banner from "@/banner/parents/parent_testimonialBanner.avif";
@@ -55,6 +56,8 @@ const ParentTestimonial = ({ testimonialData }: testimonialDataProps) => {
       swiper.off("reachEnd", handleReachEnd);
     };
   }, []);
+
+  const phone = useMediaQuery("(max-width:600px)");
   return (
     <Box
       sx={{
@@ -66,60 +69,144 @@ const ParentTestimonial = ({ testimonialData }: testimonialDataProps) => {
         marginTop: "-360px",
         marginLeft: "auto",
         marginRight: "auto",
-        paddingLeft: "80px",
+        paddingLeft: { lg: "80px", xs: "20px" },
         zIndex: 1,
         paddingTop: 50,
       }}
     >
       <Container>
         <Grid container>
-          <Grid size={10} margin={"auto"}>
+          <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
             <Badge label="Testimonials" margin="auto" width={150} />
             <Stack
               direction={"row"}
               alignItems={"center"}
               spacing={2}
               justifyContent={"center"}
+              sx={{ mt: 2 }}
             >
               <HeadingField
                 label="What parents"
                 color={COLORS.BLACK}
-                sx={{ lineHeight: 1.1 }}
+                sx={{
+                  lineHeight: 1.1,
+                  fontSize: { lg: 68, xs: 30 },
+                  fontFamily: "gomenasans-bold",
+                  mt: 3,
+                }}
               />
-              <Image src={star} alt="" width={80} />
-              <HeadingField label="like" sx={{ lineHeight: 1.1 }} />
+              <Image src={star} alt="" width={phone ? 40 : 80} />
+              <HeadingField
+                label="like"
+                sx={{
+                  lineHeight: 1.1,
+                  fontSize: { lg: 68, xs: 30 },
+                  fontFamily: "gomenasans-bold",
+                }}
+              />
             </Stack>
             <HeadingField
               label="you are saying"
               textAlign="center"
-              sx={{ lineHeight: 1.1 }}
+              sx={{
+                lineHeight: 1.1,
+                fontSize: { lg: 68, xs: 30 },
+                fontFamily: "gomenasans-bold",
+              }}
             />
+            <Box sx={{ display: { lg: "block", xs: "none" } }}>
+              <Stack
+                direction={"row"}
+                alignItems="center"
+                justifyContent={"space-between"}
+                sx={{ mt: 15 }}
+              >
+                <IconButton
+                  onClick={() => swiperRef.current?.slidePrev()}
+                  sx={{
+                    background: "linear-gradient(#ffb7a6,#fff 35%)",
+                    borderRadius: "3rem",
+                    boxShadow:
+                      "0 0 2.33px 1.17px #ffdcd3, 0 1.17px 1.17px 1.17px #ffffff40, inset 0 2.33px 1.17px #fff",
+                    color: COLORS.PRIMARY,
+                    zIndex: 2,
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                    },
+                    transition: "transform 0.3s ease",
+                  }}
+                >
+                  <ArrowBack fontSize="large" />
+                </IconButton>
 
-            <Stack
-              direction={"row"}
-              alignItems="center"
-              justifyContent={"space-between"}
-              sx={{ mt: 15 }}
-            >
-              <IconButton
-                onClick={() => swiperRef.current?.slidePrev()}
+                <Box sx={{ width: { xs: "90%", md: 600 }, height: 500 }}>
+                  <Swiper
+                    effect={"cards"}
+                    grabCursor={true}
+                    modules={[EffectCards, Autoplay]}
+                    autoplay={{
+                      delay: AUTOPLAY_DELAY,
+                      disableOnInteraction: false,
+                      pauseOnMouseEnter: false,
+                      waitForTransition: true,
+                    }}
+                    speed={800}
+                    loop={true}
+                    loopAdditionalSlides={2}
+                    onSlideChange={(swiper) => {
+                      setCurrentIndex(
+                        swiper.realIndex % testimonialData.length
+                      );
+                    }}
+                    onAutoplayTimeLeft={(swiper, timeLeft, percentage) => {
+                      setProgress(percentage * 100);
+                    }}
+                    onSwiper={(swiper) => {
+                      swiperRef.current = swiper;
+                    }}
+                  >
+                    {slides.map((val, i) => (
+                      <SwiperSlide key={`${i}-${val.name}`}>
+                        <TestimonialCard
+                          img={val.img}
+                          name={val.name}
+                          testimonial={val.testimonial}
+                          progress={i === currentIndex ? progress : 0}
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </Box>
+
+                <IconButton
+                  onClick={() => swiperRef.current?.slideNext()}
+                  sx={{
+                    background: "linear-gradient(#ffb7a6,#fff 35%)",
+                    borderRadius: "3rem",
+                    boxShadow:
+                      "0 0 2.33px 1.17px #ffdcd3, 0 1.17px 1.17px 1.17px #ffffff40, inset 0 2.33px 1.17px #fff",
+                    color: COLORS.PRIMARY,
+                    zIndex: 2,
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                    },
+                    transition: "transform 0.3s ease",
+                  }}
+                >
+                  <ArrowForward fontSize="large" />
+                </IconButton>
+              </Stack>
+            </Box>
+            <Box sx={{ display: { lg: "none", xs: "block" }, margin: "auto" }}>
+              <Box
                 sx={{
-                  background: "linear-gradient(#ffb7a6,#fff 35%)",
-                  borderRadius: "3rem",
-                  boxShadow:
-                    "0 0 2.33px 1.17px #ffdcd3, 0 1.17px 1.17px 1.17px #ffffff40, inset 0 2.33px 1.17px #fff",
-                  color: COLORS.PRIMARY,
-                  zIndex: 2,
-                  "&:hover": {
-                    transform: "scale(1.1)",
-                  },
-                  transition: "transform 0.3s ease",
+                  width: { xs: "90%", md: 600 },
+                  height: { lg: 500 },
+                  mt: 5,
+                  pb: 3,
+                  // margin: "auto",
                 }}
               >
-                <ArrowBack fontSize="large" />
-              </IconButton>
-
-              <Box sx={{ width: { xs: "90%", md: 600 }, height: 500 }}>
                 <Swiper
                   effect={"cards"}
                   grabCursor={true}
@@ -155,25 +242,49 @@ const ParentTestimonial = ({ testimonialData }: testimonialDataProps) => {
                   ))}
                 </Swiper>
               </Box>
-
-              <IconButton
-                onClick={() => swiperRef.current?.slideNext()}
-                sx={{
-                  background: "linear-gradient(#ffb7a6,#fff 35%)",
-                  borderRadius: "3rem",
-                  boxShadow:
-                    "0 0 2.33px 1.17px #ffdcd3, 0 1.17px 1.17px 1.17px #ffffff40, inset 0 2.33px 1.17px #fff",
-                  color: COLORS.PRIMARY,
-                  zIndex: 2,
-                  "&:hover": {
-                    transform: "scale(1.1)",
-                  },
-                  transition: "transform 0.3s ease",
-                }}
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent={"center"}
+                spacing={3}
+                sx={{ mt: 3, mb: 3 }}
               >
-                <ArrowForward fontSize="large" />
-              </IconButton>
-            </Stack>
+                <IconButton
+                  onClick={() => swiperRef.current?.slidePrev()}
+                  sx={{
+                    background: "linear-gradient(#ffb7a6,#fff 35%)",
+                    borderRadius: "3rem",
+                    boxShadow:
+                      "0 0 2.33px 1.17px #ffdcd3, 0 1.17px 1.17px 1.17px #ffffff40, inset 0 2.33px 1.17px #fff",
+                    color: COLORS.PRIMARY,
+                    zIndex: 2,
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                    },
+                    transition: "transform 0.3s ease",
+                  }}
+                >
+                  <ArrowBack fontSize="large" />
+                </IconButton>
+                <IconButton
+                  onClick={() => swiperRef.current?.slideNext()}
+                  sx={{
+                    background: "linear-gradient(#ffb7a6,#fff 35%)",
+                    borderRadius: "3rem",
+                    boxShadow:
+                      "0 0 2.33px 1.17px #ffdcd3, 0 1.17px 1.17px 1.17px #ffffff40, inset 0 2.33px 1.17px #fff",
+                    color: COLORS.PRIMARY,
+                    zIndex: 2,
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                    },
+                    transition: "transform 0.3s ease",
+                  }}
+                >
+                  <ArrowForward fontSize="large" />
+                </IconButton>
+              </Stack>
+            </Box>
             <Box sx={{ textAlign: "center" }}>
               <ButtonWithIcon
                 label="Book a Demo"

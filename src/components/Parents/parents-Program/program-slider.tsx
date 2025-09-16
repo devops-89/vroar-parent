@@ -1,11 +1,18 @@
 import { Box } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import MobileProgramCard from "./mobile-program-card";
+import MobileProgramCard from "../../common/mobile-program-card";
 import { Mobile_program_card } from "@/assets/Counseling";
+import { Autoplay } from "swiper/modules";
 const ProgramSlider = () => {
   return (
     <Box>
-      <Swiper centeredSlides={true}>
+      <Swiper
+        centeredSlides={true}
+        modules={[Autoplay]}
+        autoplay={{
+          delay: 3000,
+        }}
+      >
         {Mobile_program_card.map((val, i) => (
           <SwiperSlide>
             <MobileProgramCard

@@ -29,6 +29,7 @@ const Contact = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        py: { lg: "", xs: 5 },
       }}
     >
       <Container maxWidth="lg">

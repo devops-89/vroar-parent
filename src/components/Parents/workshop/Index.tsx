@@ -43,7 +43,10 @@ const Workshop = () => {
             <HeadingField
               label="Family-First Career Planning That Actually Works"
               color={COLORS.WHITE}
-              sx={{ fontSize: { xs: 25 } }}
+              sx={{
+                fontSize: { xs: 25, lg: 68 },
+                fontFamily: "gomenasans-bold",
+              }}
             />
             <ParaField
               label="Designed as a family partnership. Delivered with expert guidance."
