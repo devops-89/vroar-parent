@@ -19,7 +19,7 @@ const SpeakerPerksCard = ({
         alignItems: "center",
         backgroundColor: COLORS.WHITE,
         borderRadius: "16px",
-        padding: "20px",
+        padding: { lg: "20px", xs: "10px" },
         gap: 5,
       }}
     >
@@ -27,12 +27,16 @@ const SpeakerPerksCard = ({
       <Box>
         <HeadingField
           label={heading}
-          fontSize={24}
-          sx={{ lineHeight: 1.4, fontWeight: 700, textAlign: "left" }}
+          sx={{
+            lineHeight: 1.4,
+            fontWeight: 700,
+            textAlign: "left",
+            fontSize: { lg: 24, xs: 20 },
+          }}
         />
         <ParaField
           label={description}
-          sx={{ fontSize: 20, lineHeight: 1.4, mt: 1 }}
+          sx={{ fontSize: { lg: 20, xs: 16 }, lineHeight: 1.4, mt: 1 }}
         />
       </Box>
     </Card>

@@ -13,17 +13,23 @@ const Bementor = () => {
     <Box sx={{ pt: 10, backgroundColor: "#fff3f0", pb: 10 }}>
       <Container>
         <Grid container>
-          <Grid size={9} margin={"auto"}>
+          <Grid size={{ lg: 9, xs: 12 }} margin={"auto"}>
             <Badge label="Be a mentor" margin="auto" width={130} />
-            <Stack spacing={-4}>
-              <HeadingField label="How to" />
-              <HeadingField label="Become a Mentor?" />
+            <Stack spacing={{ lg: -4, xs: -2 }}>
+              <HeadingField
+                label="How to"
+                sx={{ fontSize: { lg: 68, xs: 35 } }}
+              />
+              <HeadingField
+                label="Become a Mentor?"
+                sx={{ fontSize: { lg: 68, xs: 35 } }}
+              />
             </Stack>
             <ParaField
               label="College students and professionals can guide school kids exploring careers.
 Share your journey, offer real advice, and make a lasting impact"
-              fontSize={20}
               textAlign="center"
+              sx={{ fontSize: { lg: 20, xs: 16 } }}
             />
           </Grid>
         </Grid>
@@ -32,10 +38,11 @@ Share your journey, offer real advice, and make a lasting impact"
           sx={{ mt: 10 }}
           columns={{ xs: 1, md: 14 }}
           alignItems="center"
+          spacing={{ xs: 10 }}
         >
           {MENTOR_PROGRESS.map((val, i) => (
             <React.Fragment key={i}>
-              <Grid size={{ xs: 1, md: 4 }}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <MentorProgressCard
                   img={val.img}
                   heading={val.heading}
