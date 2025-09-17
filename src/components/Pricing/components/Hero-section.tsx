@@ -8,38 +8,9 @@ import ParaField from "@/components/common/Para-Field";
 import { UserController } from "@/assets/api/UserController";
 import { SUBSCRIPTION_PLAN, SUBSCRIPTION_PLANS } from "@/utils/types";
 import PlanCard from "@/components/PlanCard";
-import { plans_data } from "@/assets/plans";
+import { NEW_PLAN_FEATURES, plans_data } from "@/assets/plans";
+import PricingSection from "./pricing-section";
 const HeroSection = () => {
-  const [subscriptionPlans, setSubscriptionPlans] =
-    useState<SUBSCRIPTION_PLANS[]>();
-  const getPlans = () => {
-    UserController.getPlansPublic()
-      .then((res) => {
-        // console.log("res", res);
-        const response = res.data.data;
-        const mergedArray = response.map((apiPlan: any) => {
-          const staticPlan = plans_data.find(
-            (staticPlan: any) => staticPlan.id === apiPlan.id
-          );
-
-          return {
-            ...apiPlan,
-            ...(staticPlan || {}),
-          };
-        });
-
-        setSubscriptionPlans(mergedArray as SUBSCRIPTION_PLANS[]);
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  };
-
-  useEffect(() => {
-    getPlans();
-  }, []);
-
-
   return (
     <Box
       sx={{
@@ -78,7 +49,7 @@ const HeroSection = () => {
             />
           </Grid>
         </Grid>
-        <Grid container mt={5} spacing={5}>
+        {/* <Grid container mt={5} spacing={5}>
           {subscriptionPlans?.slice(0, 1).map((val, i) => (
             <Grid key={val.id ?? i} size={6} margin={"auto"}>
               <PlanCard
@@ -90,7 +61,8 @@ const HeroSection = () => {
               />
             </Grid>
           ))}
-        </Grid>
+        </Grid> */}
+        <PricingSection />
       </Container>
     </Box>
   );

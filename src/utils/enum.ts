@@ -39,12 +39,12 @@ export enum TOAST_STATUS {
 }
 
 export const GRADE = {
-  8: "8th",
+  // 8: "8th",
   9: "9th",
   10: "10th",
   11: "11th",
   12: "12th",
-  HOMESCHOOLED: "Homeschooled",
+  // HOMESCHOOLED: "Homeschooled",
 };
 
 export const RELATIONSHIP_DATA = {

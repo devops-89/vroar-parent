@@ -26,9 +26,6 @@ export const data = {
   ],
   grade: [
     {
-      label: GRADE[8],
-    },
-    {
       label: GRADE[9],
     },
     {
@@ -39,9 +36,6 @@ export const data = {
     },
     {
       label: GRADE[12],
-    },
-    {
-      label: GRADE.HOMESCHOOLED,
     },
   ],
   relationshipData: [
