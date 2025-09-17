@@ -40,7 +40,11 @@ const SpeakerPerks = () => {
         <Grid container alignItems={"center"} spacing={{ lg: 10, xs: 2 }}>
           <Grid
             size={{ lg: 6, xs: 12 }}
-            sx={{ position: "relative", height: "100vh", pt: 10 }}
+            sx={{
+              position: "relative",
+              height: { lg: "100vh", xs: "100%" },
+              pt: 10,
+            }}
           >
             <Badge label="Perks of a Speaker" width={160} />
             <Stack spacing={-4}>
@@ -269,6 +273,7 @@ const SpeakerPerks = () => {
                 bottom: 60,
                 transform: show ? "translateY(0)" : "translateY(100%)",
                 transition: "0.5s ease all",
+                mt: 4,
               }}
             >
               <ParaField
@@ -288,13 +293,12 @@ const SpeakerPerks = () => {
                 borderTopLeftRadius: show ? 0 : "16px",
                 borderTopRightRadius: show ? 0 : "16px",
                 padding: "16px",
-
-                position: "absolute",
-                bottom: 0,
+                // position: "absolute",
+                // bottom: 0,
                 width: "100%",
                 cursor: "pointer",
                 transition: "0.5s ease all",
-                display: { lg: "none", xs: "flex" },
+                display: { lg: "none", xs: "block" },
               }}
               onClick={showHandler}
             >

@@ -27,7 +27,7 @@ const SubscriptionCard = ({ data }: accordion_props) => {
       setExpanded(isExpanded ? panel : false);
     };
   return (
-    <Box sx={{ maxHeight: 330, overflowY: "auto" }}>
+    <Box sx={{  }}>
       {data.map((val, i) => (
         <Accordion
           key={`accordion-${i}`}
