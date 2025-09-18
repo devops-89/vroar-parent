@@ -3,6 +3,7 @@ import { plans_data } from "@/assets/plans";
 import subscriptionBanner from "@/banner/subscription-banner.png";
 import PlanCard from "@/components/PlanCard";
 import Sidebar from "@/components/Profile/Sidebar";
+import PricingSection from "@/components/widgets/pricing-section";
 import { addActiveStep, setActiveStep } from "@/redux/reducers/Stepper";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
@@ -141,7 +142,7 @@ const Plans = () => {
                       <Grid container>
                         <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
                           <Grid container sx={{ mt: 3 }} spacing={4}>
-                            {subscriptionPlans?.map((val, i) => (
+                            {/* {subscriptionPlans?.map((val, i) => (
                               <Grid size={{ lg: 6, xs: 12 }} key={i}>
                                 <PlanCard
                                   description={val.description}
@@ -153,7 +154,8 @@ const Plans = () => {
                                   strike={val.strike}
                                 />
                               </Grid>
-                            ))}
+                            ))} */}
+                            <PricingSection />
                           </Grid>
                         </Grid>
                       </Grid>
