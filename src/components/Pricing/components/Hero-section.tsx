@@ -42,7 +42,7 @@ const HeroSection = () => {
               data-aos-delay="300"
             />
             <ParaField
-              label="Flexible pricing to match your needs. Get started today!"
+              label="No matter when you join, your overall investment stays the same"
               sx={{ fontSize: 24, textAlign: "center", mt: 2 }}
               dataaos="fade-left"
               data-aos-delay="400"
