@@ -406,7 +406,9 @@ const Subscriptions = () => {
                                  
                                 </Grid>
                               ))} */}
-                              <PricingSection />
+                              <Grid size={{ lg: 12, xs: 12 }}>
+                                <PricingSection />
+                              </Grid>
                             </Grid>
                           </Grid>
                         </Grid>
