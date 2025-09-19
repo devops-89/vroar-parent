@@ -31,11 +31,13 @@ const SubscriptionCard = ({ data }: accordion_props) => {
   return (
     <Box
       sx={{
-        maxHeight: "350px",
-        overflow: "auto",
+        maxHeight: { lg: "350px", xs: "60vh" },
+        overflowY: "auto",
+        overflowX: "hidden",
+        pr: { lg: 0, xs: 1 },
         scrollbarWidth: "thin",
         scrollbarColor: `${COLORS.PRIMARY} #f0f0f0`,
-        "&::-webkit-scrollbar": { width: 8 },
+        "&::-webkit-scrollbar": { width: { lg: 8, xs: 6 } },
         "&::-webkit-scrollbar-track": {
           background: "#f0f0f0",
           borderRadius: 8,
@@ -51,7 +53,6 @@ const SubscriptionCard = ({ data }: accordion_props) => {
         <Accordion
           key={`accordion-${i}`}
           sx={{
-            // border: `1px solid ${COLORS.PRIMARY}`,
             background: "#FFF6F3",
             "&.MuiPaper-root": {
               borderRadius: "10px",
@@ -66,7 +67,7 @@ const SubscriptionCard = ({ data }: accordion_props) => {
             sx={{
               fontFamily: nunito.style.fontFamily,
               fontWeight: 700,
-              fontSize: 18,
+              fontSize: { lg: 18, xs: 16 },
               borderBottom:
                 expanded === `panel${i}` ? `1px solid ${COLORS.PRIMARY}` : "",
             }}
@@ -78,13 +79,12 @@ const SubscriptionCard = ({ data }: accordion_props) => {
               )
             }
           >
-            {/* {val.feature_heading} */}
             {`Year ${i + 1}`}- {val.heading}
           </AccordionSummary>
           <AccordionDetails>
             <Typography
               sx={{
-                fontSize: 16,
+                fontSize: { lg: 16, xs: 14 },
                 fontWeight: 550,
                 fontFamily: nunito.style.fontFamily,
               }}
@@ -104,7 +104,7 @@ const SubscriptionCard = ({ data }: accordion_props) => {
                     primary={
                       <Typography
                         sx={{
-                          fontSize: 16,
+                          fontSize: { lg: 16, xs: 14 },
                           fontWeight: 550,
                           fontFamily: nunito.style.fontFamily,
                         }}
@@ -117,25 +117,25 @@ const SubscriptionCard = ({ data }: accordion_props) => {
               ))}
             </List>
             <Typography
-              sx={{ fontSize: 15, fontFamily: nunito.style.fontFamily, my: 2 }}
+              sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily, my: 2 }}
             >
               {val.addOnFeature}
             </Typography>
             <Typography
-              sx={{ fontSize: 15, fontFamily: nunito.style.fontFamily }}
+              sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily }}
             >
               {val.summer.heading}
             </Typography>
             {val.summer.content.map((items, index) => (
               <Typography
-                sx={{ fontSize: 15, fontFamily: nunito.style.fontFamily }}
+                sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily }}
               >
                 {items.description}
               </Typography>
             ))}
             <Typography
               sx={{
-                fontSize: 15,
+                fontSize: { lg: 15, xs: 13 },
                 fontFamily: nunito.style.fontFamily,
                 mt: 2,
                 mb: 1,
@@ -145,7 +145,7 @@ const SubscriptionCard = ({ data }: accordion_props) => {
             </Typography>
             {val.coachingWorkshops.content.map((items, index) => (
               <Typography
-                sx={{ fontSize: 15, fontFamily: nunito.style.fontFamily }}
+                sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily }}
               >
                 {items.description}
               </Typography>

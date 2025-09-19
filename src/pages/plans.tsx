@@ -73,14 +73,11 @@ const Plans = () => {
       }}
     >
       <Grid container>
-        {/* <Grid size={{ lg: 3, xs: 12 }}>
-          <Sidebar />
-        </Grid> */}
         <Grid size={{ lg: 12, xs: 12 }}>
           {activeStep === 1 && (
             <Box
               sx={{
-                p: 2,
+                p: { lg: 2, xs: 0 },
                 minHeight: "100vh",
 
                 width: "100%",
@@ -101,7 +98,7 @@ const Plans = () => {
                 {/* <Box> */}
                 <Box
                   sx={{
-                    p: 2,
+                    p: { lg: 2, xs: 1 },
                     background: "linear-gradient(#21164D,#ffffff30)",
                     height: "100%",
 
@@ -113,7 +110,7 @@ const Plans = () => {
                   <Box>
                     <Typography
                       sx={{
-                        fontSize: 40,
+                        fontSize: { lg: 40, xs: 25 },
                         fontFamily: nunito.style,
                         fontWeight: 700,
                         color: COLORS.WHITE,
@@ -127,7 +124,7 @@ const Plans = () => {
                         fontFamily: nunito.style,
                         fontWeight: 600,
                         color: COLORS.WHITE,
-                        width: { lg: 560, xs: 350 },
+                        width: { lg: 560, xs: "100%" },
                       }}
                     >
                       Personalized roadmaps, expert mentorship, and gamified
@@ -140,8 +137,15 @@ const Plans = () => {
                       </Backdrop>
                     ) : (
                       <Grid container>
-                        <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
-                          <Grid container sx={{ mt: 3 }} spacing={4}>
+                        <Grid
+                          size={{ lg: 10, xs: 12 }}
+                          margin={{ lg: "auto", xs: "initial" }}
+                        >
+                          <Grid
+                            container
+                            sx={{ mt: 3 }}
+                            spacing={{ lg: 4, xs: 0 }}
+                          >
                             {/* {subscriptionPlans?.map((val, i) => (
                               <Grid size={{ lg: 6, xs: 12 }} key={i}>
                                 <PlanCard
