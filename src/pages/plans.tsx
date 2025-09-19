@@ -33,15 +33,11 @@ const Plans = () => {
     UserController.getProductList()
       .then((res) => {
         const response = res.data.data;
-        console.log("Backend plans:", response);
-        console.log("Static plans:", plans_data);
 
-        // First, merge static data with matching backend plans
         const mergedArray = response.map((apiPlan: any) => {
           const staticPlan = plans_data.find(
             (staticPlan: any) => staticPlan.id === apiPlan.id
           );
-          console.log("Matching static plan for", apiPlan.id, ":", staticPlan);
 
           return {
             ...apiPlan,
@@ -103,7 +99,7 @@ const Plans = () => {
                     height: "100%",
 
                     width: "100%",
-                    mt: { lg: 0, xs: 7 },
+                    mt: { lg: 0, xs: 0 },
                     borderRadius: 2,
                   }}
                 >

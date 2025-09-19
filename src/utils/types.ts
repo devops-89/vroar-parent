@@ -204,6 +204,7 @@ export interface SUBSCRIPTION_CARD_PROPS {
   summer: summerWorkshopsProps;
   coachingWorkshops: summerWorkshopsProps;
   heading: string;
+  grade_heading?: string;
 }
 
 export interface PRICING_SECTION_PROPS {
