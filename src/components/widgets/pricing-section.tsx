@@ -131,14 +131,14 @@ const PricingSection = () => {
   return (
     <Box sx={{ mt: 3 }}>
       <Grid container>
-        <Grid size={{ lg: 10, xs: 12 }} margin={{ lg: "auto", xs: "initial" }}>
+        <Grid size={{ lg: 6, xs: 12 }} margin={{ lg: "auto", xs: "initial" }}>
           <Tabs
             sx={{
               "& .MuiTabs-list": {
                 justifyContent: { lg: "center", xs: "center" },
                 gap: { lg: 2, xs: 1 },
                 backgroundColor: COLORS.WHITE,
-                width: { lg: 524, xs: "100%" },
+                // width: { lg: 524, xs: "100%" },
                 margin: "auto",
                 height: 69,
                 borderRadius: "60px",
@@ -190,9 +190,7 @@ const PricingSection = () => {
           borderRadius: "56px",
           p: 3,
           maxHeight: { lg: "450px", xs: "100%" },
-          // display: "flex",
-          // alignItems: "center",
-          // justifyContent: "center",
+
           overflow: "hidden",
         }}
         spacing={4}
@@ -224,7 +222,6 @@ const PricingSection = () => {
             >
               {selectedPlanFeatures[0]?.feature_purpose || ""}
             </Typography>
-           
 
             {selectedPlanPrice !== null && (
               <Typography
@@ -239,7 +236,7 @@ const PricingSection = () => {
                 ${selectedPlanPrice.toFixed(2)}{" "}
               </Typography>
             )}
-            
+
             <Stack
               direction={{ lg: "row", xs: "column" }}
               alignItems={{ lg: "center", xs: "flex-start" }}
