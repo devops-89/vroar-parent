@@ -136,20 +136,25 @@ const PricingSection = () => {
             sx={{
               "& .MuiTabs-list": {
                 justifyContent: { lg: "center", xs: "flex-start" },
-                gap: 2,
+                gap: { lg: 2, xs: 1 },
                 backgroundColor: COLORS.WHITE,
                 width: { lg: 524, xs: "100%" },
                 margin: "auto",
                 height: 69,
                 borderRadius: "60px",
                 alignItems: "center",
+                overflow: "auto",
+                "::-webkit-scrollbar": {
+                  width: 0,
+                },
+                px: 1,
               },
               "& .MuiTab-root": {
                 background: COLORS.TRANSPARENT,
                 color: COLORS.PRIMARY,
                 border: `1px solid ${COLORS.PRIMARY}`,
                 borderRadius: 20,
-                width: { lg: 113, xs: 80 },
+                width: { lg: 113, xs: 60 },
                 padding: "16px 2px 16px",
                 height: 35,
                 fontFamily: "gomenasans-bold",
@@ -204,13 +209,15 @@ const PricingSection = () => {
           >
             <Stack direction={"row"} alignItems={"center"} spacing={2}>
               <Image src={explorer} alt="" width={40} />
-              <Typography sx={{ fontSize: 16, fontWeight: 700, mt: 1 }}>
+              <Typography
+                sx={{ fontSize: { lg: 16, xs: 18 }, fontWeight: 700, mt: 1 }}
+              >
                 {selectedPlanFeatures[0]?.feature_heading || ""}
               </Typography>
             </Stack>
             <Typography
               sx={{
-                fontSize: 14,
+                fontSize: { lg: 14, xs: 18 },
                 fontFamily: nunito.style.fontFamily,
                 mt: 1,
               }}
@@ -244,7 +251,7 @@ const PricingSection = () => {
                   alignItems: "center",
                   justifyContent: "center",
                   fontFamily: nunito.style.fontFamily,
-                  fontSize: 14,
+                  fontSize: {lg:14,xs:12},
                   fontWeight: 500,
                   textTransform: "uppercase",
                 }}
@@ -272,13 +279,19 @@ const PricingSection = () => {
                 Billed Annually
               </Box>
             </Stack>
-            <Stack direction={"row"} alignItems="center">
+            {/* <Stack
+              direction={"row"}
+              alignItems="start"
+              spacing={2}
+              sx={{ mt: 3 }}
+            >
               <Box
                 sx={{
                   backgroundColor: "#545454",
                   width: 10,
                   height: 10,
                   borderRadius: 20,
+                  mt: 4,
                 }}
               ></Box>
               <Typography
@@ -287,6 +300,7 @@ const PricingSection = () => {
                   fontFamily: nunito.style.fontFamily,
                   fontWeight: 700,
                   fontSize: 25,
+                  mt: 2,
                 }}
               >
                 $
@@ -295,7 +309,44 @@ const PricingSection = () => {
                   : ""}{" "}
                 over {selectedPlanFeatures.length * 12} months
               </Typography>
-            </Stack>
+            </Stack> */}
+
+            <List>
+              <ListItem sx={{ alignItems: "flex-start" }}>
+                <ListItemAvatar sx={{ minWidth: 30 }}>
+                  <Box
+                    sx={{
+                      backgroundColor: "#545454",
+                      width: 10,
+                      height: 10,
+                      borderRadius: 20,
+                      mt: 4,
+                    }}
+                  ></Box>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={
+                    <Typography
+                      sx={{
+                        color: "#545454",
+                        fontFamily: nunito.style.fontFamily,
+                        fontWeight: 700,
+                        fontSize: { lg: 25, xs: 20 },
+                        mt: 2,
+                      }}
+                    >
+                      $
+                      {selectedPlanPrice !== null
+                        ? (
+                            selectedPlanPrice * selectedPlanFeatures.length
+                          ).toFixed(2)
+                        : ""}{" "}
+                      over {selectedPlanFeatures.length * 12} months
+                    </Typography>
+                  }
+                />
+              </ListItem>
+            </List>
 
             <Button
               fullWidth
