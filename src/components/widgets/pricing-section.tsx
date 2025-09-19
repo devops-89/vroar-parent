@@ -135,7 +135,7 @@ const PricingSection = () => {
           <Tabs
             sx={{
               "& .MuiTabs-list": {
-                justifyContent: { lg: "center", xs: "flex-start" },
+                justifyContent: { lg: "center", xs: "center" },
                 gap: { lg: 2, xs: 1 },
                 backgroundColor: COLORS.WHITE,
                 width: { lg: 524, xs: "100%" },
@@ -191,7 +191,7 @@ const PricingSection = () => {
           p: 3,
           maxHeight: { lg: "450px", xs: "100%" },
           display: "flex",
-          alignItems: "flex-start",
+          alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
         }}
@@ -201,7 +201,7 @@ const PricingSection = () => {
         <Grid size={{ lg: 5, xs: 12 }}>
           <Card
             sx={{
-              p: 3,
+              p: { lg: 3, xs: 0 },
               boxShadow: "none",
               borderRadius: 4,
               backgroundColor: "transparent",
@@ -210,20 +210,22 @@ const PricingSection = () => {
             <Stack direction={"row"} alignItems={"center"} spacing={2}>
               <Image src={explorer} alt="" width={40} />
               <Typography
-                sx={{ fontSize: { lg: 16, xs: 18 }, fontWeight: 700, mt: 1 }}
+                sx={{ fontSize: { lg: 16, xs: 16 }, fontWeight: 700, mt: 1 }}
               >
-                {selectedPlanFeatures[0]?.feature_heading || ""}
+                {selectedPlanFeatures[0]?.feature_heading || ""} ̰
               </Typography>
             </Stack>
             <Typography
               sx={{
-                fontSize: { lg: 14, xs: 18 },
+                fontSize: { lg: 14, xs: 16 },
                 fontFamily: nunito.style.fontFamily,
                 mt: 1,
               }}
             >
               {selectedPlanFeatures[0]?.feature_purpose || ""}
             </Typography>
+           
+
             {selectedPlanPrice !== null && (
               <Typography
                 sx={{
@@ -237,21 +239,27 @@ const PricingSection = () => {
                 ${selectedPlanPrice.toFixed(2)}{" "}
               </Typography>
             )}
-            <Stack direction="row" alignItems={"center"} spacing={2}>
+            
+            <Stack
+              direction={{ lg: "row", xs: "column" }}
+              alignItems={{ lg: "center", xs: "flex-start" }}
+              spacing={2}
+              sx={{ mt: 2 }}
+            >
               <Box
                 sx={{
                   backgroundColor: "#402523",
                   color: COLORS.WHITE,
                   borderRadius: "8px",
                   border: "1px solid #ffffff",
-                  width: 110,
+                  width: { lg: 110, xs: 240 },
                   height: 34,
                   padding: "7.5px 12px  ",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   fontFamily: nunito.style.fontFamily,
-                  fontSize: {lg:14,xs:12},
+                  fontSize: { lg: 14, xs: 14 },
                   fontWeight: 500,
                   textTransform: "uppercase",
                 }}
@@ -264,7 +272,7 @@ const PricingSection = () => {
                   color: COLORS.WHITE,
                   borderRadius: "8px",
                   border: "1px solid #ffffff",
-                  width: 200,
+                  width: { lg: 200, xs: 240 },
                   height: 34,
                   padding: "7.5px 12px  ",
                   display: "flex",
@@ -331,7 +339,7 @@ const PricingSection = () => {
                         color: "#545454",
                         fontFamily: nunito.style.fontFamily,
                         fontWeight: 700,
-                        fontSize: { lg: 25, xs: 20 },
+                        fontSize: { lg: 25, xs: 16 },
                         mt: 2,
                       }}
                     >
@@ -358,7 +366,7 @@ const PricingSection = () => {
                 fontFamily: nunito.style,
                 color: COLORS.WHITE,
                 borderRadius: 6,
-                fontSize: 15,
+                fontSize: { lg: 15, xs: 12 },
                 fontWeight: 600,
                 p: 1.5,
                 position: "relative",
