@@ -72,7 +72,7 @@ export const plans_data: STATIC_SUBSCRIPTION_PLANS[] = [
 export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
   {
     grade: "9",
-    id: "prod_T4NVJwHQhrL5H6",
+    id: "prod_T5DCkEXmVO7oio",
 
     features: [
       {
@@ -252,7 +252,7 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
   },
   {
     grade: "10",
-    id: "prod_T4NwsdE984YUoV",
+    id: "prod_T5DDVdjmB7rr4z",
     features: [
       {
         heading: "Growth",
@@ -409,7 +409,7 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
   },
   {
     grade: "11",
-    id: "prod_T4Nxagbdc2Q74A",
+    id: "prod_T5DFohbxOjzmnR",
     features: [
       {
         heading: "Pre-College Prep",
@@ -518,7 +518,7 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
   },
   {
     grade: "12",
-    id: "prod_T4Ny58fcj7Zm5t",
+    id: "prod_T5DFHB6diQtviU",
     features: [
       {
         heading: "Application Ready",

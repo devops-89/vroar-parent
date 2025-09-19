@@ -20,7 +20,7 @@ interface accordion_props {
 }
 
 const SubscriptionCard = ({ data }: accordion_props) => {
-  const [expanded, setExpanded] = useState<string | false>(false);
+  const [expanded, setExpanded] = useState<string | false>("panel0");
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {

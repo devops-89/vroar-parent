@@ -190,13 +190,13 @@ const PricingSection = () => {
           borderRadius: "56px",
           p: 3,
           maxHeight: { lg: "450px", xs: "100%" },
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          // display: "flex",
+          // alignItems: "center",
+          // justifyContent: "center",
           overflow: "hidden",
         }}
         spacing={4}
-        alignItems="center"
+        alignItems="flex-start"
       >
         <Grid size={{ lg: 5, xs: 12 }}>
           <Card
