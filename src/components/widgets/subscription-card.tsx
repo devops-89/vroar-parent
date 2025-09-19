@@ -29,12 +29,29 @@ const SubscriptionCard = ({ data }: accordion_props) => {
 
   // console.log("teste", data);
   return (
-    <Box sx={{ maxHeight: "350px",overflow:"auto" }}>
+    <Box
+      sx={{
+        maxHeight: "350px",
+        overflow: "auto",
+        scrollbarWidth: "thin",
+        scrollbarColor: `${COLORS.PRIMARY} #f0f0f0`,
+        "&::-webkit-scrollbar": { width: 8 },
+        "&::-webkit-scrollbar-track": {
+          background: "#f0f0f0",
+          borderRadius: 8,
+        },
+        "&::-webkit-scrollbar-thumb": {
+          background: COLORS.PRIMARY,
+          borderRadius: 8,
+        },
+        "&::-webkit-scrollbar-thumb:hover": { background: "#e24d29" },
+      }}
+    >
       {data.map((val, i) => (
         <Accordion
           key={`accordion-${i}`}
           sx={{
-            border: `1px solid ${COLORS.PRIMARY}`,
+            // border: `1px solid ${COLORS.PRIMARY}`,
             background: "#FFF6F3",
             "&.MuiPaper-root": {
               borderRadius: "10px",
@@ -100,7 +117,7 @@ const SubscriptionCard = ({ data }: accordion_props) => {
               ))}
             </List>
             <Typography
-              sx={{ fontSize: 15, fontFamily: nunito.style.fontFamily }}
+              sx={{ fontSize: 15, fontFamily: nunito.style.fontFamily, my: 2 }}
             >
               {val.addOnFeature}
             </Typography>

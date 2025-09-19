@@ -199,6 +199,7 @@ const PricingSection = () => {
                 p: 3,
                 boxShadow: "none",
                 borderRadius: 4,
+                backgroundColor:"transparent"
               }}
             >
               <Stack direction={"row"} alignItems={"center"} spacing={2}>
