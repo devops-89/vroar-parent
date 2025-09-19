@@ -33,6 +33,7 @@ import moment from "moment";
 import { use, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import subscriptionBanner from "@/banner/subscription-banner.png";
+import PricingSection from "@/components/widgets/pricing-section";
 
 const Subscriptions = () => {
   const dispatch = useDispatch();
@@ -399,19 +400,15 @@ const Subscriptions = () => {
                         <Grid container>
                           <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
                             <Grid container sx={{ mt: 3 }} spacing={4}>
-                              {productData?.map((val, i) => (
-                                <Grid size={{ lg: 6, xs: 12 }} key={i}>
-                                  <PlanCard
-                                    description={val.description}
-                                    id={val.id}
-                                    name={val.name}
-                                    prices={val.prices}
-                                    img={val.img}
-                                    benefits={val.benefits}
-                                    strike={val.strike}
-                                  />
+                              {/* {productData?.map((val, i) => (
+                                <Grid size={{ lg: 12, xs: 12 }} key={i}>
+                                  <PricingSection />
+                                 
                                 </Grid>
-                              ))}
+                              ))} */}
+                              <Grid size={{ lg: 12, xs: 12 }}>
+                                <PricingSection />
+                              </Grid>
                             </Grid>
                           </Grid>
                         </Grid>
