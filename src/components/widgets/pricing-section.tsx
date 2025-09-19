@@ -189,9 +189,9 @@ const PricingSection = () => {
           backgroundColor: "#FFF6F3",
           borderRadius: "56px",
           p: 3,
-          maxHeight: { lg: "400px", xs: "100%" },
+          maxHeight: { lg: "450px", xs: "100%" },
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "center",
           overflow: "hidden",
         }}
