@@ -75,9 +75,8 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
     id: "prod_T4NVJwHQhrL5H6",
     features: [
       {
-        feature_heading: "9th Grade – Build Foundations & Confidence ",
-        feature_purpose:
-          "Launch your personalized plan for high school — classes, test awareness, volunteering, and passion projects.",
+        feature_heading: "Maximize 9th Grade Entry ",
+        feature_purpose: "Start early. Maximize your growth and opportunities",
         feature_list: [
           {
             label: "A personalized 4-year Treks Roadmap ",
@@ -251,9 +250,8 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
     id: "prod_T4NwsdE984YUoV",
     features: [
       {
-        feature_heading: "10th Grade – Explore & Catch Up ",
-        feature_purpose:
-          "Create/Refine your roadmap with AP/Honors planning, testing milestones, and early career exploration — while catching up on 9th-grade foundations.",
+        feature_heading: "Advance 10th Grade Entry ",
+        feature_purpose: "Two years to advance with purpose and momentum",
         feature_list: [
           {
             label:
@@ -406,9 +404,8 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
     id: "prod_T4Nxagbdc2Q74A",
     features: [
       {
-        feature_heading: "11th Grade – Prepare, Catch Up & Showcase ",
-        feature_purpose:
-          "Create/Refine your roadmap to align with college and career goals — testing, essays, scholarships, and real-world exposure",
+        feature_heading: "Elevate 11th Grade Entry",
+        feature_purpose: "Focused support to elevate your candidacy",
         feature_list: [
           {
             label:

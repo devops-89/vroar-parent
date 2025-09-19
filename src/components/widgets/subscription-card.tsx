@@ -58,7 +58,8 @@ const SubscriptionCard = ({ data }: accordion_props) => {
               )
             }
           >
-            {val.feature_heading}
+            {/* {val.feature_heading} */}
+            {`Year ${i + 1}`}
           </AccordionSummary>
           <AccordionDetails>
             <Typography
@@ -73,7 +74,7 @@ const SubscriptionCard = ({ data }: accordion_props) => {
 
             <List>
               {val.feature_list.map((item, index) => (
-                <ListItem key={`feature-${i}-${index}`}>
+                <ListItem key={`feature-${i}-${index}`} disablePadding>
                   <ListItemAvatar sx={{ minWidth: 30 }}>
                     <Circle
                       sx={{ width: 8, height: 8, color: COLORS.PRIMARY }}
@@ -95,6 +96,40 @@ const SubscriptionCard = ({ data }: accordion_props) => {
                 </ListItem>
               ))}
             </List>
+            <Typography
+              sx={{ fontSize: 15, fontFamily: nunito.style.fontFamily }}
+            >
+              {val.addOnFeature}
+            </Typography>
+            <Typography
+              sx={{ fontSize: 15, fontFamily: nunito.style.fontFamily }}
+            >
+              {val.summer.heading}
+            </Typography>
+            {val.summer.content.map((items, index) => (
+              <Typography
+                sx={{ fontSize: 15, fontFamily: nunito.style.fontFamily }}
+              >
+                {items.description}
+              </Typography>
+            ))}
+            <Typography
+              sx={{
+                fontSize: 15,
+                fontFamily: nunito.style.fontFamily,
+                mt: 2,
+                mb: 1,
+              }}
+            >
+              {val.coachingWorkshops.heading}
+            </Typography>
+            {val.coachingWorkshops.content.map((items, index) => (
+              <Typography
+                sx={{ fontSize: 15, fontFamily: nunito.style.fontFamily }}
+              >
+                {items.description}
+              </Typography>
+            ))}
           </AccordionDetails>
         </Accordion>
       ))}
