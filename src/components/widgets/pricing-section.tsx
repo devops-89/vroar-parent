@@ -94,7 +94,7 @@ const PricingSection = () => {
       selectedPlan.prices.find((p) => p.isRecurring) || selectedPlan.prices[0];
     if (!chosenPrice) return null;
     const featureCount = selectedPlan.features?.length || 1;
-    return Math.round(chosenPrice.amount / featureCount);
+    return chosenPrice.amount / featureCount;
   }, [selectedPlan]);
 
   const selectedPriceId = useMemo(() => {
@@ -113,24 +113,26 @@ const PricingSection = () => {
       return;
     }
     const items = [{ productId: selectedPlan.id, priceId: price_id }];
-    UserController.createPaymentLink({ items } as PAYMENT_ITEMS)
-      .then((res) => {
-        window.location.href = res.data.data.url;
-      })
-      .catch((err) => {
-        const errMessage =
-          (err.response && err.response.data.message) || err.message;
-        dispatch(
-          showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
-        );
-      })
-      .finally(() => setLoading(false));
+
+    console.log("first", items);
+    // UserController.createPaymentLink({ items } as PAYMENT_ITEMS)
+    //   .then((res) => {
+    //     window.location.href = res.data.data.url;
+    //   })
+    //   .catch((err) => {
+    //     const errMessage =
+    //       (err.response && err.response.data.message) || err.message;
+    //     dispatch(
+    //       showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
+    //     );
+    //   })
+    //   .finally(() => setLoading(false));
   };
 
   return (
     <Box sx={{ mt: 3 }}>
       <Container maxWidth="lg">
-        <Grid container sx={{}}>
+        <Grid container>
           <Grid size={10} margin={"auto"}>
             <Tabs
               sx={{
@@ -175,13 +177,27 @@ const PricingSection = () => {
             </Tabs>
           </Grid>
         </Grid>
-        <Grid container sx={{ mt: 10 }} spacing={4}>
+        <Grid
+          container
+          sx={{
+            mt: 10,
+            backgroundColor: "#FFF6F3",
+            borderRadius: "56px",
+            p: 3,
+            maxHeight: "350px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow:"hidden"
+          }}
+          spacing={4}
+          alignItems="center"
+        >
           <Grid size={5}>
             <Card
               sx={{
-                backgroundColor: "#FFF6F3",
                 p: 3,
-                boxShadow: "0px 0px 2px 2px #eeeeee",
+                boxShadow: "none",
                 borderRadius: 4,
               }}
             >
@@ -205,7 +221,7 @@ const PricingSection = () => {
                     fontWeight: 700,
                   }}
                 >
-                  ${selectedPlanPrice}{" "}
+                  ${selectedPlanPrice.toFixed(2)}{" "}
                   {/* <Typography component={"span"} sx={{ fontSize: 18 }}>
                     for {selectedPlanFeatures.length} years
                   </Typography> */}
@@ -272,8 +288,11 @@ const PricingSection = () => {
                   }}
                 >
                   $
-                  {selectedPlanPrice &&
-                    selectedPlanPrice * selectedPlanFeatures.length}{" "}
+                  {selectedPlanPrice !== null
+                    ? (selectedPlanPrice * selectedPlanFeatures.length).toFixed(
+                        2
+                      )
+                    : ""}{" "}
                   over {selectedPlanFeatures.length * 12} months
                 </Typography>
               </Stack>

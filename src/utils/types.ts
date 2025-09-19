@@ -91,7 +91,7 @@ export interface SUBSCRIPTION_PLANS {
   prices: SUBSCRIPTION_PLANS_PRICE[];
   benefits?: List[];
   img?: StaticImport | string;
-  strike:boolean
+  strike: boolean;
 }
 
 export interface STATIC_SUBSCRIPTION_PLANS {
@@ -196,7 +196,6 @@ export interface USER_INVITE_DETAILS {
   updatedAt: string;
 }
 
-
 export interface SUBSCRIPTION_CARD_PROPS {
   feature_heading: string;
   feature_purpose: string;
@@ -204,6 +203,7 @@ export interface SUBSCRIPTION_CARD_PROPS {
   addOnFeature?: string;
   summer: summerWorkshopsProps;
   coachingWorkshops: summerWorkshopsProps;
+  heading: string;
 }
 
 export interface PRICING_SECTION_PROPS {

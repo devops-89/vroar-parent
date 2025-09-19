@@ -26,8 +26,10 @@ const SubscriptionCard = ({ data }: accordion_props) => {
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+
+  // console.log("teste", data);
   return (
-    <Box sx={{}}>
+    <Box sx={{ maxHeight: "350px",overflow:"auto" }}>
       {data.map((val, i) => (
         <Accordion
           key={`accordion-${i}`}
@@ -35,8 +37,9 @@ const SubscriptionCard = ({ data }: accordion_props) => {
             border: `1px solid ${COLORS.PRIMARY}`,
             background: "#FFF6F3",
             "&.MuiPaper-root": {
-              borderRadius: "20px",
+              borderRadius: "10px",
               mb: 4,
+              backgroundColor: COLORS.WHITE,
             },
           }}
           onChange={handleChange(`panel${i}`)}
@@ -59,7 +62,7 @@ const SubscriptionCard = ({ data }: accordion_props) => {
             }
           >
             {/* {val.feature_heading} */}
-            {`Year ${i + 1}`}
+            {`Year ${i + 1}`}- {val.heading}
           </AccordionSummary>
           <AccordionDetails>
             <Typography
