@@ -400,20 +400,13 @@ const Subscriptions = () => {
                         <Grid container>
                           <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
                             <Grid container sx={{ mt: 3 }} spacing={4}>
-                              {productData?.map((val, i) => (
+                              {/* {productData?.map((val, i) => (
                                 <Grid size={{ lg: 12, xs: 12 }} key={i}>
                                   <PricingSection />
-                                  {/* <PlanCard
-                                    description={val.description}
-                                    id={val.id}
-                                    name={val.name}
-                                    prices={val.prices}
-                                    img={val.img}
-                                    benefits={val.benefits}
-                                    strike={val.strike}
-                                  /> */}
+                                 
                                 </Grid>
-                              ))}
+                              ))} */}
+                              <PricingSection />
                             </Grid>
                           </Grid>
                         </Grid>
