@@ -114,33 +114,33 @@ const PricingSection = () => {
     }
     const items = [{ productId: selectedPlan.id, priceId: price_id }];
 
-    console.log("first", items);
-    // UserController.createPaymentLink({ items } as PAYMENT_ITEMS)
-    //   .then((res) => {
-    //     window.location.href = res.data.data.url;
-    //   })
-    //   .catch((err) => {
-    //     const errMessage =
-    //       (err.response && err.response.data.message) || err.message;
-    //     dispatch(
-    //       showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
-    //     );
-    //   })
-    //   .finally(() => setLoading(false));
+    // console.log("first", items);
+    UserController.createPaymentLink({ items } as PAYMENT_ITEMS)
+      .then((res) => {
+        window.location.href = res.data.data.url;
+      })
+      .catch((err) => {
+        const errMessage =
+          (err.response && err.response.data.message) || err.message;
+        dispatch(
+          showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
+        );
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
     <Box sx={{ mt: 3 }}>
       <Container maxWidth="lg">
         <Grid container>
-          <Grid size={10} margin={"auto"}>
+          <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
             <Tabs
               sx={{
                 "& .MuiTabs-list": {
                   justifyContent: "center",
                   gap: 2,
                   backgroundColor: COLORS.WHITE,
-                  width: 524,
+                  width: { lg: 524, xs: 385 },
                   margin: "auto",
                   height: 69,
                   borderRadius: "60px",
@@ -151,7 +151,7 @@ const PricingSection = () => {
                   color: COLORS.PRIMARY,
                   border: `1px solid ${COLORS.PRIMARY}`,
                   borderRadius: 20,
-                  width: 113,
+                  width: { lg: 113, xs: 80 },
                   padding: "16px 2px 16px",
                   height: 35,
                   fontFamily: "gomenasans-bold",
@@ -170,6 +170,8 @@ const PricingSection = () => {
               }}
               value={tabs}
               onChange={tabsChangeHandler}
+              variant="scrollable"
+              scrollButtons="auto"
             >
               {data.grade.map((val, i) => (
                 <Tab label={val.label} key={i} />
@@ -184,22 +186,22 @@ const PricingSection = () => {
             backgroundColor: "#FFF6F3",
             borderRadius: "56px",
             p: 3,
-            maxHeight: "350px",
+            maxHeight: { lg: "350px", xs: "100%" },
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            overflow:"hidden"
+            overflow: "hidden",
           }}
           spacing={4}
           alignItems="center"
         >
-          <Grid size={5}>
+          <Grid size={{ lg: 5, xs: 12 }}>
             <Card
               sx={{
                 p: 3,
                 boxShadow: "none",
                 borderRadius: 4,
-                backgroundColor:"transparent"
+                backgroundColor: "transparent",
               }}
             >
               <Stack direction={"row"} alignItems={"center"} spacing={2}>
@@ -355,7 +357,7 @@ const PricingSection = () => {
               </Button>
             </Card>
           </Grid>
-          <Grid size={7}>
+          <Grid size={{ lg: 7, xs: 12 }}>
             <SubscriptionCard data={selectedPlanFeatures} />
           </Grid>
         </Grid>
