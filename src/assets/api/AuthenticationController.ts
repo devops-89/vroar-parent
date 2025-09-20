@@ -55,7 +55,11 @@ export const AuthenticationController = {
   },
   login: async (data: LOGIN_SCHEMA) => {
     try {
-      let result = await publicApi.post("/user/login", data);
+      let result = await publicApi.post("/user/login", data, {
+        headers: {
+          devicetype: DEVICE_TYPE.WEB,
+        },
+      });
       return result;
     } catch (error) {
       throw error;

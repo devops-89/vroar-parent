@@ -96,7 +96,10 @@ const ProfileSidebar = ({ drawerOpen, setDrawerOpen }: DRAWERPROPS) => {
     >
       {drawerOpen ? (
         <Box sx={{ textAlign: "end", p: 1 }}>
-          <IconButton sx={{ border: `1px solid ${COLORS.PRIMARY}` }}>
+          <IconButton
+            sx={{ border: `1px solid ${COLORS.PRIMARY}` }}
+            onClick={() => setDrawerOpen?.(false)}
+          >
             <Close />
           </IconButton>
         </Box>

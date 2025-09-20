@@ -3,6 +3,7 @@ import { plans_data } from "@/assets/plans";
 import subscriptionBanner from "@/banner/subscription-banner.png";
 import PlanCard from "@/components/PlanCard";
 import Sidebar from "@/components/Profile/Sidebar";
+import PricingSection from "@/components/widgets/pricing-section";
 import { addActiveStep, setActiveStep } from "@/redux/reducers/Stepper";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
@@ -32,15 +33,11 @@ const Plans = () => {
     UserController.getProductList()
       .then((res) => {
         const response = res.data.data;
-        console.log("Backend plans:", response);
-        console.log("Static plans:", plans_data);
-        
-        // First, merge static data with matching backend plans
+
         const mergedArray = response.map((apiPlan: any) => {
           const staticPlan = plans_data.find(
             (staticPlan: any) => staticPlan.id === apiPlan.id
           );
-          console.log("Matching static plan for", apiPlan.id, ":", staticPlan);
 
           return {
             ...apiPlan,
@@ -72,14 +69,11 @@ const Plans = () => {
       }}
     >
       <Grid container>
-        {/* <Grid size={{ lg: 3, xs: 12 }}>
-          <Sidebar />
-        </Grid> */}
         <Grid size={{ lg: 12, xs: 12 }}>
           {activeStep === 1 && (
             <Box
               sx={{
-                p: 2,
+                p: { lg: 2, xs: 0 },
                 minHeight: "100vh",
 
                 width: "100%",
@@ -100,19 +94,19 @@ const Plans = () => {
                 {/* <Box> */}
                 <Box
                   sx={{
-                    p: 2,
+                    p: { lg: 2, xs: 1 },
                     background: "linear-gradient(#21164D,#ffffff30)",
                     height: "100%",
 
                     width: "100%",
-                    mt: { lg: 0, xs: 7 },
+                    mt: { lg: 0, xs: 0 },
                     borderRadius: 2,
                   }}
                 >
                   <Box>
                     <Typography
                       sx={{
-                        fontSize: 40,
+                        fontSize: { lg: 40, xs: 25 },
                         fontFamily: nunito.style,
                         fontWeight: 700,
                         color: COLORS.WHITE,
@@ -126,7 +120,7 @@ const Plans = () => {
                         fontFamily: nunito.style,
                         fontWeight: 600,
                         color: COLORS.WHITE,
-                        width: { lg: 560, xs: 350 },
+                        width: { lg: 560, xs: "100%" },
                       }}
                     >
                       Personalized roadmaps, expert mentorship, and gamified
@@ -139,9 +133,16 @@ const Plans = () => {
                       </Backdrop>
                     ) : (
                       <Grid container>
-                        <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
-                          <Grid container sx={{ mt: 3 }} spacing={4}>
-                            {subscriptionPlans?.map((val, i) => (
+                        <Grid
+                          size={{ lg: 10, xs: 12 }}
+                          margin={{ lg: "auto", xs: "initial" }}
+                        >
+                          <Grid
+                            container
+                            sx={{ mt: 3 }}
+                            spacing={{ lg: 4, xs: 0 }}
+                          >
+                            {/* {subscriptionPlans?.map((val, i) => (
                               <Grid size={{ lg: 6, xs: 12 }} key={i}>
                                 <PlanCard
                                   description={val.description}
@@ -150,9 +151,13 @@ const Plans = () => {
                                   prices={val.prices}
                                   img={val.img}
                                   benefits={val.benefits}
+                                  strike={val.strike}
                                 />
                               </Grid>
-                            ))}
+                            ))} */}
+                            <Grid size={{ lg: 12, xs: 12 }}>
+                              <PricingSection />
+                            </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
