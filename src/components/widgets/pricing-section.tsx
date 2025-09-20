@@ -90,8 +90,10 @@ const PricingSection = () => {
     const chosenPrice =
       selectedPlan.prices.find((p) => p.isRecurring) || selectedPlan.prices[0];
     if (!chosenPrice) return null;
+    // console.log("testprice", chosenPrice);
     const featureCount = selectedPlan.features?.length || 1;
-    return chosenPrice.amount / featureCount;
+    // console.log("test length", featureCount * chosenPrice.amount);
+    return featureCount * chosenPrice.amount;
   }, [selectedPlan]);
 
   const selectedPlanMonthlyPrice = useMemo(() => {
@@ -99,8 +101,8 @@ const PricingSection = () => {
     const chosenPrice =
       selectedPlan.prices.find((p) => p.isRecurring) || selectedPlan.prices[0];
     if (!chosenPrice) return null;
-    const featureCount = selectedPlan.features?.length || 1;
-    return chosenPrice.amount / featureCount / 12;
+    // const featureCount = selectedPlan.features?.length || 1;
+    return chosenPrice.amount / 12;
   }, [selectedPlan]);
 
   const selectedPriceId = useMemo(() => {
@@ -169,7 +171,7 @@ const PricingSection = () => {
                 width: { lg: 113, xs: 60 },
                 padding: "16px 2px 16px",
                 height: 35,
-                fontFamily: "gomenasans-bold",
+                fontFamily: nunito.style.fontFamily,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -295,9 +297,7 @@ const PricingSection = () => {
                     >
                       $
                       {selectedPlanPrice !== null
-                        ? (
-                            selectedPlanPrice * selectedPlanFeatures.length
-                          ).toFixed(2)
+                        ? selectedPlanPrice.toFixed(2)
                         : ""}{" "}
                       over {selectedPlanFeatures.length * 12} months
                     </Typography>
