@@ -21,6 +21,8 @@ const MobileHeader = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          // position: "absolute",
+          zIndex: 999,
         }}
       >
         <Image src={logo} alt="" width={100} />

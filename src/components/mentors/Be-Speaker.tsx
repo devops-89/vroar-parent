@@ -16,13 +16,13 @@ const BeSpeaker = () => {
     <Box sx={{ mt: 10 }}>
       <Container>
         <Grid container>
-          <Grid size={10} margin={"auto"}>
+          <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
             <Badge label="Be A Speaker" width={130} margin="auto" />
             <HeadingField
               label="Step Into the Spotlight"
               sx={{
-                letterSpacing: "-2.56px",
-                fontSize: 64,
+                letterSpacing: { lg: "-2.56px", xs: "1.50px" },
+                fontSize: { lg: 64, xs: 35 },
                 fontWeight: 700,
                 lineHeight: 1,
                 mt: 2,
@@ -30,40 +30,80 @@ const BeSpeaker = () => {
             />
             <ParaField
               label="Submit your topic, get scheduled, and present in a supportive space by creating a lasting impact"
-              fontSize={24}
               color="#5E5E5E"
-              sx={{ lineHeight: 1.4, textAlign: "center", mt: 2 }}
+              sx={{
+                lineHeight: 1.4,
+                textAlign: "center",
+                mt: 2,
+                fontSize: { lg: 24, xs: 20 },
+              }}
             />
           </Grid>
         </Grid>
-        <Box sx={{ position: "relative", mt: 10 }}>
+        <Box
+          sx={{
+            position: "relative",
+            mt: 10,
+            // direction: { xs: "flex" },
+            // gap: 3,
+          }}
+        >
           <Image
             src={bg_frame}
             alt=""
             style={{ width: "100%", height: "100%" }}
           />
-          <Box sx={{ position: "absolute", top: 200, left: -50 }}>
+          <Box
+            sx={{
+              position: { lg: "absolute", xs: "initial" },
+              top: 200,
+              left: -50,
+              mb: { xs: 4 },
+            }}
+          >
             <BeSpeakerCard
               img={number1}
               heading="Submit Your Topic"
               description="Share your area of expertise and help shape meaningful conversations"
             />
           </Box>
-          <Box sx={{ position: "absolute", left: "20%", bottom: -140 }}>
+          <Box
+            sx={{
+              position: { lg: "absolute", xs: "initial" },
+              left: "20%",
+              bottom: -140,
+              textAlign: "center",
+              mb: { xs: 4 },
+            }}
+          >
             <BeSpeakerCard
               img={number2}
               heading="Get Scheduled & Promoted"
               description="We handle the logistics and spread the word to our engaged community"
             />
           </Box>
-          <Box sx={{ position: "absolute", left: "50%", bottom: -200 }}>
+          <Box
+            sx={{
+              position: { lg: "absolute", xs: "initial" },
+              left: "50%",
+              bottom: -200,
+              mb: { xs: 4 },
+            }}
+          >
             <BeSpeakerCard
               img={number3}
               heading="Present in a Supportive Space"
               description="Deliver your insights in a welcoming environment designed for impactful discussions"
             />
           </Box>
-          <Box sx={{ position: "absolute", right: -50, top: 200 }}>
+          <Box
+            sx={{
+              position: { lg: "absolute", xs: "initial" },
+              right: -50,
+              top: 200,
+              mb: { xs: 4 },
+            }}
+          >
             <BeSpeakerCard
               img={number4}
               heading="Leave a Lasting Impact"
@@ -71,7 +111,7 @@ const BeSpeaker = () => {
             />
           </Box>
         </Box>
-        <Box sx={{ textAlign: "center", mt: 30 }}>
+        <Box sx={{ textAlign: "center", mt: { lg: 30, xs: 5 } }}>
           <ButtonWithIcon label="Become a Speaker" width={250} />
         </Box>
       </Container>

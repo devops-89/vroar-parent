@@ -32,7 +32,7 @@ const ProgramBreakdown = () => {
     <Box>
       <Container maxWidth="lg">
         <Grid container spacing={8}>
-          <Grid size={5}>
+          <Grid size={{ lg: 5, xs: 12 }}>
             <Badge label="Program breakdown" width={200} />
             <HeadingField
               label="Your 3-Week Mentorship"
@@ -41,6 +41,7 @@ const ProgramBreakdown = () => {
                 fontFamily: "gomenasans-bold",
                 letterSpacing: "-.04em",
                 lineHeight: 1.1,
+                fontSize: { lg: 64, xs: 35 },
               }}
             />
             <ParaField
@@ -68,7 +69,7 @@ const ProgramBreakdown = () => {
               />
             </Box>
           </Grid>
-          <Grid size={7}>
+          <Grid size={{ lg: 7, xs: 12 }}>
             {Accordion_Company.map((val, i) => (
               <Accordion
                 key={`accordion-${i}`}
@@ -97,25 +98,32 @@ const ProgramBreakdown = () => {
                       }}
                     >
                       <ArrowDownward
-                        sx={{ fontSize: 32, color: COLORS.PRIMARY }}
+                        sx={{
+                          fontSize: { lg: 32, xs: 20 },
+                          color: COLORS.PRIMARY,
+                        }}
                       />
                     </Box>
                   }
                   sx={{
                     backgroundColor: "#fff2f2",
-                    padding: "30px 24px",
+                    padding: { lg: "30px 24px", xs: "20px 20px" },
                     borderRadius: "10px",
                   }}
                 >
-                  <Stack direction={"row"} alignItems={"center"} gap={4}>
+                  <Stack
+                    direction={{ lg: "row", xs: "column" }}
+                    alignItems={{ lg: "center", xs: "flex-start" }}
+                    gap={{ lg: 4, xs: 1 }}
+                  >
                     <ParaField
                       label={`Week ${i + 1}`}
-                      sx={{ fontSize: 24, fontWeight: 700 }}
+                      sx={{ fontSize: { lg: 24, xs: 20 }, fontWeight: 700 }}
                     />
                     <Divider orientation="vertical" flexItem />
                     <ParaField
                       label={val.heading}
-                      sx={{ fontSize: 24, fontWeight: 700 }}
+                      sx={{ fontSize: { lg: 24, xs: 20 }, fontWeight: 700 }}
                     />
                   </Stack>
                 </AccordionSummary>
@@ -123,22 +131,26 @@ const ProgramBreakdown = () => {
                   sx={{ backgroundColor: COLORS.WHITE, px: 4, py: 2 }}
                 >
                   <Stack
-                    direction={"row"}
-                    alignItems={"center"}
+                    direction={{ lg: "row", xs: "column" }}
+                    alignItems={{ lg: "center", xs: "flex-start" }}
                     justifyContent={"space-between"}
                   >
                     <ParaField
                       label="Key Actions"
-                      sx={{ fontSize: 24, fontWeight: 700 }}
+                      sx={{ fontSize: { lg: 24, xs: 20 }, fontWeight: 700 }}
                     />
                     <ParaField
                       label={`Time : ${val.time}`}
-                      sx={{ fontSize: 24, fontWeight: 700 }}
+                      sx={{ fontSize: { lg: 24, xs: 20 }, fontWeight: 700 }}
                     />
                   </Stack>
-                  <List>
+                  <List sx={{ mt: { lg: 0, xs: 2 } }}>
                     {val.list.map((item, index) => (
-                      <ListItem key={`list-item-${i}-${index}`} disablePadding>
+                      <ListItem
+                        key={`list-item-${i}-${index}`}
+                        disablePadding
+                        sx={{ alignItems: { lg: "center" } }}
+                      >
                         <ListItemAvatar sx={{ minWidth: 30 }}>
                           <Box
                             sx={{

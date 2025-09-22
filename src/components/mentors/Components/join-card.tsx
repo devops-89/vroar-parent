@@ -9,21 +9,20 @@ const JoinCard = ({ img, heading, description }: JOIN_CARD_PROPS) => {
     <Box
       sx={{
         border: "1px solid #fed6cc",
-        p: "24px 20px",
+        p: { lg: "24px 20px", xs: "20px 15px" },
         borderRadius: "20px",
-        height: 250,
+        height: { lg: 250, xs: "100%" },
+        mt: { xs: 2},
       }}
     >
       <Image src={img} alt="" />
       <ParaField
         label={heading}
-        fontSize={24}
-        sx={{ fontWeight: 700, my: 1 }}
+        sx={{ fontWeight: 700, my: 1, fontSize: { lg: 24, xs: 20 } }}
       />
       <ParaField
         label={description}
-        fontSize={22}
-        sx={{ lineHeight: 1.4 }}
+        sx={{ lineHeight: 1.4, fontSize: { lg: 20, xs: 18 } }}
         color="#737373"
       />
     </Box>

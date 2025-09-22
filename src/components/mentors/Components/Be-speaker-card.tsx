@@ -9,15 +9,18 @@ const BeSpeakerCard = ({
   description,
 }: BE_SPEAKER_CARD_PROPS) => {
   return (
-    <Box sx={{ textAlign: "center", width: "260px" }}>
+    <Box sx={{ textAlign: "center", width: { lg: "260px", xs: "100%" } }}>
       <Image src={img} alt="" width={50} />
       <ParaField
         label={heading}
-        fontSize={28}
         textAlign="center"
-        sx={{ fontWeight: 700 }}
+        sx={{ fontWeight: 700, fontSize: { lg: 28, xs: 25 } }}
       />
-      <ParaField label={description} fontSize={20} textAlign="center" />
+      <ParaField
+        label={description}
+        textAlign="center"
+        sx={{ fontSize: { lg: 20, xs: 16 } }}
+      />
     </Box>
   );
 };

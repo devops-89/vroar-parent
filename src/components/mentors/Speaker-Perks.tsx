@@ -33,7 +33,7 @@ const SpeakerPerks = () => {
         justifyContent: "center",
         height: { lg: "100vh", xs: "100%" },
         position: "relative",
-        overflow: "hidden",
+        // overflow: "hidden",
       }}
     >
       <Container>
@@ -187,7 +187,7 @@ const SpeakerPerks = () => {
                   breakpoints={{
                     640: {
                       slidesPerView: 1,
-                      spaceBetween: 10,
+                      spaceBetween: 20,
                     },
                     1024: {
                       slidesPerView: 1,
@@ -200,7 +200,7 @@ const SpeakerPerks = () => {
                     },
                   }}
                   loop={true}
-                  speed={800} // smooth transition
+                  speed={800}
                   modules={[Autoplay]}
                   autoplay={{
                     delay: 2000,
@@ -234,7 +234,7 @@ const SpeakerPerks = () => {
                   WebkitBackdropFilter: "blur(2px)",
                   zIndex: 2,
                   pointerEvents: "none",
-                  display: { lg: "block", xs: "flex" },
+                  display: { lg: "block", xs: "none" },
                 }}
               />
 
@@ -251,7 +251,7 @@ const SpeakerPerks = () => {
                   WebkitBackdropFilter: "blur(2px)",
                   zIndex: 2,
                   pointerEvents: "none",
-                  display: { lg: "block", xs: "flex" },
+                  display: { lg: "block", xs: "none" },
                 }}
               />
             </Box>
@@ -264,7 +264,7 @@ const SpeakerPerks = () => {
                 borderTopLeftRadius: "16px",
                 borderTopRightRadius: "16px",
                 padding: "16px",
-                display: { lg: "none", xs: "flex" },
+                display: { lg: "none", xs: "none" },
                 justifyContent: "space-between",
                 alignItems: "center",
 
@@ -273,7 +273,6 @@ const SpeakerPerks = () => {
                 bottom: 60,
                 transform: show ? "translateY(0)" : "translateY(100%)",
                 transition: "0.5s ease all",
-                mt: 4,
               }}
             >
               <ParaField
@@ -282,7 +281,7 @@ const SpeakerPerks = () => {
                 color={COLORS.WHITE}
               />
             </Box>
-            <Box
+            {/* <Box
               sx={{
                 background: "linear-gradient(#371d00,#0f0f0f)",
                 borderTop: show
@@ -293,12 +292,13 @@ const SpeakerPerks = () => {
                 borderTopLeftRadius: show ? 0 : "16px",
                 borderTopRightRadius: show ? 0 : "16px",
                 padding: "16px",
-                // position: "absolute",
-                // bottom: 0,
+                position: "absolute",
+                
                 width: "100%",
                 cursor: "pointer",
                 transition: "0.5s ease all",
-                display: { lg: "none", xs: "block" },
+                display: { lg: "none", xs: "none" },
+                mt: "auto",
               }}
               onClick={showHandler}
             >
@@ -334,7 +334,7 @@ const SpeakerPerks = () => {
                   />
                 </IconBox>
               </Box>
-            </Box>
+            </Box> */}
           </Grid>
         </Grid>
       </Container>

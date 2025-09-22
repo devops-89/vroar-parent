@@ -12,7 +12,7 @@ const Promise = () => {
     <Box
       sx={{
         backgroundImage: `url(${bg.src})`,
-        height: "130vh",
+        height: { lg: "130vh", xs: "100%" },
         backgroundPosition: "50%",
         backgroundSize: "cover",
         py: 10,
@@ -21,7 +21,7 @@ const Promise = () => {
     >
       <Container>
         <Grid container>
-          <Grid size={10} margin="auto">
+          <Grid size={{ lg: 10, xs: 12 }} margin="auto">
             <Badge label="our promise" width={120} margin="auto" />
             <HeadingField
               label="Together, We Shape Futures"
@@ -31,6 +31,7 @@ const Promise = () => {
                 letterSpacing: "-.04em",
                 lineHeight: 1.1,
                 mt: 3,
+                fontSize: { lg: 64, xs: 35 },
               }}
             />
             <ParaField
@@ -45,15 +46,17 @@ const Promise = () => {
             <Box sx={{ position: "relative", mt: 10 }}>
               <Box
                 sx={{
-                  position: "absolute",
-                  display: "flex",
+                  position: { lg: "absolute" },
+                  display: { lg: "flex", xs: "block" },
                   alignItems: "center",
-                  justifyContent: "space-between",
+                  justifyContent: { lg: "space-between", xs: "center" },
                   zIndex: 999,
                   width: "100%",
                 }}
               >
-                <PromiseCard sx={{ backgroundColor: COLORS.WHITE }}>
+                <PromiseCard
+                  sx={{ backgroundColor: COLORS.WHITE, mb: { xs: 5 } }}
+                >
                   <ParaField
                     label="COMPANIES"
                     sx={{

@@ -23,7 +23,7 @@ const HeroSection = () => {
     >
       <Container maxWidth="lg">
         <Grid container>
-          <Grid size={8} margin={"auto"}>
+          <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
             <Badge label="Pricing" margin="auto" width={100} />
 
             <HeadingField
@@ -32,12 +32,17 @@ const HeroSection = () => {
                 fontFamily: "gomenasans-bold",
                 lineHeight: 1.4,
                 letterSpacing: "-.04rem",
+                fontSize: { lg: 64, xs: 35 },
               }}
               dataaos="fade-left"
             />
             <GradientText
               label="your child's future!"
-              sx={{ fontFamily: "gomenasans-bold", lineHeight: 1.1 }}
+              sx={{
+                fontFamily: "gomenasans-bold",
+                lineHeight: 1.1,
+                fontSize: { lg: 64, xs: 35 },
+              }}
               dataaos="fade-left"
               data-aos-delay="300"
             />

@@ -11,7 +11,7 @@ const PromiseCard = ({ children, sx }: promise_Card_props) => {
     <Box
       sx={{
         border: "1px solid #f3f3f3",
-        width: 320,
+        width: {lg:320,xs:"100%"},
         borderRadius: "20px",
         padding: "20px",
         ...sx,

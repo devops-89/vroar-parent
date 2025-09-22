@@ -18,7 +18,7 @@ import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import { TESTIMONIAL_PROPS } from "@/utils/types";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Autoplay, EffectCards } from "swiper/modules";
-import TestimonialCard from "@/components/Home/TestimonialBanner/TestimonialCard";
+import TestimonialCard from "@/components/about-us/TestimonialCard";
 import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
 
 interface testimonialDataProps {
@@ -204,7 +204,6 @@ const ParentTestimonial = ({ testimonialData }: testimonialDataProps) => {
                   height: { lg: 500 },
                   mt: 5,
                   pb: 3,
-                  // margin: "auto",
                 }}
               >
                 <Swiper

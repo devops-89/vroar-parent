@@ -12,7 +12,7 @@ const Empower = () => {
     <Box sx={{ backgroundColor: "#fff3f0", py: 10 }}>
       <Container>
         <Grid container>
-          <Grid size={8} margin="auto">
+          <Grid size={{ lg: 8, xs: 12 }} margin="auto">
             <Badge label="HOW WE EMPOWER" width={150} margin="auto" />
             <HeadingField
               label="Where Purpose Meets Possibility"
@@ -21,6 +21,7 @@ const Empower = () => {
                 lineHeight: 1.1,
                 letterSpacing: "-.04em",
                 mt: 2,
+                fontSize: { lg: 64, xs: 35 },
               }}
               dataaos="fade-up"
             />
@@ -39,9 +40,9 @@ const Empower = () => {
         <Grid container spacing={4} mt={3}>
           {empowerCard_data.map((val, i) => (
             <Grid
-              size={4}
+              size={{ lg: 4, xs: 12 }}
               key={i}
-              data-aos="fade-left"
+              data-aos="fade-up"
               data-aos-delay={`${i * 200}`}
             >
               <EmpowerCard

@@ -11,7 +11,7 @@ const Benefits = () => {
     <Box sx={{ backgroundColor: "#fff3f0", py: 10 }}>
       <Container>
         <Grid container>
-          <Grid size={8} margin="auto">
+          <Grid size={{ lg: 8, xs: 12 }} margin="auto">
             <div data-aos="fade-up">
               <Badge label="BENEFITS" width={100} margin="auto" />
             </div>
@@ -21,6 +21,7 @@ const Benefits = () => {
                 fontFamily: "gomenasans-bold",
                 lineHeight: "1.1",
                 letterSpacing: "-.04em",
+                fontSize: { lg: 64, xs: 35 },
               }}
               dataaos="fade-up"
             />
@@ -39,14 +40,14 @@ const Benefits = () => {
       </Container>
       <Container maxWidth="lg" sx={{ mt: 5 }}>
         <Grid container>
-          <Grid size={10} margin="auto">
+          <Grid size={{ lg: 10, xs: 12 }} margin="auto">
             <Grid container spacing={2}>
               {BENEFITS_CARD_DATA.map((val, i) => (
                 <Grid
-                  size={6}
+                  size={{ lg: 6, xs: 12 }}
                   key={i}
                   sx={{ height: "100%" }}
-                  data-aos="fade-left"
+                  data-aos="fade-up"
                   data-aos-delay={i * 100}
                 >
                   <BenefitCard

@@ -13,7 +13,7 @@ import Badge from "../Components/Badge";
 import { nunito } from "@/utils/fonts";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import TestimonialCard from "./TestimonialCard";
+import TestimonialCard from "../../about-us/TestimonialCard";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/autoplay";

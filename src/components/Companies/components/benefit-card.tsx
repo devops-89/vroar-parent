@@ -27,19 +27,19 @@ const BenefitCard = ({
         sx={{
           backgroundColor: bgColor,
           border: "2px solid #fff",
-          height: "400px",
+          height: { lg: "400px", xs: "100%" },
           borderRadius: "20px",
           padding: "32px",
           position: "relative",
         }}
       >
         <Stack direction={"row"} alignItems={"center"} spacing={1}>
-          <HeadingField label="Benefits for" sx={{ fontSize: 26 }} />
+          <HeadingField label="Benefits for" sx={{ fontSize: 26, xs: 20 }} />
           <Box
             sx={{
               backgroundColor: COLORS.WHITE,
               borderRadius: "12px",
-              height: "44px",
+              height: { lg: "44px", xs: 30 },
               paddingTop: "8px",
               paddingRight: "16px",
               paddingLeft: "16px",
@@ -52,7 +52,7 @@ const BenefitCard = ({
               label={benefits_user}
               sx={{
                 textTransform: "uppercase",
-                fontSize: 26,
+                fontSize: { lg: 26, xs: 20 },
                 fontFamily: "gomenasans-bold",
               }}
             />
@@ -61,12 +61,15 @@ const BenefitCard = ({
         <List>
           {list.map((val, i) => (
             <ListItem key={i} sx={{ alignItems: "flex-start" }}>
-              <ListItemAvatar sx={{ minWidth: 32, mt: 1 }}>
+              <ListItemAvatar sx={{ minWidth: { lg: 32, xs: 40 }, mt: 1 }}>
                 <Image src={starIcon} alt="" width={30} />
               </ListItemAvatar>
               <ListItemText
                 primary={
-                  <ParaField label={val.label || ""} sx={{ fontSize: 24 }} />
+                  <ParaField
+                    label={val.label || ""}
+                    sx={{ fontSize: { lg: 24, xs: 20 } }}
+                  />
                 }
               />
             </ListItem>
@@ -81,11 +84,15 @@ const BenefitCard = ({
               width: "2.5rem",
               height: "80%",
               position: "absolute",
-              inset: "50% auto auto -1.75rem",
-              transform: "translateY(-50%)",
+              inset: {
+                lg: "50% auto auto -1.75rem",
+                xs: "0 auto auto 10rem",
+              },
+              transform: { lg: "translateY(-50%)", xs: "translateX(-160px)" },
+              rotate: { xs: "90deg" },
             }}
           >
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((val, i) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((_, i) => (
               <Box
                 sx={{
                   backgroundColor: COLORS.WHITE,
