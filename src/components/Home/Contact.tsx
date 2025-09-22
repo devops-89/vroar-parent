@@ -38,7 +38,7 @@ const Contact = () => {
             <Badge
               label="Get in touch"
               width={120}
-              sx={{ margin: { lg: "", xs: "auto" } }}
+              sx={{ margin: { lg: "initial", xs: "auto" } }}
             />
             <Typography
               sx={{

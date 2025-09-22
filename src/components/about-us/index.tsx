@@ -12,13 +12,13 @@ const AboutSection = () => {
     <Box sx={{ pt: 20 }}>
       <Container maxWidth="lg">
         <Grid container>
-          <Grid size={8} margin={"auto"}>
+          <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
             <Badge label="our team" margin="auto" width="100px" />
             <HeadingField
               label="Meet the team
 that makes the magic happen"
               sx={{
-                fontSize: 65,
+                fontSize: { lg: 65, xs: 35 },
                 fontFamily: "gomenasans-bold",
                 lineHeight: 1.1,
                 letterSpacing: "-.04em",
@@ -30,7 +30,7 @@ that makes the magic happen"
                 mt: 3,
                 color: COLORS.TEXT_COLOR,
                 textAlign: "center",
-                fontSize: 24,
+                fontSize: { lg: 24, xs: 20 },
               }}
             />
           </Grid>
@@ -38,9 +38,9 @@ that makes the magic happen"
         <Grid container spacing={3} sx={{ mt: 4 }}>
           {TEAMS_DATA.map((val, i) => (
             <Grid
-              size={4}
+              size={{ lg: 4, xs: 12 }}
               key={i}
-              data-aos="fade-left"
+              data-aos="fade-up"
               data-aos-delay={`${i + 1 * 100}`}
             >
               <TeamCard

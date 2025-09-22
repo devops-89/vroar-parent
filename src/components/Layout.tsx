@@ -13,7 +13,7 @@ import MobileSidebar from "./Profile/MobileSidebar";
 import Sidebar from "./Profile/Sidebar";
 import Header from "./Header";
 import Footer from "./Footer";
-import MobileHeader from "./Home/widgets/mobile-header";
+import MobileHeader from "./widgets/mobile-header";
 
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();

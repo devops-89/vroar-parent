@@ -4,7 +4,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import logo from "@/logo/Logo.png";
 import { Menu } from "@mui/icons-material";
-import HeaderSidebar from "../drawer";
+import HeaderSidebar from "../Home/drawer";
+import SimpleButton from "../Home/Components/SimpleButton";
 const MobileHeader = () => {
   const [open, setOpen] = useState(false);
   return (
@@ -16,22 +17,22 @@ const MobileHeader = () => {
           width: "100%",
           border: "5px solid #fff3f0",
           position: "absolute",
-          padding: 2,
-          top: 5,
+          padding: "8px",
+          top: 10,
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          // position: "absolute",
           zIndex: 999,
         }}
       >
-        <Image src={logo} alt="" width={100} />
         <IconButton
           sx={{ background: COLORS.LINEAR_GRADIENT, color: COLORS.WHITE }}
           onClick={() => setOpen(true)}
         >
           <Menu />
         </IconButton>
+        <Image src={logo} alt="" width={100} />
+        <SimpleButton label="Sign In" />
       </Box>
 
       <HeaderSidebar open={open} setOpen={setOpen} />

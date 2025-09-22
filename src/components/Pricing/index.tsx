@@ -8,7 +8,7 @@ const PricingLayout = () => {
   return (
     <Box>
       <HeroSection />
-      <Overview />
+      {/* <Overview /> */}
       <Contact />
       <FaqSection />
     </Box>
