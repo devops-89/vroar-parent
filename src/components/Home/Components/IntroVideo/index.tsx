@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import PlayArrowButton, { PauseButton } from "./PlayArrow";
 import choose from "@/homePage/video_thumbnail2.png";
 import ButtonWithIcon from "../ButtonWithIcon";
+import Link from "next/link";
 
 const IntroVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -128,7 +129,9 @@ const IntroVideo = () => {
       <Box
         sx={{ display: "flex", justifyContent: "center", mt: { lg: 7, xs: 4 } }}
       >
-        <ButtonWithIcon label="About Us" />
+        <Link href="/about">
+          <ButtonWithIcon label="About Us" />
+        </Link>
       </Box>
     </>
   );

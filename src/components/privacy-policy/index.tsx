@@ -4,10 +4,7 @@ import {
 } from "@/assets/contentSidebar";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import {
-  Circle,
-  CircleOutlined
-} from "@mui/icons-material";
+import { Circle, CircleOutlined } from "@mui/icons-material";
 import {
   Box,
   Container,
@@ -24,16 +21,18 @@ import { FaAngleRight } from "react-icons/fa";
 import ParaField from "../common/Para-Field";
 import Overview from "../common/privacy/overview";
 import ContentSidebar from "../widgets/sidebar";
+import NestedListBox from "../common/privacy/nested-list-box";
+import ListBox from "../common/privacy/list-box";
 
 const PrivacyPolicyLayout = () => {
   return (
     <Box sx={{ mt: 4, position: "relative" }}>
       <Container maxWidth="lg">
         <Grid container spacing={5} alignItems="flex-start" wrap="nowrap">
-          <Grid size={3}>
+          <Grid size={3} sx={{ display: { lg: "block", xs: "none" } }}>
             <ContentSidebar data={privacyPolicySidebar} />
           </Grid>
-          <Grid size={9} sx={{ overflowY: "auto" }}>
+          <Grid size={{ lg: 9, xs: 12 }} sx={{ overflowY: "auto" }}>
             <Overview description="MyTreks is committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and share your data when you use our App." />
 
             <Divider sx={{ mt: 3, borderWidth: 1 }} />
@@ -50,34 +49,7 @@ const PrivacyPolicyLayout = () => {
               />
 
               <Box sx={{ mt: 3 }}>
-                {PRIVACY_POLICY_DATA.collection.list.map((val, i) => (
-                  <Box key={i}>
-                    <Stack direction={"row"} alignItems={"center"} spacing={3}>
-                      <Circle sx={{ fontSize: 12 }} />
-
-                      <ParaField label={val.heading} sx={{ fontSize: 20 }} />
-                    </Stack>
-                    {val.nestedList && (
-                      <List>
-                        {val.nestedList.map((item, index) => (
-                          <ListItem key={index}>
-                            <ListItemAvatar>
-                              <CircleOutlined sx={{ fontSize: 12 }} />
-                            </ListItemAvatar>
-                            <ListItemText
-                              primary={
-                                <ParaField
-                                  label={item.label}
-                                  sx={{ fontSize: 18 }}
-                                />
-                              }
-                            />
-                          </ListItem>
-                        ))}
-                      </List>
-                    )}
-                  </Box>
-                ))}
+                <NestedListBox data={PRIVACY_POLICY_DATA.collection.list} />
 
                 <ParaField
                   label={PRIVACY_POLICY_DATA.collection.endDescription}
@@ -95,26 +67,7 @@ const PrivacyPolicyLayout = () => {
               />
 
               <Box sx={{ mt: 3 }}>
-                <List>
-                  {PRIVACY_POLICY_DATA.data_security.list.map((val, i) => (
-                    <ListItem sx={{ alignItems: "flex-start" }}>
-                      <ListItemAvatar sx={{ minWidth: 23, mt: 2 }}>
-                        <Circle sx={{ fontSize: 10 }} />
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={
-                          <ParaField
-                            label={val.label}
-                            sx={{ fontSize: 20, fontWeight: 550 }}
-                          />
-                        }
-                        secondary={
-                          <ParaField label={val.value} sx={{ fontSize: 18 }} />
-                        }
-                      />
-                    </ListItem>
-                  ))}
-                </List>
+                <ListBox data={PRIVACY_POLICY_DATA.data_security.list} />
               </Box>
             </Box>
 
@@ -131,31 +84,7 @@ const PrivacyPolicyLayout = () => {
                 sx={{ fontSize: 20, fontWeight: 400, mt: 2 }}
               />
               <Box sx={{ mt: 3 }}>
-                <List>
-                  {PRIVACY_POLICY_DATA.information_sharing.list.map(
-                    (val, i) => (
-                      <ListItem sx={{ alignItems: "flex-start" }}>
-                        <ListItemAvatar sx={{ minWidth: 23, mt: 2 }}>
-                          <Circle sx={{ fontSize: 10 }} />
-                        </ListItemAvatar>
-                        <ListItemText
-                          primary={
-                            <ParaField
-                              label={val.label}
-                              sx={{ fontSize: 20, fontWeight: 600 }}
-                            />
-                          }
-                          secondary={
-                            <ParaField
-                              label={val.value}
-                              sx={{ fontSize: 18 }}
-                            />
-                          }
-                        />
-                      </ListItem>
-                    )
-                  )}
-                </List>
+                <ListBox data={PRIVACY_POLICY_DATA.information_sharing.list} />
               </Box>
             </Box>
 
@@ -173,20 +102,7 @@ const PrivacyPolicyLayout = () => {
                 sx={{ fontSize: 20, fontWeight: 400, mt: 2 }}
               />
               <Box sx={{ my: 2 }}>
-                <List>
-                  {PRIVACY_POLICY_DATA.cookies.list.map((val, i) => (
-                    <ListItem sx={{ alignItems: "flex-start" }}>
-                      <ListItemAvatar sx={{ minWidth: 23, mt: 2 }}>
-                        <Circle sx={{ fontSize: 10 }} />
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={
-                          <ParaField label={val.label} sx={{ fontSize: 20 }} />
-                        }
-                      />
-                    </ListItem>
-                  ))}
-                </List>
+                <ListBox data={PRIVACY_POLICY_DATA.cookies.list} />
               </Box>
               <ParaField
                 label={PRIVACY_POLICY_DATA.cookies.endDescription}

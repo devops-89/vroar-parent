@@ -231,3 +231,305 @@ export const TERMS_CONTENT_SIDEBAR: List[] = [
     label: "Contact Information",
   },
 ];
+
+export const terms_conditions_data = {
+  acceptance: {
+    title: "Acceptance of Terms",
+    description:
+      "By registering for or using MyTreks, you acknowledge that you have read, understood, and agree to these Terms and Conditions. These terms constitute a legally binding agreement between you and MyTreks.",
+  },
+  descriptionOfServices: {
+    title: "Description of Services",
+    description:
+      "MyTreks is an AI-driven platform that provides users with opportunities for internships, mentorship, and professional connections. The App offers a forum for:",
+    list: [
+      {
+        label: "Students:",
+        value:
+          "To learn and apply for internship programs, connect with mentors, coaches and career counselors to enhance their skills.",
+      },
+      {
+        label: "Parents:",
+        value:
+          "To monitor and support their child’s progress throughout the program. ",
+      },
+      {
+        label: "Companies:",
+        value:
+          "To post internship opportunities, evaluate applications, and coordinate industry projects.",
+      },
+      {
+        label: "Mentors:",
+        value:
+          "To offer advice, guidance, and professional insights to students.",
+      },
+    ],
+  },
+  user_categories_and_eligibility: {
+    title: "User Categories and Eligibility",
+
+    list: [
+      {
+        heading: "Student",
+        nestedList: [
+          {
+            label: "Registration & Age Requirement:",
+            value:
+              "Students must be 13 years or older and are required to provide accurate personal and educational details.",
+          },
+          {
+            label: "Responsibilities:",
+            value:
+              "Students agree to actively engage and adhere to provided guidelines with the learning program assigned to them which may include sessions with counselor, mentor and internship opportunities. Students also agree to keep their profiles current. ",
+          },
+          {
+            label: "Standards:",
+            value:
+              "Students must present honest and accurate information when applying and communicating with companies or mentors.",
+          },
+        ],
+      },
+      {
+        heading: "Parent",
+        nestedList: [
+          {
+            label: "Registration:",
+            value:
+              "Parents may sign up to monitor the progress of their child(ren) in the program. By registering, parents confirm they have the legal authority to provide consent on behalf of their child.",
+          },
+          {
+            label: "Responsibilities:",
+            value:
+              "Parents agree to maintain confidentiality, foster supportive communication between their child and MyTreks, and comply with all guidelines relating to app usage.",
+          },
+          {
+            label: "Consent:",
+            value:
+              "When submitting personal data or authorizing a child’s participation, parents confirm they are legally authorized to do so.",
+          },
+        ],
+      },
+      {
+        heading: "Company",
+        nestedList: [
+          {
+            label: "Registration:",
+            value:
+              "Companies must register with verified business details to post internships and interact with student applicants.",
+          },
+          {
+            label: "Responsibilities:",
+            value:
+              "Companies are responsible for providing accurate internship descriptions, reviewing applications diligently, and maintaining clear lines of communication.",
+          },
+          {
+            label: "Prohibitions:",
+            value:
+              "Companies must not request or collect personal data beyond what is necessary for the internship process and must adhere to the data security standards set out in these documents.",
+          },
+        ],
+      },
+      {
+        heading: "Mentor",
+        nestedList: [
+          {
+            label: "Registration & Verification:",
+            value:
+              "Mentors are required to undergo a verification process and provide professional credentials before advising students. By applying to become a mentor on MyTreks platform, the individual authorizes MyTreks to use their publicly available information or the information provided by them directly to MyTreks on the MyTreks platform for marketing purposes. ",
+          },
+          {
+            label: "Responsibilities:",
+            value:
+              "Mentors commit to offering ethical, constructive guidance and must adhere to professional and community standards at all times.",
+          },
+          {
+            label: "Guidelines:",
+            value:
+              "Mentors are expected to maintain a respectful and supportive environment during all interactions with users of the App.",
+          },
+        ],
+      },
+    ],
+  },
+  account_registry_and_security: {
+    title: "Account Registration and Security",
+    list: [
+      {
+        label: "Account Creation:",
+        value:
+          "When you create an account, you agree to provide current, complete, and accurate information.",
+      },
+      {
+        label: "Security:",
+        value:
+          "You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.",
+      },
+      {
+        label: "Notification:",
+        value:
+          "You agree to notify MyTreks immediately of any unauthorized use of your account or any potential security breaches.",
+      },
+    ],
+  },
+  authentication_methods: {
+    title: "Authentication Methods",
+    list: [
+      {
+        label: "Apple Sign In:",
+        value:
+          "In addition to other authentication methods, MyTreks offers “Sign in with Apple” for a secure and privacy-focused login option. This option is available alongside other third-party sign-in services.",
+      },
+      {
+        label: "Privacy & Data Minimization:",
+        value:
+          "Using “Sign in with Apple” minimizes the personal data shared with MyTreks and is fully integrated with Apple’s privacy standards.",
+      },
+    ],
+  },
+  permitted_use_and_prohibited_conduct: {
+    title: "Permitted Use and Prohibited Conduct",
+    list: [
+      {
+        heading: "Permitted Use",
+        value:
+          "The App may only be used for legitimate educational and professional purposes. All users must comply with these Terms.",
+      },
+      {
+        heading: "Prohibited Conduct:",
+        value: "You agree not to:",
+        nestedList: [
+          {
+            label:
+              "Use the platform for any unlawful activities or in violation of any applicable laws.",
+          },
+          {
+            label:
+              "Post, transmit, or store any content that is defamatory, obscene, or harmful.",
+          },
+          {
+            label:
+              "Attempt to impersonate or misrepresent your affiliation with any person or organization.",
+          },
+          {
+            label:
+              "Engage in harassment, abuse, or discriminatory behavior toward any user.",
+          },
+        ],
+      },
+    ],
+  },
+  intellectula_property_rights: {
+    title: "Intellectual Property Rights",
+    list: [
+      {
+        label: "Ownership:",
+        value:
+          "All content, trademarks, and intellectual property related to MyTreks are the exclusive property of MyTreks or its licensors.",
+      },
+      {
+        label: "Usage:",
+        value:
+          "You may not use any trademark, logo, or images without obtaining prior written consent from MyTreks.",
+      },
+    ],
+  },
+  disclaimer: {
+    title: "Disclaimers and Limitation of Liability",
+    list: [
+      {
+        heading: "Disclaimers:",
+        nestedList: [
+          {
+            label:
+              "The MyTreks service is provided “as is” and “as available” with no warranties of any kind. We do not guarantee uninterrupted, error-free, or completely secure access.",
+          },
+          {
+            label:
+              "While every effort is made to ensure information accuracy, MyTreks does not warrant that all content is error-free or reliable.",
+          },
+        ],
+      },
+      {
+        heading: "Limitation:",
+        nestedList: [
+          {
+            label:
+              "To the maximum extent permitted by law, MyTreks is not liable for any indirect, incidental, consequential, or punitive damages arising from the use of the App.",
+          },
+          {
+            label:
+              "Decisions made based on the information provided in the App are solely the responsibility of the user.",
+          },
+        ],
+      },
+    ],
+  },
+  termination: {
+    title: "Termination",
+    list: [
+      {
+        label: "Right to Terminate:",
+        value:
+          "MyTreks reserves the right to suspend or terminate any user account in the event of a breach of these Terms.",
+      },
+      {
+        label: "Effect of Termination:",
+        value:
+          "Upon termination, your right to access and use the App will immediately cease and any outstanding communications or stored data may be removed.",
+      },
+    ],
+  },
+  governing_law: {
+    title: "Governing Law and Dispute Resolution",
+    list: [
+      {
+        label: "Governing Law:",
+        value:
+          "These Terms are governed by the applicable laws of the jurisdiction in which MyTreks operates.",
+      },
+      {
+        label: "Dispute Resolution:",
+        value:
+          "Any disputes arising out of or in relation to these Terms will be subject to informal negotiation; failing which, disputes may be resolved by binding arbitration under applicable rules.",
+      },
+    ],
+  },
+  modifications: {
+    title: "Modifications to Terms",
+    list: [
+      {
+        label: "‍Updates:",
+        value:
+          "MyTreks reserves the right to modify these Terms at any time. Updated Terms will be posted within the App and on the website.",
+      },
+      {
+        label: "Continued Use:",
+        value:
+          "Your continued use of MyTreks after any such modifications constitutes acceptance of the new Terms.",
+      },
+    ],
+  },
+  policy_access: {
+    title: "Policy Access",
+    list: [
+      {
+        label: "Availability:",
+        value:
+          "The full Terms and Conditions and Privacy Policy are accessible within the MyTreks App under “Settings > Legal” and on our App Store listing. ",
+      },
+      {
+        label: "Notification: ",
+        value:
+          "Users will be notified of any significant changes to these policies through an in-app notification and via email as appropriate.",
+      },
+    ],
+  },
+  contact: {
+    title: "Contact Information",
+    value: `For any questions or concerns regarding these Terms and Conditions, please contact us at:
+    Email: info@mytreks.ai
+    Mailing Address: 6275 Corvara Court Frisco,
+TX 75035, USA
+    `,
+  },
+};

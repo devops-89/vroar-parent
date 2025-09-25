@@ -13,11 +13,39 @@ import {
 import React from "react";
 import contact_banner from "@/homePage/contact/contact_banner.avif";
 import Badge from "./Components/Badge";
-import { COLORS } from "@/utils/enum";
+import { COLORS, FORM_TYPE } from "@/utils/enum";
 import { Mail } from "@mui/icons-material";
 import { loginTextField } from "@/utils/styles";
 import ButtonWithIcon from "./Components/ButtonWithIcon";
+import { useFormik } from "formik";
+import { contactValidationSchema } from "@/utils/validationSchema";
+import axios from "axios";
 const Contact = () => {
+  const formik = useFormik({
+    initialValues: {
+      fullName: "",
+      email: "",
+      message: "",
+    },
+    validationSchema: contactValidationSchema,
+    onSubmit: (values) => {
+      console.log("Submitting contact form:", values);
+      axios
+        .post("/api/oauth/contact", { fields: values, type: FORM_TYPE.CONTACT })
+        .then((res) => {
+          console.log("Contact form submitted successfully:", res.data);
+          // You can add a success message here
+          formik.resetForm();
+        })
+        .catch((err) => {
+          console.error(
+            "Contact form error:",
+            err.response?.data || err.message
+          );
+          // You can add error handling UI here
+        });
+    },
+  });
   return (
     <Box
       sx={{
@@ -108,17 +136,29 @@ const Contact = () => {
                   "0 6px 13px #0000000a, 0 23px 23px #00000008, 0 52px 31px #00000005, 0 92px 47px #00000003",
               }}
             >
-              <form>
+              <form onSubmit={formik.handleSubmit}>
                 <Stack alignItems={"center"} spacing={2}>
                   <TextField
                     sx={{ ...loginTextField }}
                     fullWidth
                     label="Enter Name"
+                    id="fullName"
+                    error={
+                      formik.touched.fullName && Boolean(formik.errors.fullName)
+                    }
+                    helperText={
+                      formik.touched.fullName && formik.errors.fullName
+                    }
+                    onChange={formik.handleChange}
                   />
                   <TextField
                     sx={{ ...loginTextField }}
                     fullWidth
                     label="Enter Email Address"
+                    id="email"
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
+                    onChange={formik.handleChange}
                   />
                   <TextField
                     sx={{
@@ -134,8 +174,18 @@ const Contact = () => {
                     fullWidth
                     label="Enter Your Query"
                     multiline
+                    id="message"
+                    error={
+                      formik.touched.message && Boolean(formik.errors.message)
+                    }
+                    helperText={formik.touched.message && formik.errors.message}
+                    onChange={formik.handleChange}
                   />
-                  <ButtonWithIcon label="Send Enquiry" width={"100%"} />
+                  <ButtonWithIcon
+                    label="Send Enquiry"
+                    width={"100%"}
+                    type="submit"
+                  />
                 </Stack>
               </form>
             </Card>

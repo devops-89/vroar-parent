@@ -5,7 +5,15 @@ import { Box, Stack } from "@mui/material";
 import Image from "next/image";
 import SimpleButton from "../Home/Components/SimpleButton";
 import Secondarybutton from "../common/Secondary-Button";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BecomeAMentor from "@/assets/ModalCalling/website/become-a-mentor";
 const MentorMiddle = () => {
+  const dispatch = useDispatch();
+
+  const becomeaMentor = () => {
+    dispatch(showModal(<BecomeAMentor />));
+  };
   return (
     <Box sx={{ position: "relative" }}>
       <Image
@@ -36,7 +44,7 @@ const MentorMiddle = () => {
           spacing={2}
           justifyContent={"center"}
         >
-          <SimpleButton label="Become a Mentor" />
+          <SimpleButton label="Become a Mentor" onClick={becomeaMentor} />
           <Secondarybutton
             label="Become a Speaker"
             sx={{

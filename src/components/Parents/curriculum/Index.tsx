@@ -9,6 +9,9 @@ import selfAwareness from "@/banner/parents/curriculum/self-awareness.avif";
 import alignedGoals from "@/banner/parents/curriculum/aligned-goals.avif";
 import selfReflection from "@/banner/parents/curriculum/self-reflection.avif";
 import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
 const ParentCurriculum = () => {
   const curriculumData = [
     {
@@ -27,6 +30,13 @@ const ParentCurriculum = () => {
       description: "College essay prep through guided reflection",
     },
   ];
+
+  const dispatch = useDispatch();
+
+  const openModal = () => {
+    dispatch(showModal(<BookaDemo />));
+  };
+
   return (
     <Box>
       <Container maxWidth="lg">
@@ -62,7 +72,7 @@ const ParentCurriculum = () => {
           ))}
         </Grid>
         <Box sx={{ textAlign: "center", mt: 3 }}>
-          <ButtonWithIcon label="Book a Demo" />
+          <ButtonWithIcon label="Book a Demo" onClick={openModal} />
         </Box>
       </Container>
     </Box>

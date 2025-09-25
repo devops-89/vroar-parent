@@ -8,7 +8,11 @@ const Overview = ({ description }: { description: string }) => {
     <Box sx={{}}>
       <HeadingField
         label="Overview"
-        sx={{ fontSize: 30, textAlign: "left", fontFamily: "gomenasans-bold" }}
+        sx={{
+          fontSize: { lg: 30, xs: 20 },
+          textAlign: "left",
+          fontFamily: "gomenasans-bold",
+        }}
       />
       <ParaField label={description} sx={{ fontSize: 20 }} />
     </Box>

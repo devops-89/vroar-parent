@@ -6,6 +6,7 @@ import Badge from "../Badge";
 import ChooseCard from "./ChooseCard";
 import { data } from "@/assets/data";
 import ButtonWithIcon from "../ButtonWithIcon";
+import Link from "next/link";
 
 const Choose = () => {
   return (
@@ -65,7 +66,9 @@ const Choose = () => {
         </Grid>
 
         <Box sx={{ textAlign: "center", mt: 5 }}>
-          <ButtonWithIcon label="Discover How it works" width="300px" />
+          <Link href="/login">
+            <ButtonWithIcon label="Discover How it works" width="300px" />
+          </Link>
         </Box>
       </Container>
     </Box>

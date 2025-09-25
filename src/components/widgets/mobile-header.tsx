@@ -32,7 +32,7 @@ const MobileHeader = () => {
           <Menu />
         </IconButton>
         <Image src={logo} alt="" width={100} />
-        <SimpleButton label="Sign In" />
+        <SimpleButton label="Sign In" sx={{ padding: "12px", fontSize: 16 }} />
       </Box>
 
       <HeaderSidebar open={open} setOpen={setOpen} />

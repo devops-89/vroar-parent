@@ -20,6 +20,9 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Autoplay, EffectCards } from "swiper/modules";
 import TestimonialCard from "@/components/about-us/TestimonialCard";
 import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
 
 interface testimonialDataProps {
   testimonialData: TESTIMONIAL_PROPS[];
@@ -58,6 +61,13 @@ const ParentTestimonial = ({ testimonialData }: testimonialDataProps) => {
   }, []);
 
   const phone = useMediaQuery("(max-width:600px)");
+
+  const dispatch = useDispatch();
+
+  const openModal = () => {
+    dispatch(showModal(<BookaDemo />));
+  };
+
   return (
     <Box
       sx={{
@@ -288,6 +298,7 @@ const ParentTestimonial = ({ testimonialData }: testimonialDataProps) => {
               <ButtonWithIcon
                 label="Book a Demo"
                 sx={{ textTransform: "initial" }}
+                onClick={openModal}
               />
             </Box>
           </Grid>

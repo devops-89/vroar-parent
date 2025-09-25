@@ -10,7 +10,7 @@ const PrivacyPolicy = () => {
       <Box
         sx={{
           backgroundImage: `url(${bannerImage.src})`,
-          height: "60vh",
+          height: { lg: "60vh", xs: "40vh" },
           backgroundPosition: "50%",
           backgroundSize: "cover",
           display: "flex",
@@ -22,16 +22,14 @@ const PrivacyPolicy = () => {
           <HeadingField
             label="Privacy Policy"
             sx={{
-              fontSize: 64,
+              fontSize: { lg: 64, xs: 35 },
               fontFamily: "gomenasans-bold",
               color: COLORS.WHITE,
             }}
           />
         </Container>
       </Box>
-      <Box sx={{}}>
-
-      </Box>
+      <Box sx={{}}></Box>
 
       <PrivacyPolicyLayout />
     </Box>

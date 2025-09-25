@@ -20,7 +20,9 @@ import Whyjoinus from "@/components/mentors/Why-Join-Us";
 import Testimonials from "@/components/mentors/Testimonials";
 import { MENTOR_TESTIMONIALS } from "@/assets/mentors";
 import MentorFaqSection from "@/components/mentors/Faq-section";
+import { useDispatch } from "react-redux";
 const Mentors = () => {
+  const dispatch = useDispatch();
   return (
     <Box>
       <Box

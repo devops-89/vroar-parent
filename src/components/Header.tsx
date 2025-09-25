@@ -103,7 +103,9 @@ const Header = () => {
                   </Typography>
                 </Link>
               ))}
-              <SimpleButton label="Sign In" />
+              <Link href={"/login"}>
+                <SimpleButton label="Sign In" />
+              </Link>
             </Stack>
           </Box>
         </Grid>

@@ -16,6 +16,9 @@ import leadershipicon from "@/icons/parents-program/leadership-coaching.avif";
 import confidenceIcon from "@/icons/parents-program/confidence_curriculum.avif";
 import confidenceBanner from "@/icons/parents-program/confidence_banner.avif";
 import ProgramSlider from "./program-slider";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
 const Parentsprogram = () => {
   const careerData = [
     {
@@ -32,6 +35,12 @@ const Parentsprogram = () => {
       height: "60vh",
     },
   ];
+
+  const dispatch = useDispatch();
+
+  const openModal = () => {
+    dispatch(showModal(<BookaDemo />));
+  };
   return (
     <Box>
       <Container>
@@ -156,8 +165,13 @@ const Parentsprogram = () => {
             </Box>
           </Grid>
         </Grid>
+
         <Box sx={{ textAlign: "center", mt: 3 }}>
-          <ButtonWithIcon label="See How Our Program Works" width={350} />
+          <ButtonWithIcon
+            label="See How Our Program Works"
+            width={350}
+            onClick={openModal}
+          />
         </Box>
       </Container>
     </Box>

@@ -208,3 +208,11 @@ export const forgotPasswordEmailValidation = Yup.object().shape({
     .required("Please Enter Valid Email")
     .email("Please Enter Valid Email"),
 });
+
+export const contactValidationSchema = Yup.object().shape({
+  fullName: Yup.string().required("Please Enter Full Name"),
+  email: Yup.string()
+    .email("Please Enter Valid Email")
+    .required("Please Enter Valid Email"),
+  message: Yup.string().required("Please Enter Message"),
+});
