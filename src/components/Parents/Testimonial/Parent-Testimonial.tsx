@@ -294,13 +294,13 @@ const ParentTestimonial = ({ testimonialData }: testimonialDataProps) => {
                 </IconButton>
               </Stack>
             </Box>
-            <Box sx={{ textAlign: "center" }}>
+            {/* <Box sx={{ textAlign: "center" }}>
               <ButtonWithIcon
                 label="Book a Demo"
                 sx={{ textTransform: "initial" }}
                 onClick={openModal}
               />
-            </Box>
+            </Box> */}
           </Grid>
         </Grid>
       </Container>

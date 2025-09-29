@@ -8,11 +8,16 @@ import Secondarybutton from "../common/Secondary-Button";
 import { useDispatch } from "react-redux";
 import { showModal } from "@/redux/reducers/Modal";
 import BecomeAMentor from "@/assets/ModalCalling/website/become-a-mentor";
+import SpeakerModal from "@/assets/ModalCalling/website/become-a-speaker";
 const MentorMiddle = () => {
   const dispatch = useDispatch();
 
   const becomeaMentor = () => {
     dispatch(showModal(<BecomeAMentor />));
+  };
+
+  const becomeaSpeaker = () => {
+    dispatch(showModal(<SpeakerModal />));
   };
   return (
     <Box sx={{ position: "relative" }}>
@@ -56,6 +61,7 @@ const MentorMiddle = () => {
               borderRadius: "10rem",
               textTransform: "initial",
             }}
+            onClick={becomeaSpeaker}
           />
         </Stack>
       </Box>

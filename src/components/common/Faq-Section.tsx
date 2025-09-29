@@ -24,15 +24,14 @@ const FaqSection = ({
 }: FAQ_DATA_PROPS) => {
   const phone = useMediaQuery("(max-width:600px)");
   return (
-    <Box sx={{ position: "relative", pt: 10 }}>
+    <Box sx={{ position: "relative" }}>
       <Box
         sx={{
           backgroundImage: `url(${banner.src})`,
           minHeight: "120vh",
           backgroundPosition: "50% 100%",
           backgroundSize: "cover",
-          pb: 10,
-          pt: 10,
+          py: 8,
         }}
       >
         <Container>

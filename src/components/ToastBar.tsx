@@ -18,6 +18,7 @@ const ToastBar = () => {
         autoHideDuration={selector.authHideDuration}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         onClose={closeToast}
+        sx={{ zIndex: 99999 }}
       >
         <Alert
           variant="filled"

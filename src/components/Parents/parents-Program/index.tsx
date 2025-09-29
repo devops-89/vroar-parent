@@ -19,6 +19,7 @@ import ProgramSlider from "./program-slider";
 import { useDispatch } from "react-redux";
 import { showModal } from "@/redux/reducers/Modal";
 import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
+import Link from "next/link";
 const Parentsprogram = () => {
   const careerData = [
     {
@@ -167,11 +168,9 @@ const Parentsprogram = () => {
         </Grid>
 
         <Box sx={{ textAlign: "center", mt: 3 }}>
-          <ButtonWithIcon
-            label="See How Our Program Works"
-            width={350}
-            onClick={openModal}
-          />
+          <Link href={"/login"}>
+            <ButtonWithIcon label="See How Our Program Works" width={350} />
+          </Link>
         </Box>
       </Container>
     </Box>

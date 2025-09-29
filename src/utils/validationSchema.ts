@@ -216,3 +216,27 @@ export const contactValidationSchema = Yup.object().shape({
     .required("Please Enter Valid Email"),
   message: Yup.string().required("Please Enter Message"),
 });
+
+export const mentorValidationSchema = Yup.object().shape({
+  fullName: Yup.string().required("Please Enter Full Name"),
+  email: Yup.string()
+    .required("Please Enter Email")
+    .email("Please Enter Valid Email"),
+  phone: Yup.string().required("Please Enter Valid Phone Number"),
+  role: Yup.string().required("Please Enter Role/Profession"),
+  message: Yup.string().required("Please Enter Message*"),
+  consent: Yup.boolean().oneOf(
+    [true],
+    "Please Accept Our Terms and Conditions"
+  ),
+});
+
+export const speakerValidationSchema = Yup.object().shape({
+  fullName: Yup.string().required("Please Enter Full Name"),
+  email: Yup.string()
+    .required("Please Enter Email Address")
+    .email("Please Enter Valid Email"),
+  phone: Yup.string().required("Please Enter Valid Phone"),
+  linkedIn: Yup.string().required("Please Enter Valid LinkedIn Url"),
+  topics: Yup.string().required("Please Enter Topics You'd Love to Cover"),
+});

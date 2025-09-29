@@ -29,7 +29,7 @@ const ButtonWithIcon = ({
         boxShadow: "inset 0 0 #0000, 0 4px 12px #fd9065",
         transition: "all 0.3s ease",
         textTransform: "none",
-        width,
+        width: width ,
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
@@ -51,7 +51,15 @@ const ButtonWithIcon = ({
         ...sx,
       }}
     >
-      <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1.25 }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          position: "relative",
+        }}
+      >
         {/* Text swap viewport */}
         <Box
           className="text-viewport"
@@ -60,6 +68,7 @@ const ButtonWithIcon = ({
             overflow: "hidden",
             height: "2.5rem",
             minWidth: "11ch",
+            paddingRight: "3.5rem", // Add space for the icon
           }}
         >
           <Box
@@ -102,8 +111,8 @@ const ButtonWithIcon = ({
             justifyContent: "center",
             boxShadow: 3,
             overflow: "hidden",
-            position: "relative",
-            right: 0,
+            position: "absolute",
+            right: 16,
           }}
         >
           <Box

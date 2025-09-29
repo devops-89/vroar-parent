@@ -3,14 +3,15 @@ import { nunito } from "@/utils/fonts";
 import {
   Box,
   Checkbox,
+  CircularProgress,
   FormControlLabel,
   Grid,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
-import React, { SyntheticEvent, useState } from "react";
-import mic from "@/banner/parents/mentor/mic.avif";
+import React, { useState } from "react";
+import mic from "@/banner/modals/speaker_form_banner.avif";
 import Image from "next/image";
 import { enquiryTextField, loginTextField } from "@/utils/styles";
 import {
@@ -25,10 +26,12 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { showToast } from "@/redux/reducers/Toast";
-import { mentorValidationSchema } from "@/utils/validationSchema";
-import ParaField from "@/components/common/Para-Field";
+import {
+  mentorValidationSchema,
+  speakerValidationSchema,
+} from "@/utils/validationSchema";
 import { hideModal } from "@/redux/reducers/Modal";
-const BecomeAMentor = () => {
+const SpeakerModal = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const formik = useFormik({
@@ -37,23 +40,22 @@ const BecomeAMentor = () => {
       email: "",
       phone: "",
       linkedIn: "",
-      role: "",
-      message: "",
-      consent: false,
+      topics: "",
+      video_link: "",
     },
-    validationSchema: mentorValidationSchema,
+    validationSchema: speakerValidationSchema,
     onSubmit: (values) => {
       const body = {
         fullName: values.fullName,
         email: values.email,
         phone: values.phone,
-        role: values.role,
         linkedIn: values.linkedIn,
+        topics: values.topics,
       };
       setLoading(true);
 
       axios
-        .post("/api/contact", { type: FORM_TYPE.MENTOR, fields: body })
+        .post("/api/contact", { type: FORM_TYPE.SPEAKER, fields: body })
         .then((res) => {
           // console.log("res", res);
           dispatch(
@@ -64,7 +66,7 @@ const BecomeAMentor = () => {
             })
           );
           setLoading(false);
-          dispatch(hideModal())
+          dispatch(hideModal());
         })
         .catch((err) => {
           const matchingField = err.response?.data?.error?.meta?.matchingField;
@@ -77,15 +79,22 @@ const BecomeAMentor = () => {
                 variant: TOAST_STATUS.ERROR,
               })
             );
+          } else {
+            dispatch(
+              showToast({
+                open: true,
+                message:
+                  err.response.data.message ||
+                  err.message ||
+                  "Something went wrong",
+                variant: TOAST_STATUS.ERROR,
+              })
+            );
           }
           setLoading(false);
         });
     },
   });
-
-  const consentCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
-    formik.setFieldValue("consent", e.target.checked);
-  };
 
   const [phone, setPhone] = useState("");
 
@@ -113,7 +122,7 @@ const BecomeAMentor = () => {
               textAlign: { lg: "left", xs: "center" },
             }}
           >
-            Ready to{" "}
+            Have a{" "}
             <Typography
               sx={{
                 color: COLORS.PRIMARY,
@@ -122,9 +131,9 @@ const BecomeAMentor = () => {
               }}
               component={"span"}
             >
-              inspire
+              story
             </Typography>{" "}
-            a young mind?
+            worth sharing?
           </Typography>
         </Box>
 
@@ -145,12 +154,12 @@ const BecomeAMentor = () => {
               justifyContent: "center",
             }}
           >
-            Mentor
+            Speaker
           </Box>
           <Box
             sx={{
               position: "absolute",
-              top: -20,
+              top: -50,
               right: -40,
               display: { lg: "block", xs: "none" },
             }}
@@ -164,7 +173,7 @@ const BecomeAMentor = () => {
           <Grid size={12}>
             <TextField
               sx={{ ...enquiryTextField }}
-              label="Full Name*"
+              label="Enter Full Name*"
               fullWidth
               id="fullName"
               onChange={formik.handleChange}
@@ -175,7 +184,7 @@ const BecomeAMentor = () => {
           <Grid size={6}>
             <TextField
               sx={{ ...enquiryTextField }}
-              label="Email*"
+              label="Enter Email Address*"
               fullWidth
               id="email"
               onChange={formik.handleChange}
@@ -188,7 +197,7 @@ const BecomeAMentor = () => {
               defaultCountry={"US"}
               sx={{ ...enquiryTextField }}
               fullWidth
-              label="Phone Number*"
+              label="Enter Phone Number*"
               onChange={handlePhoneNumber}
               value={phone}
               error={formik.touched.phone && Boolean(formik.errors.phone)}
@@ -199,101 +208,34 @@ const BecomeAMentor = () => {
             <TextField
               sx={{ ...enquiryTextField }}
               fullWidth
-              label="LinkedIn Profile URL"
+              label="LinkedIn Profile URL*"
               onChange={formik.handleChange}
               id="linkedIn"
+              error={formik.touched.linkedIn && Boolean(formik.errors.linkedIn)}
+              helperText={formik.touched.linkedIn && formik.errors.linkedIn}
             />
           </Grid>
           <Grid size={12}>
             <TextField
               sx={{ ...enquiryTextField }}
               fullWidth
-              label="Current Role/Profession*"
+              label="Talk Topics You'd Love to Cover*"
               onChange={formik.handleChange}
-              id="role"
-              error={formik.touched.role && Boolean(formik.errors.role)}
-              helperText={formik.touched.role && formik.errors.role}
+              id="topics"
+              error={formik.touched.topics && Boolean(formik.errors.topics)}
+              helperText={formik.touched.topics && formik.errors.topics}
             />
           </Grid>
           <Grid size={12}>
             <TextField
               sx={{
                 ...enquiryTextField,
-                fieldset: {
-                  height: 100,
-                },
-                "& .MuiOutlinedInput-input": {
-                  height: "60px !important",
-                },
               }}
               fullWidth
-              label="Why do you want to mentor with MyTreks.ai?*"
-              multiline
+              label="Link to Past Talk / Video (if any)"
               onChange={formik.handleChange}
-              id="message"
-              error={formik.touched.message && Boolean(formik.errors.message)}
-              helperText={formik.touched.message && formik.errors.message}
+              id="video_link"
             />
-          </Grid>
-          <Grid size={12}>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  sx={{
-                    color: COLORS.PRIMARY,
-                    "& .MuiSvgIcon-root": { color: COLORS.PRIMARY },
-                  }}
-                  onChange={consentCheck}
-                />
-              }
-              label={
-                <Stack direction={"row"} alignItems={"center"}>
-                  <Typography sx={{ fontSize: 14, fontFamily: "gomenasans" }}>
-                    By clicking, you agree to our
-                  </Typography>
-                  <Link href="/terms-and-conditions" target="__blank">
-                    <Typography
-                      sx={{
-                        fontSize: 14,
-                        fontFamily: "gomenasans",
-                        color: COLORS.PRIMARY,
-                        textDecoration: "underline",
-                        ml: 0.4,
-                      }}
-                    >
-                      {"  "}
-                      Terms & Conditions
-                    </Typography>
-                  </Link>
-                  <Typography
-                    sx={{ fontSize: 14, fontFamily: "gomenasans", ml: 0.4 }}
-                  >
-                    and
-                  </Typography>
-                  <Link href="/privacy-policy" target="__blank">
-                    <Typography
-                      sx={{
-                        fontSize: 14,
-                        fontFamily: "gomenasans",
-                        color: COLORS.PRIMARY,
-                        textDecoration: "underline",
-                        ml: 0.4,
-                      }}
-                    >
-                      {"  "}
-                      Privacy Policy
-                    </Typography>
-                  </Link>
-                  .
-                </Stack>
-              }
-            />
-            {formik.touched.consent && Boolean(formik.errors.consent) && (
-              <ParaField
-                label={formik?.errors?.consent || ""}
-                sx={{ fontSize: 14, color: COLORS.DANGER }}
-              />
-            )}
           </Grid>
           <Grid size={6}>
             <ButtonWithIcon
@@ -302,6 +244,9 @@ const BecomeAMentor = () => {
               fullWidth
               sx={{ width: "100%" }}
               loading={loading}
+              loadingIndicator={
+                <CircularProgress sx={{ color: COLORS.WHITE }} />
+              }
             />
           </Grid>
         </Grid>
@@ -310,4 +255,4 @@ const BecomeAMentor = () => {
   );
 };
 
-export default BecomeAMentor;
+export default SpeakerModal;

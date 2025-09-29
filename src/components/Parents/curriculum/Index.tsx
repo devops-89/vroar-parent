@@ -12,6 +12,7 @@ import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
 import { useDispatch } from "react-redux";
 import { showModal } from "@/redux/reducers/Modal";
 import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
+import Link from "next/link";
 const ParentCurriculum = () => {
   const curriculumData = [
     {
@@ -72,7 +73,9 @@ const ParentCurriculum = () => {
           ))}
         </Grid>
         <Box sx={{ textAlign: "center", mt: 3 }}>
-          <ButtonWithIcon label="Book a Demo" onClick={openModal} />
+          <Link href="/login">
+            <ButtonWithIcon label="Get Started Now" sx={{ width: 250 }} />
+          </Link>
         </Box>
       </Container>
     </Box>

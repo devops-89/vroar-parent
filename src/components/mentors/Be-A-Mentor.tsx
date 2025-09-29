@@ -8,7 +8,15 @@ import { MENTOR_PROGRESS } from "@/assets/Mentor-Progress";
 import Arrow from "@/banner/mentors/beMentor/arrow.avif";
 import Image from "next/image";
 import ButtonWithIcon from "../Home/Components/ButtonWithIcon";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BecomeAMentor from "@/assets/ModalCalling/website/become-a-mentor";
 const Bementor = () => {
+  const dispatch = useDispatch();
+
+  const ShowMentorModal = () => {
+    dispatch(showModal(<BecomeAMentor />));
+  };
   return (
     <Box sx={{ pt: 10, backgroundColor: "#fff3f0", pb: 10 }}>
       <Container>
@@ -18,11 +26,17 @@ const Bementor = () => {
             <Stack spacing={{ lg: -4, xs: -2 }}>
               <HeadingField
                 label="How to"
-                sx={{ fontSize: { lg: 68, xs: 35 } }}
+                sx={{
+                  fontSize: { lg: 68, xs: 35 },
+                  fontFamily: "gomenasans-bold",
+                }}
               />
               <HeadingField
                 label="Become a Mentor?"
-                sx={{ fontSize: { lg: 68, xs: 35 } }}
+                sx={{
+                  fontSize: { lg: 68, xs: 35 },
+                  fontFamily: "gomenasans-bold",
+                }}
               />
             </Stack>
             <ParaField
@@ -65,7 +79,11 @@ Share your journey, offer real advice, and make a lasting impact"
           ))}
         </Grid>
         <Box textAlign={"center"} sx={{ mt: 6 }}>
-          <ButtonWithIcon label="Become a Mentor" width={"fit-content"} />
+          <ButtonWithIcon
+            label="Become a Mentor"
+            width={"fit-content"}
+            onClick={ShowMentorModal}
+          />
         </Box>
       </Container>
     </Box>

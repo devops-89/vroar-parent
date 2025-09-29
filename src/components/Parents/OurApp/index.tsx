@@ -14,6 +14,7 @@ import WhyMyTreks from "./why_Mytreks";
 import { useDispatch } from "react-redux";
 import { showModal } from "@/redux/reducers/Modal";
 import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
+import Link from "next/link";
 const OurParentApp = () => {
   const appData = [
     {
@@ -71,12 +72,13 @@ const OurParentApp = () => {
               ))}
             </Grid>
             <Box sx={{ textAlign: "center" }}>
-              <ButtonWithIcon
-                label="get Demo of the App"
-                sx={{ textTransform: "capitalize", mt: 8 }}
-                width={300}
-                onClick={openModal}
-              />
+              <Link href="/login">
+                <ButtonWithIcon
+                  label="get Started now"
+                  sx={{ textTransform: "capitalize", mt: 8 }}
+                  width={250}
+                />
+              </Link>
             </Box>
           </Grid>
         </Grid>

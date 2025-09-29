@@ -85,7 +85,13 @@ const Parents = () => {
                 parents who want clarity for their child.
               </Typography>
               <Box sx={{ textAlign: "center", mt: 3 }}>
-                <ButtonWithIcon label="Book a Demo" onClick={bookDemoModal} />
+                <Link href={"/login"}>
+                  <ButtonWithIcon
+                    label="Get started now"
+                    // onClick={bookDemoModal}
+                    sx={{ width: 250 }}
+                  />
+                </Link>
               </Box>
             </Grid>
           </Grid>
@@ -140,7 +146,7 @@ const Parents = () => {
                 sx={{ mt: 2, fontSize: { lg: 20, xs: 16 } }}
               />
               <Link href="/login">
-                <ButtonWithIcon label="Enroll Now" sx={{ mt: 2 }} />
+                <ButtonWithIcon label="Enroll Now" sx={{ mt: 2,width:200 }} />
               </Link>
             </Grid>
             <Grid size={{ lg: 6, xs: 12 }}>
@@ -164,7 +170,7 @@ const Parents = () => {
       <Box sx={{ mt: 8 }}>
         <ParentTestimonial testimonialData={parentTestimonial} />
       </Box>
-      <Box sx={{ mt: 10 }}>
+      <Box >
         <ParentFaqSection />
       </Box>
     </Box>
