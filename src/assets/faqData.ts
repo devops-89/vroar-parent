@@ -130,3 +130,92 @@ export const SUPPORT_PARENT_FAQ_DATA: List[] = [
       "Yes, all sessions are recorded and transcribed for quality assurance, safety, and future reference.",
   },
 ];
+
+export const HOME_FAQ_DATA = [
+  {
+    label: "How much does the program cost?",
+    description:
+      "The program costs $720 total, no matter what grade your student joins. Families are billed annually.",
+    list: [
+      {
+        label:
+          "Join in 9th grade: $15/month equivalent (billed annually at $180)",
+      },
+      {
+        label:
+          "Join in 10th grade: $20/month equivalent (billed annually at $240)",
+      },
+      {
+        label:
+          "Join in 11th grade: $30/month equivalent (billed annually at $360)",
+      },
+      {
+        label:
+          "Join in 12th grade: $60/month equivalent (billed annually at $720)",
+      },
+    ],
+  },
+  {
+    label: "When do workshops take place?",
+    description:
+      "Workshops are scheduled in advance throughout the year. Students can use their coins to attend. These sessions are designed to provide valuable group guidance for both students and parents.",
+  },
+  {
+    label: "Which sessions do parents attend vs. which are 1:1?",
+    list: [
+      {
+        label: "Coaching sessions are 1:1 between the student and their coach.",
+      },
+      {
+        label:
+          "Counseling sessions include the parent and student together, especially for guidance on college planning and applications.",
+      },
+    ],
+  },
+  {
+    label: "Can my student get additional 1:1 support?",
+    description:
+      "Yes. In senior year, every student has dedicated counseling sessions as part of the application journey. At any time, students can also request extra 1:1 coaching sessions for personalized support.",
+  },
+  {
+    label: "How do students earn coins?",
+    description: " Students earn coins by:",
+    list: [
+      {
+        label: "Completing roadmap tiles",
+      },
+      {
+        label: "Attending webinars",
+      },
+      {
+        label: "Participating in workshops",
+      },
+    ],
+  },
+  {
+    label: "What can students unlock with coins?",
+    description:
+      " Coins can be used to access a variety of opportunities, including:",
+    list: [
+      {
+        label: "Workshops and webinars",
+      },
+      {
+        label: "Coaching sessions",
+      },
+      {
+        label: "Unique volunteer and resume-boosting activities",
+      },
+      {
+        label: "Discounts at select partner businesses",
+      },
+    ],
+    endDescription:
+      "We’re constantly adding to the marketplace to keep options fresh and exciting",
+  },
+  {
+    label: "Is there a money-back guarantee?",
+    description:
+      "Yes. If for any reason you’re not satisfied, you can cancel at any time and we’ll provide a refund.",
+  },
+];
