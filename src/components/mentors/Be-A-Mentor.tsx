@@ -81,7 +81,7 @@ Share your journey, offer real advice, and make a lasting impact"
         <Box textAlign={"center"} sx={{ mt: 6 }}>
           <ButtonWithIcon
             label="Become a Mentor"
-            width={"fit-content"}
+            width={200}
             onClick={ShowMentorModal}
           />
         </Box>

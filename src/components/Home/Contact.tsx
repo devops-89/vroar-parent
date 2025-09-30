@@ -1,6 +1,7 @@
 import {
   Box,
   Card,
+  CircularProgress,
   Container,
   Grid,
   List,
@@ -10,17 +11,21 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import contact_banner from "@/homePage/contact/contact_banner.avif";
 import Badge from "./Components/Badge";
-import { COLORS, FORM_TYPE } from "@/utils/enum";
+import { COLORS, FORM_TYPE, TOAST_STATUS } from "@/utils/enum";
 import { Mail } from "@mui/icons-material";
 import { loginTextField } from "@/utils/styles";
 import ButtonWithIcon from "./Components/ButtonWithIcon";
 import { useFormik } from "formik";
 import { contactValidationSchema } from "@/utils/validationSchema";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { showToast } from "@/redux/reducers/Toast";
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -29,20 +34,31 @@ const Contact = () => {
     },
     validationSchema: contactValidationSchema,
     onSubmit: (values) => {
-      console.log("Submitting contact form:", values);
       axios
-        .post("/api/oauth/contact", { fields: values, type: FORM_TYPE.CONTACT })
+        .post("/api/contact", { fields: values, type: FORM_TYPE.CONTACT })
         .then((res) => {
-          console.log("Contact form submitted successfully:", res.data);
-          // You can add a success message here
+          setLoading(false);
+          dispatch(
+            showToast({
+              open: true,
+              variant: TOAST_STATUS.SUCCESS,
+              message: "Query Send Successfully",
+            })
+          );
           formik.resetForm();
         })
         .catch((err) => {
-          console.error(
-            "Contact form error:",
-            err.response?.data || err.message
+          let errMessage =
+            (err.response && err.response.data.message) || err.message;
+
+          dispatch(
+            showToast({
+              message: errMessage,
+              variant: TOAST_STATUS.ERROR,
+              open: true,
+            })
           );
-          // You can add error handling UI here
+          setLoading(false);
         });
     },
   });
@@ -185,6 +201,13 @@ const Contact = () => {
                     label="Send Enquiry"
                     width={"100%"}
                     type="submit"
+                    loading={loading}
+                    loadingIndicator={
+                      <CircularProgress
+                        sx={{ fontSize: 20, color: COLORS.WHITE }}
+                      />
+                    }
+                    disabled={loading}
                   />
                 </Stack>
               </form>

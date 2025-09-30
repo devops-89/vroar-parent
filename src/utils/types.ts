@@ -344,3 +344,5 @@ export interface NEW_PLAN_PROPS {
   name: string;
   prices: SUBSCRIPTION_PLANS_PRICE[];
 }
+
+

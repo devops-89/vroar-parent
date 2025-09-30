@@ -8,8 +8,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import SimpleButton from "./Home/Components/SimpleButton";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
 const Header = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [isStuck, setIsStuck] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -68,8 +72,9 @@ const Header = () => {
               justifyContent={"space-between"}
               sx={{ display: { xs: "none", lg: "flex" } }}
             >
-              {data.headerLinks1.map((val, i) => (
-                <Link href={val.href} className="link" key={i}>
+              {data.headerLinks1.map((val, i) => {
+                const isButton = val.href === "#";
+                const content = (
                   <Typography
                     className={
                       router.pathname === val.href ? "active_link" : ""
@@ -82,13 +87,31 @@ const Header = () => {
                   >
                     {val.label}
                   </Typography>
-                </Link>
-              ))}
+                );
+                if (isButton) {
+                  return (
+                    <a
+                      key={i}
+                      className="link"
+                      onClick={() => dispatch(showModal(<BookaDemo />))}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+                return (
+                  <Link href={val.href} className="link" key={i}>
+                    {content}
+                  </Link>
+                );
+              })}
               <Link href={"/"}>
                 <Image src={logo} alt="logo" width={100} />
               </Link>
-              {data.headerLinks2.map((val, i) => (
-                <Link href={val.href} className="link">
+              {data.headerLinks2.map((val, i) => {
+                const isButton = val.href === "#";
+                const content = (
                   <Typography
                     sx={{
                       color: isStuck ? COLORS.BLACK : COLORS.TEXT_COLOR,
@@ -101,8 +124,25 @@ const Header = () => {
                   >
                     {val.label}
                   </Typography>
-                </Link>
-              ))}
+                );
+                if (isButton) {
+                  return (
+                    <a
+                      key={i}
+                      className="link"
+                      onClick={() => dispatch(showModal(<BookaDemo />))}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+                return (
+                  <Link href={val.href} className="link" key={i}>
+                    {content}
+                  </Link>
+                );
+              })}
               <Link href={"/login"}>
                 <SimpleButton label="Sign In" />
               </Link>

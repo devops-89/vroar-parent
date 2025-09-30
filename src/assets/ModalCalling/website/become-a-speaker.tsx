@@ -6,6 +6,7 @@ import {
   CircularProgress,
   FormControlLabel,
   Grid,
+  IconButton,
   Stack,
   TextField,
   Typography,
@@ -31,6 +32,7 @@ import {
   speakerValidationSchema,
 } from "@/utils/validationSchema";
 import { hideModal } from "@/redux/reducers/Modal";
+import { Close } from "@mui/icons-material";
 const SpeakerModal = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
@@ -106,7 +108,32 @@ const SpeakerModal = () => {
     }
   };
   return (
-    <Box sx={{ width: { lg: 650, xs: 385 } }}>
+    <Box sx={{ width: { lg: 650, xs: 350 } }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
+        }}
+      >
+        <IconButton
+          sx={{
+            background: "linear-gradient(#ffb7a6,#fff 35%)",
+            borderRadius: "48px",
+            width: "28px",
+            height: "28px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+            boxShadow:
+              "0 0 2.33px 1.17px #ffdcd3, 0 1.17px 1.17px 1.17px #ffffff40, inset 0 2.33px 1.17px #fff;",
+          }}
+          onClick={() => dispatch(hideModal())}
+        >
+          <Close sx={{ color: COLORS.PRIMARY }} />
+        </IconButton>
+      </Box>
       <Stack
         direction={{ lg: "row", xs: "column-reverse" }}
         alignItems={"center"}
@@ -170,7 +197,7 @@ const SpeakerModal = () => {
       </Stack>
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={2} sx={{ mt: 4 }}>
-          <Grid size={12}>
+          <Grid size={{ lg: 12, xs: 12 }}>
             <TextField
               sx={{ ...enquiryTextField }}
               label="Enter Full Name*"
@@ -181,7 +208,7 @@ const SpeakerModal = () => {
               helperText={formik.touched.fullName && formik.errors.fullName}
             />
           </Grid>
-          <Grid size={6}>
+          <Grid size={{ lg: 6, xs: 12 }}>
             <TextField
               sx={{ ...enquiryTextField }}
               label="Enter Email Address*"
@@ -192,7 +219,7 @@ const SpeakerModal = () => {
               helperText={formik.touched.email && formik.errors.email}
             />
           </Grid>
-          <Grid size={6}>
+          <Grid size={{ lg: 6, xs: 12 }}>
             <MuiTelInput
               defaultCountry={"US"}
               sx={{ ...enquiryTextField }}
@@ -237,7 +264,7 @@ const SpeakerModal = () => {
               id="video_link"
             />
           </Grid>
-          <Grid size={6}>
+          <Grid size={{ lg: 6, xs: 12 }}>
             <ButtonWithIcon
               label="Submit"
               type="submit"
@@ -245,7 +272,7 @@ const SpeakerModal = () => {
               sx={{ width: "100%" }}
               loading={loading}
               loadingIndicator={
-                <CircularProgress sx={{ color: COLORS.WHITE }} />
+                <CircularProgress sx={{ color: COLORS.WHITE, fontSize: 20 }} />
               }
             />
           </Grid>

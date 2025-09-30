@@ -1,10 +1,19 @@
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
 import GradientText from "@/components/common/Greadient-text";
 import HeadingField from "@/components/common/Heading-Field";
 import ParaField from "@/components/common/Para-Field";
 import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
 import banner from "@/homePage/hero-section-baner.avif";
+import { showModal } from "@/redux/reducers/Modal";
 import { Box, Container, Grid } from "@mui/material";
+import { useDispatch } from "react-redux";
 const HeroSection = () => {
+  const dispatch = useDispatch();
+
+  const bookaDemo = () => {
+    dispatch(showModal(<BookaDemo />));
+  };
+
   return (
     <Box
       sx={{
@@ -50,7 +59,7 @@ const HeroSection = () => {
             <ParaField label="Empower young minds, elevate your brand purpose, and create lasting impact where it matters most." />
           </Box>
           <Box sx={{ textAlign: "center", mt: 4 }} data-aos="fade-up">
-            <ButtonWithIcon label="Contact Us" />
+            <ButtonWithIcon label="Contact Us" onClick={bookaDemo} />
           </Box>
         </Grid>
       </Container>

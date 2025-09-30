@@ -89,7 +89,7 @@ const BenefitCard = ({
                 xs: "0 auto auto 10rem",
               },
               transform: { lg: "translateY(-50%)", xs: "translateX(-160px)" },
-              rotate: { xs: "90deg" },
+              rotate: { lg:"0deg",xs: "90deg" },
             }}
           >
             {[1, 2, 3, 4, 5, 6, 7, 8].map((_, i) => (

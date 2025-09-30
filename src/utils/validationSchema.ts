@@ -240,3 +240,16 @@ export const speakerValidationSchema = Yup.object().shape({
   linkedIn: Yup.string().required("Please Enter Valid LinkedIn Url"),
   topics: Yup.string().required("Please Enter Topics You'd Love to Cover"),
 });
+
+export const speakerMentorValidation = Yup.object().shape({
+  fullName: Yup.string().required("Please Enter Full Name"),
+  email: Yup.string()
+    .required("Please Enter Email")
+    .email("Please Enter Valid Email"),
+  phone: Yup.string().required("Please Enter Valid Phone Number"),
+  role: Yup.string().required("Please Enter Role/Profession"),
+  message: Yup.string().required("Please Enter Message*"),
+  linkedIn: Yup.string().required("Please Enter Valid LinkedIn Url"),
+  topics: Yup.string().required("Please Enter Topics You'd Love to Cover"),
+  video_link: Yup.string().required("Please Enter Video Links"),
+});
