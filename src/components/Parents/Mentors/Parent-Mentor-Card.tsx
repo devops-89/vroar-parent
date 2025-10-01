@@ -30,9 +30,9 @@ const ParentMentorCard = () => {
         sx={{ left: { lg: -100, xs: 0 } }}
       />
       <Box
-        sx={{ position: "absolute", top: "35%", right: { lg: 100, xs: -30 } }}
+        sx={{ position: "absolute", top: "35%", right: { lg: 100, xs: -5 } }}
       >
-        <Image src={mic} alt="" width={phone ? 100 : 200} />
+        <Image src={mic} alt="" width={phone ? 80 : 200} />
       </Box>
       <MentornumberCard
         img={numberThree}
