@@ -23,7 +23,7 @@ const SpeakerPerksCard = ({
         gap: 5,
       }}
     >
-      <Image src={img} alt="" />
+      <Image src={img} alt="" width={100} />
       <Box>
         <HeadingField
           label={heading}
@@ -31,7 +31,7 @@ const SpeakerPerksCard = ({
             lineHeight: 1.4,
             fontWeight: 700,
             textAlign: "left",
-            fontSize: { lg: 24, xs: 20 },
+            fontSize: { lg: 24, xs: 16 },
           }}
         />
         <ParaField
