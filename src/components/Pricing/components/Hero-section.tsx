@@ -54,19 +54,7 @@ const HeroSection = () => {
             />
           </Grid>
         </Grid>
-        {/* <Grid container mt={5} spacing={5}>
-          {subscriptionPlans?.slice(0, 1).map((val, i) => (
-            <Grid key={val.id ?? i} size={6} margin={"auto"}>
-              <PlanCard
-                description={val.description}
-                id={val.id}
-                name={val.name}
-                prices={val.prices}
-                benefits={val.benefits}
-              />
-            </Grid>
-          ))}
-        </Grid> */}
+
         <PricingSection />
       </Container>
     </Box>

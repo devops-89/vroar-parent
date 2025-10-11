@@ -18,6 +18,9 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Autoplay, EffectCards } from "swiper/modules";
 import TestimonialCard from "../about-us/TestimonialCard";
 import ButtonWithIcon from "../Home/Components/ButtonWithIcon";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BecomeAMentor from "@/assets/ModalCalling/website/become-a-mentor";
 interface testimonialDataProps {
   testimonialData: TESTIMONIAL_PROPS[];
 }
@@ -54,6 +57,13 @@ const Testimonials = ({ testimonialData }: testimonialDataProps) => {
   }, []);
 
   const phone = useMediaQuery("(max-width:600px)");
+
+  const dispatch = useDispatch();
+
+  const mentorModal = () => {
+    dispatch(showModal(<BecomeAMentor />));
+  };
+
   return (
     <Box sx={{ mt: 10 }}>
       <Box
@@ -274,7 +284,11 @@ const Testimonials = ({ testimonialData }: testimonialDataProps) => {
           </Box>
 
           <Box sx={{ textAlign: "center", mt: 4 }}>
-            <ButtonWithIcon label="Become a Mentor" width={250} />
+            <ButtonWithIcon
+              label="Become a Mentor"
+              width={250}
+              onClick={mentorModal}
+            />
           </Box>
         </Container>
       </Box>

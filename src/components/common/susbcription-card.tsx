@@ -117,28 +117,18 @@ const SubscriptionCard = ({ data }: accordion_props) => {
               ))}
             </List>
             <Typography
-              sx={{
-                fontSize: { lg: 15, xs: 13 },
-                fontFamily: nunito.style.fontFamily,
-                my: 2,
-              }}
+              sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily, my: 2 }}
             >
               {val.addOnFeature}
             </Typography>
             <Typography
-              sx={{
-                fontSize: { lg: 15, xs: 13 },
-                fontFamily: nunito.style.fontFamily,
-              }}
+              sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily }}
             >
               {val.summer.heading}
             </Typography>
             {val.summer.content.map((items, index) => (
               <Typography
-                sx={{
-                  fontSize: { lg: 15, xs: 13 },
-                  fontFamily: nunito.style.fontFamily,
-                }}
+                sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily }}
               >
                 {items.description}
               </Typography>
@@ -155,10 +145,7 @@ const SubscriptionCard = ({ data }: accordion_props) => {
             </Typography>
             {val.coachingWorkshops.content.map((items, index) => (
               <Typography
-                sx={{
-                  fontSize: { lg: 15, xs: 13 },
-                  fontFamily: nunito.style.fontFamily,
-                }}
+                sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily }}
               >
                 {items.description}
               </Typography>
@@ -171,3 +158,4 @@ const SubscriptionCard = ({ data }: accordion_props) => {
 };
 
 export default SubscriptionCard;
+

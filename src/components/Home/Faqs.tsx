@@ -16,14 +16,14 @@ import FaqCard from "./Components/Faq-card";
 const FaqSection = () => {
   const phone = useMediaQuery("(max-width:600px)");
   return (
-    <Box sx={{ position: "relative", pt: 10 }}>
+    <Box sx={{ position: "relative", py: 10 }}>
       <Box
         sx={{
           backgroundImage: `url(${banner.src})`,
           minHeight: { lg: "120vh", xs: "110vh" },
           backgroundPosition: "50% 100%",
           backgroundSize: "cover",
-          pb: 10,
+          py: 10,
         }}
       >
         <Container>

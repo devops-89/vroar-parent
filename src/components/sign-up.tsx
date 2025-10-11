@@ -2,16 +2,12 @@ import { AuthenticationController } from "@/assets/api/AuthenticationController"
 import { data } from "@/assets/data";
 import bannerImage from "@/banner/banner-image.png";
 import parentBanner from "@/banner/parent-web.png";
-import {
-  removeActiveStep
-} from "@/redux/reducers/Stepper";
+import { removeActiveStep } from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
 import { COLORS, SOCIAL_LOGIN, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { loginTextField } from "@/utils/styles";
-import {
-  JwtPayload
-} from "@/utils/types";
+import { JwtPayload } from "@/utils/types";
 import { signUpValidationSchema } from "@/utils/validationSchema";
 import {
   Backdrop,
@@ -45,7 +41,7 @@ declare global {
 interface CustomJwtPayload extends JwtPayload {
   email: string;
 }
-const Banner = () => {
+const SignUp = () => {
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -79,7 +75,6 @@ const Banner = () => {
 
   // social Logins
   const [socialLoading, setSocialLoading] = useState(false);
- 
 
   const handleGoogleLogin = () => {
     AuthenticationController.googleSocialLogin()
@@ -108,7 +103,6 @@ const Banner = () => {
   //     googleCallbackUrl(queryWithoutQuestionMark);
   //   }
   // }, [router.query]);
-  
 
   return (
     <Box
@@ -283,4 +277,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default SignUp;

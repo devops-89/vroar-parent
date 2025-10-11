@@ -8,8 +8,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import SimpleButton from "./Home/Components/SimpleButton";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
 const Header = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [isStuck, setIsStuck] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -28,7 +32,7 @@ const Header = () => {
         top: isStuck ? 0 : "1rem",
         left: 0,
         right: 0,
-        zIndex: 999,
+        zIndex: 9999,
         transition: "top 300ms ease",
         px: { xs: 1, sm: 2, md: 0 },
         boxSizing: "border-box",
@@ -52,8 +56,8 @@ const Header = () => {
               border: isStuck ? "5px solid #fff3f0" : "5px solid #fff3f0",
               paddingLeft: { xs: "1rem", sm: "1.5rem", md: "2rem" },
               paddingRight: { xs: "1rem", sm: "1.5rem", md: "2rem" },
-              paddingTop: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
-              paddingBottom: { xs: "0.75rem", sm: "0.875rem", md: "1rem" },
+              paddingTop: "8px",
+              paddingBottom: "8px",
               transition: "transform 300ms ease",
               transform: isStuck ? "translateY(6px)" : "translateY(0)",
               backdropFilter: "blur(10px)",
@@ -68,8 +72,9 @@ const Header = () => {
               justifyContent={"space-between"}
               sx={{ display: { xs: "none", lg: "flex" } }}
             >
-              {data.headerLinks1.map((val, i) => (
-                <Link href={val.href} className="link" key={i}>
+              {data.headerLinks1.map((val, i) => {
+                const isButton = val.href === "#";
+                const content = (
                   <Typography
                     className={
                       router.pathname === val.href ? "active_link" : ""
@@ -82,13 +87,31 @@ const Header = () => {
                   >
                     {val.label}
                   </Typography>
-                </Link>
-              ))}
+                );
+                if (isButton) {
+                  return (
+                    <a
+                      key={i}
+                      className="link"
+                      onClick={() => dispatch(showModal(<BookaDemo />))}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+                return (
+                  <Link href={val.href} className="link" key={i}>
+                    {content}
+                  </Link>
+                );
+              })}
               <Link href={"/"}>
                 <Image src={logo} alt="logo" width={100} />
               </Link>
-              {data.headerLinks2.map((val, i) => (
-                <Link href={val.href} className="link">
+              {data.headerLinks2.map((val, i) => {
+                const isButton = val.href === "#";
+                const content = (
                   <Typography
                     sx={{
                       color: isStuck ? COLORS.BLACK : COLORS.TEXT_COLOR,
@@ -101,9 +124,28 @@ const Header = () => {
                   >
                     {val.label}
                   </Typography>
-                </Link>
-              ))}
-              <SimpleButton label="Sign In" />
+                );
+                if (isButton) {
+                  return (
+                    <a
+                      key={i}
+                      className="link"
+                      onClick={() => dispatch(showModal(<BookaDemo />))}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+                return (
+                  <Link href={val.href} className="link" key={i}>
+                    {content}
+                  </Link>
+                );
+              })}
+              <Link href={"/login"}>
+                <SimpleButton label="Sign In" />
+              </Link>
             </Stack>
           </Box>
         </Grid>

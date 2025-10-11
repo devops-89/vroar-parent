@@ -2,6 +2,7 @@ import { UserController } from "@/assets/api/UserController";
 import { data } from "@/assets/data";
 import { NEW_PLAN_FEATURES } from "@/assets/plans";
 import SubscriptionCard from "@/components/common/susbcription-card";
+import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
 // import HeadingField from "@/components/common/Heading-Field";
 // import ParaField from "@/components/common/Para-Field";
 // import SubscriptionCard from "@/components/common/susbcription-card";
@@ -30,7 +31,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
-
 const PricingSection = () => {
   const [tabs, setTabs] = useState(0);
   const [selectedGrade, setSelectedGrade] = useState("9");
@@ -307,7 +307,7 @@ const PricingSection = () => {
               </ListItem>
             </List>
 
-            <Button
+            {/* <Button
               fullWidth
               onClick={() => {
                 if (selectedPriceId) createPaymentLink(selectedPriceId);
@@ -361,7 +361,11 @@ const PricingSection = () => {
               ) : (
                 "Get Started Now"
               )}
-            </Button>
+            </Button> */}
+            <ButtonWithIcon
+              label="get Started Now"
+              sx={{ width: "100%", textTransform: "capitalize" }}
+            />
           </Card>
         </Grid>
         <Grid

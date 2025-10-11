@@ -20,6 +20,9 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Autoplay, EffectCards } from "swiper/modules";
 import TestimonialCard from "@/components/about-us/TestimonialCard";
 import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
 
 interface testimonialDataProps {
   testimonialData: TESTIMONIAL_PROPS[];
@@ -59,6 +62,11 @@ const CompanyTestimonial = ({ testimonialData }: testimonialDataProps) => {
 
   const phone = useMediaQuery("(max-width:600px)");
 
+  const dispatch = useDispatch();
+  const bookaModal = () => {
+    dispatch(showModal(<BookaDemo />));
+  };
+
   return (
     <Box
       sx={{
@@ -82,7 +90,7 @@ const CompanyTestimonial = ({ testimonialData }: testimonialDataProps) => {
             <Stack
               direction={"row"}
               alignItems={"center"}
-              spacing={{lg:2,xs:1}}
+              spacing={{ lg: 2, xs: 1 }}
               justifyContent={{ lg: "center", xs: "flex-start" }}
             >
               <HeadingField
@@ -291,6 +299,7 @@ const CompanyTestimonial = ({ testimonialData }: testimonialDataProps) => {
               <ButtonWithIcon
                 label="Contact Us"
                 sx={{ textTransform: "capitalize" }}
+                onClick={bookaModal}
               />
             </Box>
           </Grid>

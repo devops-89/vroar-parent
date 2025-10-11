@@ -1,11 +1,9 @@
 import { COLORS } from "@/utils/enum";
+import { SPEAKER_PERKS_CARD } from "@/utils/types";
 import { Box, Card } from "@mui/material";
 import Image from "next/image";
-import React from "react";
-import card1 from "@/banner/mentors/speaker_perks/perks-card/build.avif";
 import HeadingField from "../common/Heading-Field";
 import ParaField from "../common/Para-Field";
-import { SPEAKER_PERKS_CARD } from "@/utils/types";
 
 const SpeakerPerksCard = ({
   img,
@@ -23,7 +21,7 @@ const SpeakerPerksCard = ({
         gap: 5,
       }}
     >
-      <Image src={img} alt="" />
+      <Image src={img} alt="" width={100} />
       <Box>
         <HeadingField
           label={heading}
@@ -31,7 +29,7 @@ const SpeakerPerksCard = ({
             lineHeight: 1.4,
             fontWeight: 700,
             textAlign: "left",
-            fontSize: { lg: 24, xs: 20 },
+            fontSize: { lg: 24, xs: 16 },
           }}
         />
         <ParaField

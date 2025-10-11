@@ -1,17 +1,20 @@
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import { Button, Box, Theme, SxProps } from "@mui/material";
+import { Button, Box, Theme, SxProps, ButtonProps } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 
 const SimpleButton = ({
   label,
   sx,
+  ...props
 }: {
   label: string;
   sx?: SxProps<Theme>;
-}) => {
+} & Omit<ButtonProps, 'sx'>) => {
   return (
     <Button
+      {...props}
       sx={{
         borderRadius: "10rem",
         background: COLORS.BUTTON_COLOR,

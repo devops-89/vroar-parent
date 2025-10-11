@@ -69,12 +69,14 @@ export const plans_data: STATIC_SUBSCRIPTION_PLANS[] = [
 export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
   {
     grade: "9",
-    id: "prod_T4NVJwHQhrL5H6",
+    id: "prod_T5UKDgspWWUeXG",
+
     features: [
       {
-        feature_heading: "9th Grade – Build Foundations & Confidence ",
-        feature_purpose:
-          "Launch your personalized plan for high school — classes, test awareness, volunteering, and passion projects.",
+        grade_heading: "9th Grade Entry",
+        feature_heading: " Maximize",
+        heading: "Build Foundations & Confidence ",
+        feature_purpose: "Start early. Maximize your growth and opportunities",
         feature_list: [
           {
             label: "A personalized 4-year Treks Roadmap ",
@@ -113,6 +115,7 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
         },
       },
       {
+        heading: "Explore & Grow",
         feature_heading: "10th Grade – Explore & Grow ",
         feature_purpose:
           "Refine your plan with honors/AP courses, testing milestones, and early career exploration.",
@@ -158,6 +161,7 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
         },
       },
       {
+        heading: "Pre-College Prep ",
         feature_heading: "11th Grade – Prepare & Showcase",
         feature_purpose:
           "Align your plan with college and career goals — testing, essays, scholarships, and real-world exposure.",
@@ -201,6 +205,7 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
         },
       },
       {
+        heading: "Apply & Transition",
         feature_heading: "12th Grade – Apply & Transition",
         feature_purpose:
           "Finalize your plan into applications, financial aid, and a confident transition to college.",
@@ -245,12 +250,13 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
   },
   {
     grade: "10",
-    id: "prod_T4NwsdE984YUoV",
+    id: "prod_T5UMSZJmSfk4WE",
     features: [
       {
-        feature_heading: "10th Grade – Explore & Catch Up ",
-        feature_purpose:
-          "Create/Refine your roadmap with AP/Honors planning, testing milestones, and early career exploration — while catching up on 9th-grade foundations.",
+        grade_heading: "10th Grade Entry",
+        heading: "Explore & Catch Up",
+        feature_heading: "Advance  ",
+        feature_purpose: "Two years to advance with purpose and momentum",
         feature_list: [
           {
             label:
@@ -305,6 +311,7 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
         },
       },
       {
+        heading: "Prepare & Showcase",
         feature_heading: "11th Grade – Prepare & Showcase ",
         feature_purpose:
           "Refine your roadmap for college and career goals — testing, essays, scholarships, and real-world exposure.",
@@ -352,6 +359,7 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
         },
       },
       {
+        heading: "Apply & Transition",
         feature_heading: "12th Grade – Apply & Transition ",
         feature_purpose:
           "Finalize your roadmap into applications, financial aid, and a confident transition to college.",
@@ -400,12 +408,13 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
   },
   {
     grade: "11",
-    id: "prod_T4Nxagbdc2Q74A",
+    id: "prod_T5UNDqrWTzbtWA",
     features: [
       {
-        feature_heading: "11th Grade – Prepare, Catch Up & Showcase ",
-        feature_purpose:
-          "Create/Refine your roadmap to align with college and career goals — testing, essays, scholarships, and real-world exposure",
+        grade_heading: "11th Grade Entry",
+        heading: "Prepare, Catch Up & Showcase",
+        feature_heading: "Elevate",
+        feature_purpose: "Focused support to elevate your candidacy",
         feature_list: [
           {
             label:
@@ -462,6 +471,7 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
         },
       },
       {
+        heading: "Apply & Transition",
         feature_heading: "12th Grade – Apply & Transition",
         feature_purpose:
           " Finalize your roadmap into applications, financial aid, and a confident transition to college.",
@@ -508,10 +518,12 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
   },
   {
     grade: "12",
-    id: "prod_T4Ny58fcj7Zm5t",
+    id: "prod_T5UPjDc9xxmbZY",
     features: [
       {
-        feature_heading: "12th Grade – Fast-Track",
+        grade_heading: " 12th Grade Entry",
+        heading: "Fast-Track",
+        feature_heading: "Accelerate",
         feature_purpose:
           "Focus entirely on the big milestones — college applications, essays, testing, and scholarships — in an accelerated format.",
         feature_list: [
@@ -574,6 +586,7 @@ export const NEW_PLAN_FEATURES: NEW_PLAN_FEATURES_PROPS[] = [
     ],
   },
 ];
+
 
 export const FeatureList: dataProps[] = [
   {

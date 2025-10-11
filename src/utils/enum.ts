@@ -164,4 +164,9 @@ export enum DEVICE_TYPE {
   IOS = "IOS",
 }
 
-
+export enum FORM_TYPE {
+  DEMO = "demo",
+  SPEAKER = "speaker",
+  MENTOR = "mentor",
+  CONTACT = "contact",
+}

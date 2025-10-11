@@ -303,6 +303,8 @@ export interface SUBSCRIPTION_CARD_PROPS {
   addOnFeature?: string;
   summer: summerWorkshopsProps;
   coachingWorkshops: summerWorkshopsProps;
+  grade_heading?: string;
+  heading: string;
 }
 
 export interface PRICING_SECTION_PROPS {
@@ -342,3 +344,5 @@ export interface NEW_PLAN_PROPS {
   name: string;
   prices: SUBSCRIPTION_PLANS_PRICE[];
 }
+
+

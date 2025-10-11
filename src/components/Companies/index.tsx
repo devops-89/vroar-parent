@@ -24,7 +24,7 @@ const CompanyLayout = () => {
       >
         <FeatureGrid />
       </Box>
-      <Box sx={{ mt: { lg: 20, xs: 5 } }}>
+      <Box sx={{ mt: { lg: 30, xs: 5 } }}>
         <Support />
       </Box>
       <Box sx={{ mt: { lg: 20, xs: 5 } }}>

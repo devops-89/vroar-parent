@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import backgroundBanner from "@/banner/mentors/mentor_banner.avif";
 import HeadingField from "@/components/common/Heading-Field";
 import GradientText from "@/components/common/Greadient-text";
@@ -20,7 +20,27 @@ import Whyjoinus from "@/components/mentors/Why-Join-Us";
 import Testimonials from "@/components/mentors/Testimonials";
 import { MENTOR_TESTIMONIALS } from "@/assets/mentors";
 import MentorFaqSection from "@/components/mentors/Faq-section";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+
 const Mentors = () => {
+  const dispatch = useDispatch();
+
+  // const fetchFormsFields = async () => {
+  //   axios
+  //     .get("/api/forms")
+  //     .then((res) => {
+  //       console.log("response", res);
+  //     })
+  //     .catch((err) => {
+  //       console.log("err", err);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   fetchFormsFields();
+  // }, []);
+
   return (
     <Box>
       <Box

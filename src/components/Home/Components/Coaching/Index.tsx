@@ -86,7 +86,7 @@ const Coaching = () => {
             direction.
           </Typography>
           <Grid container sx={{ mt: 4 }}>
-            <Grid size={{ lg: 6, xs: 12 }} margin={"auto"}>
+            <Grid size={{ lg: 6, xs: 11 }} margin={"auto"}>
               <Grid container spacing={2}>
                 {COACHING_DATA.map((val, i) => (
                   <Grid size={12} key={i}>

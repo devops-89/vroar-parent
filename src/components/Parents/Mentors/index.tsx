@@ -12,7 +12,7 @@ const OurMentorsParents = () => {
       <Container maxWidth="lg">
         <Grid container>
           <Grid size={{ lg: 7, xs: 12 }} margin={"auto"}>
-            <Badge label="our Mentors" width={120} margin="auto" />
+            <Badge label="our M   entors" width={120} margin="auto" />
             <HeadingField
               label="Real Mentors.
 Real Talk. Real Clarity "

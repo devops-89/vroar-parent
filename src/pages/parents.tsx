@@ -1,3 +1,4 @@
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
 import { parentTestimonial } from "@/assets/testimonial";
 import banner from "@/banner/parents/parents-hero.avif";
 import phone_mock from "@/banner/parents/phone-mock.avif";
@@ -12,13 +13,21 @@ import OurParentApp from "@/components/Parents/OurApp";
 import Parentsprogram from "@/components/Parents/parents-Program";
 import ParentTestimonial from "@/components/Parents/Testimonial/Parent-Testimonial";
 import Workshop from "@/components/Parents/workshop/Index";
+import { showModal } from "@/redux/reducers/Modal";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { Box, Container, Grid, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
+import { useDispatch } from "react-redux";
 
 const Parents = () => {
   const phone = useMediaQuery("(max-width:600px)");
+  const dispatch = useDispatch();
+
+  const bookDemoModal = () => {
+    dispatch(showModal(<BookaDemo />));
+  };
   return (
     <Box>
       <Box
@@ -76,7 +85,13 @@ const Parents = () => {
                 parents who want clarity for their child.
               </Typography>
               <Box sx={{ textAlign: "center", mt: 3 }}>
-                <ButtonWithIcon label="Book a Demo" />
+                <Link href={"/login"}>
+                  <ButtonWithIcon
+                    label="Get started now"
+                    // onClick={bookDemoModal}
+                    sx={{ width: 250 }}
+                  />
+                </Link>
               </Box>
             </Grid>
           </Grid>
@@ -120,21 +135,26 @@ const Parents = () => {
                 label="Turn Potential into Purpose Together."
                 color="#28084B"
                 textAlign="left"
-                sx={{ fontSize: { lg: 68, xs: 35 } }}
+                sx={{
+                  fontSize: { lg: 60, xs: 35 },
+                  fontFamily: "gomenasans-bold",
+                }}
               />
               <ParaField
                 label="Enroll with MyTreks.ai Today"
                 color="#28084B"
                 sx={{ mt: 2, fontSize: { lg: 20, xs: 16 } }}
               />
-              <ButtonWithIcon label="Enroll Now" sx={{ mt: 2 }} />
+              <Link href="/login">
+                <ButtonWithIcon label="Enroll Now" sx={{ mt: 2,width:200 }} />
+              </Link>
             </Grid>
             <Grid size={{ lg: 6, xs: 12 }}>
               <Image
                 src={phone_mock}
                 alt=""
                 style={{
-                  position:phone ? "initial"  : "absolute",
+                  position: phone ? "initial" : "absolute",
                   inset: "auto -3% 0% auto",
                   top: phone ? 130 : -75,
                   width: phone ? 300 : 570,
@@ -150,7 +170,7 @@ const Parents = () => {
       <Box sx={{ mt: 8 }}>
         <ParentTestimonial testimonialData={parentTestimonial} />
       </Box>
-      <Box sx={{ mt: 10 }}>
+      <Box >
         <ParentFaqSection />
       </Box>
     </Box>

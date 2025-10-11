@@ -74,7 +74,7 @@ const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
       }}
     >
       <Container>
-        <Grid container>
+        <Grid container sx={{ mt: { lg: 20, xs: 0 } }}>
           <Grid size={{ lg: 10, xs: 12 }} margin={"auto"}>
             <Badge label="Counseling" width={100} margin="auto" />
             <Typography
@@ -189,7 +189,7 @@ const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
               <Box
                 sx={{
                   width: { xs: "90%", md: 600 },
-                  height: {lg:500,xs:350},
+                  height: { lg: 500, xs: 350 },
                   mt: 5,
                   margin: "auto",
                 }}
@@ -234,7 +234,7 @@ const TestimonialSection = ({ testimonialData }: testimonialDataProps) => {
                 alignItems="center"
                 justifyContent={"center"}
                 spacing={3}
-                sx={{ mt: { xs: 4} }}
+                sx={{ mt: { xs: 4 } }}
               >
                 <IconButton
                   onClick={() => swiperRef.current?.slidePrev()}

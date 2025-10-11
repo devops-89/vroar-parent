@@ -11,6 +11,10 @@ import img3 from "@/banner/parents/App/alerts.avif";
 import img4 from "@/banner/parents/App/support.avif";
 import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
 import WhyMyTreks from "./why_Mytreks";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
+import Link from "next/link";
 const OurParentApp = () => {
   const appData = [
     {
@@ -34,6 +38,13 @@ const OurParentApp = () => {
       description: "without stepping on their independence",
     },
   ];
+
+  const dispatch = useDispatch();
+
+  const openModal = () => {
+    dispatch(showModal(<BookaDemo />));
+  };
+
   return (
     <Box sx={{ backgroundColor: "#fff3f0" }}>
       <Container sx={{ paddingTop: "80px" }}>
@@ -61,11 +72,13 @@ const OurParentApp = () => {
               ))}
             </Grid>
             <Box sx={{ textAlign: "center" }}>
-              <ButtonWithIcon
-                label="get Demo of the App"
-                sx={{ textTransform: "capitalize", mt: 8 }}
-                width={300}
-              />
+              <Link href="/login">
+                <ButtonWithIcon
+                  label="get Started now"
+                  sx={{ textTransform: "capitalize", mt: 8 }}
+                  width={250}
+                />
+              </Link>
             </Box>
           </Grid>
         </Grid>

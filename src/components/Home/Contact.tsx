@@ -1,6 +1,7 @@
 import {
   Box,
   Card,
+  CircularProgress,
   Container,
   Grid,
   List,
@@ -10,14 +11,57 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import contact_banner from "@/homePage/contact/contact_banner.avif";
 import Badge from "./Components/Badge";
-import { COLORS } from "@/utils/enum";
+import { COLORS, FORM_TYPE, TOAST_STATUS } from "@/utils/enum";
 import { Mail } from "@mui/icons-material";
 import { loginTextField } from "@/utils/styles";
 import ButtonWithIcon from "./Components/ButtonWithIcon";
+import { useFormik } from "formik";
+import { contactValidationSchema } from "@/utils/validationSchema";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { showToast } from "@/redux/reducers/Toast";
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      fullName: "",
+      email: "",
+      message: "",
+    },
+    validationSchema: contactValidationSchema,
+    onSubmit: (values) => {
+      axios
+        .post("/api/contact", { fields: values, type: FORM_TYPE.CONTACT })
+        .then((res) => {
+          setLoading(false);
+          dispatch(
+            showToast({
+              open: true,
+              variant: TOAST_STATUS.SUCCESS,
+              message: "Query Send Successfully",
+            })
+          );
+          formik.resetForm();
+        })
+        .catch((err) => {
+          let errMessage =
+            (err.response && err.response.data.message) || err.message;
+
+          dispatch(
+            showToast({
+              message: errMessage,
+              variant: TOAST_STATUS.ERROR,
+              open: true,
+            })
+          );
+          setLoading(false);
+        });
+    },
+  });
   return (
     <Box
       sx={{
@@ -38,7 +82,7 @@ const Contact = () => {
             <Badge
               label="Get in touch"
               width={120}
-              sx={{ margin: { lg: "", xs: "auto" } }}
+              sx={{ margin: { lg: "initial", xs: "auto" } }}
             />
             <Typography
               sx={{
@@ -108,17 +152,29 @@ const Contact = () => {
                   "0 6px 13px #0000000a, 0 23px 23px #00000008, 0 52px 31px #00000005, 0 92px 47px #00000003",
               }}
             >
-              <form>
+              <form onSubmit={formik.handleSubmit}>
                 <Stack alignItems={"center"} spacing={2}>
                   <TextField
                     sx={{ ...loginTextField }}
                     fullWidth
                     label="Enter Name"
+                    id="fullName"
+                    error={
+                      formik.touched.fullName && Boolean(formik.errors.fullName)
+                    }
+                    helperText={
+                      formik.touched.fullName && formik.errors.fullName
+                    }
+                    onChange={formik.handleChange}
                   />
                   <TextField
                     sx={{ ...loginTextField }}
                     fullWidth
                     label="Enter Email Address"
+                    id="email"
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
+                    onChange={formik.handleChange}
                   />
                   <TextField
                     sx={{
@@ -134,8 +190,25 @@ const Contact = () => {
                     fullWidth
                     label="Enter Your Query"
                     multiline
+                    id="message"
+                    error={
+                      formik.touched.message && Boolean(formik.errors.message)
+                    }
+                    helperText={formik.touched.message && formik.errors.message}
+                    onChange={formik.handleChange}
                   />
-                  <ButtonWithIcon label="Send Enquiry" width={"100%"} />
+                  <ButtonWithIcon
+                    label="Send Enquiry"
+                    width={"100%"}
+                    type="submit"
+                    loading={loading}
+                    loadingIndicator={
+                      <CircularProgress
+                        sx={{ fontSize: 20, color: COLORS.WHITE }}
+                      />
+                    }
+                    disabled={loading}
+                  />
                 </Stack>
               </form>
             </Card>

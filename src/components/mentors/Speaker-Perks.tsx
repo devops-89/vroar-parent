@@ -33,7 +33,7 @@ const SpeakerPerks = () => {
         justifyContent: "center",
         height: { lg: "100vh", xs: "100%" },
         position: "relative",
-        // overflow: "hidden",
+        overflow: "hidden",
       }}
     >
       <Container>
@@ -83,7 +83,7 @@ const SpeakerPerks = () => {
             />
             <Box
               sx={{
-                background: "linear-gradient(#371d00,#0f0f0f)",
+                background: "linear-gradient(#0f0f0f,#371d00)",
                 borderTop: `2px solid ${COLORS.orangeBorderColor}`,
                 borderLeft: `2px solid ${COLORS.orangeBorderColor}`,
                 borderRight: `2px solid ${COLORS.orangeBorderColor}`,

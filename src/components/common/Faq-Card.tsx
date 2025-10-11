@@ -32,7 +32,7 @@ const FaqCard = ({ data }: FAQ_DATA_PROPS) => {
     };
 
   return (
-    <Box sx={{ mt: 3, zIndex: 9999, position: "relative" }}>
+    <Box sx={{ mt: 3, zIndex: 999, position: "relative" }}>
       <Stack spacing={2}>
         {data.map((val, i) => (
           <Accordion

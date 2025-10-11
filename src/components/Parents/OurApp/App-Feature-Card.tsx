@@ -14,7 +14,7 @@ const AppFeatureCard = ({ img, heading, description }: AppFeatureCardProps) => {
   return (
     <Card sx={{ padding: "24px", borderRadius: "16px" }}>
       <Stack direction={"row"} spacing={1}>
-        <Image src={img} alt="" />
+        <Image src={img} alt="" width={100} />
 
         <Stack spacing={1} sx={{ mt: 1 }}>
           <HeadingField

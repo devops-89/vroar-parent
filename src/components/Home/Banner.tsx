@@ -22,6 +22,7 @@ import ButtonWithIcon from "./Components/ButtonWithIcon";
 import CurvedBadge from "./Components/ChooseIcon";
 import Home_hero_points from "./Components/Home_hero_points";
 import { useRouter } from "next/router";
+import Link from "next/link";
 const Banner = () => {
   const router = useRouter();
   const phone = useMediaQuery("(max-width:600px)");
@@ -104,7 +105,7 @@ const Banner = () => {
               />
               <Home_hero_points label="Mentors" />
             </Stack>
-            <Box sx={{ mt: {lg:25,xs:10}, position: "relative" }}>
+            <Box sx={{ mt: { lg: 25, xs: 10 }, position: "relative" }}>
               <Box
                 sx={{
                   backgroundImage: `url(${chooseBanner.src})`,
@@ -170,10 +171,12 @@ const Banner = () => {
                   zIndex: 999,
                 }}
               >
-                <ButtonWithIcon
-                  label="Get Started Today"
-                  sx={{ width: { lg: 250, xs: 200 } }}
-                />
+                <Link href={"/login"}>
+                  <ButtonWithIcon
+                    label="Get Started Today"
+                    sx={{ width: { lg: 250, xs: 200 } }}
+                  />
+                </Link>
               </Box>
             </Box>
           </Grid>

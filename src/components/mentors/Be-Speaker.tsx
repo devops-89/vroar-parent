@@ -11,7 +11,15 @@ import number2 from "@/Mentors/2.avif";
 import number3 from "@/Mentors/3.avif";
 import number4 from "@/Mentors/4.avif";
 import ButtonWithIcon from "../Home/Components/ButtonWithIcon";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import SpeakerModal from "@/assets/ModalCalling/website/become-a-speaker";
 const BeSpeaker = () => {
+  const dispatch = useDispatch();
+
+  const becomeaSpeaker = () => {
+    dispatch(showModal(<SpeakerModal />));
+  };
   return (
     <Box sx={{ mt: 10 }}>
       <Container>
@@ -112,7 +120,11 @@ const BeSpeaker = () => {
           </Box>
         </Box>
         <Box sx={{ textAlign: "center", mt: { lg: 30, xs: 5 } }}>
-          <ButtonWithIcon label="Become a Speaker" width={250} />
+          <ButtonWithIcon
+            label="Become a Speaker"
+            width={250}
+            onClick={becomeaSpeaker}
+          />
         </Box>
       </Container>
     </Box>
