@@ -12,7 +12,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import "swiper/css";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { useMediaQuery } from "@mui/material";
+import FloatingWhatsApp from "react-floating-whatsapp";
+import { Box } from "@mui/material";
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const script = document.createElement("script");
@@ -33,6 +34,14 @@ export default function App({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Layout>
+          <Box sx={{ position: "relative", zIndex: 9999 }}>
+            <FloatingWhatsApp
+              phoneNumber="+18173309050"
+              accountName="MyTreks.ai"
+              chatMessage="Welcome to MyTreks.ai — your personalized college prep guide.
+How can we help you get started today?"
+            />
+          </Box>
           <ToastBar />
           <Modal />
           <Component {...pageProps} />

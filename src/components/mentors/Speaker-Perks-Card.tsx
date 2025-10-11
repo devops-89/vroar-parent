@@ -1,11 +1,9 @@
 import { COLORS } from "@/utils/enum";
+import { SPEAKER_PERKS_CARD } from "@/utils/types";
 import { Box, Card } from "@mui/material";
 import Image from "next/image";
-import React from "react";
-import card1 from "@/banner/mentors/speaker_perks/perks-card/build.avif";
 import HeadingField from "../common/Heading-Field";
 import ParaField from "../common/Para-Field";
-import { SPEAKER_PERKS_CARD } from "@/utils/types";
 
 const SpeakerPerksCard = ({
   img,

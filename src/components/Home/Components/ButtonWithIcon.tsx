@@ -112,7 +112,7 @@ const ButtonWithIcon = ({
             boxShadow: 3,
             overflow: "hidden",
             position: "absolute",
-            right: 16,
+            right: 0,
           }}
         >
           <Box

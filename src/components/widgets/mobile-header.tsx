@@ -6,6 +6,7 @@ import logo from "@/logo/Logo.png";
 import { Menu } from "@mui/icons-material";
 import HeaderSidebar from "../Home/drawer";
 import SimpleButton from "../Home/Components/SimpleButton";
+import Link from "next/link";
 const MobileHeader = () => {
   const [open, setOpen] = useState(false);
   return (
@@ -31,8 +32,15 @@ const MobileHeader = () => {
         >
           <Menu />
         </IconButton>
-        <Image src={logo} alt="" width={100} />
-        <SimpleButton label="Sign In" sx={{ padding: "12px", fontSize: 16 }} />
+        <Link href="/">
+          <Image src={logo} alt="" width={100} />
+        </Link>
+        <Link href="/login">
+          <SimpleButton
+            label="Sign In"
+            sx={{ padding: "12px", fontSize: 16 }}
+          />
+        </Link>
       </Box>
 
       <HeaderSidebar open={open} setOpen={setOpen} />
