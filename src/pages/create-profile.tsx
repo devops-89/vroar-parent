@@ -27,13 +27,14 @@ const CreateProfile = () => {
     <Box
       sx={{
         backgroundImage: `url(${background.src})`,
-        height: "100vh",
+        height: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        py: 20,
       }}
     >
       <Card sx={{ p: 2, width: 1000, borderRadius: 4 }}>
