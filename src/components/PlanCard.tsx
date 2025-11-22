@@ -38,21 +38,22 @@ const PlanCard = ({
     return <Typography>No pricing available for this plan.</Typography>;
   }
 
-  const isRecurring = prices.some((p) => p.isRecurring);
+  const isRecurring = prices.some((p) => p?.isRecurring);
   const hasYearly = prices.some((p) => p.interval === "year");
+  const hasMonthly = prices.some((p) => p.interval === "month");
   const [switchStatus, setSwitchStatus] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const priceIndex =
-    isRecurring && hasYearly
+    isRecurring && hasYearly && hasMonthly
       ? switchStatus
         ? prices.findIndex((p) => p.interval === "year")
         : prices.findIndex((p) => p.interval === "month")
       : 0;
 
-  const selectedPrice = prices[priceIndex];
+  const selectedPrice = prices[priceIndex] || prices[0];
 
   const switchHandler = (e: SyntheticEvent) => {
     const { checked } = e.target as HTMLInputElement;
@@ -87,7 +88,7 @@ const PlanCard = ({
     >
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Image src={img || extension} alt="Plan icon" width={64} />
-        {isRecurring && hasYearly && (
+        {isRecurring && hasYearly && hasMonthly && (
           <Stack direction="row" spacing={1} alignItems="center">
             <Typography
               sx={{
@@ -162,7 +163,7 @@ const PlanCard = ({
           }}
         >
           $
-          {isRecurring && hasYearly
+          {isRecurring && hasYearly && hasMonthly
             ? switchStatus
               ? Math.round(
                   (prices.find((p) => p.interval === "year")?.amount || 0) / 12

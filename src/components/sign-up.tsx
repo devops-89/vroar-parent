@@ -69,6 +69,7 @@ const SignUp = () => {
         dispatch(
           showToast({ message: errMessage, variant: TOAST_STATUS.ERROR })
         );
+        console.log("rr", err);
         setLoading(false);
       });
   };

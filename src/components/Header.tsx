@@ -2,20 +2,31 @@ import { data } from "@/assets/data";
 import logo from "@/logo/Logo.png";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  IconButton,
+  List,
+  ListItemButton,
+  Popover,
+  Popper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import SimpleButton from "./Home/Components/SimpleButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showModal } from "@/redux/reducers/Modal";
 import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
+import LogoutModal from "@/assets/ModalCalling/LogoutModal";
 const Header = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [isStuck, setIsStuck] = useState(false);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => {
       setIsStuck(window.scrollY > 20);
@@ -24,6 +35,24 @@ const Header = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const user = useSelector((state: any) => state.user);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    dispatch(showModal(<LogoutModal />));
+  };
   return (
     <Box
       sx={{
@@ -143,11 +172,68 @@ const Header = () => {
                   </Link>
                 );
               })}
-              <Link href={"/login"}>
-                <SimpleButton label="Sign In" />
-              </Link>
+              {user.isAuthenticated ? (
+                <IconButton
+                  sx={{ borderRadius: "50%", width: 60, height: 60 }}
+                  onClick={handleClick}
+                >
+                  <Image
+                    src={user.avatar}
+                    width={50}
+                    height={50}
+                    alt="avatar"
+                    style={{ borderRadius: "50%" }}
+                  />
+                </IconButton>
+              ) : (
+                <Link href={"/login"}>
+                  <SimpleButton label="Sign In" />
+                </Link>
+              )}
             </Stack>
           </Box>
+
+          <Popover
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            sx={{ mt: 2 }}
+          >
+            <List>
+              <ListItemButton onClick={handleClose}>
+                <Link href={"/parent/profile"} className="link">
+                  <Typography
+                    sx={{
+                      color: COLORS.BLACK,
+                      fontFamily: nunito.style,
+                      fontSize: 16,
+                    }}
+                  >
+                    Dashboard
+                  </Typography>
+                </Link>
+              </ListItemButton>
+              <ListItemButton onClick={handleLogout}>
+                <Typography
+                  sx={{
+                    color: COLORS.BLACK,
+                    fontFamily: nunito.style,
+                    fontSize: 16,
+                  }}
+                >
+                  Logout
+                </Typography>
+              </ListItemButton>
+            </List>
+          </Popover>
         </Grid>
       </Grid>
     </Box>

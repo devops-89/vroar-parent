@@ -75,11 +75,11 @@ const Layout = ({ children }: LayoutProps) => {
         ></script>
       </Head>
 
-      {phone ? <MobileHeader /> : <Header />}
+      {phone ? <MobileHeader /> : show ? <></> : <Header />}
       {phone && show ? <MobileSidebar /> : show ? <ProfileSidebar /> : ""}
 
       {children}
-      <Footer />
+      {show ? <></> : <Footer />}
     </div>
   );
 };
