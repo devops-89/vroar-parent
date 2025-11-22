@@ -43,7 +43,7 @@ const PlanCard = ({
   const [switchStatus, setSwitchStatus] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const router = useRouter();
+  // const router = useRouter();
 
   const priceIndex =
     isRecurring && hasYearly
