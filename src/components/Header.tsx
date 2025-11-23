@@ -52,6 +52,7 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(showModal(<LogoutModal />));
+    handleClose();
   };
   return (
     <Box

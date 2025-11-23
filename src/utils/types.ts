@@ -93,12 +93,14 @@ export interface SUBSCRIPTION_PLANS {
   prices: SUBSCRIPTION_PLANS_PRICE[];
   benefits?: List[];
   img?: StaticImport | string;
+  strike: boolean;
 }
 
 export interface STATIC_SUBSCRIPTION_PLANS {
   benefits: List[];
   img: StaticImport | string;
   id: string;
+  strike: boolean;
 }
 
 export interface PLAN_BADGES {
@@ -345,4 +347,50 @@ export interface NEW_PLAN_PROPS {
   prices: SUBSCRIPTION_PLANS_PRICE[];
 }
 
+export interface SUBSCRIPTION_CARD_PROPS {
+  feature_heading: string;
+  feature_purpose: string;
+  feature_list: List[];
+  addOnFeature?: string;
+  summer: summerWorkshopsProps;
+  coachingWorkshops: summerWorkshopsProps;
+  heading: string;
+}
 
+export interface PRICING_SECTION_PROPS {
+  plan_heading: string;
+  plan_description: string;
+  price: string;
+  subscription_data: SUBSCRIPTION_CARD_PROPS[];
+  // grade: string;
+  // id: string;
+}
+
+export interface CONTENT_PROPS {
+  description: string;
+}
+export interface summerWorkshopsProps {
+  heading: string;
+  content: CONTENT_PROPS[];
+}
+export interface NEW_PLAN_FEATURES_PROPS {
+  grade: string;
+  id: string;
+  features: SUBSCRIPTION_CARD_PROPS[];
+}
+
+interface marketing_features_props {
+  name: string;
+}
+export interface NEW_PLAN_PROPS {
+  description: string | null;
+  features: SUBSCRIPTION_CARD_PROPS[];
+  grade: string;
+  id: string;
+  marketing_features: marketing_features_props[];
+  metadata: {
+    grade: string;
+  };
+  name: string;
+  prices: SUBSCRIPTION_PLANS_PRICE[];
+}

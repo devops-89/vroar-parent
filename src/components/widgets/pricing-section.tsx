@@ -1,27 +1,29 @@
 import { UserController } from "@/assets/api/UserController";
 import { data } from "@/assets/data";
 import { NEW_PLAN_FEATURES } from "@/assets/plans";
-import SubscriptionCard from "@/components/common/susbcription-card";
-import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
-import PlanBadges from "@/components/PlanBadges";
 // import HeadingField from "@/components/common/Heading-Field";
 // import ParaField from "@/components/common/Para-Field";
 // import SubscriptionCard from "@/components/common/susbcription-card";
 // import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
 import explorer from "@/icons/Explorer.png";
-import { showToast } from "@/redux/reducers/Toast";
 import { COLORS, TOAST_STATUS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
 import { NEW_PLAN_PROPS, PAYMENT_ITEMS } from "@/utils/types";
-import { ArrowForward } from "@mui/icons-material";
+import { ArrowForward, Circle } from "@mui/icons-material";
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Badge,
   Box,
   Button,
   Card,
   CircularProgress,
+  Container,
   Grid,
   List,
   ListItem,
+  ListItemAvatar,
   ListItemText,
   Stack,
   Tab,
@@ -29,9 +31,10 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
+import SubscriptionCard from "./subscription-card";
 import { useDispatch } from "react-redux";
+import { showToast } from "@/redux/reducers/Toast";
 const PricingSection = () => {
   const [tabs, setTabs] = useState(0);
   const [selectedGrade, setSelectedGrade] = useState("9");
@@ -41,8 +44,6 @@ const PricingSection = () => {
     setSelectedGrade(gradeNumber);
     setTabs(newValue);
   };
-
-  const router = useRouter();
 
   const [subscriptionPlans, setSubscriptionPlans] =
     useState<NEW_PLAN_PROPS[]>();
@@ -92,19 +93,8 @@ const PricingSection = () => {
     const chosenPrice =
       selectedPlan.prices.find((p) => p.isRecurring) || selectedPlan.prices[0];
     if (!chosenPrice) return null;
-    // console.log("testprice", chosenPrice);
     const featureCount = selectedPlan.features?.length || 1;
-    // console.log("test length", featureCount * chosenPrice.amount);
-    return featureCount * chosenPrice.amount;
-  }, [selectedPlan]);
-
-  const selectedPlanMonthlyPrice = useMemo(() => {
-    if (!selectedPlan) return null;
-    const chosenPrice =
-      selectedPlan.prices.find((p) => p.isRecurring) || selectedPlan.prices[0];
-    if (!chosenPrice) return null;
-    // const featureCount = selectedPlan.features?.length || 1;
-    return chosenPrice.amount / 12;
+    return chosenPrice.amount / featureCount;
   }, [selectedPlan]);
 
   const selectedPriceId = useMemo(() => {
@@ -141,19 +131,14 @@ const PricingSection = () => {
   return (
     <Box sx={{ mt: 3 }}>
       <Grid container>
-        <Grid
-          size={{
-            lg: router.pathname === "/parent/subscriptions" ? 8 : 6,
-            xs: 12,
-          }}
-          margin={{ lg: "auto", xs: "initial" }}
-        >
+        <Grid size={{ lg: 10, xs: 12 }} margin={{ lg: "auto", xs: "initial" }}>
           <Tabs
             sx={{
               "& .MuiTabs-list": {
                 justifyContent: { lg: "center", xs: "center" },
                 gap: { lg: 2, xs: 1 },
                 backgroundColor: COLORS.WHITE,
+                width: { lg: 524, xs: "100%" },
                 margin: "auto",
                 height: 69,
                 borderRadius: "60px",
@@ -169,10 +154,10 @@ const PricingSection = () => {
                 color: COLORS.PRIMARY,
                 border: `1px solid ${COLORS.PRIMARY}`,
                 borderRadius: 20,
-                width: { lg: 113, xs: 80 },
+                width: { lg: 113, xs: 60 },
                 padding: "16px 2px 16px",
                 height: 35,
-                fontFamily: nunito.style.fontFamily,
+                fontFamily: "gomenasans-bold",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -200,53 +185,35 @@ const PricingSection = () => {
       <Grid
         container
         sx={{
-          mt: { lg: 10, xs: 4 },
+          mt: 10,
           backgroundColor: "#FFF6F3",
-          borderRadius: { lg: "56px", xs: "24px" },
-          p: { lg: 3, xs: 2 },
-          maxHeight: {
-            lg: router.pathname === "/parent/subscriptions" ? "560px" : "450px",
-            xs: "none",
-          },
-
-          overflow: { lg: "auto", xs: "visible" },
+          borderRadius: "56px",
+          p: 3,
+          maxHeight: { lg: "550px", xs: "100%" },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
         }}
-        spacing={{ lg: 4, xs: 2 }}
-        alignItems="flex-start"
+        spacing={4}
+        alignItems="center"
       >
-        <Grid
-          size={{
-            lg: router.pathname === "/parent/subscriptions" ? 6 : 5,
-            xs: 12,
-          }}
-        >
+        <Grid size={{ lg: 5, xs: 12 }}>
           <Card
             sx={{
-              p: { lg: 3, xs: 2 },
+              p: { lg: 3, xs: 0 },
               boxShadow: "none",
               borderRadius: 4,
               backgroundColor: "transparent",
             }}
           >
-            <Stack direction={"row"} alignItems={"flex-start"} spacing={2}>
-              <Image src={explorer} alt="" width={30} />
-              <Box>
-                <Typography
-                  sx={{ fontSize: { lg: 25, xs: 16 }, fontWeight: 700 }}
-                >
-                  {selectedPlanFeatures[0]?.grade_heading || ""}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: { lg: 20, xs: 16 },
-                    fontWeight: 700,
-
-                    textAlign: "center",
-                  }}
-                >
-                  {selectedPlanFeatures[0]?.feature_heading || ""}
-                </Typography>
-              </Box>
+            <Stack direction={"row"} alignItems={"center"} spacing={2}>
+              <Image src={explorer} alt="" width={40} />
+              <Typography
+                sx={{ fontSize: { lg: 16, xs: 16 }, fontWeight: 700, mt: 1 }}
+              >
+                {selectedPlanFeatures[0]?.feature_heading || ""} 
+              </Typography>
             </Stack>
             <Typography
               sx={{
@@ -258,38 +225,112 @@ const PricingSection = () => {
               {selectedPlanFeatures[0]?.feature_purpose || ""}
             </Typography>
 
-            {selectedPlanMonthlyPrice !== null && (
-              <>
-                <Typography
-                  sx={{
-                    fontSize: { lg: 40, xs: 32 },
-                    fontFamily: nunito.style.fontFamily,
-                    color: COLORS.PRIMARY,
-                    fontWeight: 700,
-                    mt: 2,
-                  }}
-                >
-                  ${selectedPlanMonthlyPrice.toFixed(2)}
-                </Typography>
-                <Stack direction="row" spacing={2} alignItems="center" mt={1}>
-                  <PlanBadges
-                    bgColor="#402523"
-                    label="PER MONTH"
-                    border="1px solid #ffffff"
-                    color={COLORS.WHITE}
-                  />
-                  <PlanBadges
-                    bgColor="#4D0058"
-                    label="BILLED ANNUALLY"
-                    border="1px solid #ffffff"
-                    color={COLORS.WHITE}
-                  />
-                </Stack>
-              </>
+            {selectedPlanPrice !== null && (
+              <Typography
+                sx={{
+                  fontSize: 40,
+                  fontFamily: nunito.style.fontFamily,
+                  color: COLORS.PRIMARY,
+                  fontWeight: 700,
+                  mt: 2,
+                }}
+              >
+                ${selectedPlanPrice.toFixed(2)}{" "}
+              </Typography>
             )}
 
+            <Stack
+              direction={{ lg: "row", xs: "column" }}
+              alignItems={{ lg: "center", xs: "flex-start" }}
+              spacing={2}
+              sx={{ mt: 2 }}
+            >
+              <Box
+                sx={{
+                  backgroundColor: "#402523",
+                  color: COLORS.WHITE,
+                  borderRadius: "8px",
+                  border: "1px solid #ffffff",
+                  width: { lg: 110, xs: 240 },
+                  height: 34,
+                  padding: "7.5px   ",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontFamily: nunito.style.fontFamily,
+                  fontSize: { lg: 11, xs: 14 },
+                  fontWeight: 500,
+                  textTransform: "uppercase",
+                }}
+              >
+                Per Month
+              </Box>
+              <Box
+                sx={{
+                  backgroundColor: "#4D0058",
+                  color: COLORS.WHITE,
+                  borderRadius: "8px",
+                  border: "1px solid #ffffff",
+                  width: { lg: 200, xs: 240 },
+                  height: 34,
+                  padding: "7.5px   ",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontFamily: nunito.style.fontFamily,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  textTransform: "uppercase",
+                }}
+              >
+                Billed Annually
+              </Box>
+            </Stack>
+            {/* <Stack
+              direction={"row"}
+              alignItems="start"
+              spacing={2}
+              sx={{ mt: 3 }}
+            >
+              <Box
+                sx={{
+                  backgroundColor: "#545454",
+                  width: 10,
+                  height: 10,
+                  borderRadius: 20,
+                  mt: 4,
+                }}
+              ></Box>
+              <Typography
+                sx={{
+                  color: "#545454",
+                  fontFamily: nunito.style.fontFamily,
+                  fontWeight: 700,
+                  fontSize: 25,
+                  mt: 2,
+                }}
+              >
+                $
+                {selectedPlanPrice !== null
+                  ? (selectedPlanPrice * selectedPlanFeatures.length).toFixed(2)
+                  : ""}{" "}
+                over {selectedPlanFeatures.length * 12} months
+              </Typography>
+            </Stack> */}
+
             <List>
-              <ListItem sx={{ alignItems: "flex-start" }} disablePadding>
+              <ListItem sx={{ alignItems: "flex-start" }}>
+                <ListItemAvatar sx={{ minWidth: 30 }}>
+                  <Box
+                    sx={{
+                      backgroundColor: "#545454",
+                      width: 10,
+                      height: 10,
+                      borderRadius: 20,
+                      mt: 4,
+                    }}
+                  ></Box>
+                </ListItemAvatar>
                 <ListItemText
                   primary={
                     <Typography
@@ -303,7 +344,9 @@ const PricingSection = () => {
                     >
                       $
                       {selectedPlanPrice !== null
-                        ? selectedPlanPrice.toFixed(2)
+                        ? (
+                            selectedPlanPrice * selectedPlanFeatures.length
+                          ).toFixed(2)
                         : ""}{" "}
                       over {selectedPlanFeatures.length * 12} months
                     </Typography>
@@ -312,18 +355,64 @@ const PricingSection = () => {
               </ListItem>
             </List>
 
-            <ButtonWithIcon
-              label="get Started Now"
-              sx={{ width: "100%", textTransform: "capitalize" }}
-            />
+            <Button
+              fullWidth
+              onClick={() => {
+                if (selectedPriceId) createPaymentLink(selectedPriceId);
+              }}
+              sx={{
+                background: COLORS.LINEAR_GRADIENT,
+                fontFamily: nunito.style,
+                color: COLORS.WHITE,
+                borderRadius: 6,
+                fontSize: { lg: 15, xs: 12 },
+                fontWeight: 600,
+                p: 1.5,
+                position: "relative",
+
+                ":hover": {
+                  "& .icon": {
+                    transform: "rotate(0deg)",
+                  },
+                },
+              }}
+              endIcon={
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: { lg: "80%", xs: "80%" },
+                    top: 5,
+                    width: 40,
+                    height: 40,
+                    borderRadius: "50%",
+                    backgroundColor: COLORS.WHITE,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: "0px 0px 2px 2px rgba(255,255,255,0.2)",
+                  }}
+                >
+                  <ArrowForward
+                    className="icon"
+                    sx={{
+                      fontSize: 25,
+                      color: COLORS.PRIMARY,
+                      transform: "rotate(-45deg)",
+                      transition: "0.5s ease all",
+                    }}
+                  />
+                </Box>
+              }
+            >
+              {loading ? (
+                <CircularProgress sx={{ color: COLORS.WHITE }} size={20} />
+              ) : (
+                "Get Started Now"
+              )}
+            </Button>
           </Card>
         </Grid>
-        <Grid
-          size={{
-            lg: router.pathname === "/parent/subscriptions" ? 6 : 7,
-            xs: 12,
-          }}
-        >
+        <Grid size={{ lg: 7, xs: 12 }}>
           <SubscriptionCard data={selectedPlanFeatures} />
         </Grid>
       </Grid>
