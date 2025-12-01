@@ -209,6 +209,8 @@ const Login = () => {
                     fontFamily: nunito.style,
                     textDecoration: "underline",
                     cursor: "pointer",
+                    width: "fit-content",
+                    marginLeft: "auto",
                   }}
                   onClick={forgotPassword}
                 >

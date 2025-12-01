@@ -20,7 +20,7 @@ interface accordion_props {
 }
 
 const SubscriptionCard = ({ data }: accordion_props) => {
-  const [expanded, setExpanded] = useState<string | false>("panel0");
+  const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -31,8 +31,8 @@ const SubscriptionCard = ({ data }: accordion_props) => {
   return (
     <Box
       sx={{
-        maxHeight: { lg: "350px", xs: "none" },
-        overflowY: { lg: "auto", xs: "visible" },
+        maxHeight: { lg: "350px", xs: "60vh" },
+        overflowY: "auto",
         overflowX: "hidden",
         pr: { lg: 0, xs: 1 },
         scrollbarWidth: "thin",
@@ -117,28 +117,18 @@ const SubscriptionCard = ({ data }: accordion_props) => {
               ))}
             </List>
             <Typography
-              sx={{
-                fontSize: { lg: 15, xs: 13 },
-                fontFamily: nunito.style.fontFamily,
-                my: 2,
-              }}
+              sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily, my: 2 }}
             >
               {val.addOnFeature}
             </Typography>
             <Typography
-              sx={{
-                fontSize: { lg: 15, xs: 13 },
-                fontFamily: nunito.style.fontFamily,
-              }}
+              sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily }}
             >
               {val.summer.heading}
             </Typography>
             {val.summer.content.map((items, index) => (
               <Typography
-                sx={{
-                  fontSize: { lg: 15, xs: 13 },
-                  fontFamily: nunito.style.fontFamily,
-                }}
+                sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily }}
               >
                 {items.description}
               </Typography>
@@ -155,10 +145,7 @@ const SubscriptionCard = ({ data }: accordion_props) => {
             </Typography>
             {val.coachingWorkshops.content.map((items, index) => (
               <Typography
-                sx={{
-                  fontSize: { lg: 15, xs: 13 },
-                  fontFamily: nunito.style.fontFamily,
-                }}
+                sx={{ fontSize: { lg: 15, xs: 13 }, fontFamily: nunito.style.fontFamily }}
               >
                 {items.description}
               </Typography>
