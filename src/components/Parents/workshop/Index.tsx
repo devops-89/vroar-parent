@@ -33,29 +33,33 @@ const Workshop = () => {
         backgroundImage: `url(${banner.src})`,
         backgroundPosition: "50%",
         backgroundSize: "cover",
-        p: 10,
+        p: { lg: 10, xs: 0 },
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ py: { xs: 10, lg: 0 } }}>
         <Grid container>
-          <Grid size={10} margin={"auto"}>
+          <Grid size={{ lg: 10, xs: 12 }} margin={{ lg: "auto", xs: 0 }}>
             <Badge label="Workshop" margin="auto" width={100} />
             <HeadingField
               label="Family-First Career Planning That Actually Works"
               color={COLORS.WHITE}
+              sx={{
+                fontSize: { xs: 25, lg: 68 },
+                fontFamily: "gomenasans-bold",
+              }}
             />
             <ParaField
               label="Designed as a family partnership. Delivered with expert guidance."
               color={COLORS.WHITE}
-              fontSize={20}
+              // fontSize={20}
               textAlign="center"
-              sx={{ mt: 2 }}
+              sx={{ mt: 2, fontSize: { xs: 16, lg: 20 } }}
             />
           </Grid>
         </Grid>
         <Grid container spacing={3} sx={{ mt: 3 }}>
           {workshopData.map((val, i) => (
-            <Grid size={6}>
+            <Grid size={{ lg: 6, xs: 12 }} key={i}>
               <WorkshopCard
                 img={val.img}
                 workshopLabel={val.workshopLabel}

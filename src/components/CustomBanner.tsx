@@ -1,15 +1,16 @@
-import { Box, Card, Grid } from "@mui/material";
+import { Box, Card, Grid, useMediaQuery } from "@mui/material";
 import React from "react";
 import bannerImage from "@/banner/banner-image.png";
 import parent from "@/banner/parent-web.png";
 import Image from "next/image";
 import { LayoutProps } from "@/utils/types";
 const CustomBanner = ({ children }: LayoutProps) => {
+  const phone = useMediaQuery("(max-width:600px)");
   return (
     <Box
       sx={{
         backgroundImage: `url(${bannerImage.src})`,
-        height: { lg: "100vh", xs: "120vh" },
+        height: { lg: "125vh", xs: "140vh" },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -18,7 +19,7 @@ const CustomBanner = ({ children }: LayoutProps) => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <Card sx={{ p: 2 }}>
+      <Card sx={{ p: 1 }}>
         <Grid container alignItems={"center"} spacing={3}>
           <Grid size={{ lg: 6, xs: 12 }}>
             <Image
@@ -26,8 +27,8 @@ const CustomBanner = ({ children }: LayoutProps) => {
               alt=""
               // className="img-fluid"
               style={{ borderRadius: 8 }}
-              width={450}
-              height={500}
+              width={phone ? 385 : 450}
+              height={phone ? 385 : 500}
             />
           </Grid>
           <Grid size={{ lg: 6, xs: 12 }}>{children}</Grid>

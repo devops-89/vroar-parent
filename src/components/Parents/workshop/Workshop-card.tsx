@@ -26,14 +26,14 @@ const WorkshopCard = ({
       sx={{ padding: "20px", borderRadius: "4px", border: "3px solid #fff3f0" }}
     >
       <Grid container spacing={3}>
-        <Grid size={6}>
+        <Grid size={{ lg: 6, xs: 12 }}>
           <Image
             src={img}
             alt="img"
             style={{ width: "100%", height: "100%", borderRadius: "12px" }}
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ lg: 6, xs: 12 }}>
           <Box
             sx={{
               color: "#232323",
@@ -56,15 +56,13 @@ const WorkshopCard = ({
           </Box>
           <HeadingField
             label={heading}
-            fontSize={36}
             textAlign="left"
-            sx={{ lineHeight: 1.2 }}
+            sx={{ lineHeight: 1.2, fontSize: { lg: 36, xs: 25 } }}
           />
           <ParaField
             label={description}
             color={COLORS.LIGHT_BLACK}
-            fontSize={20}
-            sx={{ mt: 1, lineHeight: 1.2 }}
+            sx={{ mt: 1, lineHeight: 1.2, fontSize: { lg: 20, xs: 18 } }}
           />
         </Grid>
       </Grid>

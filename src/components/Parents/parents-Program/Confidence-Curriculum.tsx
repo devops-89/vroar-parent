@@ -1,4 +1,12 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  SxProps,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import React from "react";
 import bannerImage from "@/icons/parents-program/confidence_banner.avif";
 import confidenceIcon from "@/icons/parents-program/confidence_curriculum.avif";
@@ -10,6 +18,7 @@ interface ConfidenceCurriculumProps {
   img: StaticImageData;
   heading: string;
   description: string;
+  sx?: SxProps<Theme>;
 }
 
 const ConfidenceCurriculum = ({
@@ -17,7 +26,9 @@ const ConfidenceCurriculum = ({
   img,
   heading,
   description,
+  sx,
 }: ConfidenceCurriculumProps) => {
+  const phone = useMediaQuery("(max-width:600px)");
   return (
     <Box
       sx={{
@@ -29,6 +40,7 @@ const ConfidenceCurriculum = ({
         position: "relative",
         backgroundRepeat: "no-repeat",
         borderRadius: "20px",
+        ...sx,
       }}
     >
       <Container>
@@ -37,16 +49,16 @@ const ConfidenceCurriculum = ({
             <Image
               src={img}
               alt=""
-              width={230}
+              width={phone ? 100 : 230}
               //   height={230}
-              style={{ position: "absolute", top: -80 }}
+              style={{ position: phone ? "initial" : "absolute", top: -80 }}
             />
           </Grid>
           <Grid size={8}>
             <Typography
               sx={{
                 mt: 1,
-                fontSize: 32,
+                fontSize: { lg: 32, xs: 24 },
                 fontFamily: nunito.style,
                 fontWeight: 700,
                 textAlign: "center",
@@ -66,9 +78,6 @@ const ConfidenceCurriculum = ({
                 lineHeight: 1.4,
               }}
             >
-              {/* A tailored curriculum that builds clarity, confidence, and
-              
-              critical thinking */}
               {description}
             </Typography>
           </Grid>

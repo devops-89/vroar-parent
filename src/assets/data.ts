@@ -25,9 +25,9 @@ export const data = {
     // },
   ],
   grade: [
-    {
-      label: GRADE[8],
-    },
+    // {
+    //   label: GRADE[8],
+    // },
     {
       label: GRADE[9],
     },
@@ -40,9 +40,9 @@ export const data = {
     {
       label: GRADE[12],
     },
-    {
-      label: GRADE.HOMESCHOOLED,
-    },
+    // {
+    //   label: GRADE.HOMESCHOOLED,
+    // },
   ],
   relationshipData: [
     { label: RELATIONSHIP_DATA.PARENT },
@@ -165,7 +165,7 @@ export const data = {
     },
     {
       label: "Book a Call",
-      href: "/book-a-call",
+      href: "#",
     },
   ],
 

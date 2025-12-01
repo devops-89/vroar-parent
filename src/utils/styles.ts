@@ -50,3 +50,54 @@ export const loginTextField = {
     color: "#d32f2f",
   },
 };
+export const enquiryTextField = {
+  "& label.Mui-focused": {
+    color: COLORS.PRIMARY,
+    top: 0,
+    fontWeight: 600,
+    fontFamily: "gomenasans",
+  },
+  "& label": {
+    fontSize: "15px",
+    fontFamily: "gomenasans",
+    top: -2,
+  },
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "#B2BAC2",
+  },
+  "& .MuiOutlinedInput-input": {
+    fontFamily: nunito.style,
+    padding: "14px",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      border: "1px solid #d7d7d7",
+      padding: "14px",
+      borderRadius: 2,
+    },
+    "&:hover fieldset": {
+      borderColor: COLORS.PRIMARY,
+    },
+    "&.Mui-focused fieldset": {
+      border: `1px solid ${COLORS.PRIMARY} !important`,
+    },
+  },
+
+  "& .Mui-error": {
+    "& fieldset": {
+      border: "1px solid #d32f2f",
+    },
+    "&:hover fieldset": {
+      border: "1px solid #d32f2f",
+    },
+    "&.Mui-focused fieldset": {
+      border: "1px solid #d32f2f",
+    },
+    "& label.Mui-focused": {
+      color: "#d32f2f",
+    },
+  },
+  "& .MuiInputLabel-root.Mui-error": {
+    color: "#d32f2f",
+  },
+};

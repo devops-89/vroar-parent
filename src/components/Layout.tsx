@@ -13,7 +13,9 @@ import MobileSidebar from "./Profile/MobileSidebar";
 import Sidebar from "./Profile/Sidebar";
 import Header from "./Header";
 import Footer from "./Footer";
-
+import MobileHeader from "./widgets/mobile-header";
+import FloatingWhatsApp from "react-floating-whatsapp";
+import logo from "@/logo/Logo.png";
 const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
   const [show, setShow] = useState(true);
@@ -72,10 +74,12 @@ const Layout = ({ children }: LayoutProps) => {
           defer
         ></script>
       </Head>
-      <Header />
+
+      {phone ? <MobileHeader /> : show ? <></> : <Header />}
       {phone && show ? <MobileSidebar /> : show ? <ProfileSidebar /> : ""}
+
       {children}
-      <Footer />
+      {show ? <></> : <Footer />}
     </div>
   );
 };

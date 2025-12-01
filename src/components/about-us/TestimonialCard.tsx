@@ -6,6 +6,7 @@ import {
   LinearProgress,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import Image from "next/image";
 import React from "react";
@@ -13,7 +14,13 @@ import quote from "@/icons/testimonial_icon.avif";
 import avatar from "@/homePage/testimonial/avatar1.avif";
 import { COLORS } from "@/utils/enum";
 import { TESTIMONIAL_PROPS } from "@/utils/types";
-const TestimonialCard = ({ testimonial, img, name, progress = 0 }: TESTIMONIAL_PROPS) => {
+const TestimonialCard = ({
+  testimonial,
+  img,
+  name,
+  progress = 0,
+}: TESTIMONIAL_PROPS) => {
+  const phone = useMediaQuery("(max-width:600px)");
   return (
     <Card
       sx={{
@@ -33,14 +40,19 @@ const TestimonialCard = ({ testimonial, img, name, progress = 0 }: TESTIMONIAL_P
         sx={{ color: COLORS.PRIMARY, backgroundColor: COLORS.PRIMARY }}
       />
       <Box sx={{ p: 5 }}>
-        <Image src={quote} alt="" width={80} height={60} />
+        <Image
+          src={quote}
+          alt=""
+          width={phone ? 50 : 80}
+          height={phone ? 30 : 60}
+        />
         <Typography
-          sx={{ fontFamily: "gomenasans,sans-serif", fontSize: 18, mt: 3 }}
+          sx={{
+            fontFamily: "gomenasans,sans-serif",
+            fontSize: { lg: 18, xs: 14 },
+            mt: 3,
+          }}
         >
-          {/* Students dedicate significant effort to prepare thoroughly, ensuring
-          they are confident and well-equipped for the conversation. Their
-          structured approach and commitment to learning enable them to engage
-          meaningfully */}
           {testimonial}
         </Typography>
         <Stack direction="row" alignItems={"center"} spacing={2} sx={{ mt: 2 }}>

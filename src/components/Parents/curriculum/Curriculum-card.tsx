@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 import pin from "@/banner/parents/curriculum/pin.avif";
@@ -12,6 +12,7 @@ interface CurriculumCardProps {
   description: string;
 }
 const CurriculumCard = ({ img, heading, description }: CurriculumCardProps) => {
+  const phone = useMediaQuery("(max-width:600px)");
   return (
     <Box
       sx={{
@@ -26,10 +27,20 @@ const CurriculumCard = ({ img, heading, description }: CurriculumCardProps) => {
       }}
     >
       <Box sx={{ top: -20, position: "absolute", left: "50%", right: "50%" }}>
-        <Image src={pin} alt="" width={44} height={60} />
+        <Image
+          src={pin}
+          alt=""
+          width={phone ? 30 : 44}
+          height={phone ? 44 : 60}
+        />
       </Box>
       <Box sx={{ textAlign: "center" }}>
-        <Image src={img} alt="" width={192} height={192} />
+        <Image
+          src={img}
+          alt=""
+          width={phone ? 100 : 192}
+          height={phone ? 100 : 192}
+        />
       </Box>
       <Box
         sx={{
@@ -40,8 +51,14 @@ const CurriculumCard = ({ img, heading, description }: CurriculumCardProps) => {
           textAlign: "center",
         }}
       >
-        <HeadingField label={heading} fontSize={24} sx={{ lineHeight: 1.1 }} />
-        <ParaField label={description} fontSize={20} sx={{ mt: 1 }} />
+        <HeadingField
+          label={heading}
+          sx={{ lineHeight: 1.1, fontSize: { xs: 20, lg: 24 } }}
+        />
+        <ParaField
+          label={description}
+          sx={{ mt: 1, fontSize: { lg: 20, xs: 15 } }}
+        />
       </Box>
     </Box>
   );

@@ -7,6 +7,7 @@ import {
 } from "@/assets/apiCalling/user";
 import { data } from "@/assets/data";
 import CustomBanner from "@/components/CustomBanner";
+import SimpleButton from "@/components/Home/Components/SimpleButton";
 import { removeActiveStep } from "@/redux/reducers/Stepper";
 import { showToast } from "@/redux/reducers/Toast";
 import { setUserDetails } from "@/redux/reducers/User";
@@ -133,7 +134,7 @@ const Login = () => {
         <CircularProgress sx={{ color: COLORS.PRIMARY }} />
       </Backdrop>
       <CustomBanner>
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 2 }}>
           <Typography
             sx={{
               fontSize: 28,
@@ -208,13 +209,15 @@ const Login = () => {
                     fontFamily: nunito.style,
                     textDecoration: "underline",
                     cursor: "pointer",
+                    width: "fit-content",
+                    marginLeft: "auto",
                   }}
                   onClick={forgotPassword}
                 >
                   Forgot Password
                 </Typography>
               </Box>
-              <Button
+              {/* <Button
                 sx={{
                   backgroundColor: COLORS.PRIMARY,
                   color: COLORS.WHITE,
@@ -228,7 +231,9 @@ const Login = () => {
                 ) : (
                   "Submit"
                 )}
-              </Button>
+              </Button> */}
+
+              <SimpleButton label="Submit" type="submit" />
             </Stack>
           </form>
           <Divider sx={{ mt: 2 }}>
@@ -278,7 +283,7 @@ const Login = () => {
                 textDecoration: "underline",
                 cursor: "pointer",
               }}
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/register")}
             >
               Sign Up
             </Typography>

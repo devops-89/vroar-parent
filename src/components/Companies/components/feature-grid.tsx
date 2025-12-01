@@ -22,21 +22,25 @@ const FeatureGrid = () => {
     },
   ];
   return (
-    <Box sx={{ pb: 20 }}>
+    <Box sx={{ pb: {lg:20,xs:10}, pt: { xs:10} }}>
       <Container>
         <Grid container>
-          <Grid size={8} margin={"auto"}>
+          <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
             <Box>
               <ParaField
                 label="Your time gives them"
-                sx={{ textAlign: "center", fontSize: 20,textTransform:"uppercase" }}
+                sx={{
+                  textAlign: "center",
+                  fontSize: { lg: 20, xs: 16 },
+                  textTransform: "uppercase",
+                }}
               />
             </Box>
             <Grid container spacing={4}>
               {featureList.map((val, i) => (
                 <Grid
-                  size={3}
-                  data-aos="fade-left"
+                  size={{ lg: 3, xs: 6 }}
+                  data-aos="fade-up"
                   data-aos-delay={`${i * 200}`}
                 >
                   <Image

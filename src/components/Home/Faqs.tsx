@@ -1,4 +1,11 @@
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import React from "react";
 import banner from "@/banner/faq.avif";
 import faq1 from "@/banner/faq1.avif";
@@ -7,24 +14,25 @@ import Image from "next/image";
 import Badge from "./Components/Badge";
 import FaqCard from "./Components/Faq-card";
 const FaqSection = () => {
+  const phone = useMediaQuery("(max-width:600px)");
   return (
-    <Box sx={{ position: "relative", pt: 10 }}>
+    <Box sx={{ position: "relative", py: 10 }}>
       <Box
         sx={{
           backgroundImage: `url(${banner.src})`,
-          minHeight: "120vh",
+          minHeight: { lg: "120vh", xs: "110vh" },
           backgroundPosition: "50% 100%",
           backgroundSize: "cover",
-          pb:10
+          py: 10,
         }}
       >
         <Container>
           <Grid container>
-            <Grid size={8} margin={"auto"}>
+            <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
               <Badge label="FAQS" width={100} margin="auto" />
               <Typography
                 sx={{
-                  fontSize: 64,
+                  fontSize: { lg: 64, xs: 36 },
                   fontFamily: "gomenasana,sans-serif",
                   fontWeight: 700,
                   textAlign: "center",
@@ -36,7 +44,7 @@ const FaqSection = () => {
               </Typography>
               <Typography
                 sx={{
-                  fontSize: 20,
+                  fontSize: { lg: 20, xs: 16 },
                   fontFamily: "gomenasana,sans-serif",
                   fontWeight: 500,
                   textAlign: "center",
@@ -59,8 +67,8 @@ const FaqSection = () => {
           alignItems={"center"}
           justifyContent={"space-between"}
         >
-          <Image src={faq1} alt="" width={250} />
-          <Image src={faq2} alt="" width={250} />
+          <Image src={faq1} alt="" width={phone ? 150 : 250} />
+          <Image src={faq2} alt="" width={phone ? 150 : 250} />
         </Stack>
       </Box>
     </Box>

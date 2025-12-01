@@ -1,4 +1,4 @@
-const baseUrl = "https://devapi.mytreks.ai";
+const baseUrl = "https://api.mytreks.ai";
 
 const stripeURL = "https://api.stripe.com/v1";
 // const authenticationUrl = "http://localhost:8085";

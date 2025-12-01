@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,7 +10,7 @@ import { COUNSELING_SLIDER } from "@/utils/types";
 import { COLORS } from "@/utils/enum";
 const CounselingCard = ({ data }: COUNSELING_SLIDER) => {
   const swiperRef = useRef<SwiperClass | null>(null);
-
+  const phone = useMediaQuery("(max-width:600px)");
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <>
@@ -18,7 +18,7 @@ const CounselingCard = ({ data }: COUNSELING_SLIDER) => {
         sx={{
           backgroundColor: "#f6f6f6",
           borderRadius: "2.5rem",
-          padding: "40px",
+          padding: { lg: "40px", xs: "25px" },
         }}
       >
         <Swiper
@@ -28,14 +28,14 @@ const CounselingCard = ({ data }: COUNSELING_SLIDER) => {
         >
           {data.map((val, i) => (
             <SwiperSlide key={i}>
-              <Grid container>
-                <Grid size={6}>
+              <Grid container spacing={{ lg: 0, xs: 4 }}>
+                <Grid size={{ lg: 6, xs: 12 }}>
                   <Image src={tick} alt="" width={64} height={64} />
                   <Box sx={{ mt: 3 }}>
                     <Typography
                       sx={{
-                        fontSize: 36,
-                        fontFamily: "gomenasans, arial,sans-serif",
+                        fontSize: { lg: 36, xs: 25 },
+                        fontFamily: "gomenasans-bold, arial,sans-serif",
                         fontWeight: 600,
                       }}
                     >
@@ -43,25 +43,29 @@ const CounselingCard = ({ data }: COUNSELING_SLIDER) => {
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: 36,
-                        fontFamily: "gomenasans, arial,sans-serif",
+                        fontSize: { lg: 36, xs: 25 },
+                        fontFamily: "gomenasans-bold, arial,sans-serif",
                         fontWeight: 600,
                       }}
                     >
                       {val.heading2}
                     </Typography>
                     <Typography
-                      sx={{ fontSize: 18, fontFamily: nunito.style, mt: 3 }}
+                      sx={{
+                        fontSize: { lg: 18, xs: 14 },
+                        fontFamily: nunito.style,
+                        mt: { lg: 3, xs: 1},
+                      }}
                     >
                       {val.description}
                     </Typography>
                   </Box>
                 </Grid>
-                <Grid size={6}>
+                <Grid size={{ lg: 6, xs: 12 }}>
                   <Image
                     src={val.img}
+                    width={phone ? 300 : 400}
                     alt=""
-                    width={400}
                     style={{
                       borderRadius: "24px",
                       border: "5px solid #ffffff",

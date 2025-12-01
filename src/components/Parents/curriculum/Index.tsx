@@ -9,6 +9,10 @@ import selfAwareness from "@/banner/parents/curriculum/self-awareness.avif";
 import alignedGoals from "@/banner/parents/curriculum/aligned-goals.avif";
 import selfReflection from "@/banner/parents/curriculum/self-reflection.avif";
 import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
+import Link from "next/link";
 const ParentCurriculum = () => {
   const curriculumData = [
     {
@@ -27,28 +31,39 @@ const ParentCurriculum = () => {
       description: "College essay prep through guided reflection",
     },
   ];
+
+  const dispatch = useDispatch();
+
+  const openModal = () => {
+    dispatch(showModal(<BookaDemo />));
+  };
+
   return (
     <Box>
       <Container maxWidth="lg">
         <Grid container>
-          <Grid size={8} margin={"auto"}>
+          <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
             <Badge label="OUR CURRICULUM" width={150} margin="auto" />
             <HeadingField
               label="Brain-Based Learning That Sticks"
-              sx={{ mt: 2, lineHeight: 1.2 }}
+              sx={{
+                mt: 2,
+                lineHeight: 1.2,
+                fontSize: { xs: 30, lg: 68 },
+                fontFamily: "gomenasans-bold",
+              }}
             />
             <ParaField
               label="Neuroscience-backed. Gamified. Metacognitive. Our curriculum keeps students engaged and evolving."
-              fontSize={20}
               color={COLORS.LIGHT_BLACK}
               textAlign="center"
-              sx={{ mt: 2 }}
+              sx={{ mt: 2, fontSize: { xs: 16, lg: 20 } }}
             />
           </Grid>
         </Grid>
         <Grid container spacing={4} sx={{ mt: 4 }}>
           {curriculumData.map((val, i) => (
-            <Grid size={4} key={i}>
+            <Grid size={{ lg: 4, xs: 12 }} key={i}>
               <CurriculumCard
                 img={val.img}
                 heading={val.heading}
@@ -58,7 +73,9 @@ const ParentCurriculum = () => {
           ))}
         </Grid>
         <Box sx={{ textAlign: "center", mt: 3 }}>
-          <ButtonWithIcon label="Book a Demo" />
+          <Link href="/login">
+            <ButtonWithIcon label="Get Started Now" sx={{ width: 250 }} />
+          </Link>
         </Box>
       </Container>
     </Box>

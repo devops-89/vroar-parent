@@ -18,7 +18,7 @@ const MentorProgressCard = ({
         backgroundColor: COLORS.WHITE,
         position: "relative",
         borderRadius: "16px",
-        height:250
+        height: { lg: 250, xs: 200 },
       }}
     >
       <Box

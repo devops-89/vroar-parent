@@ -35,7 +35,7 @@ const SupportCard = ({
             borderRadius: "10rem",
             width: 20,
             height: 20,
-            display: "flex",
+            display: {lg:"flex",xs:"none"},
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",

@@ -42,19 +42,20 @@ const WhyMyTreks = () => {
         label="Why Parents Choose Us?"
         color={COLORS.WHITE}
         textAlign="center"
+        sx={{ fontSize: { lg: 68, xs: 35 } }}
       />
       <Container sx={{ mt: 2 }}>
         <Grid container>
-          <Grid size={9} margin={"auto"}>
+          <Grid size={{ lg: 9, xs: 12 }} margin={"auto"}>
             <Grid container spacing={4}>
-              <Grid size={6}>
+              <Grid size={{ lg: 6, xs: 12 }}>
                 <Stack alignItems={"flex-start"} spacing={2}>
                   {whymytreks.map((val, i) => (
                     <WhyMyTreksCard label={val.label} key={i} />
                   ))}
                 </Stack>
               </Grid>
-              <Grid size={6}>
+              <Grid size={{ lg: 6, xs: 12 }}>
                 <AppIconAnimation />
               </Grid>
             </Grid>

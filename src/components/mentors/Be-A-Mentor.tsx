@@ -8,22 +8,42 @@ import { MENTOR_PROGRESS } from "@/assets/Mentor-Progress";
 import Arrow from "@/banner/mentors/beMentor/arrow.avif";
 import Image from "next/image";
 import ButtonWithIcon from "../Home/Components/ButtonWithIcon";
+import { useDispatch } from "react-redux";
+import { showModal } from "@/redux/reducers/Modal";
+import BecomeAMentor from "@/assets/ModalCalling/website/become-a-mentor";
 const Bementor = () => {
+  const dispatch = useDispatch();
+
+  const ShowMentorModal = () => {
+    dispatch(showModal(<BecomeAMentor />));
+  };
   return (
     <Box sx={{ pt: 10, backgroundColor: "#fff3f0", pb: 10 }}>
       <Container>
         <Grid container>
-          <Grid size={9} margin={"auto"}>
+          <Grid size={{ lg: 9, xs: 12 }} margin={"auto"}>
             <Badge label="Be a mentor" margin="auto" width={130} />
-            <Stack spacing={-4}>
-              <HeadingField label="How to" />
-              <HeadingField label="Become a Mentor?" />
+            <Stack spacing={{ lg: -4, xs: -2 }}>
+              <HeadingField
+                label="How to"
+                sx={{
+                  fontSize: { lg: 68, xs: 35 },
+                  fontFamily: "gomenasans-bold",
+                }}
+              />
+              <HeadingField
+                label="Become a Mentor?"
+                sx={{
+                  fontSize: { lg: 68, xs: 35 },
+                  fontFamily: "gomenasans-bold",
+                }}
+              />
             </Stack>
             <ParaField
               label="College students and professionals can guide school kids exploring careers.
 Share your journey, offer real advice, and make a lasting impact"
-              fontSize={20}
               textAlign="center"
+              sx={{ fontSize: { lg: 20, xs: 16 } }}
             />
           </Grid>
         </Grid>
@@ -32,10 +52,11 @@ Share your journey, offer real advice, and make a lasting impact"
           sx={{ mt: 10 }}
           columns={{ xs: 1, md: 14 }}
           alignItems="center"
+          spacing={{ xs: 10 }}
         >
           {MENTOR_PROGRESS.map((val, i) => (
             <React.Fragment key={i}>
-              <Grid size={{ xs: 1, md: 4 }}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <MentorProgressCard
                   img={val.img}
                   heading={val.heading}
@@ -58,7 +79,11 @@ Share your journey, offer real advice, and make a lasting impact"
           ))}
         </Grid>
         <Box textAlign={"center"} sx={{ mt: 6 }}>
-          <ButtonWithIcon label="Become a Mentor" width={"fit-content"} />
+          <ButtonWithIcon
+            label="Become a Mentor"
+            width={200}
+            onClick={ShowMentorModal}
+          />
         </Box>
       </Container>
     </Box>

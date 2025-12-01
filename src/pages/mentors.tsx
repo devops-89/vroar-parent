@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import backgroundBanner from "@/banner/mentors/mentor_banner.avif";
 import HeadingField from "@/components/common/Heading-Field";
 import GradientText from "@/components/common/Greadient-text";
@@ -20,7 +20,27 @@ import Whyjoinus from "@/components/mentors/Why-Join-Us";
 import Testimonials from "@/components/mentors/Testimonials";
 import { MENTOR_TESTIMONIALS } from "@/assets/mentors";
 import MentorFaqSection from "@/components/mentors/Faq-section";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+
 const Mentors = () => {
+  const dispatch = useDispatch();
+
+  // const fetchFormsFields = async () => {
+  //   axios
+  //     .get("/api/forms")
+  //     .then((res) => {
+  //       console.log("response", res);
+  //     })
+  //     .catch((err) => {
+  //       console.log("err", err);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   fetchFormsFields();
+  // }, []);
+
   return (
     <Box>
       <Box
@@ -29,20 +49,32 @@ const Mentors = () => {
           height: "100%",
           backroundSize: "cover",
           backgroundPosition: "50%",
-          pt: 20,
+          pt: { lg: 20, xs: 20 },
         }}
       >
         <Container sx={{ position: "relative" }}>
           <Grid container>
-            <Grid size={8} margin={"auto"}>
+            <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
               <Stack spacing={-2}>
-                <GradientText label="Shape Lives" />
-                <HeadingField label="in Just 1 Hour A Month" />
+                <GradientText
+                  label="Shape Lives"
+                  sx={{
+                    fontSize: { lg: 68, xs: 35 },
+                    fontFamily: "gomenasans-bold",
+                  }}
+                />
+                <HeadingField
+                  label="in Just 1 Hour A Month"
+                  sx={{
+                    fontSize: { lg: 68, xs: 35 },
+                    fontFamily: "gomenasans-bold",
+                  }}
+                />
               </Stack>
               <ParaField
                 label="Become a mentor or speaker."
                 textAlign="center"
-                fontSize={24}
+                sx={{ fontSize: { lg: 24, xs: 16 } }}
               />
               <Box sx={{ position: "relative" }}>
                 <MentorMiddle />

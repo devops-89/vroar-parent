@@ -12,15 +12,22 @@ import { companyTestimonial } from "@/assets/testimonial";
 
 const CompanyLayout = () => {
   return (
-    <Box sx={{ position: "relative", zIndex: 1 }}>
+    <Box sx={{ position: "relative", zIndex: { lg: 1, xs: 0 } }}>
       <HeroSection />
-      <Box sx={{ position: "absolute", mt: "-100px", width: "100%", mb: 500 }}>
+      <Box
+        sx={{
+          position: { lg: "absolute", xs: "initial" },
+          mt: { lg: "-100px" },
+          width: "100%",
+          mb: { lg: 500, xs: 5 },
+        }}
+      >
         <FeatureGrid />
       </Box>
-      <Box sx={{ mt: 20 }}>
+      <Box sx={{ mt: { lg: 30, xs: 5 } }}>
         <Support />
       </Box>
-      <Box sx={{ mt: 20 }}>
+      <Box sx={{ mt: { lg: 20, xs: 5 } }}>
         <Benefits />
       </Box>
       <Box sx={{ mt: 10 }}>

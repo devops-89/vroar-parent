@@ -6,6 +6,7 @@ import Badge from "../Badge";
 import ChooseCard from "./ChooseCard";
 import { data } from "@/assets/data";
 import ButtonWithIcon from "../ButtonWithIcon";
+import Link from "next/link";
 
 const Choose = () => {
   return (
@@ -16,14 +17,15 @@ const Choose = () => {
             <Badge label="Why Mytreks.ai?" width={150} margin="auto" />
             <Typography
               sx={{
-                fontSize: "4rem",
+                fontSize: { lg: 64, xs: 25 },
                 fontWeight: 700,
                 textAlign: "center",
                 lineHeight: 1.2,
                 mt: 3,
-                fontFamily: "gomenasans,arial,sans-serif",
+                fontFamily: "gomenasans-bold",
                 mb: 4,
               }}
+              data-aos="fade-up"
             >
               Confidence isn’t taught. It’s uncovered, nurtured, and empowered.
             </Typography>
@@ -31,13 +33,14 @@ const Choose = () => {
               sx={{
                 textAlign: "center",
                 // mt: 7,
-                width: 780,
+                width: { lg: 780, xs: "100%" },
                 margin: "auto",
-                fontSize: 20,
+                fontSize: { lg: 20, xs: 14 },
                 color: COLORS.TEXT_COLOR,
                 fontFamily: nunito.style,
                 lineHeight: 1.2,
               }}
+              data-aos="fade-up"
             >
               We’re helping your child discover who they are before deciding
               what they want to do by combining neuroscience, the
@@ -47,7 +50,12 @@ const Choose = () => {
         </Grid>
         <Grid container spacing={4} mt={5}>
           {data.chooseCard.map((val, i) => (
-            <Grid size={4} key={i}>
+            <Grid
+              size={{ lg: 4, xs: 12 }}
+              key={i}
+              data-aos="fade-up"
+              data-aos-delay={`${i + 1 * 200}`}
+            >
               <ChooseCard
                 img={val.img}
                 title={val.title}
@@ -58,7 +66,9 @@ const Choose = () => {
         </Grid>
 
         <Box sx={{ textAlign: "center", mt: 5 }}>
-          <ButtonWithIcon label="Discover How it works" width="300px" />
+          <Link href="/login">
+            <ButtonWithIcon label="Discover How it works" width="300px" />
+          </Link>
         </Box>
       </Container>
     </Box>

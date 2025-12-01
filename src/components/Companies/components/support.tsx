@@ -10,21 +10,25 @@ const Support = () => {
     <Box>
       <Container>
         <Grid container>
-          <Grid size={10} margin="auto">
-            <Box data-aos="fade-left">
+          <Grid size={{ lg: 10, xs: 12 }} margin="auto">
+            <Box data-aos="fade-up">
               <Badge label="Support" margin="auto" width={120} />
             </Box>
 
             <HeadingField
               label="Support a Student &
 empower a Soldier’s Family"
-              sx={{ fontWeight: 700, fontFamily: "gomenasans-bold" }}
+              sx={{
+                fontWeight: 700,
+                fontFamily: "gomenasans-bold",
+                fontSize: { lg: 64, xs: 35 },
+              }}
               dataaos="fade-up"
             />
             <ParaField
               label="Real Mentorship. Real Careers. Real Change."
               dataaos="fade-up"
-              sx={{ textAlign: "center" }}
+              sx={{ textAlign: "center", fontSize: { lg: 20, xs: 18 } }}
             />
             <Stack
               direction={"row"}
@@ -34,18 +38,24 @@ empower a Soldier’s Family"
               sx={{ mt: 3 }}
               data-aos="fade-up"
             >
-              <HeadingField label="How" sx={{ fontSize: 36 }} />
-              <GradientText label="Companies" sx={{ fontSize: 36, mt: 2 }} />
-              <HeadingField label="Create Impact" sx={{ fontSize: 36 }} />
+              <HeadingField label="How" sx={{ fontSize: { lg: 36, xs: 20 } }} />
+              <GradientText
+                label="Companies"
+                sx={{ fontSize: { lg: 36, xs: 20 }, mt: 2 }}
+              />
+              <HeadingField
+                label="Create Impact"
+                sx={{ fontSize: { lg: 36, xs: 20 } }}
+              />
             </Stack>
           </Grid>
         </Grid>
         <Grid container spacing={4} sx={{ mt: 4 }}>
           {SUPPORT_CARD_DATA.map((item, index) => (
             <Grid
-              size={4}
+              size={{ lg: 4, xs: 12 }}
               key={index}
-              data-aos="fade-left"
+              data-aos="fade-up"
               data-aos-delay={index * 100}
             >
               <SupportCard

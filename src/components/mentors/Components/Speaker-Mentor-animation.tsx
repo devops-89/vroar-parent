@@ -1,16 +1,13 @@
-import React from "react";
-import { Box } from "@mui/material";
-import Image from "next/image";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import appIcon from "@/Mentors/speaker_mentor.avif";
+import { Box } from "@mui/material";
 
 const SpeakerMentorAnimation = () => {
   return (
     <Box
       sx={{
         position: "relative",
-        width: 350,
-        height: 350,
+        width: { lg: 350, xs: 300 },
+        height: { lg: 350,xs:300 },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

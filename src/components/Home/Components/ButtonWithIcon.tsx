@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Button, SxProps, Theme } from "@mui/material";
+import { Box, Button, ButtonProps, SxProps, Theme } from "@mui/material";
 import { ArrowForward } from "@mui/icons-material";
 import { COLORS } from "@/utils/enum";
 import { nunito } from "@/utils/fonts";
@@ -8,13 +8,15 @@ const ButtonWithIcon = ({
   label,
   width = "180px",
   sx,
+  ...props
 }: {
   label: ReactNode;
   width?: string | number;
   sx?: SxProps<Theme>;
-}) => {
+} & Omit<ButtonProps, "sx">) => {
   return (
     <Button
+      {...props}
       sx={{
         color: COLORS.WHITE,
         background: "linear-gradient(#fd9065 16%, #ca2600 81%)",
@@ -22,12 +24,12 @@ const ButtonWithIcon = ({
         border: "2px solid #ffddd5",
         padding: "8px 16px",
         fontWeight: 700,
-        fontSize: "1rem",
+        fontSize: { lg: 16, xs: 12 },
         fontFamily: nunito.style.fontFamily,
         boxShadow: "inset 0 0 #0000, 0 4px 12px #fd9065",
         transition: "all 0.3s ease",
         textTransform: "none",
-        width,
+        width: width ,
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
@@ -49,7 +51,15 @@ const ButtonWithIcon = ({
         ...sx,
       }}
     >
-      <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1.25 }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          position: "relative",
+        }}
+      >
         {/* Text swap viewport */}
         <Box
           className="text-viewport"
@@ -58,6 +68,7 @@ const ButtonWithIcon = ({
             overflow: "hidden",
             height: "2.5rem",
             minWidth: "11ch",
+            paddingRight: "3.5rem", // Add space for the icon
           }}
         >
           <Box
@@ -100,7 +111,7 @@ const ButtonWithIcon = ({
             justifyContent: "center",
             boxShadow: 3,
             overflow: "hidden",
-            position: "relative",
+            position: "absolute",
             right: 0,
           }}
         >

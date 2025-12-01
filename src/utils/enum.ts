@@ -1,3 +1,5 @@
+import { useMediaQuery } from "@mui/material";
+
 export const enum COLORS {
   PRIMARY = "#FB5933",
   SECONDARY = "#fcb52e",
@@ -37,12 +39,12 @@ export enum TOAST_STATUS {
 }
 
 export const GRADE = {
-  8: "8th",
+  // 8: "8th",
   9: "9th",
   10: "10th",
   11: "11th",
   12: "12th",
-  HOMESCHOOLED: "Homeschooled",
+  // HOMESCHOOLED: "Homeschooled",
 };
 
 export const RELATIONSHIP_DATA = {
@@ -160,4 +162,11 @@ export enum DEVICE_TYPE {
   WEB = "WEB",
   ANDROID = "ANDROID",
   IOS = "IOS",
+}
+
+export enum FORM_TYPE {
+  DEMO = "demo",
+  SPEAKER = "speaker",
+  MENTOR = "mentor",
+  CONTACT = "contact",
 }

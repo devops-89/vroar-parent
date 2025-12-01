@@ -11,18 +11,18 @@ const OurMentorsParents = () => {
     <Box>
       <Container maxWidth="lg">
         <Grid container>
-          <Grid size={7} margin={"auto"}>
-            <Badge label="our Mentors" width={120} margin="auto" />
+          <Grid size={{ lg: 7, xs: 12 }} margin={"auto"}>
+            <Badge label="our M   entors" width={120} margin="auto" />
             <HeadingField
               label="Real Mentors.
 Real Talk. Real Clarity "
-              fontSize={68}
+              sx={{ fontSize: { lg: 68, xs: 35 } }}
             />
             <ParaField
               label="Get access to mentors who’ve been there, done that. Students choose from mentors in fields like finance, fashion, engineering, or entrepreneurship."
               textAlign="center"
               color={COLORS.LIGHT_BLACK}
-              sx={{ mt: 2 }}
+              sx={{ mt: 2, fontSize: { lg: 24, xs: 20 } }}
             />
             <Box sx={{ textAlign: "center" }}>
               <ParentMentorCard />

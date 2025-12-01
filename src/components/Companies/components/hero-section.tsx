@@ -1,45 +1,65 @@
+import BookaDemo from "@/assets/ModalCalling/website/book-a-demo";
 import GradientText from "@/components/common/Greadient-text";
 import HeadingField from "@/components/common/Heading-Field";
 import ParaField from "@/components/common/Para-Field";
 import ButtonWithIcon from "@/components/Home/Components/ButtonWithIcon";
 import banner from "@/homePage/hero-section-baner.avif";
+import { showModal } from "@/redux/reducers/Modal";
 import { Box, Container, Grid } from "@mui/material";
+import { useDispatch } from "react-redux";
 const HeroSection = () => {
+  const dispatch = useDispatch();
+
+  const bookaDemo = () => {
+    dispatch(showModal(<BookaDemo />));
+  };
+
   return (
     <Box
       sx={{
         backgroundImage: `url(${banner.src})`,
-        minHeight: "120vh",
+        height: { lg: "120vh", xs: "70vh" },
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        // pb: { xs: 10 },
       }}
     >
-      <Container sx={{ pt: 6 }}>
-        <Grid size={8} margin="auto">
-          <Box data-aos="fade-left">
+      <Container sx={{ pt: { lg: 6, xs: 15 } }}>
+        <Grid size={{ lg: 8, xs: 12 }} margin="auto">
+          <Box data-aos="fade-up">
             <HeadingField
               label="Partner in purpose to"
-              sx={{ fontFamily: "gomenasans-bold" }}
+              sx={{
+                fontFamily: "gomenasans-bold",
+                fontSize: { lg: 64, xs: 35 },
+              }}
             />
           </Box>
-          <Box data-aos="fade-right" data-aos-delay="200" sx={{ mb: 4 }}>
+          <Box data-aos="fade-up" data-aos-delay="200" sx={{ mb: 4 }}>
             <GradientText
               label="Power Careers"
-              sx={{ fontFamily: "gomenasans-bold" }}
+              sx={{
+                fontFamily: "gomenasans-bold",
+                fontSize: { lg: 64, xs: 35 },
+              }}
             />
           </Box>
           <Box
             data-aos="fade-up"
-            sx={{ width: 700, textAlign: "center", m: "auto" }}
+            sx={{
+              width: { lg: 700, xs: "100%" },
+              textAlign: "center",
+              m: "auto",
+            }}
           >
             <ParaField label="Empower young minds, elevate your brand purpose, and create lasting impact where it matters most." />
           </Box>
           <Box sx={{ textAlign: "center", mt: 4 }} data-aos="fade-up">
-            <ButtonWithIcon label="Contact Us" />
+            <ButtonWithIcon label="Contact Us" onClick={bookaDemo} />
           </Box>
         </Grid>
       </Container>

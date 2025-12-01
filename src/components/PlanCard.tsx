@@ -33,26 +33,28 @@ const PlanCard = ({
   prices,
   img,
   benefits,
+  strike,
 }: SUBSCRIPTION_PLANS) => {
   if (!prices || prices.length === 0) {
     return <Typography>No pricing available for this plan.</Typography>;
   }
 
-  const isRecurring = prices.some((p) => p.isRecurring);
+  const isRecurring = prices.some((p) => p?.isRecurring);
   const hasYearly = prices.some((p) => p.interval === "year");
+  const hasMonthly = prices.some((p) => p.interval === "month");
   const [switchStatus, setSwitchStatus] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   // const router = useRouter();
 
   const priceIndex =
-    isRecurring && hasYearly
+    isRecurring && hasYearly && hasMonthly
       ? switchStatus
         ? prices.findIndex((p) => p.interval === "year")
         : prices.findIndex((p) => p.interval === "month")
       : 0;
 
-  const selectedPrice = prices[priceIndex];
+  const selectedPrice = prices[priceIndex] || prices[0];
 
   const switchHandler = (e: SyntheticEvent) => {
     const { checked } = e.target as HTMLInputElement;
@@ -87,7 +89,7 @@ const PlanCard = ({
     >
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Image src={img || extension} alt="Plan icon" width={64} />
-        {isRecurring && hasYearly && (
+        {isRecurring && hasYearly && hasMonthly && (
           <Stack direction="row" spacing={1} alignItems="center">
             <Typography
               sx={{
@@ -162,7 +164,7 @@ const PlanCard = ({
           }}
         >
           $
-          {isRecurring && hasYearly
+          {isRecurring && hasYearly && hasMonthly
             ? switchStatus
               ? Math.round(
                   (prices.find((p) => p.interval === "year")?.amount || 0) / 12
@@ -173,6 +175,18 @@ const PlanCard = ({
             : prices[0]?.amount}
         </Typography>
 
+        {strike && (
+          <Typography
+            sx={{
+              textDecoration: "line-through",
+              fontSize: 20,
+              fontFamily: nunito.style.fontFamily,
+              fontWeight: 700,
+            }}
+          >
+            $399
+          </Typography>
+        )}
         {selectedPrice.isRecurring ? (
           <Stack direction="row" spacing={2} alignItems="center">
             <PlanBadges
@@ -199,18 +213,74 @@ const PlanCard = ({
       </Stack>
 
       <Box mt={3} position="relative">
-        <ButtonWithIcon
-          label={
-            loading ? (
-              <CircularProgress sx={{ color: COLORS.WHITE }} size={20} />
-            ) : selectedPrice.isRecurring ? (
-              "Unlock Confidence"
-            ) : (
-              "Explore Now"
+        <Button
+          fullWidth
+          disabled={loading}
+          onClick={() =>
+            createPaymentLink(
+              isRecurring && hasYearly
+                ? switchStatus
+                  ? prices.find((p) => p.interval === "year")?.id ||
+                    prices[0].id
+                  : prices.find((p) => p.interval === "month")?.id ||
+                    prices[0].id
+                : prices[0].id
             )
           }
-          sx={{ width: "100%" }}
-        />
+          sx={{
+            background: COLORS.LINEAR_GRADIENT,
+            fontFamily: nunito.style,
+            color: COLORS.WHITE,
+            borderRadius: 6,
+            fontSize: 15,
+            fontWeight: 600,
+            p: 1.5,
+            position: "relative",
+            boxShadow: selectedPrice.isRecurring
+              ? "0px 0px 4px 4px rgba(253, 144, 101, 1)"
+              : "0px 0px 4px 4px rgba(253, 144, 101, 0.4)",
+            ":hover": {
+              "& .icon": {
+                transform: "rotate(0deg)",
+              },
+            },
+          }}
+          endIcon={
+            <Box
+              sx={{
+                position: "absolute",
+                left: { lg: "90%", xs: "80%" },
+                top: 5,
+                width: 40,
+                height: 40,
+                borderRadius: "50%",
+                backgroundColor: COLORS.WHITE,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0px 0px 2px 2px rgba(255,255,255,0.2)",
+              }}
+            >
+              <ArrowForward
+                className="icon"
+                sx={{
+                  fontSize: 25,
+                  color: COLORS.PRIMARY,
+                  transform: "rotate(-45deg)",
+                  transition: "0.5s ease all",
+                }}
+              />
+            </Box>
+          }
+        >
+          {loading ? (
+            <CircularProgress sx={{ color: COLORS.WHITE }} size={20} />
+          ) : selectedPrice.isRecurring ? (
+            "Unlock Confidence"
+          ) : (
+            "Explore Now"
+          )}
+        </Button>
 
         <Box mt={5}>
           <Typography

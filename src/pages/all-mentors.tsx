@@ -40,7 +40,7 @@ const AllMentors = () => {
       <Badge label="Mentors" margin="auto" width={100} />
       <HeadingField
         label="Mentors Library"
-        sx={{ fontFamily: "gomenasans-bold" }}
+        sx={{ fontFamily: "gomenasans-bold", fontSize: { lg: 64, xs: 35 } }}
       />
 
       <Container maxWidth="lg">
@@ -53,13 +53,15 @@ const AllMentors = () => {
                 justifyContent: "center",
               }}
             >
-              <CircularProgress sx={{ color: COLORS.PRIMARY,margin:"auto" }} />
+              <CircularProgress
+                sx={{ color: COLORS.PRIMARY, margin: "auto" }}
+              />
             </Box>
           ) : (
             mentors?.docs?.map((val: MENTOR_CARD_PROPS, i: number) => (
               <Grid
                 key={i}
-                size={4}
+                size={{ lg: 4, xs: 12 }}
                 data-aos="fade-up"
                 data-aos-delay={i + 1 * 100}
               >

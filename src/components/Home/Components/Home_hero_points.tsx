@@ -29,7 +29,7 @@ const Home_hero_points = ({
       <Image src={tick} alt="tick" width={24} height={24} />
       <Typography
         sx={{
-          fontSize: 24,
+          fontSize: {lg:24,xs:16},
           fontFamily: nunito.style,
           fontWeight: 500,
           color: color ?? COLORS.BLACK,

@@ -8,38 +8,9 @@ import ParaField from "@/components/common/Para-Field";
 import { UserController } from "@/assets/api/UserController";
 import { SUBSCRIPTION_PLAN, SUBSCRIPTION_PLANS } from "@/utils/types";
 import PlanCard from "@/components/PlanCard";
-import { plans_data } from "@/assets/plans";
+import { NEW_PLAN_FEATURES, plans_data } from "@/assets/plans";
+import PricingSection from "./pricing-section";
 const HeroSection = () => {
-  const [subscriptionPlans, setSubscriptionPlans] =
-    useState<SUBSCRIPTION_PLANS[]>();
-  const getPlans = () => {
-    UserController.getPlansPublic()
-      .then((res) => {
-        // console.log("res", res);
-        const response = res.data.data;
-        const mergedArray = response.map((apiPlan: any) => {
-          const staticPlan = plans_data.find(
-            (staticPlan: any) => staticPlan.id === apiPlan.id
-          );
-
-          return {
-            ...apiPlan,
-            ...(staticPlan || {}),
-          };
-        });
-
-        setSubscriptionPlans(mergedArray as SUBSCRIPTION_PLANS[]);
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  };
-
-  useEffect(() => {
-    getPlans();
-  }, []);
-
-
   return (
     <Box
       sx={{
@@ -52,7 +23,7 @@ const HeroSection = () => {
     >
       <Container maxWidth="lg">
         <Grid container>
-          <Grid size={8} margin={"auto"}>
+          <Grid size={{ lg: 8, xs: 12 }} margin={"auto"}>
             <Badge label="Pricing" margin="auto" width={100} />
 
             <HeadingField
@@ -61,36 +32,30 @@ const HeroSection = () => {
                 fontFamily: "gomenasans-bold",
                 lineHeight: 1.4,
                 letterSpacing: "-.04rem",
+                fontSize: { lg: 64, xs: 35 },
               }}
               dataaos="fade-left"
             />
             <GradientText
               label="your child's future!"
-              sx={{ fontFamily: "gomenasans-bold", lineHeight: 1.1 }}
+              sx={{
+                fontFamily: "gomenasans-bold",
+                lineHeight: 1.1,
+                fontSize: { lg: 64, xs: 35 },
+              }}
               dataaos="fade-left"
               data-aos-delay="300"
             />
             <ParaField
-              label="Flexible pricing to match your needs. Get started today!"
+              label="No matter when you join, your overall investment stays the same"
               sx={{ fontSize: 24, textAlign: "center", mt: 2 }}
               dataaos="fade-left"
               data-aos-delay="400"
             />
           </Grid>
         </Grid>
-        <Grid container mt={5} spacing={5}>
-          {subscriptionPlans?.slice(0, 1).map((val, i) => (
-            <Grid key={val.id ?? i} size={6} margin={"auto"}>
-              <PlanCard
-                description={val.description}
-                id={val.id}
-                name={val.name}
-                prices={val.prices}
-                benefits={val.benefits}
-              />
-            </Grid>
-          ))}
-        </Grid>
+
+        <PricingSection />
       </Container>
     </Box>
   );
